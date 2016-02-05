@@ -1,0 +1,32 @@
+{
+  "name": "taiga-contrib-subscriptions",
+  "version": "1.10.0",
+  "description": "Taiga contrib subscriptions",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist || true",
+    "create-dist": "mkdir -p dist",
+    "copy-statics": "cp subscriptions.json dist/",
+    "build-js": "{ cat 'coffee/subscriptions.coffee'; node_modules/jade/bin/jade.js < 'partials/subscriptions.jade'; } | node_modules/coffee-script/bin/coffee --compile --stdio > dist/subscriptions.js",
+    "build": "npm run clean; npm run create-dist; npm run copy-statics; npm run build-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taigaio/taiga-contrib-subscriptions"
+  },
+  "keywords": [
+    "taiga",
+    "subscriptions",
+    "integration"
+  ],
+  "author": "Xavier Julian <xavier.julian@kaleidos.net>",
+  "license": "AGPL",
+  "bugs": {
+    "url": "https://github.com/taigaio/taiga-contrib-subscriptions/issues"
+  },
+  "homepage": "https://github.com/taigaio/taiga-contrib-subscriptions",
+  "dependencies": {
+    "coffee-script": "^1.8.0",
+    "jade": "^1.9.1"
+  }
+}
