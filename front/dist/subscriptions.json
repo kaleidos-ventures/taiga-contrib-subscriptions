@@ -4,6 +4,6 @@
     "description": "Taiga subscriptions module",
     "type": "userSettings",
     "module": "taigaContrib.subscriptions",
-    "template": "plugin/subscriptions",
+    "template": "/plugins/subscriptions/subscriptions.html",
     "js": "/plugins/subscriptions/subscriptions.js"
 }
