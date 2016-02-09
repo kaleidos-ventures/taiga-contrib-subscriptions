@@ -22,20 +22,52 @@
 # File: subscriptions.coffee
 ###
 
+#Controller
 class SubscriptionsAdmin
     @.$inject = [
         "$scope",
+        "tgAppMetaService",
+        "tgSubscriptionsService"
     ]
 
-    constructor: (@scope) ->
-        @scope.sectionName = "Upgrade Plan" # i18n
+    constructor: (@scope, @appMetaService, @subscriptionsService) ->
+        @scope.pluginName = "Subscriptions - User Profile - Taiga" # i18n
+        @scope.sectionName = "Upgrade Plan"
+
+        console.log @subscriptionsService.getMyRecommendedPlan()
+        @scope.myRecommendedPlan = @subscriptionsService.getMyRecommendedPlan()
+
+        title = @scope.pluginName
+        description = @scope.sectionName
+        @appMetaService.setAll(title, description)
 
 module = angular.module('taigaContrib.subscriptions', [])
 
 module.controller("ContribSubscriptionsAdminController", SubscriptionsAdmin)
 
-initSubscriptionsPlugin = ($tgUrls) ->
-    $tgUrls.update({
-        "subscriptions": "/subscriptions"
-    })
-module.run(["$tgUrls", initSubscriptionsPlugin])
+#Service
+bindMethods = (object) =>
+    dependencies = _.keys(object)
+
+    methods = []
+
+    _.forIn object, (value, key) =>
+        if key not in dependencies
+            methods.push(key)
+
+    _.bindAll(object, methods)
+
+class SubscriptionsService
+    @.$inject = ["$tgHttp"]
+
+    constructor: (@http) ->
+        bindMethods(@)
+
+    getMyRecommendedPlan: ->
+        url = "http://localhost:5000/api-front/v1/my-recommended-plan"
+
+        return @http.get(url, {}).then (response) ->
+            console.log 'trolororo'
+            return response.data
+
+module.service("tgSubscriptionsService", SubscriptionsService)

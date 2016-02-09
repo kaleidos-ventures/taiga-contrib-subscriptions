@@ -24,14 +24,24 @@
  */
 
 (function() {
-  var SubscriptionsAdmin, initSubscriptionsPlugin, module;
+  var SubscriptionsAdmin, SubscriptionsService, bindMethods, module,
+    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   SubscriptionsAdmin = (function() {
-    SubscriptionsAdmin.$inject = ["$scope"];
+    SubscriptionsAdmin.$inject = ["$scope", "tgAppMetaService", "tgSubscriptionsService"];
 
-    function SubscriptionsAdmin(scope) {
+    function SubscriptionsAdmin(scope, appMetaService, subscriptionsService) {
+      var description, title;
       this.scope = scope;
+      this.appMetaService = appMetaService;
+      this.subscriptionsService = subscriptionsService;
+      this.scope.pluginName = "Subscriptions - User Profile - Taiga";
       this.scope.sectionName = "Upgrade Plan";
+      console.log(this.subscriptionsService.getMyRecommendedPlan());
+      this.scope.myRecommendedPlan = this.subscriptionsService.getMyRecommendedPlan();
+      title = this.scope.pluginName;
+      description = this.scope.sectionName;
+      this.appMetaService.setAll(title, description);
     }
 
     return SubscriptionsAdmin;
@@ -42,12 +52,41 @@
 
   module.controller("ContribSubscriptionsAdminController", SubscriptionsAdmin);
 
-  initSubscriptionsPlugin = function($tgUrls) {
-    return $tgUrls.update({
-      "subscriptions": "/subscriptions"
-    });
-  };
+  bindMethods = (function(_this) {
+    return function(object) {
+      var dependencies, methods;
+      dependencies = _.keys(object);
+      methods = [];
+      _.forIn(object, function(value, key) {
+        if (indexOf.call(dependencies, key) < 0) {
+          return methods.push(key);
+        }
+      });
+      return _.bindAll(object, methods);
+    };
+  })(this);
 
-  module.run(["$tgUrls", initSubscriptionsPlugin]);
+  SubscriptionsService = (function() {
+    SubscriptionsService.$inject = ["$tgHttp"];
+
+    function SubscriptionsService(http) {
+      this.http = http;
+      bindMethods(this);
+    }
+
+    SubscriptionsService.prototype.getMyRecommendedPlan = function() {
+      var url;
+      url = "http://localhost:5000/api-front/v1/my-recommended-plan";
+      return this.http.get(url, {}).then(function(response) {
+        console.log('trolororo');
+        return response.data;
+      });
+    };
+
+    return SubscriptionsService;
+
+  })();
+
+  module.service("tgSubscriptionsService", SubscriptionsService);
 
 }).call(this);
