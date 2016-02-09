@@ -28,6 +28,7 @@ gulp.task('coffee', function() {
 
 gulp.task('watch', function() {
     gulp.watch(paths.jade, ['jade']);
+    gulp.watch(paths.sass, ['jade']);
     gulp.watch(paths.coffee, ['coffee']);
 });
 
