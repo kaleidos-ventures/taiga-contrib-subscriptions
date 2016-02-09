@@ -19,25 +19,16 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: slack.coffee
+# File: subscriptions.coffee
 ###
-debounce = (wait, func) ->
-    return _.debounce(func, wait, {leading: true, trailing: false})
-
 
 class SubscriptionsAdmin
     @.$inject = [
-        "$rootScope",
         "$scope",
-        "$tgRepo",
-        "tgAppMetaService",
-        "$tgConfirm",
-        "$tgHttp",
     ]
 
-    constructor: (@rootScope, @scope, @repo, @appMetaService, @confirm, @http) ->
-        @scope.sectionName = "Subscriptions" # i18n
-        @scope.sectionSlug = "subscriptions"
+    constructor: (@scope) ->
+        @scope.sectionName = "Upgrade Plan" # i18n
 
 module = angular.module('taigaContrib.subscriptions', [])
 
