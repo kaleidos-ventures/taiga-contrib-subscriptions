@@ -6,35 +6,46 @@
         p.admin-subtitle
             svg.icon.icon-question
                 use(xlink:href="#icon-question")
-            span Active Plans starting April 30, 2016
+            span {{'SUBSCRIPTIONS.PLAN_STARTING' | translate}}
             
-    section.subscription-plan
+    section.subscription-your-plan
         header
-            h2 Your Plan
+            h2.title(ng-if="vm.myRecommendedPlan.amount_year == 0") {{'SUBSCRIPTIONS.YOUR_PLAN' | translate}}:
+            h2.title(ng-if="vm.myRecommendedPlan.amount_year > 0") {{'SUBSCRIPTIONS.YOUR_RECOMMENDED_PLAN' | translate}}:
             .plan-options
-                button.button-green I want it
-                button.button-gray Change Plan
+                button.button-green(ng-if="vm.myRecommendedPlan.amount_year > 0") {{'SUBSCRIPTIONS.WANT_PLAN' | translate}}
+                button.button-gray {{'SUBSCRIPTIONS.UPDATE_PLAN' | translate}}
         .plan
-            img(
-                src=""
-                alt=""
+            img.plan-image(
+                src="/#{v}/images/taiga-contrib-subscriptions/images/{{vm.myRecommendedPlan.name | lowercase}}.png",
+                alt="{{vm.myRecommendedPlan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
             )
             .plan-data
-                .plan-name Seed Plan
+                .plan-name {{vm.myRecommendedPlan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}
                 ul.plan-info 
-                    li Up to 1 private projects + Unlimited public projects
-                    li Up to 25 members per private project
+                    li {{vm.limitPrivateProjects}}
+                    li {{vm.limitMembersProjects}}
             .plan-pricing
-                sup $
-                span.number 0
-                span.frequency /month
+                .pricing-month
+                    span.currency {{vm.myRecommendedPlan.currency}}
+                    span.number {{vm.myRecommendedPlan.amount_month}}
+                    span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
+                
+                .pricing-year(ng-if="vm.myRecommendedPlan.amount_year > 0")
+                    span.currency {{vm.myRecommendedPlan.currency}}
+                    span.number {{vm.myRecommendedPlan.amount_year}}
+                    span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
                 
     aside.subscription-info
-        p De momento no tienes proyectos privados, así que creemos que el plan que mejor se ajusta a ti es el Seed Plan. 
-        p Puedes cambiar tu plan a uno superior si lo necesitas. 
-        p El 30 de abril activaremos los planes de pago y si tienes más de 1 proyecto privado podrás mantener su privacidad haciendo el pago del plan que se adapte a tus necesidades.
-        p Nos encanta compartir, así que si mantienes tus proyectos como públicos, te saldrá totalmente gratis. 
-        a(
-            href=""
-            title=""    
-        ) más información (FAQ)
+        h3.title {{'SUBSCRIPTIONS.HELP.WHY' | translate}}
+        ul
+            li {{'SUBSCRIPTIONS.HELP.NO_PROJECTS' | translate}}
+            li {{'SUBSCRIPTIONS.HELP.UPGRADE' | translate}}
+            li {{'SUBSCRIPTIONS.HELP.ACTIVATION' | translate}}
+            li {{'SUBSCRIPTIONS.HELP.PUBLIC' | translate}}
+            li
+                a(
+                    href="https://taiga.io/support/payment-process/"
+                    title="{{'SUBSCRIPTIONS.HELP.MORE_INFO_TITLE' | translate}}"
+                    target="_blank"
+                ) {{'SUBSCRIPTIONS.HELP.MORE_INFO' | translate}}
