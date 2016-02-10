@@ -1,8 +1,8 @@
-.admin-subscriptions(ng-controller="ContribSubscriptionsAdminController as ctrl")
+.admin-subscriptions(ng-controller="ContribSubscriptionsController as vm")
     header
         h1
             span Taiga
-            span.green {{sectionName}}
+            span.green {{vm.sectionName}}
         p.admin-subtitle
             svg.icon.icon-question
                 use(xlink:href="#icon-question")
