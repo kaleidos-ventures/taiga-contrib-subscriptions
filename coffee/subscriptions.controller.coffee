@@ -9,9 +9,8 @@ class SubscriptionsAdmin
     constructor: (@appMetaService,  @subscriptionsService) ->
         pluginName = "Subscriptions - User Profile - Taiga" # i18n
         @.sectionName = "Upgrade Plan"
-        console.log @.sectionName
 
-        #@.myRecommendedPlan = @subscriptionsService.getMyRecommendedPlan()
+        @.myRecommendedPlan = @subscriptionsService.getMyRecommendedPlan()
 
         title = pluginName
         description = @.sectionName
