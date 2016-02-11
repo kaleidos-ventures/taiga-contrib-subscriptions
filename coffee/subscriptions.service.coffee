@@ -11,4 +11,10 @@ class SubscriptionsService
         return @http.get(url, {}).then (response) ->
             return response.data
 
+    getMyPlan: ->
+        url = "http://localhost:5000/api-front/v1/my-subscription"
+
+        return @http.get(url, {}).then (response) ->
+            return response.data
+
 module.service("ContribSubscriptionsService", SubscriptionsService)
