@@ -15,40 +15,43 @@ section.subscription-your-plan
             button.button-gray(translate="{{'SUBSCRIPTIONS.UPDATE_PLAN'}}")
     .plan
         img.plan-image(
-            src="/#{v}/images/taiga-contrib-subscriptions/images/{{vm.myRecommendedPlan.name | lowercase}}.png",
-            alt="{{vm.myRecommendedPlan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
+            src="/#{v}/images/taiga-contrib-subscriptions/images/{{vm.myRecommendedPlan.recommended_plan.name | lowercase}}.png",
+            alt="{{vm.myRecommendedPlan.recommended_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
         )
         .plan-data
-            .plan-name {{vm.myRecommendedPlan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}
-            ul.plan-info 
-                li(
-                    translate="SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT"
-                    translate-values="{number: vm.myRecommendedPlan.private_projects}"
+            .plan-name {{vm.myRecommendedPlan.recommended_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}
+            ul.plan-info
+                li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myRecommendedPlan.recommended_plan.private_projects}")
+                li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myRecommendedPlan.recommended_plan.project_members}")
+                li.subscribe(
+                    ng-if="!vm.myRecommendedPlan.recommended_plan.id"
+                    ng-bind-html="'SUBSCRIPTIONS.CONTACT_SUBSCRIBE' | translate"
                 )
-                li(
-                    translate="SUBSCRIPTIONS.MEMBERS_LIMIT"
-                    translate-values="{number: vm.myRecommendedPlan.project_members}"
-                )
-        .plan-pricing
+        .plan-pricing(ng-if="vm.myRecommendedPlan.recommended_plan.id")
             .pricing-month
                 span.currency $
-                span.number {{vm.myRecommendedPlan.amount_month}}
+                span.number {{vm.myRecommendedPlan.recommended_plan.amount_month}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
             
             .pricing-year
                 span.currency $
-                span.number {{vm.myRecommendedPlan.amount_year}}
+                span.number {{vm.myRecommendedPlan.recommended_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
             
 aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS")
     ul
         li(
-            translate="SUBSCRIPTIONS.HELP.NO_PROJECTS"
-            translate-values="{name: vm.myRecommendedPlan.name}"
+            ng-if="vm.myRecommendedPlan.recommended_plan.id"
+            translate="SUBSCRIPTIONS.HELP.NUM_PROJECTS"
+            translate-values="{private_num: '{{vm.myRecommendedPlan.current_counts.num_private_projects}}', public_num: '{{vm.myRecommendedPlan.current_counts.num_public_projects}}', plan: '{{vm.myRecommendedPlan.recommended_plan.name}}'}"
         )
-        li(translate="SUBSCRIPTIONS.HELP.UPGRADE")
-        li(translate="SUBSCRIPTIONS.HELP.ACTIVATION")
+        li(
+            ng-if="!vm.myRecommendedPlan.recommended_plan.id"
+            translate="SUBSCRIPTIONS.HELP.NUM_PROJECTS_CUSTOM"
+        )
+        li(translate="SUBSCRIPTIONS.HELP.SUBSCRIBE")
+        li(translate="SUBSCRIPTIONS.HELP.PAYMENT")
         li(translate="SUBSCRIPTIONS.HELP.PUBLIC")
         li
             a(

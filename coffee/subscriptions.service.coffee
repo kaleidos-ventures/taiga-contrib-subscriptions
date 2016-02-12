@@ -6,13 +6,13 @@ class SubscriptionsService
     constructor: (@http) ->
 
     getMyRecommendedPlan: ->
-        url = "http://localhost:5000/api-front/v1/my-recommended-plan"
+        url = "http://localhost:5000/api/v1/my-recommended-plan"
 
         return @http.get(url, {}).then (response) ->
             return response.data
 
     getMyPlan: ->
-        url = "http://localhost:5000/api-front/v1/my-subscription"
+        url = "http://localhost:5000/api/v1/my-subscription"
 
         return @http.get(url, {}).then (response) ->
             return response.data

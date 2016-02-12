@@ -22,7 +22,6 @@ section.subscription-your-plan
             ul.plan-info
                 li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myPlan.current_plan.private_projects}")
                 li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
-                li.subscribe(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
         .plan-pricing
             .pricing-month
                 span.currency $
@@ -38,8 +37,14 @@ aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS")
     ul
         li(
+            ng-if="vm.myPlan.num_private_projects == 0"
             translate="SUBSCRIPTIONS.HELP.NO_PROJECTS"
-            translate-values="{name: vm.myRecommendedPlan.name}"
+            translate-values="{name: vm.myPlan.current_plan.name}"
+        )
+        li(
+            ng-if="vm.myPlan.num_private_projects != 0"
+            translate="SUBSCRIPTIONS.HELP.FEW_PROJECTS"
+            translate-values="{private_num: '{{vm.myPlan.num_private_projects}}', name: '{{vm.myPlan.current_plan.name}}'}"
         )
         li(translate="SUBSCRIPTIONS.HELP.UPGRADE")
         li(translate="SUBSCRIPTIONS.HELP.ACTIVATION")
