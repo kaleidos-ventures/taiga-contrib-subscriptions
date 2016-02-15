@@ -1,0 +1,96 @@
+.plans-container {
+    flex-basis: 750px;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 750px;
+    .close {
+        @include svg-size(2.5rem);
+    }
+    .title {
+        margin-bottom: 0;
+    }
+    .subtitle {
+        @extend %large;
+        @extend %light;
+        display: block;
+        line-height: 2rem;
+        text-align: center;
+    }
+}
+
+.plans-table {
+    .plan {
+        align-items: center;
+        background: $white;
+        border-bottom: 1px solid $gray-light;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        position: relative;
+        &:first-child {
+            border-top: 1px solid $gray-light;
+        }
+        &:hover {
+            background: lighten($primary-light, 50%);
+            cursor: pointer;
+            transition: background .2s;
+            transition-delay: .1s;
+        }
+        &.highlighted-plan {
+            border: 1px solid $gray;
+        }
+        &.plan-custom {
+            &:hover {
+                background: $white;
+                cursor: default;
+            }
+        }
+    }
+    .pill-plan {
+        @extend %small;
+        background: $gray;
+        color: $white;
+        left: calc(50% - 4rem);
+        padding: .25rem;
+        position: absolute;
+        top: -.75rem;
+    }
+    .plan-image {
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: 70px;
+        margin-right: 1rem;
+        width: 70px;
+    }
+    .plan-name {
+        @extend %xlarge;
+        @extend %light;
+        flex-basis: 120px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: 1rem;
+    }
+    .plan-pricing {
+        flex-basis: 130px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: left;
+    }
+    .pricing-primary {
+        @extend %light;
+        .currency {
+            @extend %large;
+            vertical-align: top;
+        }
+        .number {
+            @extend %xlarge;
+        }
+    }
+    .pricing-secondary {
+        color: $gray-light;
+        .currency {
+            margin-right: .2rem;
+        }
+    }
+}

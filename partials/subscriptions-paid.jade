@@ -11,10 +11,20 @@ section.subscription-your-plan
     header
         h2.title(translate="SUBSCRIPTIONS.YOUR_PLAN")
         .plan-options
-            button.button-gray(translate="SUBSCRIPTIONS.UPDATE_PLAN")
+            button.button-gray(
+                translate="SUBSCRIPTIONS.UPDATE_PLAN"
+                ng-click="vm.upgradePlan()"
+                tg-loading="vm.loading"
+            )
     .plan
         img.plan-image(
+            ng-if="vm.myPlan.current_plan.id"
             src="/#{v}/images/taiga-contrib-subscriptions/images/{{vm.myPlan.current_plan.name | lowercase}}.png",
+            alt="{{vm.myPlan.current_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
+        )
+        img.plan-image(
+            ng-if="!vm.myPlan.current_plan.id"
+            src="/#{v}/images/taiga-contrib-subscriptions/images/custom.png",
             alt="{{vm.myPlan.current_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
         )
         .plan-data
@@ -22,26 +32,28 @@ section.subscription-your-plan
             ul.plan-info
                 li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myPlan.current_plan.private_projects}")
                 li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
-        .plan-pricing
-            .pricing-month
+                
+        .plan-pricing(ng-if="vm.myPlan.current_plan.interval === 'month'")
+            .pricing-primary
                 span.currency $
-                span.number(
-                    ng-if="vm.myPlan.current_plan.amount_month"
-                ) {{vm.myPlan.current_plan.amount_month}}
-                span.frequency(
-                    ng-if="vm.myPlan.current_plan.amount_month"
-                    ) /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
-                span.number(
-                    ng-if="vm.myPlan.current_plan.amount_year"
-                ) {{vm.myPlan.current_plan.amount_year}}
-                span.frequency(
-                    ng-if="vm.myPlan.current_plan.amount_year"
-                ) /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
+                span.number {{vm.myPlan.current_plan.amount_month}}
+                span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
             
-            .pricing-year(ng-if="vm.myPlan.current_plan.amount_year")
+            .pricing-secondary
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
+                
+        .plan-pricing(ng-if="vm.myPlan.current_plan.interval === 'year'")
+            .pricing-primary
+                span.currency $
+                span.number {{vm.myPlan.current_plan.amount_year}}
+                span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
+            
+            .pricing-secondary
+                span.currency $
+                span.number {{vm.myPlan.current_plan.amount_month}}
+                span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
             
 aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.TITLE")

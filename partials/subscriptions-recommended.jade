@@ -12,7 +12,11 @@ section.subscription-your-plan
         h2.title(translate="SUBSCRIPTIONS.YOUR_RECOMMENDED_PLAN")
         .plan-options
             button.button-green(translate="SUBSCRIPTIONS.WANT_PLAN")
-            button.button-gray(translate="SUBSCRIPTIONS.UPDATE_PLAN")
+            button.button-gray(
+                translate="SUBSCRIPTIONS.UPDATE_PLAN"
+                ng-click="vm.upgradePlan()"
+                tg-loading="vm.loading"
+            )
     .plan
         img.plan-image(
             src="/#{v}/images/taiga-contrib-subscriptions/images/{{vm.myRecommendedPlan.recommended_plan.name | lowercase}}.png",
@@ -28,12 +32,12 @@ section.subscription-your-plan
                     ng-bind-html="'SUBSCRIPTIONS.CONTACT_SUBSCRIBE' | translate"
                 )
         .plan-pricing(ng-if="vm.myRecommendedPlan.recommended_plan.id")
-            .pricing-month
+            .pricing-primary
                 span.currency $
                 span.number {{vm.myRecommendedPlan.recommended_plan.amount_month}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
             
-            .pricing-year
+            .pricing-secondary
                 span.currency $
                 span.number {{vm.myRecommendedPlan.recommended_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}

@@ -11,7 +11,11 @@ section.subscription-your-plan
     header
         h2.title(translate="SUBSCRIPTIONS.YOUR_PLAN")
         .plan-options
-            button.button-gray(translate="SUBSCRIPTIONS.UPDATE_PLAN")
+            button.button-gray(
+                translate="SUBSCRIPTIONS.UPDATE_PLAN"
+                ng-click="vm.upgradePlan()"
+                tg-loading="vm.loading"
+            )
     .plan
         img.plan-image(
             src="/#{v}/images/taiga-contrib-subscriptions/images/{{vm.myPlan.current_plan.name | lowercase}}.png",
@@ -23,12 +27,12 @@ section.subscription-your-plan
                 li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myPlan.current_plan.private_projects}")
                 li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
         .plan-pricing
-            .pricing-month
+            .pricing-primary
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_month}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
             
-            .pricing-year
+            .pricing-secondary
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}

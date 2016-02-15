@@ -65,7 +65,7 @@
         justify-content: center;
         margin-left: auto;
     }
-    .pricing-month {
+    .pricing-primary {
         @extend %light;
         .currency {
             @extend %xlarge;
@@ -75,7 +75,7 @@
             @extend %gigantic;
         }
     }
-    .pricing-year {
+    .pricing-secondary {
         @extend %light;
         color: $gray-light;
         .currency {

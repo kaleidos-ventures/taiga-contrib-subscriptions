@@ -11,7 +11,11 @@ section.subscription-your-plan
     header
         h2.title(translate="SUBSCRIPTIONS.YOUR_PLAN")
         .plan-options
-            button.button-gray(translate="SUBSCRIPTIONS.UPDATE_PLAN")
+            button.button-gray(
+                translate="SUBSCRIPTIONS.UPDATE_PLAN"
+                ng-click="vm.upgradePlan()"
+                tg-loading="vm.loading"
+            )
     .plan
         img.plan-image(
             src="/#{v}/images/taiga-contrib-subscriptions/images/{{vm.myPlan.current_plan.name | lowercase}}.png",
