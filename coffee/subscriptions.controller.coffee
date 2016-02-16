@@ -30,18 +30,15 @@ class SubscriptionsAdmin
             promise.then(@._paidPlan.bind(this))
         else if @.yourRecommendedPlan.recommended_plan.amount_month == 0
             @.plan = "zero"
-            promise = @subscriptionsService.getMyPlan()
-            promise.then(@._paidPlan.bind(this))
+            @._recommendPlan(@.yourRecommendedPlan)
         else
             @.plan = "recommended"
-            promise = @subscriptionsService.getMyRecommendedPlan()
-            promise.then(@._recommendPlan.bind(this))
+            @._recommendPlan(@.yourRecommendedPlan)
 
     getTemplateUrl: () ->
         return "compile-modules/taiga-contrib-subscriptions/partials/subscriptions-"+@.plan+".html"
 
     _recommendPlan: (response) ->
-        console.log response
         @tgLoader.pageLoaded()
         @.myRecommendedPlan = response
 
