@@ -54,7 +54,8 @@ class SubscriptionsAdmin
 
     _plansList: (response) ->
         @.loading = false
-        console.log response, @.myPlan, @.myRecommendedPlan,
+        @.selectedInvalidPLan = false
+        #console.log response, @.myPlan, @.myRecommendedPlan,
         lbScope = {
             response: response,
             myPlan : @.myPlan,
@@ -63,5 +64,14 @@ class SubscriptionsAdmin
         @lightboxFactory.create("tg-lb-plans", {
             "class": "lightbox lightbox-plans lightbox-generic-form"
         }, lbScope)
+
+    selectPLan: (project) ->
+        if !project.is_applicable
+            console.log project
+            @.selectedPlan = project
+            @.selectedInvalidPLan = true
+
+    backToPLans: () ->
+        @.selectedInvalidPLan = false
 
 module.controller("ContribSubscriptionsController", SubscriptionsAdmin)

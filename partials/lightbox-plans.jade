@@ -1,4 +1,4 @@
-section.plans-container
+section.plans-container(ng-if="!vm.selectedInvalidPLan")
     svg.close.icon.icon-close(href="", title="{{'COMMON.CLOSE' | translate}}")
         use(xlink:href="#icon-close")
         h2.title(ng-bind-html="'SUBSCRIPTIONS.PLANS_SELECTOR.TITLE' | translate")
@@ -7,6 +7,7 @@ section.plans-container
             .plan(
                 ng-repeat="project in response"
                 ng-class="{'highlighted-plan': project.name == myPlan.current_plan.name || project.name == myRecommendedPlan.recommended_plan.name}"
+                ng-click="vm.selectPLan(project)"
             )
                 span.pill-plan(
                     ng-if="project.name == myPlan.current_plan.name"
@@ -43,3 +44,26 @@ section.plans-container
                 .plan-name(translate="SUBSCRIPTIONS.PLANS_SELECTOR.CUSTOM")
                 .plan-contact(ng-bind-html="'SUBSCRIPTIONS.PLANS_SELECTOR.CONTACT' | translate")
                 
+section.plans-container.invalid-plan(ng-if="vm.selectedInvalidPLan")
+    svg.close.icon.icon-close(href="", title="{{'COMMON.CLOSE' | translate}}")
+        use(xlink:href="#icon-close")
+    h2.title(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.TITLE' | translate")
+    p(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.REASON' | translate: {plan: vm.selectedPlan.name, projects: vm.selectedPlan.private_projects, members: vm.selectedPlan.project_members}")
+    p.reason(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS' | translate: {projects: vm.selectedPlan.private_projects}")
+    ul
+        li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION1' | translate: {projects: vm.selectedPlan.private_projects}")
+        li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION2' | translate: {projects: vm.selectedPlan.private_projects}")
+        li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION3' | translate")
+        li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION4' | translate")
+    p.reason(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_MEMBERS' | translate: {members: vm.selectedPlan.project_members}")
+    ul
+        li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_MEMBERS_OPTION1' | translate: {members: vm.selectedPlan.project_members}")
+    img(
+        src="/#{v}/images/taiga-contrib-subscriptions/images/downgrade.png"
+        alt="Downgrading a plan"
+    )
+    button.button-green.accept-invalid-plan(
+        ng-click="vm.backToPLans()"
+        translate="SUBSCRIPTIONS.DOWNGRADE.ACCEPT"
+    )
+            

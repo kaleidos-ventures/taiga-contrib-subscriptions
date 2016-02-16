@@ -24,6 +24,8 @@ LightboxPlanDirective = (lightboxService) ->
         lightboxService.open(el)
 
     return {
+        controller: 'ContribSubscriptionsController',
+        controllerAs: 'vm',
         templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/lightbox-plans.html',
         link: link
     }
