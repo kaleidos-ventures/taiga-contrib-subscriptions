@@ -6,10 +6,12 @@ class SubscriptionsAdmin
         "ContribSubscriptionsService",
         "$translate",
         "tgLoader",
-        "tgLightboxFactory"
+        "tgLightboxFactory",
+        "lightboxService",
+        "$tgConfirm"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @translate, @tgLoader, @lightboxFactory) ->
+    constructor: (@appMetaService,  @subscriptionsService, @translate, @tgLoader, @lightboxFactory, @lightboxService, @confirm) ->
         pluginName = "Subscriptions - User Profile - Taiga" # i18n
         @.sectionName = "Upgrade Plan"
 
@@ -77,24 +79,35 @@ class SubscriptionsAdmin
 
     buyPlan: (project) ->
         @.stripeHandler = null
+        @.loadingStripe = true
         ljs.load "https://checkout.stripe.com/checkout.js", =>
+            @.loadingStripe = false
+            key = 'pk_test_kAyBsE0nqnCoDMTlgpH5NB75'
+            image = "/#{window._version}/images/taiga-contrib-subscriptions/images/#{@.validPlan.name.toLowerCase()}.png"
             @.stripeHandler = StripeCheckout.configure({
-                key: 'pk_test_kAyBsE0nqnCoDMTlgpH5NB75',
-                image: '/logo-color.png',
+                key: key,
+                image: image,
                 locale: 'auto',
                 billingAddress: false,
                 panelLabel: 'Start Subscription',
-                token: (token) ->
+                token: (token) =>
                     console.log token
+                    @._successBuyPlan()
             })
-            @._loadStripeForm(project)
+            @._loadStripeForm(@.validPlan)
 
     _loadStripeForm: (project) ->
-        console.log @.validPlan
         @.stripeHandler.open({
-            name: 'Taiga Project Management',
-            description: @.validPlan.name,
+            name: 'Taiga',
+            description: @.validPlan.name + ' Plan',
             amount: @.validPlan.amount
         })
+
+    _successBuyPlan: () ->
+        alert 'CALL API AND SEND TOKEN'
+        @lightboxService.closeAll()
+        @confirm.notify('success', 'OK, te has suscrito al plan correctamente', '', 5000)
+
+
 
 module.controller("ContribSubscriptionsController", SubscriptionsAdmin)

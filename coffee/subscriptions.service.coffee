@@ -23,4 +23,10 @@ class SubscriptionsService
         return @http.get(url, {}).then (response) ->
             return response.data
 
+    selectMyPlan: (data) ->
+        url = "http://localhost:5000/api/v1/my-subscription/change"
+
+        return @http.post(url, data).then (response) ->
+            return response.data
+
 module.service("ContribSubscriptionsService", SubscriptionsService)

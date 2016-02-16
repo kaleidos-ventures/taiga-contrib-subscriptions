@@ -135,4 +135,5 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
         button.button-green.accept-plan(
             translate="SUBSCRIPTIONS.SELECT_PLAN.CONTINUE"
             ng-click="vm.buyPlan(project)"
+            tg-loading="vm.loadingStripe"
         )

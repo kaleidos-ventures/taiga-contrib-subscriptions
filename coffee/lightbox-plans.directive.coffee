@@ -23,6 +23,7 @@ LightboxPlanDirective = (lightboxService) ->
     link = (scope, el, attrs) ->
         lightboxService.open(el)
 
+
     return {
         controller: 'ContribSubscriptionsController',
         controllerAs: 'vm',
