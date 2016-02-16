@@ -25,29 +25,29 @@ class SubscriptionsAdmin
         promise.then(@.onSuccess.bind(this))
 
     onSuccess: (response) ->
-        @.yourRecommendedPlan = response
-        if !@.yourRecommendedPlan
+        @.recommendedPlan = response
+        console.log @.recommendedPlan
+        if !@.recommendedPlan
             @.plan = "paid"
             promise = @subscriptionsService.getMyPlan()
             promise.then(@._paidPlan.bind(this))
-        else if @.yourRecommendedPlan.recommended_plan.amount_month == 0
+        else if @.recommendedPlan.recommended_plan.amount_month == 0
             @.plan = "zero"
-            @._recommendPlan(@.yourRecommendedPlan)
+            @._recommendPlan()
         else
             @.plan = "recommended"
-            @._recommendPlan(@.yourRecommendedPlan)
+            @._recommendPlan()
 
     getTemplateUrl: () ->
         return "compile-modules/taiga-contrib-subscriptions/partials/subscriptions-"+@.plan+".html"
 
-    _recommendPlan: (response) ->
+    _recommendPlan: () ->
         @tgLoader.pageLoaded()
-        @.myRecommendedPlan = response
+        @.myRecommendedPlan = @.recommendedPlan
 
-    _paidPlan: (response) ->
+    _paidPlan: (plan) ->
         @tgLoader.pageLoaded()
-        @.myPlan = response
-        console.log response
+        @.myPlan = plan
 
     upgradePlan: () ->
         promise = @subscriptionsService.getPublicPlans()
@@ -71,6 +71,7 @@ class SubscriptionsAdmin
             @.selectedPlan = 'invalid'
             @.invalidPlan = project
         else
+            console.log project
             @.selectedPlan = 'valid'
             @.validPlan = project
 

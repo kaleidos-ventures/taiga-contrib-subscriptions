@@ -18,12 +18,12 @@ section.subscription-your-plan
             )
     .plan
         img.plan-image(
-            ng-if="vm.myPlan.current_plan.id"
+            ng-if="vm.myPlan.current_plan.id_month"
             src="/#{v}/images/taiga-contrib-subscriptions/images/{{vm.myPlan.current_plan.name | lowercase}}.png",
             alt="{{vm.myPlan.current_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
         )
         img.plan-image(
-            ng-if="!vm.myPlan.current_plan.id"
+            ng-if="!vm.myPlan.current_plan.id_month"
             src="/#{v}/images/taiga-contrib-subscriptions/images/custom.png",
             alt="{{vm.myPlan.current_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
         )
@@ -33,7 +33,7 @@ section.subscription-your-plan
                 li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myPlan.current_plan.private_projects}")
                 li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
                 
-        .plan-pricing(ng-if="vm.myPlan.current_plan.interval === 'month'")
+        .plan-pricing(ng-if="vm.myPlan.interval == 'month'")
             .pricing-primary
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_month}}
@@ -44,7 +44,7 @@ section.subscription-your-plan
                 span.number {{vm.myPlan.current_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
                 
-        .plan-pricing(ng-if="vm.myPlan.current_plan.interval === 'year'")
+        .plan-pricing(ng-if="vm.myPlan.interval == 'year'")
             .pricing-primary
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_year}}

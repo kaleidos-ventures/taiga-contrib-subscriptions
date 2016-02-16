@@ -28,19 +28,21 @@ section.subscription-your-plan
                 li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myRecommendedPlan.recommended_plan.private_projects}")
                 li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myRecommendedPlan.recommended_plan.project_members}")
                 li.subscribe(
-                    ng-if="!vm.myRecommendedPlan.recommended_plan.id"
+                    ng-if="!vm.myRecommendedPlan.recommended_plan.id_month"
                     ng-bind-html="'SUBSCRIPTIONS.CONTACT_SUBSCRIBE' | translate"
                 )
-        .plan-pricing(ng-if="vm.myRecommendedPlan.recommended_plan.id")
+        .plan-pricing(ng-if="vm.myRecommendedPlan.recommended_plan.id_month")
             .pricing-primary
                 span.currency $
                 span.number {{vm.myRecommendedPlan.recommended_plan.amount_month}}
-                span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
+                span.separator /
+                span.frequency(translate="SUBSCRIPTIONS.FREQUENCY_MONTH")
             
             .pricing-secondary
                 span.currency $
                 span.number {{vm.myRecommendedPlan.recommended_plan.amount_year}}
-                span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
+                span.separator /
+                span.frequency(translate="SUBSCRIPTIONS.FREQUENCY_YEAR")
             
 aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.HELP.WHY")

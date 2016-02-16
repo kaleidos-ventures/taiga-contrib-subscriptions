@@ -167,10 +167,10 @@
     .back {
         @extend %trans-button;
         @extend %large;
-        flex: 1;
-        text-align: center;
-        padding: 12px;
         color: $gray-light;
+        flex: 1;
+        padding: 12px;
+        text-align: center;
     }
     .accept-plan {
         @extend %button-green;

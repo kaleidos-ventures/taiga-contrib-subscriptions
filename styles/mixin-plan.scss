@@ -1,5 +1,4 @@
 @mixin plan {
-
     .plan {
         border-bottom: 1px solid $gray-light;
         border-top: 1px solid $gray-light;
@@ -54,6 +53,9 @@
         color: $gray-light;
         .currency {
             margin-right: .2rem;
+        }
+        .separator {
+            padding: 0 .25rem;
         }
     }
 }

@@ -60,7 +60,7 @@ section.plans-container.invalid-plan(ng-if="vm.selectedPlan === 'invalid'")
         li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_MEMBERS_OPTION1' | translate: {members: vm.invalidPlan.project_members}")
     img(
         src="/#{v}/images/taiga-contrib-subscriptions/images/downgrade.png"
-        alt="Downgrading a plan"
+        alt="{{SUBSCRIPTIONS.DOWNGRADE.IMAGE_ALT | translate}}"
     )
     button.button-green.accept-invalid-plan(
         ng-click="vm.backToPLans()"
@@ -84,7 +84,7 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
                 ul.plan-info
                     li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.validPlan.private_projects}")
                     li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.validPlan.project_members}")
-            .plan-pricing(ng-if="vm.validPlan.interval === 'month'")
+            .plan-pricing
                 .pricing-primary
                     span.currency $
                     span.number {{vm.validPlan.amount_month}}
@@ -94,17 +94,6 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
                     span.currency $
                     span.number {{vm.validPlan.amount_year}}
                     span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
-                    
-            .plan-pricing(ng-if="vm.validPlan.interval === 'year'")
-                .pricing-primary
-                    span.currency $
-                    span.number {{vm.validPlan.amount_year}}
-                    span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
-                
-                .pricing-secondary
-                    span.currency $
-                    span.number {{vm.validPlan.amount_month}}
-                    span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
                     
     .payment-interval
         p(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.INTERVAL' | translate")
