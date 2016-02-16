@@ -55,7 +55,6 @@ class SubscriptionsAdmin
     _plansList: (response) ->
         @.loading = false
         @.selectedPlan = false
-        #console.log response, @.myPlan, @.myRecommendedPlan,
         lbScope = {
             response: response,
             myPlan : @.myPlan,
@@ -67,12 +66,35 @@ class SubscriptionsAdmin
 
     selectPLan: (project) ->
         if !project.is_applicable
-            console.log project
             @.selectedPlan = 'invalid'
             @.invalidPlan = project
-            @.selectedInvalidPLan = true
+        else
+            @.selectedPlan = 'valid'
+            @.validPlan = project
 
     backToPLans: () ->
         @.selectedPlan = false
+
+    buyPlan: (project) ->
+        @.stripeHandler = null
+        ljs.load "https://checkout.stripe.com/checkout.js", =>
+            @.stripeHandler = StripeCheckout.configure({
+                key: 'pk_test_kAyBsE0nqnCoDMTlgpH5NB75',
+                image: '/logo-color.png',
+                locale: 'auto',
+                billingAddress: false,
+                panelLabel: 'Start Subscription',
+                token: (token) ->
+                    console.log token
+            })
+            @._loadStripeForm(project)
+
+    _loadStripeForm: (project) ->
+        console.log @.validPlan
+        @.stripeHandler.open({
+            name: 'Taiga Project Management',
+            description: @.validPlan.name,
+            amount: @.validPlan.amount
+        })
 
 module.controller("ContribSubscriptionsController", SubscriptionsAdmin)

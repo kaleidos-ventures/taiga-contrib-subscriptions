@@ -18,7 +18,7 @@ section.plans-container(ng-if="!vm.selectedPlan")
                     translate="SUBSCRIPTIONS.PLANS_SELECTOR.RECOMMENDED"
                 )
                 img.plan-image(
-                    src="/#{v}/images/taiga-contrib-subscriptions/images/{{project.name | lowercase}}.png",
+                    ng-src="/#{v}/images/taiga-contrib-subscriptions/images/{{project.name | lowercase}}.png",
                     alt="{{project.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
                 )
                 .plan-name {{project.name}}
@@ -67,3 +67,72 @@ section.plans-container.invalid-plan(ng-if="vm.selectedPlan === 'invalid'")
         translate="SUBSCRIPTIONS.DOWNGRADE.ACCEPT"
     )
             
+section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
+    svg.close.icon.icon-close(href="", title="{{'COMMON.CLOSE' | translate}}")
+        use(xlink:href="#icon-close")
+    h2.title(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.TITLE' | translate")
+    p.subtitle(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.SUBTITLE' | translate")
+    .subscription-your-plan
+        h2.plan-title(translate="SUBSCRIPTIONS.SELECT_PLAN.YOUR_NEW_PLAN")
+        .plan
+            img.plan-image(
+                ng-src="/#{v}/images/taiga-contrib-subscriptions/images/{{vm.validPlan.name | lowercase}}.png",
+                alt="{{vm.validPlan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
+            )
+            .plan-data
+                .plan-name {{vm.validPlan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}
+                ul.plan-info
+                    li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.validPlan.private_projects}")
+                    li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.validPlan.project_members}")
+            .plan-pricing(ng-if="vm.validPlan.interval === 'month'")
+                .pricing-primary
+                    span.currency $
+                    span.number {{vm.validPlan.amount_month}}
+                    span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
+                
+                .pricing-secondary
+                    span.currency $
+                    span.number {{vm.validPlan.amount_year}}
+                    span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
+                    
+            .plan-pricing(ng-if="vm.validPlan.interval === 'year'")
+                .pricing-primary
+                    span.currency $
+                    span.number {{vm.validPlan.amount_year}}
+                    span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
+                
+                .pricing-secondary
+                    span.currency $
+                    span.number {{vm.validPlan.amount_month}}
+                    span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
+                    
+    .payment-interval
+        p(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.INTERVAL' | translate")
+        .interval-options
+            fieldset
+                input.project-interval(
+                    type="radio"
+                    name="project-interval"
+                    id="project-interval-monthly"
+                    checked
+                )
+                label.project-interval-button(for="project-interval-monthly") Cada Mes
+            fieldset
+                input.project-interval(
+                    type="radio"
+                    name="project-interval"
+                    id="project-interval-yearly"
+                )
+                label.project-interval-button(for="project-interval-yearly") Cada Año
+        
+    .payment-options
+        a.back(
+            href=""
+            ng-title="SUBSCRIPTIONS.SELECT_PLAN.BACK_TITLE | translate"
+            translate="SUBSCRIPTIONS.SELECT_PLAN.BACK"
+            ng-click="vm.backToPLans()"
+        )
+        button.button-green.accept-plan(
+            translate="SUBSCRIPTIONS.SELECT_PLAN.CONTINUE"
+            ng-click="vm.buyPlan(project)"
+        )
