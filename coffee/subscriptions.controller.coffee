@@ -54,7 +54,7 @@ class SubscriptionsAdmin
 
     _plansList: (response) ->
         @.loading = false
-        @.selectedInvalidPLan = false
+        @.selectedPlan = false
         #console.log response, @.myPlan, @.myRecommendedPlan,
         lbScope = {
             response: response,
@@ -68,10 +68,11 @@ class SubscriptionsAdmin
     selectPLan: (project) ->
         if !project.is_applicable
             console.log project
-            @.selectedPlan = project
+            @.selectedPlan = 'invalid'
+            @.invalidPlan = project
             @.selectedInvalidPLan = true
 
     backToPLans: () ->
-        @.selectedInvalidPLan = false
+        @.selectedPlan = false
 
 module.controller("ContribSubscriptionsController", SubscriptionsAdmin)
