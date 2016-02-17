@@ -40,7 +40,7 @@ Include in your `dist/conf.json` in the `contribPlugins` list the value `"/plugi
 #### Taiga Front
 
 ```bash
-  cd taiga-front
+  cd taiga-front/dist
   mkdir -p plugins
   cd plugins
   ln -s ../../../taiga-contrib-subscriptions/front/dist subscriptions
