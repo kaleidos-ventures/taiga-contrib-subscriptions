@@ -5,16 +5,16 @@ section.plans-container(ng-if="!vm.selectedPlan")
         p.subtitle(ng-bind-html="'SUBSCRIPTIONS.PLANS_SELECTOR.FREE' | translate")
         .plans-table
             .plan(
-                ng-repeat="project in response"
-                ng-class="{'highlighted-plan': project.name == myPlan.current_plan.name || project.name == myRecommendedPlan.recommended_plan.name}"
+                ng-repeat="project in vm.publicPlans"
+                ng-class="{'highlighted-plan': project.name == vm.myPlan.current_plan.name || project.name == vm.myRecommendedPlan.recommended_plan.name}"
                 ng-click="vm.selectPLan(project)"
             )
                 span.pill-plan(
-                    ng-if="project.name == myPlan.current_plan.name"
+                    ng-if="project.name == vm.myPlan.current_plan.name"
                     translate="SUBSCRIPTIONS.PLANS_SELECTOR.CURRENT"
                 )
                 span.pill-plan(
-                    ng-if="project.name == myRecommendedPlan.recommended_plan.name"
+                    ng-if="project.name == vm.myRecommendedPlan.recommended_plan.name"
                     translate="SUBSCRIPTIONS.PLANS_SELECTOR.RECOMMENDED"
                 )
                 img.plan-image(
@@ -103,7 +103,8 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
                     type="radio"
                     name="project-interval"
                     id="project-interval-monthly"
-                    checked
+                    ng-model="vm.selectPlanInterval"
+                    value = 'month'
                 )
                 label.project-interval-button(for="project-interval-monthly") Cada Mes
             fieldset
@@ -111,6 +112,8 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
                     type="radio"
                     name="project-interval"
                     id="project-interval-yearly"
+                    ng-model="vm.selectPlanInterval"
+                    value = 'year'
                 )
                 label.project-interval-button(for="project-interval-yearly") Cada Año
         
@@ -123,6 +126,6 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
         )
         button.button-green.accept-plan(
             translate="SUBSCRIPTIONS.SELECT_PLAN.CONTINUE"
-            ng-click="vm.buyPlan(project)"
+            ng-click="vm.buyPlan()"
             tg-loading="vm.loadingStripe"
         )

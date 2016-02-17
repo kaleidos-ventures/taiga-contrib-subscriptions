@@ -22,10 +22,9 @@ module = angular.module('subscriptions')
 LightboxPlanDirective = (lightboxService) ->
     link = (scope, el, attrs) ->
         lightboxService.open(el)
-
-
     return {
-        controller: 'ContribSubscriptionsController',
+        scope: {},
+        controller: 'ContribLbPlansController',
         controllerAs: 'vm',
         templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/lightbox-plans.html',
         link: link

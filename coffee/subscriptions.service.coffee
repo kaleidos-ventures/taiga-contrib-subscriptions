@@ -4,12 +4,28 @@ class SubscriptionsService
     @.$inject = ["$tgHttp"]
 
     constructor: (@http) ->
+        @.myRecommendedPlan = null
+        @.myPlan = null
+        @.publicPlans = null
 
-    getMyRecommendedPlan: ->
+    loadUserPlan: ->
+        @.getMyPlan().then (response) => @.myPlan = response
+
+    setRecommendedPlan: (recommendedPlan) ->
+        return new Promise (resolve) =>
+            if !recommendedPlan
+                @.loadUserPlan().then(resolve)
+            else if recommendedPlan.recommended_plan.amount_month == 0
+                @.myRecommendedPlan = recomendedPlan
+                resolve()
+            else
+                @.myRecommendedPlan = recomendedPlan
+                resolve()
+
+    fetchMyPlans: ->
         url = "http://localhost:5000/api/v1/my-recommended-plan"
 
-        return @http.get(url, {}).then (response) ->
-            return response.data
+        return @http.get(url, {}).then (response) => @.setRecommendedPlan(response.data)
 
     getMyPlan: ->
         url = "http://localhost:5000/api/v1/my-subscription"
@@ -17,16 +33,14 @@ class SubscriptionsService
         return @http.get(url, {}).then (response) ->
             return response.data
 
-    getPublicPlans: ->
+    fethPublicPlans: ->
         url = "http://localhost:5000/api/v1/my-public-plans"
 
-        return @http.get(url, {}).then (response) ->
-            return response.data
+        return @http.get(url, {}).then (response) => @.publicPlans = response.data
 
     selectMyPlan: (data) ->
         url = "http://localhost:5000/api/v1/my-subscription/change"
 
-        return @http.post(url, data).then (response) ->
-            return response.data
+        return @http.post(url, data)
 
 module.service("ContribSubscriptionsService", SubscriptionsService)

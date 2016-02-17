@@ -24,7 +24,7 @@ SubscriptionsDirective = () ->
         scope: {},
         controller: "ContribSubscriptionsController",
         controllerAs: "vm",
-        template: '<ng-include src="vm.getTemplateUrl()" ng-if="vm.plan"/>'
+        template: '<ng-include src="vm.getTemplateUrl()" ng-if="vm.myRecommendedPlan || vm.myPlan"/>'
     }
 
 module.directive("tgSubscriptions", SubscriptionsDirective)

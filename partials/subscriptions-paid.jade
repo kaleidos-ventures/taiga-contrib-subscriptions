@@ -39,7 +39,7 @@ section.subscription-your-plan
                 span.number {{vm.myPlan.current_plan.amount_month}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
             
-            .pricing-secondary
+            .pricing-secondary(ng-if="vm.myPlan.interval == 'year'")
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
@@ -50,7 +50,7 @@ section.subscription-your-plan
                 span.number {{vm.myPlan.current_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
             
-            .pricing-secondary
+            .pricing-secondary(ng-if="vm.myPlan.interval == 'month'")
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_month}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}

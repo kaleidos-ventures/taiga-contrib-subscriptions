@@ -4,14 +4,11 @@ class SubscriptionsAdmin
     @.$inject = [
         "tgAppMetaService",
         "ContribSubscriptionsService",
-        "$translate",
         "tgLoader",
-        "tgLightboxFactory",
-        "lightboxService",
-        "$tgConfirm"
+        "tgLightboxFactory"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @translate, @tgLoader, @lightboxFactory, @lightboxService, @confirm) ->
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxFactory) ->
         pluginName = "Subscriptions - User Profile - Taiga" # i18n
         @.sectionName = "Upgrade Plan"
 
@@ -19,96 +16,46 @@ class SubscriptionsAdmin
         description = @.sectionName
         @appMetaService.setAll(title, description)
 
+        @._loadPlans()
+
+        Object.defineProperty @, "myPlan", {
+            get: () => @.subscriptionsService.myPlan
+        }
+
+        Object.defineProperty @, "myRecommendedPlan", {
+            get: () => @.subscriptionsService.myRecommendedPlan
+        }
+
+        Object.defineProperty @, "publicPlans", {
+            get: () => @.subscriptionsService.publicPlans
+        }
+
+    _loadPlans: ->
         @tgLoader.start()
-        promise = @subscriptionsService.getMyRecommendedPlan()
 
-        promise.then(@.onSuccess.bind(this))
-
-    onSuccess: (response) ->
-        @.recommendedPlan = response
-        console.log @.recommendedPlan
-        if !@.recommendedPlan
-            @.plan = "paid"
-            promise = @subscriptionsService.getMyPlan()
-            promise.then(@._paidPlan.bind(this))
-        else if @.recommendedPlan.recommended_plan.amount_month == 0
-            @.plan = "zero"
-            @._recommendPlan()
-        else
-            @.plan = "recommended"
-            @._recommendPlan()
+        promise = @subscriptionsService.fetchMyPlans()
+        promise.then () => @tgLoader.pageLoaded()
 
     getTemplateUrl: () ->
-        return "compile-modules/taiga-contrib-subscriptions/partials/subscriptions-"+@.plan+".html"
+        if !@.myRecommendedPlan
+            plan = "paid"
+        else if @.myRecommendedPlan.recommended_plan.amount_month == 0
+            plan = "zero"
+        else
+            plan = "recommended"
 
-    _recommendPlan: () ->
-        @tgLoader.pageLoaded()
-        @.myRecommendedPlan = @.recommendedPlan
-
-    _paidPlan: (plan) ->
-        @tgLoader.pageLoaded()
-        @.myPlan = plan
+        return "compile-modules/taiga-contrib-subscriptions/partials/subscriptions-"+plan+".html"
 
     upgradePlan: () ->
-        promise = @subscriptionsService.getPublicPlans()
         @.loading = true
+
+        promise = @subscriptionsService.fethPublicPlans()
         promise.then(@._plansList.bind(this))
 
     _plansList: (response) ->
         @.loading = false
-        @.selectedPlan = false
-        lbScope = {
-            response: response,
-            myPlan : @.myPlan,
-            myRecommendedPlan: @.myRecommendedPlan
-        }
         @lightboxFactory.create("tg-lb-plans", {
             "class": "lightbox lightbox-plans lightbox-generic-form"
-        }, lbScope)
-
-    selectPLan: (project) ->
-        if !project.is_applicable
-            @.selectedPlan = 'invalid'
-            @.invalidPlan = project
-        else
-            console.log project
-            @.selectedPlan = 'valid'
-            @.validPlan = project
-
-    backToPLans: () ->
-        @.selectedPlan = false
-
-    buyPlan: (project) ->
-        @.stripeHandler = null
-        @.loadingStripe = true
-        ljs.load "https://checkout.stripe.com/checkout.js", =>
-            @.loadingStripe = false
-            key = 'pk_test_kAyBsE0nqnCoDMTlgpH5NB75'
-            image = "/#{window._version}/images/taiga-contrib-subscriptions/images/#{@.validPlan.name.toLowerCase()}.png"
-            @.stripeHandler = StripeCheckout.configure({
-                key: key,
-                image: image,
-                locale: 'auto',
-                billingAddress: false,
-                panelLabel: 'Start Subscription',
-                token: (token) =>
-                    console.log token
-                    @._successBuyPlan()
-            })
-            @._loadStripeForm(@.validPlan)
-
-    _loadStripeForm: (project) ->
-        @.stripeHandler.open({
-            name: 'Taiga',
-            description: @.validPlan.name + ' Plan',
-            amount: @.validPlan.amount
         })
-
-    _successBuyPlan: () ->
-        alert 'CALL API AND SEND TOKEN'
-        @lightboxService.closeAll()
-        @confirm.notify('success', 'OK, te has suscrito al plan correctamente', '', 5000)
-
-
 
 module.controller("ContribSubscriptionsController", SubscriptionsAdmin)
