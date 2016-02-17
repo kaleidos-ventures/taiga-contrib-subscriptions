@@ -34,7 +34,8 @@ class SubscriptionsAdmin
         @tgLoader.start()
 
         promise = @subscriptionsService.fetchMyPlans()
-        promise.then () => @tgLoader.pageLoaded()
+        promise.then () =>
+            @tgLoader.pageLoaded()
 
     getTemplateUrl: () ->
         if !@.myRecommendedPlan

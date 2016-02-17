@@ -16,10 +16,10 @@ class SubscriptionsService
             if !recommendedPlan
                 @.loadUserPlan().then(resolve)
             else if recommendedPlan.recommended_plan.amount_month == 0
-                @.myRecommendedPlan = recomendedPlan
+                @.myRecommendedPlan = recommendedPlan
                 resolve()
             else
-                @.myRecommendedPlan = recomendedPlan
+                @.myRecommendedPlan = recommendedPlan
                 resolve()
 
     fetchMyPlans: ->
