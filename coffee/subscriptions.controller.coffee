@@ -5,10 +5,11 @@ class SubscriptionsAdmin
         "tgAppMetaService",
         "ContribSubscriptionsService",
         "tgLoader",
-        "tgLightboxFactory"
+        "tgLightboxFactory",
+        "lightboxService"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxFactory) ->
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxFactory, @lightboxService) ->
         pluginName = "Subscriptions - User Profile - Taiga" # i18n
         @.sectionName = "Upgrade Plan"
 
@@ -50,8 +51,18 @@ class SubscriptionsAdmin
     upgradePlan: () ->
         @.loading = true
 
-        promise = @subscriptionsService.fethPublicPlans()
+        promise = @subscriptionsService.fetchPublicPlans()
         promise.then(@._plansList.bind(this))
+
+    buyRecommendedPlan: () ->
+        @.loadingRecommendedPlan = true
+
+        promise = @subscriptionsService.fetchPublicPlans()
+        promise.then () =>
+            @.loadingRecommendedPlan = false
+            @.isPlanSelectorOpen = true
+            @.selectedPlan = 'valid'
+            @.validPlan = @.myRecommendedPlan.recommended_plan
 
     _plansList: (response) ->
         @.loading = false

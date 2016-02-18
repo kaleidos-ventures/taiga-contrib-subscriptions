@@ -11,9 +11,11 @@ section.subscription-your-plan
     header
         h2.title(translate="SUBSCRIPTIONS.YOUR_RECOMMENDED_PLAN")
         .plan-options
-            //- button.button-green(
-            //-     translate="SUBSCRIPTIONS.WANT_PLAN"
-            //- )
+            button.button-green(
+                translate="SUBSCRIPTIONS.WANT_PLAN"
+                ng-click="vm.buyRecommendedPlan()"
+                tg-loading="vm.loadingRecommendedPlan"
+            )
             button.button-gray(
                 translate="SUBSCRIPTIONS.UPDATE_PLAN"
                 ng-click="vm.upgradePlan()"
@@ -68,3 +70,9 @@ aside.subscription-info
                 target="_blank"
                 translate="SUBSCRIPTIONS.HELP.MORE_INFO"
             )
+
+tg-lb-plans.lightbox.lightbox-plans.lightbox-generic-form(
+    is-plan-selector-open="vm.isPlanSelectorOpen"
+    selected-plan="vm.selectedPlan"
+    valid-plan="vm.validPlan"
+)

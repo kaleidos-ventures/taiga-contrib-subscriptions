@@ -21,9 +21,17 @@ module = angular.module('subscriptions')
 
 LightboxPlanDirective = (lightboxService) ->
     link = (scope, el, attrs) ->
-        lightboxService.open(el)
+        scope.$watch 'vm.isPlanSelectorOpen', (value) ->
+            if value
+                lightboxService.open(el)
+
     return {
-        scope: {},
+        scope: {
+            validPlan: "=",
+            selectedPlan: "=",
+            isPlanSelectorOpen: '='
+        },
+        bindToController: true,
         controller: 'ContribLbPlansController',
         controllerAs: 'vm',
         templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/lightbox-plans.html',

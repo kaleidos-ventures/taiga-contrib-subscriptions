@@ -33,7 +33,7 @@ class SubscriptionsService
         return @http.get(url, {}).then (response) ->
             return response.data
 
-    fethPublicPlans: ->
+    fetchPublicPlans: ->
         url = "http://localhost:5000/api/v1/my-public-plans"
 
         return @http.get(url, {}).then (response) => @.publicPlans = response.data
