@@ -60,14 +60,13 @@ class SubscriptionsAdmin
         promise = @subscriptionsService.fetchPublicPlans()
         promise.then () =>
             @.loadingRecommendedPlan = false
-            @.isPlanSelectorOpen = true
+            @lightboxService.open('tg-lb-plans')
             @.selectedPlan = 'valid'
+            @.selectPlanInterval = 'month'
             @.validPlan = @.myRecommendedPlan.recommended_plan
 
     _plansList: (response) ->
         @.loading = false
-        @lightboxFactory.create("tg-lb-plans", {
-            "class": "lightbox lightbox-plans lightbox-generic-form"
-        })
+        @lightboxService.open('tg-lb-plans')
 
 module.controller("ContribSubscriptionsController", SubscriptionsAdmin)

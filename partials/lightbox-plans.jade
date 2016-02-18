@@ -3,7 +3,6 @@ section.plans-container(ng-if="!vm.selectedPlan")
         use(xlink:href="#icon-close")
         h2.title(ng-bind-html="'SUBSCRIPTIONS.PLANS_SELECTOR.TITLE' | translate")
         p.subtitle(ng-bind-html="'SUBSCRIPTIONS.PLANS_SELECTOR.FREE' | translate")
-        h1 {{vm.validPlan}}
         .plans-table
             .plan(
                 ng-repeat="project in vm.publicPlans"

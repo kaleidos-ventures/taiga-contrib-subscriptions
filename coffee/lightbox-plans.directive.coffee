@@ -21,15 +21,12 @@ module = angular.module('subscriptions')
 
 LightboxPlanDirective = (lightboxService) ->
     link = (scope, el, attrs) ->
-        scope.$watch 'vm.isPlanSelectorOpen', (value) ->
-            if value
-                lightboxService.open(el)
 
     return {
         scope: {
             validPlan: "=",
             selectedPlan: "=",
-            isPlanSelectorOpen: '='
+            selectPlanInterval: '='
         },
         bindToController: true,
         controller: 'ContribLbPlansController',
