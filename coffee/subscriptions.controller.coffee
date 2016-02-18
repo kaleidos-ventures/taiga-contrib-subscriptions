@@ -5,11 +5,12 @@ class SubscriptionsAdmin
         "tgAppMetaService",
         "ContribSubscriptionsService",
         "tgLoader",
-        "tgLightboxFactory",
         "lightboxService"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxFactory, @lightboxService) ->
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService) ->
+
+    init: ->
         pluginName = "Subscriptions - User Profile - Taiga" # i18n
         @.sectionName = "Upgrade Plan"
 

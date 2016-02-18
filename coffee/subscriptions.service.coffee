@@ -9,15 +9,13 @@ class SubscriptionsService
         @.publicPlans = null
 
     loadUserPlan: ->
-        @.getMyPlan().then (response) => @.myPlan = response
+        @.getMyPlan().then (response) =>
+            @.myPlan = response
 
     setRecommendedPlan: (recommendedPlan) ->
         return new Promise (resolve) =>
             if !recommendedPlan
                 @.loadUserPlan().then(resolve)
-            else if recommendedPlan.recommended_plan.amount_month == 0
-                @.myRecommendedPlan = recommendedPlan
-                resolve()
             else
                 @.myRecommendedPlan = recommendedPlan
                 resolve()

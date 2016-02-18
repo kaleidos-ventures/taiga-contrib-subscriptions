@@ -20,11 +20,15 @@
 module = angular.module('subscriptions')
 
 SubscriptionsDirective = () ->
+    link = (scope, el, attrs, ctrl) ->
+        ctrl.init()
+
     return {
         scope: {},
         controller: "ContribSubscriptionsController",
         controllerAs: "vm",
         template: '<ng-include src="vm.getTemplateUrl()" ng-if="vm.myRecommendedPlan || vm.myPlan"/>'
     }
+
 
 module.directive("tgSubscriptions", SubscriptionsDirective)
