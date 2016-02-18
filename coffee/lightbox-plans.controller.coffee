@@ -3,13 +3,12 @@ module = angular.module('subscriptions')
 class LightboxPlansController
     @.$inject = [
         "ContribSubscriptionsService",
-        "$translate",
         "tgLoader",
         "$tgConfirm",
         "lightboxService"
     ]
 
-    constructor: (@subscriptionsService, @translate, @tgLoader, @confirm, @lightboxService) ->
+    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService) ->
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
         }

@@ -17,7 +17,7 @@
 # File: subscriptions.controller.spec.coffee
 ###
 
-describe.only "SubscriptionsAdmin", ->
+describe "SubscriptionsAdmin", ->
     provide = null
     controller = null
     mocks = {}
