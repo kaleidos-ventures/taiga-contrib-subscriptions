@@ -112,6 +112,25 @@ describe.only "ContribLbPlans", ->
         expect(mocks.tgLoader.start).has.been.called
         expect(lbPlansCtrl._onSuccessSelectPlan).has.been.called
 
+    it "buy a Plan", () ->
+        lbPlansCtrl = controller "ContribLbPlansController"
+        lbPlansCtrl.validPlan = {
+            name: 'name',
+            amount: '100'
+        }
+        lbPlansCtrl.selectPlanInterval = {
+            data: 'data'
+        }
+
+        lbPlansCtrl._onSuccessBuyPlan = sinon.stub()
+
+        lbPlansCtrl.buyPlan()
+        expect(lbPlansCtrl.loadingStripe).to.be.equal(true)
+        mocks.stripeService.start.yieldTo('onLoad');
+        expect(lbPlansCtrl.loadingStripe).to.be.equal(false)
+        mocks.stripeService.start.yieldTo('onSuccess');
+        expect(lbPlansCtrl._onSuccessBuyPlan).to.be.called
+
 
     it "bought a Plan success", (done) ->
         promise = mocks.contribSubscriptionsService.fetchMyPlans.promise().resolve()
