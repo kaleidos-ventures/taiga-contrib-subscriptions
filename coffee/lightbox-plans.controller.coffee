@@ -5,10 +5,11 @@ class LightboxPlansController
         "ContribSubscriptionsService",
         "tgLoader",
         "$tgConfirm",
-        "lightboxService"
+        "lightboxService",
+        "ContribStripeService"
     ]
 
-    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService) ->
+    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService, @stripeService) ->
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
         }
@@ -23,6 +24,7 @@ class LightboxPlansController
 
     selectPLan: (project) ->
         @.selectPlanInterval = 'month'
+
         if !project.is_applicable
             @.selectedPlan = 'invalid'
             @.invalidPlan = project
@@ -33,41 +35,25 @@ class LightboxPlansController
     backToPLans: () ->
         @.selectedPlan = false
 
-    buyPlan: () ->
-        @.stripeHandler = null
-        @.loadingStripe = true
-        ljs.load "https://checkout.stripe.com/checkout.js", =>
-            @.loadingStripe = false
-            key = 'pk_test_kAyBsE0nqnCoDMTlgpH5NB75'
-            image = "/#{window._version}/images/taiga-contrib-subscriptions/images/#{@.validPlan.name.toLowerCase()}.png"
-            @.stripeHandler = StripeCheckout.configure({
-                key: key,
-                image: image,
-                locale: 'auto',
-                billingAddress: false,
-                panelLabel: 'Start Subscription',
-                token: (data) =>
-                    planName = @.validPlan.name.toLowerCase()
-                    planInterval = @.selectPlanInterval
-                    params = {
-                        'stripe_token': data.id
-                        'plan_id': planName + '-' + planInterval
-                    }
-                    promise = @subscriptionsService.selectMyPlan(params)
-                    @tgLoader.start()
-                    promise.then(@._successBuyPlan())
-            })
-            @._loadStripeForm(@.validPlan)
+    _onSuccessBuyPlan: (plan) ->
+        @tgLoader.start()
 
-    _loadStripeForm: () ->
-        @.stripeHandler.open({
+        @subscriptionsService.selectMyPlan(params).then(@._successBuyPlan())
+
+    buyPlan: () ->
+        @.loadingStripe = true
+
+        @stripeService.start({
             name: 'Taiga',
             description: @.validPlan.name + ' Plan',
-            amount: @.validPlan.amount
+            amount: @.validPlan.amount,
+            onLoad: () => @.loadingStripe = false
+            onSuccess: @.onSuccessBuyPlan
         })
 
-    _successBuyPlan: () ->
+    _onSuccessSelectPlan: () ->
         @lightboxService.closeAll()
+
         @confirm.notify('success', 'OK, te has suscrito al plan correctamente', '', 5000)
 
         promise = @subscriptionsService.fetchMyPlans()
