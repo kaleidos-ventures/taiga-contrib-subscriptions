@@ -28,6 +28,7 @@ SubscriptionsDirective = () ->
         controller: "ContribSubscriptionsController",
         controllerAs: "vm",
         template: '<ng-include src="vm.getTemplateUrl()" ng-if="vm.myRecommendedPlan || vm.myPlan"/>'
+        link: link
     }
 
 

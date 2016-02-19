@@ -50,6 +50,12 @@ describe.only "ContribLbPlans", ->
         }
         provide.value "$tgConfirm", mocks.tgConfirm
 
+    _stripeService = () ->
+        mocks.stripeService = {
+            start: sinon.stub()
+        }
+        provide.value "ContribStripeService", mocks.stripeService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -57,6 +63,7 @@ describe.only "ContribLbPlans", ->
             _mockTgLoader()
             _mockTgConfirm()
             _mockLightboxService()
+            _stripeService()
 
             return null
 
@@ -92,12 +99,25 @@ describe.only "ContribLbPlans", ->
         lbPlansCtrl.backToPLans()
         expect(lbPlansCtrl.selectedPlan).to.be.equal(false)
 
-    it "bought a Plan", (done) ->
+    it "bought a plan", () ->
+        lbPlansCtrl = controller "ContribLbPlansController"
+        plan = {test: true}
+
+        mocks.contribSubscriptionsService.selectMyPlan.withArgs(plan).promise().resolve()
+
+        lbPlansCtrl._onSuccessSelectPlan = sinon.stub()
+
+        lbPlansCtrl._onSuccessBuyPlan(plan)
+        expect(mocks.lightboxService.closeAll).has.been.called
+        expect(mocks.tgLoader.start).has.been.called
+        expect(lbPlansCtrl._onSuccessSelectPlan).has.been.called
+
+
+    it "bought a Plan success", (done) ->
         promise = mocks.contribSubscriptionsService.fetchMyPlans.promise().resolve()
         lbPlansCtrl = controller "ContribLbPlansController"
 
-        lbPlansCtrl._successBuyPlan().then () ->
-            expect(mocks.lightboxService.closeAll).has.been.called
+        lbPlansCtrl._onSuccessSelectPlan().then () ->
             expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'OK, te has suscrito al plan correctamente', '', 5000)
             expect(mocks.tgLoader.pageLoaded).has.been.called
             done()

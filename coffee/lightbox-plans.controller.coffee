@@ -36,9 +36,10 @@ class LightboxPlansController
         @.selectedPlan = false
 
     _onSuccessBuyPlan: (plan) ->
+        @lightboxService.closeAll()
         @tgLoader.start()
 
-        @subscriptionsService.selectMyPlan(params).then(@._successBuyPlan())
+        @subscriptionsService.selectMyPlan(plan).then(@._onSuccessSelectPlan())
 
     buyPlan: () ->
         @.loadingStripe = true
@@ -48,15 +49,17 @@ class LightboxPlansController
             description: @.validPlan.name + ' Plan',
             amount: @.validPlan.amount,
             onLoad: () => @.loadingStripe = false
-            onSuccess: @.onSuccessBuyPlan
+            onSuccess: @._onSuccessBuyPlan.bind(this)
+            interval: @.selectPlanInterval
+            plan: @.validPlan.name
         })
 
     _onSuccessSelectPlan: () ->
-        @lightboxService.closeAll()
 
         @confirm.notify('success', 'OK, te has suscrito al plan correctamente', '', 5000)
 
         promise = @subscriptionsService.fetchMyPlans()
-        promise.then () => @tgLoader.pageLoaded()
+        promise.then () =>
+            @tgLoader.pageLoaded()
 
 module.controller("ContribLbPlansController", LightboxPlansController)
