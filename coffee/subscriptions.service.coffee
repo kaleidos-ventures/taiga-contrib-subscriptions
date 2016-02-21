@@ -1,12 +1,15 @@
 module = angular.module('subscriptions')
 
 class SubscriptionsService
-    @.$inject = ["$tgHttp"]
+    @.$inject = ["$tgHttp", "$tgConfig"]
 
-    constructor: (@http) ->
+    constructor: (@http, @config) ->
         @.myRecommendedPlan = null
         @.myPlan = null
         @.publicPlans = null
+
+    getSubscriptionsAPIURL: ->
+        return @config.get("subscriptionsAPI", "http://localhost:5000/api/v1/")
 
     loadUserPlan: ->
         @.getMyPlan().then (response) =>
@@ -21,23 +24,23 @@ class SubscriptionsService
                 resolve()
 
     fetchMyPlans: ->
-        url = "http://localhost:5000/api/v1/my-recommended-plan"
+        url = "#{@.getSubscriptionsAPIURL()}my-recommended-plan"
 
         return @http.get(url, {}).then (response) => @.setRecommendedPlan(response.data)
 
     getMyPlan: ->
-        url = "http://localhost:5000/api/v1/my-subscription"
+        url = "#{@.getSubscriptionsAPIURL()}my-subscription"
 
         return @http.get(url, {}).then (response) ->
             return response.data
 
     fetchPublicPlans: ->
-        url = "http://localhost:5000/api/v1/my-public-plans"
+        url = "#{@.getSubscriptionsAPIURL()}my-public-plans"
 
         return @http.get(url, {}).then (response) => @.publicPlans = response.data
 
     selectMyPlan: (data) ->
-        url = "http://localhost:5000/api/v1/my-subscription/change"
+        url = "#{@.getSubscriptionsAPIURL()}my-subscription/change"
 
         return @http.post(url, data)
 
