@@ -22,6 +22,13 @@ describe "SubscriptionsAdmin", ->
     controller = null
     mocks = {}
 
+    _mockTranslatePartialLoader = () ->
+        mocks.translatePartialLoader = {
+            addPart: sinon.stub()
+        }
+
+        provide.value "$translatePartialLoader", mocks.translatePartialLoader
+
     _mockAppMetaService = () ->
         mocks.appMetaService = {
             setAll: sinon.stub()
@@ -58,6 +65,7 @@ describe "SubscriptionsAdmin", ->
             _mockContribSubscriptionsService()
             _mockTgLoader()
             _mockLightboxService()
+            _mockTranslatePartialLoader()
 
             return null
 

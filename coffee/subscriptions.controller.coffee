@@ -5,10 +5,12 @@ class SubscriptionsAdmin
         "tgAppMetaService",
         "ContribSubscriptionsService",
         "tgLoader",
-        "lightboxService"
+        "lightboxService",
+        "$translatePartialLoader",
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService) ->
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader) ->
+        @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
         pluginName = "Subscriptions - User Profile - Taiga" # i18n

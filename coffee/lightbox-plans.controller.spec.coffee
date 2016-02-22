@@ -17,7 +17,7 @@
 # File: lighbox-plans.controller.spec.coffee
 ###
 
-describe.only "ContribLbPlans", ->
+describe "ContribLbPlans", ->
     provide = null
     controller = null
     mocks = {}
