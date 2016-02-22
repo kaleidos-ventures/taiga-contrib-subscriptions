@@ -1,5 +1,7 @@
 {
     "SUBSCRIPTIONS": {
+        "TITLE": "Subscriptions - User Profile - Taiga",
+        "SECTION_NAME": "Upgrade Plan",
         "PLAN": "Plan",
         "PLAN_STARTING": "Active Plans starting April 30, 2016",
         "YOUR_PLAN": "Your plan",
@@ -60,7 +62,9 @@
             "PAY_YEARLY": "Yeary",
             "BACK": "Back",
             "BACK_TITLE": "Back to select plans",
-            "CONTINUE": "Continue"
+            "CONTINUE": "Continue",
+            "EVERY_YEAR": "Every year",
+            "EVERY_MONTH": "Every month"
         }
     }
 }

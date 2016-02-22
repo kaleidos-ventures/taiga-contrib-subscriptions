@@ -29,6 +29,13 @@ describe "SubscriptionsAdmin", ->
 
         provide.value "$translatePartialLoader", mocks.translatePartialLoader
 
+    _mockTranslate = () ->
+        mocks.translate = {
+            instant: sinon.stub()
+        }
+
+        provide.value "$translate", mocks.translate
+
     _mockAppMetaService = () ->
         mocks.appMetaService = {
             setAll: sinon.stub()
@@ -66,6 +73,7 @@ describe "SubscriptionsAdmin", ->
             _mockTgLoader()
             _mockLightboxService()
             _mockTranslatePartialLoader()
+            _mockTranslate()
 
             return null
 
@@ -76,6 +84,16 @@ describe "SubscriptionsAdmin", ->
 
         inject ($controller) ->
             controller = $controller
+
+    it "load metas", () ->
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+
+        mocks.translate.instant.withArgs('SUBSCRIPTIONS.TITLE').returns('title')
+        mocks.translate.instant.withArgs('SUBSCRIPTIONS.SECTION_NAME').returns('section')
+
+        subscriptionsCtrl._loadMetas()
+
+        expect(mocks.appMetaService.setAll).have.been.calledWith('title', 'section')
 
     it "load User Plans", (done) ->
         promise = mocks.contribSubscriptionsService.fetchMyPlans.promise()

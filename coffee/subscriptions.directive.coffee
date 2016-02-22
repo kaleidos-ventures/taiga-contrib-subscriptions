@@ -19,9 +19,12 @@
 
 module = angular.module('subscriptions')
 
-SubscriptionsDirective = () ->
+SubscriptionsDirective = ($rootScope) ->
     link = (scope, el, attrs, ctrl) ->
         ctrl.init()
+
+        $rootScope.$on '$translateChangeSuccess', () =>
+            ctrl._loadMetas()
 
     return {
         scope: {},
@@ -31,5 +34,8 @@ SubscriptionsDirective = () ->
         link: link
     }
 
+SubscriptionsDirective.$inject = [
+    "$rootScope"
+]
 
 module.directive("tgSubscriptions", SubscriptionsDirective)

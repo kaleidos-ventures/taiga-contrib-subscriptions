@@ -7,19 +7,13 @@ class SubscriptionsAdmin
         "tgLoader",
         "lightboxService",
         "$translatePartialLoader",
+        "$translate"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader) ->
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader, @translate) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
-        pluginName = "Subscriptions - User Profile - Taiga" # i18n
-        @.sectionName = "Upgrade Plan"
-
-        title = pluginName
-        description = @.sectionName
-        @appMetaService.setAll(title, description)
-
         @._loadPlans()
 
         Object.defineProperty @, "myPlan", {
@@ -33,6 +27,12 @@ class SubscriptionsAdmin
         Object.defineProperty @, "publicPlans", {
             get: () => @.subscriptionsService.publicPlans
         }
+
+    _loadMetas: () ->
+        @.sectionName = @translate.instant("SUBSCRIPTIONS.TITLE")
+        description = @translate.instant("SUBSCRIPTIONS.SECTION_NAME")
+
+        @appMetaService.setAll(@.sectionName, description)
 
     _loadPlans: ->
         @tgLoader.start()
