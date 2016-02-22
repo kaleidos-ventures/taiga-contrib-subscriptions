@@ -29,10 +29,18 @@ describe "SubscriptionsService", ->
         }
         provide.value "$tgHttp", mocks.http
 
+    _mockConfig = () ->
+        mocks.config = {
+            get: sinon.stub()
+        }
+        provide.value "$tgConfig", mocks.config
+
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockHttp()
+            _mockConfig()
 
             return null
 
@@ -44,6 +52,7 @@ describe "SubscriptionsService", ->
         module "subscriptions"
         _mocks()
         _inject()
+        mocks.config.get.withArgs("subscriptionsAPI", "http://localhost:5000/api/v1/").returns("http://localhost:5000/api/v1/")
 
     it "set user recommended plan", (done) ->
         test = {response: true}
