@@ -43,6 +43,9 @@ class SubscriptionsService
                 resolve()
 
     fetchMyPlans: ->
+        @.myRecommendedPlan = null
+        @.myPlan = null
+
         url = "#{@.getSubscriptionsAPIURL()}my-recommended-plan"
 
         return @http.get(url, {}).then (response) => @.setRecommendedPlan(response.data)

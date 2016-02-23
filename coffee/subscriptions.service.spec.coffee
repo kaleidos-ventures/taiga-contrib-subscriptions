@@ -102,8 +102,11 @@ describe "SubscriptionsService", ->
             expect(subscriptionsService.publicPlans).to.be.equal(true)
             done()
 
-    it "select a plan", () ->
+    it "select a plan", (done) ->
         data = {data: true}
 
-        subscriptionsService.selectMyPlan(data)
-        expect(mocks.http.post).calledWith("http://localhost:5000/api/v1/my-subscription/change", data)
+        mocks.http.post.withArgs("http://localhost:5000/api/v1/my-subscription/change").promise().resolve(data)
+
+        subscriptionsService.selectMyPlan(data).then () ->
+            expect(subscriptionsService.myPlan).to.be.eql(data)
+            done()
