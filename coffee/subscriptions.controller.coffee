@@ -48,10 +48,11 @@ class SubscriptionsAdmin
         }
 
     _loadMetas: () ->
-        @.sectionName = @translate.instant("SUBSCRIPTIONS.TITLE")
+        sectionTitle = @translate.instant("SUBSCRIPTIONS.TITLE")
         description = @translate.instant("SUBSCRIPTIONS.SECTION_NAME")
+        @.sectionName = @translate.instant("SUBSCRIPTIONS.SECTION_NAME")
 
-        @appMetaService.setAll(@.sectionName, description)
+        @appMetaService.setAll(sectionTitle, description)
 
     _loadPlans: ->
         @tgLoader.start()
@@ -89,6 +90,7 @@ class SubscriptionsAdmin
 
     _plansList: (response) ->
         @.loading = false
+        @.selectedPlan = false
         @lightboxService.open('tg-lb-plans')
 
 module.controller("ContribSubscriptionsController", SubscriptionsAdmin)

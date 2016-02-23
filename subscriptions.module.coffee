@@ -5,7 +5,7 @@ window.taigaContribPlugins = [] if !window.taigaContribPlugins
 window.taigaContribPlugins.push({
     type: 'userSettings',
     template: 'compile-modules/taiga-contrib-subscriptions/partials/subscriptions.html',
-    name: 'Subscriptions',
+    name: 'Upgrade Plan',
     slug: 'subscriptions',
     module: moduleName,
     userMenu: true

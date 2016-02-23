@@ -59,4 +59,8 @@ aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.TITLE")
     p(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.FREE")
 
-tg-lb-plans.lightbox.lightbox-plans.lightbox-generic-form
+tg-lb-plans.lightbox.lightbox-plans.lightbox-generic-form(
+    selected-plan="vm.selectedPlan"
+    valid-plan="vm.validPlan"
+    select-plan-interval="vm.selectPlanInterval"
+)

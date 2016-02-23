@@ -40,7 +40,6 @@ class ContribStripeService
                 billingAddress: false,
                 panelLabel: 'Start Subscription', # LOCALIZE
                 token: (data) =>
-                    console.log options
                     planName = options.plan.toLowerCase()
                     planInterval = options.interval
                     params = {
