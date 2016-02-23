@@ -1,7 +1,7 @@
 @mixin plan {
     .plan {
-        border-bottom: 1px solid $gray-light;
-        border-top: 1px solid $gray-light;
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
         display: flex;
         padding: 1rem 0;
     }
@@ -13,7 +13,7 @@
         width: 120px;
     }
     .plan-name {
-        @extend %xlarge;
+        @extend %larger;
         margin-bottom: 1rem;
     }
     .plan-info {

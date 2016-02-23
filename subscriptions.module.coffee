@@ -7,7 +7,8 @@ window.taigaContribPlugins.push({
     template: 'compile-modules/taiga-contrib-subscriptions/partials/subscriptions.html',
     name: 'Subscriptions',
     slug: 'subscriptions',
-    module: moduleName
+    module: moduleName,
+    userMenu: true
 })
 
 angular.module(moduleName, [])

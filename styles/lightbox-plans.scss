@@ -31,7 +31,7 @@
     .plan {
         align-items: center;
         background: $white;
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 1px solid $whitish;
         display: flex;
         justify-content: space-between;
         padding: 1rem;
@@ -46,7 +46,7 @@
             transition-delay: .1s;
         }
         &.highlighted-plan {
-            border: 1px solid $gray;
+            border: 1px solid $gray-light;
         }
         &.plan-custom {
             &:hover {
@@ -57,7 +57,7 @@
     }
     .pill-plan {
         @extend %small;
-        background: $gray;
+        background: $gray-light;
         color: $white;
         left: calc(50% - 4rem);
         padding: .25rem;
