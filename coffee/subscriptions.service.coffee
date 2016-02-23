@@ -61,6 +61,7 @@ class SubscriptionsService
     selectMyPlan: (data) ->
         url = "#{@.getSubscriptionsAPIURL()}my-subscription/change"
 
-        return @http.post(url, data)
+        return @http.post(url, data).then (response) =>
+            @.myPlan = response
 
 module.service("ContribSubscriptionsService", SubscriptionsService)
