@@ -32,6 +32,7 @@ class LightboxPlansController
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
         }
+        console.log @myPlan
 
         Object.defineProperty @, "myRecommendedPlan", {
             get: () => @.subscriptionsService.myRecommendedPlan

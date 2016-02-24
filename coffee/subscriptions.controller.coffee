@@ -67,7 +67,6 @@ class SubscriptionsAdmin
         else if @.myRecommendedPlan.recommended_plan.amount_month == 0
             plan = "zero"
         else
-            console.log @.myRecommendedPlan
             plan = "recommended"
 
         return "compile-modules/taiga-contrib-subscriptions/partials/subscriptions-"+plan+".html"
