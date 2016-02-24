@@ -52,13 +52,14 @@ aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.HELP.WHY")
     ul
         li(
-            ng-if="vm.myRecommendedPlan.recommended_plan.id"
+            ng-if="vm.myRecommendedPlan.recommended_plan.id_month"
             translate="SUBSCRIPTIONS.HELP.NUM_PROJECTS"
-            translate-values="{private_num: '{{vm.myRecommendedPlan.current_counts.num_private_projects}}', public_num: '{{vm.myRecommendedPlan.current_counts.num_public_projects}}', plan: '{{vm.myRecommendedPlan.recommended_plan.name}}'}"
+            translate-values="{private_num: '{{vm.myRecommendedPlan.current_counts.num_private_projects}}', public_num: '{{vm.myRecommendedPlan.current_counts.num_public_projects}}', plan:'{{vm.myRecommendedPlan.recommended_plan.name}}'}"
         )
         li(
-            ng-if="!vm.myRecommendedPlan.recommended_plan.id"
+            ng-if="!vm.myRecommendedPlan.recommended_plan.id_month"
             translate="SUBSCRIPTIONS.HELP.NUM_PROJECTS_CUSTOM"
+            translate-values="{private_num: '{{vm.myRecommendedPlan.current_counts.num_private_projects}}', public_num: '{{vm.myRecommendedPlan.current_counts.num_public_projects}}'}"
         )
         li(translate="SUBSCRIPTIONS.HELP.SUBSCRIBE")
         li(translate="SUBSCRIPTIONS.HELP.PAYMENT")
