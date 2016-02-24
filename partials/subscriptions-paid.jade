@@ -58,6 +58,19 @@ section.subscription-your-plan
 aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.TITLE")
     p(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.FREE")
+    a.change-payment-data(
+        href="https://taiga.io/support/payment-process/"
+        title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA' | translate}}"
+        target="_blank"
+        translate="SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA"
+    )
+    
+    a(
+        href="https://taiga.io/support/payment-process/"
+        title="{{'SUBSCRIPTIONS.HELP.MORE_INFO_TITLE' | translate}}"
+        target="_blank"
+        translate="SUBSCRIPTIONS.HELP.MORE_INFO"
+    )
 
 tg-lb-plans.lightbox.lightbox-plans.lightbox-generic-form(
     selected-plan="vm.selectedPlan"
