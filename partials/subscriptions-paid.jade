@@ -33,27 +33,16 @@ section.subscription-your-plan
                 li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myPlan.current_plan.private_projects}")
                 li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
                 
-        .plan-pricing(ng-if="vm.myPlan.interval == 'month'")
-            .pricing-primary
+        .plan-pricing
+            .pricing-primary(ng-if="vm.myPlan.interval == 'month'")
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_month}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
-            
-            .pricing-secondary(ng-if="vm.myPlan.interval == 'year'")
-                span.currency $
-                span.number {{vm.myPlan.current_plan.amount_year}}
-                span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
                 
-        .plan-pricing(ng-if="vm.myPlan.interval == 'year'")
-            .pricing-primary
+            .pricing-primary(ng-if="vm.myPlan.interval == 'year'")
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
-            
-            .pricing-secondary(ng-if="vm.myPlan.interval == 'month'")
-                span.currency $
-                span.number {{vm.myPlan.current_plan.amount_month}}
-                span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
             
 aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.TITLE")
