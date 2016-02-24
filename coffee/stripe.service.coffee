@@ -20,9 +20,9 @@
 module = angular.module('subscriptions')
 
 class ContribStripeService
-    @.$inject = []
+    @.$inject = ["$tgConfig"]
 
-    constructor: () ->
+    constructor: (@config) ->
 
     start: (options) ->
         @.stripeHandler = null
@@ -31,7 +31,8 @@ class ContribStripeService
         ljs.load "https://checkout.stripe.com/checkout.js", =>
             options.onLoad()
 
-            key = 'pk_test_kAyBsE0nqnCoDMTlgpH5NB75'
+            key = @config.get("stripeKey")
+
             image = "/#{window._version}/images/taiga-contrib-subscriptions/images/#{options.plan.toLowerCase()}.png"
             @.stripeHandler = StripeCheckout.configure({
                 key: key,
