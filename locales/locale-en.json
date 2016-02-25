@@ -74,7 +74,23 @@
             "ITS_ONLY_TEMPORAL": "Don't worry, it's only temporal",
             "TO_UNBLOCK_CHECK_YOUR_PLAN": "To unblock your projects you must subscribe the plan that best fit your needs",
             "CHECK_PLANS": "Check plans"
+        },
+        "IMPORT": {
+            "PROJECT_RESTRICTIONS": {
+                "CHANGE_PLAN": "Change plan",
+                "PROJECT_MEMBERS_DESC": "The project you want to import has more than {{max_members}} users, but you are only allowed to have {{members}} users per project. If you want have more users contact with the administrators at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "You don't have space for another private project",
+                    "DESC": "The project you want to import is private, but you don't have space to create more. If you want to have more private projects, you must first change to a higher plan."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "DESC": "The project that you want to import is private and has more than {{max_members}} users. If you want to import projects like this, you should first changing to a higher plan."
+                }
+            }
         }
     }
-
 }
