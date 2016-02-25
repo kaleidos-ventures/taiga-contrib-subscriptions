@@ -106,9 +106,9 @@ class SubscriptionsAdmin
     _onSuccessChangeStripeData: (data) ->
         @tgLoader.start()
 
-        @subscriptionsService.selectMyPlan(data).then(@._onSuccessChangedPlan())
+        @subscriptionsService.selectMyPlan(data).then(@._onSuccessChangedData())
 
-    _onSuccessChangedPlan: () ->
+    _onSuccessChangedData: () ->
         @confirm.notify('success', 'OK, has cambiado tus datos correctamente', '', 5000)
 
         promise = @subscriptionsService.fetchMyPlans()

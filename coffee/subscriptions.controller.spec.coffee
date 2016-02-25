@@ -46,7 +46,8 @@ describe "SubscriptionsAdmin", ->
     _mockContribSubscriptionsService = () ->
         mocks.contribSubscriptionsService = {
             fetchMyPlans: sinon.stub(),
-            fetchPublicPlans: sinon.stub()
+            fetchPublicPlans: sinon.stub(),
+            selectMyPlan: sinon.stub()
         }
 
         provide.value "ContribSubscriptionsService", mocks.contribSubscriptionsService
@@ -188,3 +189,35 @@ describe "SubscriptionsAdmin", ->
         subscriptionsCtrl._plansList()
         expect(subscriptionsCtrl.loading).to.be.equal(false)
         expect(mocks.lightboxService.open).has.been.calledWith('tg-lb-plans')
+
+    it "change Stripe Data", () ->
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+
+        subscriptionsCtrl._onSuccessChangeStripeData = sinon.stub()
+
+        subscriptionsCtrl.changeStripeData()
+        expect(mocks.stripeService.changeData).has.been.called
+        mocks.stripeService.changeData.yieldTo('onSuccess');
+        expect(subscriptionsCtrl._onSuccessChangeStripeData).to.be.called
+
+    it "changed Stripe Data", () ->
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+        data = {test: true}
+
+        mocks.contribSubscriptionsService.selectMyPlan.withArgs(data).promise().resolve()
+
+        subscriptionsCtrl._onSuccessChangedData = sinon.stub()
+
+        subscriptionsCtrl._onSuccessChangeStripeData(data)
+        expect(mocks.tgLoader.start).has.been.called
+        expect(subscriptionsCtrl._onSuccessChangedData).to.be.called
+
+    it "changed Taiga Data", (done) ->
+        promise = mocks.contribSubscriptionsService.fetchMyPlans.promise().resolve()
+
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+
+        subscriptionsCtrl._onSuccessChangedData().then () ->
+            expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'OK, has cambiado tus datos correctamente', '', 5000)
+            expect(mocks.tgLoader.pageLoaded).has.been.called
+            done()
