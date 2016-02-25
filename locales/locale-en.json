@@ -13,6 +13,7 @@
         "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",
         "FREQUENCY_MONTH": "month",
         "FREQUENCY_YEAR": "year",
+        "MAX_PRIVATE_PROJECTS": "Do you want to create more private projects? <a href='{{url}}'>Upgrade your plan!</a>",
         "HELP": {
             "WHY": "Why do we recommend this plan?",
             "NO_PROJECTS": "Currently you have no private projects, so the plan that fits for you is the {{name}} plan.",
@@ -66,6 +67,25 @@
             "CONTINUE": "Continue",
             "EVERY_YEAR": "Every year",
             "EVERY_MONTH": "Every month"
+        }
+    },
+    "PROJECT": {
+        "IMPORT": {
+            "PROJECT_RESTRICTIONS": {
+                "CHANGE_PLAN": "Change plan",
+                "PROJECT_MEMBERS_DESC": "The project you want to import has more than {{max_members}} users, but you are only allowed to have {{members}} users per project. If you want have more users contact with the administrators at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "You don't have space for another private project",
+                    "DESC": "The project you want to import is private, but you don't have space to create more. If you want to have more private projects, you must first change to a higher plan."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "DESC": "The project that you want to import is private and has more than {{max_members}} users. If you want to import projects like this, you should first changing to a higher plan."
+                }
+            }
         }
     }
 }

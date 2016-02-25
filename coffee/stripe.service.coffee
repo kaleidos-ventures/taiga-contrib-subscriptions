@@ -66,7 +66,7 @@ class ContribStripeService
                 key: key,
                 image: image,
                 locale: 'auto',
-                billingAddress: false,
+                billingAddress: true,
                 panelLabel: 'Change data', # LOCALIZE
                 token: (data) =>
                     params = {
