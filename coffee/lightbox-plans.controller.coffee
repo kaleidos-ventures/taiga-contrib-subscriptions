@@ -61,16 +61,23 @@ class LightboxPlansController
 
     buyPlan: () ->
         @.loadingStripe = true
-
-        @stripeService.start({
-            name: 'Taiga',
-            description: @.validPlan.name + ' Plan',
-            amount: @.validPlan.amount,
-            onLoad: () => @.loadingStripe = false
-            onSuccess: @._onSuccessBuyPlan.bind(this)
-            interval: @.selectPlanInterval
-            plan: @.validPlan.name
-        })
+        if @.myPlan.customer_id
+            planName = @.validPlan.name.toLowerCase()
+            planInterval = @.selectPlanInterval
+            plan = {
+                'plan_id': planName + '-' + planInterval
+            }
+            @._onSuccessBuyPlan(plan)
+        else
+            @stripeService.start({
+                name: 'Taiga',
+                description: @.validPlan.name + ' Plan',
+                amount: @.validPlan.amount,
+                onLoad: () => @.loadingStripe = false
+                onSuccess: @._onSuccessBuyPlan.bind(this)
+                interval: @.selectPlanInterval
+                plan: @.validPlan.name
+            })
 
     _onSuccessSelectPlan: () ->
 

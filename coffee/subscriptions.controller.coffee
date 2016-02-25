@@ -61,7 +61,6 @@ class SubscriptionsAdmin
 
         promise = @subscriptionsService.fetchMyPlans()
         promise.then () =>
-            console.log @.myPlan
             @tgLoader.pageLoaded()
 
     getTemplateUrl: () ->
