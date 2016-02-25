@@ -65,6 +65,18 @@ describe "SubscriptionsAdmin", ->
         }
         provide.value "lightboxService", mocks.lightboxService
 
+    _stripeService = () ->
+        mocks.stripeService = {
+            changeData: sinon.stub()
+        }
+        provide.value "ContribStripeService", mocks.stripeService
+
+    _mockTgConfirm = () ->
+        mocks.tgConfirm = {
+            notify: sinon.stub()
+        }
+        provide.value "$tgConfirm", mocks.tgConfirm
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -74,6 +86,8 @@ describe "SubscriptionsAdmin", ->
             _mockLightboxService()
             _mockTranslatePartialLoader()
             _mockTranslate()
+            _stripeService()
+            _mockTgConfirm()
 
             return null
 

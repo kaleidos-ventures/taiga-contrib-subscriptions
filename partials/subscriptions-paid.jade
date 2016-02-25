@@ -48,10 +48,10 @@ aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.TITLE")
     p(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.FREE")
     a.change-payment-data(
-        href="https://taiga.io/support/payment-process/"
+        href=""
         title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA' | translate}}"
-        target="_blank"
         translate="SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA"
+        ng-click="vm.changeStripeData()"
     )
     
     a(

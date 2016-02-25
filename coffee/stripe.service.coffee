@@ -57,4 +57,30 @@ class ContribStripeService
                 amount: options.amount
             })
 
+    changeData: (options) ->
+        ljs.load "https://checkout.stripe.com/checkout.js", =>
+            key = @config.get("stripeKey")
+
+            image = "/#{window._version}/images/taiga-contrib-subscriptions/images/custom.png"
+            @.stripeHandler = StripeCheckout.configure({
+                key: key,
+                image: image,
+                locale: 'auto',
+                billingAddress: false,
+                panelLabel: 'Change data', # LOCALIZE
+                token: (data) =>
+                    params = {
+                        'stripe_token': data.id
+                    }
+                    console.log data
+
+                    options.onSuccess(params)
+            })
+
+            @.stripeHandler.open({
+                name: options.name,
+                description: options.description,
+                amount: options.amount
+            })
+
 module.service("ContribStripeService", ContribStripeService)

@@ -26,10 +26,12 @@ class SubscriptionsAdmin
         "tgLoader",
         "lightboxService",
         "$translatePartialLoader",
-        "$translate"
+        "$translate",
+        "ContribStripeService",
+        "$tgConfirm"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader, @translate) ->
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader, @translate, @stripeService, @confirm) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
@@ -59,6 +61,7 @@ class SubscriptionsAdmin
 
         promise = @subscriptionsService.fetchMyPlans()
         promise.then () =>
+            console.log @.myPlan
             @tgLoader.pageLoaded()
 
     getTemplateUrl: () ->
@@ -92,5 +95,24 @@ class SubscriptionsAdmin
         @.loading = false
         @.selectedPlan = false
         @lightboxService.open('tg-lb-plans')
+
+    changeStripeData: () ->
+        @stripeService.changeData({
+            name: 'Taiga',
+            description: "Change Payment Data", #LOCALIZE
+            onSuccess: @._onSuccessChangeStripeData.bind(this)
+        })
+
+    _onSuccessChangeStripeData: (data) ->
+        @tgLoader.start()
+
+        @subscriptionsService.selectMyPlan(data).then(@._onSuccessChangedPlan())
+
+    _onSuccessChangedPlan: () ->
+        @confirm.notify('success', 'OK, has cambiado tus datos correctamente', '', 5000)
+
+        promise = @subscriptionsService.fetchMyPlans()
+        promise.then () =>
+            @tgLoader.pageLoaded()
 
 module.controller("ContribSubscriptionsController", SubscriptionsAdmin)
