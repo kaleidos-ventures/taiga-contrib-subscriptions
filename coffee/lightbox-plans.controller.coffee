@@ -61,7 +61,7 @@ class LightboxPlansController
 
     buyPlan: () ->
         @.loadingStripe = true
-        if @.myPlan.customer_id
+        if @.myPlan.customer_id?
             planName = @.validPlan.name.toLowerCase()
             planInterval = @.selectPlanInterval
             plan = {

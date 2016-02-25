@@ -112,7 +112,7 @@ describe "ContribLbPlans", ->
         expect(mocks.tgLoader.start).has.been.called
         expect(lbPlansCtrl._onSuccessSelectPlan).has.been.called
 
-    it "buy a Plan", () ->
+    it "buy a Plan with Stripe", () ->
         lbPlansCtrl = controller "ContribLbPlansController"
         lbPlansCtrl.validPlan = {
             name: 'name',
@@ -121,6 +121,10 @@ describe "ContribLbPlans", ->
         lbPlansCtrl.selectPlanInterval = {
             data: 'data'
         }
+        lbPlansCtrl.myPlan = {
+            customer_id: 'patata'
+        }
+        console.log lbPlansCtrl
 
         lbPlansCtrl._onSuccessBuyPlan = sinon.stub()
 
