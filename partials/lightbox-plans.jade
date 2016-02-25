@@ -36,7 +36,7 @@ section.plans-container(ng-if="!vm.selectedPlan")
                         span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
                 .plan-data(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: project.private_projects}")
                 .plan-data(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: project.project_members}")
-            .plan.plan-custom(ng-if="vm.myPlan.current_plan.id_month")
+            .plan.plan-custom(ng-if="vm.myRecommendedPlan || vm.myPlan.current_plan.id_month")
                 img.plan-image(
                     src="/#{v}/images/taiga-contrib-subscriptions/images/custom.png",
                     alt="Custom {{'SUBSCRIPTIONS.PLAN' | translate}}"
@@ -44,7 +44,7 @@ section.plans-container(ng-if="!vm.selectedPlan")
                 .plan-name(translate="SUBSCRIPTIONS.PLANS_SELECTOR.CUSTOM")
                 .plan-contact(ng-bind-html="'SUBSCRIPTIONS.PLANS_SELECTOR.CONTACT' | translate")
                 
-            .plan.plan-custom.highlighted-plan(ng-if="!vm.myPlan.current_plan.id_month")
+            .plan.plan-custom.highlighted-plan(ng-if="!vm.myRecommendedPlan && !vm.myPlan.current_plan.id_month")
                 span.pill-plan(translate="SUBSCRIPTIONS.PLANS_SELECTOR.CURRENT")
                 img.plan-image(
                     src="/#{v}/images/taiga-contrib-subscriptions/images/custom.png",

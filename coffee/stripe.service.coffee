@@ -38,7 +38,7 @@ class ContribStripeService
                 key: key,
                 image: image,
                 locale: 'auto',
-                billingAddress: false,
+                billingAddress: true,
                 panelLabel: 'Start Subscription', # LOCALIZE
                 token: (data) =>
                     planName = options.plan.toLowerCase()
