@@ -13,6 +13,7 @@
         "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",
         "FREQUENCY_MONTH": "month",
         "FREQUENCY_YEAR": "year",
+        "MAX_PRIVATE_PROJECTS": "Do you want to create more private projects? <a href='{{url}}'>Upgrade your plan!</a>",
         "HELP": {
             "WHY": "Why do we recommend this plan?",
             "NO_PROJECTS": "Currently you have no private projects, so the plan that fits for you is the {{name}} plan.",
