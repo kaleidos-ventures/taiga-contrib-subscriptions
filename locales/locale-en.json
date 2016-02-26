@@ -67,5 +67,14 @@
             "EVERY_YEAR": "Every year",
             "EVERY_MONTH": "Every month"
         }
+    },
+
+    "PROJECT": {
+        "BLOCKED_PROJECT": {
+            "ITS_ONLY_TEMPORAL": "Don't worry, it's only temporal",
+            "TO_UNBLOCK_CHECK_YOUR_PLAN": "To unblock your projects you must subscribe the plan that best fit your needs",
+            "CHECK_PLANS": "Check plans"
+        }
     }
+
 }
