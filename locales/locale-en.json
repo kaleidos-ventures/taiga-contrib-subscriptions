@@ -75,6 +75,9 @@
             "TO_UNBLOCK_CHECK_YOUR_PLAN": "To unblock your projects you must subscribe the plan that best fit your needs",
             "CHECK_PLANS": "Check plans"
         }
+    },
+    "WIZARD": {
+        "CREATE_MORE_PROJECTS": "To create more, you should",
+        "CHANGE_PLAN": "Change your plan"
     }
-
 }
