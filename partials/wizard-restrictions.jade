@@ -7,7 +7,7 @@ div.create-warning(ng-if="!canCreatePrivateProjects.valid && canCreatePrivatePro
         a(
             href=""
             title="{{'WIZARD.CHANGE_PLAN' | translate }}"
-            tg-nav="project-admin-project-profile-modules:project=project.slug"
+            tg-nav="user-settings-contrib:plugin='subscriptions'",
         ) {{'WIZARD.CHANGE_PLAN' | translate }}
     
 div.create-warning(ng-if="!canCreatePublicProjects.valid && canCreatePublicProjects.reason == 'max_public_projects'")
@@ -19,5 +19,5 @@ div.create-warning(ng-if="!canCreatePublicProjects.valid && canCreatePublicProje
         a(
             href=""
             title="{{'WIZARD.CHANGE_PLAN' | translate }}"
-            tg-nav="project-admin-project-profile-modules:project=project.slug"
+            tg-nav="user-settings-contrib:plugin='subscriptions'",
         ) {{'WIZARD.CHANGE_PLAN' | translate }}
