@@ -74,7 +74,6 @@ section.plans-container.invalid-plan(ng-if="vm.selectedPlan === 'invalid'")
         li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION1' | translate: {projects: vm.invalidPlan.private_projects}")
         li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION2' | translate: {projects: vm.invalidPlan.private_projects}")
         li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION3' | translate")
-        li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION4' | translate")
     p.reason(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_MEMBERS' | translate: {members: vm.invalidPlan.project_members}")
     ul
         li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_MEMBERS_OPTION1' | translate: {members: vm.invalidPlan.project_members}")
