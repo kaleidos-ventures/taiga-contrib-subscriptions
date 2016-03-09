@@ -25,10 +25,11 @@ class LightboxPlansController
         "tgLoader",
         "$tgConfirm",
         "lightboxService",
-        "ContribStripeService"
+        "ContribPaymentsService",
+        "tgCurrentUserService"
     ]
 
-    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService, @stripeService) ->
+    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService, @paymentsService, @currentUserService) ->
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
         }
@@ -61,23 +62,31 @@ class LightboxPlansController
         @subscriptionsService.selectMyPlan(plan).then(@._onSuccessSelectPlan())
 
     buyPlan: () ->
-        @.loadingStripe = true
+        @.loadingPayments = true
+        @.planId = null
+
+        if @.selectPlanInterval == 'year'
+            @.planId = @.validPlan.id_year
+        else
+            @.planId = @.validPlan.id_month
+
         if @.myPlan && @.myPlan.customer_id?
-            planName = @.validPlan.name.toLowerCase()
-            planInterval = @.selectPlanInterval
             plan = {
-                'plan_id': planName + '-' + planInterval
+                'plan_id': @.planId
             }
+
             @._onSuccessBuyPlan(plan)
         else
-            @stripeService.start({
-                name: 'Taiga',
+            user = @currentUserService.getUser()
+            @paymentsService.start({
                 description: @.validPlan.name + ' Plan',
                 amount: @.validPlan.amount,
-                onLoad: () => @.loadingStripe = false
-                onSuccess: @._onSuccessBuyPlan.bind(this)
-                interval: @.selectPlanInterval
-                plan: @.validPlan.name
+                onLoad: () => @.loadingPayments = false
+                onSuccess: @._onSuccessBuyPlan.bind(this),
+                planId: @.planId,
+                currency: @.validPlan.currency,
+                email: user.get('email'),
+                full_name: user.get('full_name')
             })
 
     _onSuccessSelectPlan: () ->

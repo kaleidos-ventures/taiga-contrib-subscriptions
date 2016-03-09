@@ -6,7 +6,7 @@ header
         svg.icon.icon-question
             use(xlink:href="#icon-question")
         span(translate="SUBSCRIPTIONS.PLAN_STARTING")
-        
+
 section.subscription-your-plan
     header
         h2.title(translate="SUBSCRIPTIONS.YOUR_PLAN")
@@ -32,18 +32,18 @@ section.subscription-your-plan
             ul.plan-info
                 li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myPlan.current_plan.private_projects}")
                 li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
-                
+
         .plan-pricing
             .pricing-primary(ng-if="vm.myPlan.interval == 'month'")
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_month}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
-                
+
             .pricing-primary(ng-if="vm.myPlan.interval == 'year'")
                 span.currency $
                 span.number {{vm.myPlan.current_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
-            
+
 aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.TITLE")
     p(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.FREE")
@@ -51,9 +51,9 @@ aside.subscription-info
         href=""
         title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA' | translate}}"
         translate="SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA"
-        ng-click="vm.changeStripeData()"
+        ng-click="vm.changePaymentsData()"
     )
-    
+
     a(
         href="https://taiga.io/support/payment-process/"
         title="{{'SUBSCRIPTIONS.HELP.MORE_INFO_TITLE' | translate}}"
