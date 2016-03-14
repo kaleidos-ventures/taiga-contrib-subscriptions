@@ -73,6 +73,7 @@
         "BLOCKED_PROJECT": {
             "ITS_ONLY_TEMPORAL": "Don't worry, it's only temporal",
             "TO_UNBLOCK_CHECK_YOUR_PLAN": "To unblock your projects you must subscribe the plan that best fit your needs",
+            "TO_UNBLOCK_CONTACT_SUPPORT": "To unblock your projects you must contact with <a href=\"mailto:support@taiga.io\" title=\"support\">support@taiga.io</a>",
             "CHECK_PLANS": "Check plans"
         },
         "IMPORT": {

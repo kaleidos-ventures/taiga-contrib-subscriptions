@@ -1,11 +1,15 @@
 p(ng-if="!vm.project.get('i_am_owner')") {{'PROJECT.BLOCKED_PROJECT.THIS_PROJECT_IS_BLOCKED' | translate}}
 
 div(ng-if="vm.project.get('i_am_owner')")
-    p {{'PROJECT.BLOCKED_PROJECT.ITS_ONLY_TEMPORAL' | translate}}
-    p {{'PROJECT.BLOCKED_PROJECT.TO_UNBLOCK_CHECK_YOUR_PLAN' | translate}}
+    div(ng-if="vm.project.get('blocked_code') == 'blocked-by-nonpayment'")
+        p {{'PROJECT.BLOCKED_PROJECT.ITS_ONLY_TEMPORAL' | translate}}
+        p {{'PROJECT.BLOCKED_PROJECT.TO_UNBLOCK_CHECK_YOUR_PLAN' | translate}}
 
-    a.check-plans.button-green(
-        href="#"
-        tg-nav="user-settings-contrib:plugin='subscriptions'"
-        title="{{'PROJECT.BLOCKED_PROJECT.CHECK_PLANS' | translate}}"
-    ) {{'PROJECT.BLOCKED_PROJECT.CHECK_PLANS' | translate}}
+        a.check-plans.button-green(
+            href="#"
+            tg-nav="user-settings-contrib:plugin='subscriptions'"
+            title="{{'PROJECT.BLOCKED_PROJECT.CHECK_PLANS' | translate}}"
+        ) {{'PROJECT.BLOCKED_PROJECT.CHECK_PLANS' | translate}}
+
+    div(ng-if="vm.project.get('blocked_code') != 'blocked-by-nonpayment'")
+        p(ng-bind-html="'PROJECT.BLOCKED_PROJECT.TO_UNBLOCK_CONTACT_SUPPORT' | translate")
