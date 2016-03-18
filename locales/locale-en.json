@@ -65,7 +65,8 @@
             "BUY": "Buy Plan",
             "CONTINUE": "Continue",
             "EVERY_YEAR": "Every year",
-            "EVERY_MONTH": "Every month"
+            "EVERY_MONTH": "Every month",
+            "TAXES": "Depending on your country there could be additional taxes"
         }
     },
 

@@ -94,6 +94,7 @@
         .number {
             @extend %xlarge;
         }
+
     }
     .pricing-secondary {
         color: $gray-light;
@@ -136,6 +137,9 @@
             @extend %bold;
             text-align: left;
         }
+    }
+    .plan-taxes {
+        color: $gray-light;
     }
     .interval-options {
         display: flex;

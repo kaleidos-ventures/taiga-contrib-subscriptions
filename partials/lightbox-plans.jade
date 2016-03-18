@@ -28,7 +28,7 @@ section.plans-container(ng-if="!vm.selectedPlan")
                     span.number {{project.amount_month}}
                     span.frequency(
                         ng-if="project.amount_month"
-                        ) /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
+                        ) /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}} 
 
                 .pricing-secondary(ng-if="project.amount_year")
                     span.currency $
@@ -108,11 +108,14 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
                     span.currency $
                     span.number {{vm.validPlan.amount_month}}
                     span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
+                    span.asterisk *
 
                 .pricing-secondary
                     span.currency $
                     span.number {{vm.validPlan.amount_year}}
                     span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
+                    
+        small.plan-taxes * {{'SUBSCRIPTIONS.SELECT_PLAN.TAXES' | translate}}
 
     .payment-interval
         p(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.INTERVAL' | translate")
