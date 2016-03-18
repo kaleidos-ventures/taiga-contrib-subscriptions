@@ -1,0 +1,20 @@
+div(ng-switch="vm.validNumberOfMemberships")
+    p(
+        ng-switch-when="true"
+        translate="{{vm.ownerMessage}}"
+        translate-values="{maxProjects: vm.maxProjects, currentProjects: vm.currentProjects}"
+    )
+    
+    .transfer-project-options
+
+        a.button.button-green(
+            ng-switch-when="true"
+            href="#"
+            title="{{'ADMIN.PROJECT_TRANSFER.CHANGE_MY_PLAN' | translate}}"
+            translate="ADMIN.PROJECT_TRANSFER.CHANGE_MY_PLAN"
+        )
+
+    p(
+        ng-switch-when="false"
+        translate="ADMIN.PROJECT_TRANSFER.CANT_BE_OWNED_BY_MEMBERSHIPS"
+    )
