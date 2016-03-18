@@ -35,6 +35,7 @@ class SubscriptionsAdmin
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
+        @._loadMetas()
         @._loadPlans()
 
         Object.defineProperty @, "myPlan", {

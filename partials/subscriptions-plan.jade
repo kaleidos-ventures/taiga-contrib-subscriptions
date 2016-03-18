@@ -42,7 +42,7 @@ aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.HELP.WHY")
     ul
         li(
-            translate="SUBSCRIPTIONS.HELP.NO_PROJECTS"
+            ng-bind-html="SUBSCRIPTIONS.HELP.NO_PROJECTS"
             translate-values="{name: vm.myRecommendedPlan.name}"
         )
         li(translate="SUBSCRIPTIONS.HELP.UPGRADE")
