@@ -98,5 +98,10 @@
     "WIZARD": {
         "CREATE_MORE_PROJECTS": "To create more, you should",
         "CHANGE_PLAN": "Change your plan"
+    },
+    "ADMIN": {
+        "MEMBERSHIPS": {
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project have <strong>{{members}}</strong> members, the max number. If you want to add more members Contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>."
+        }
     }
 }
