@@ -101,7 +101,12 @@
     },
     "ADMIN": {
         "MEMBERSHIPS": {
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project have <strong>{{members}}</strong> members, the max number. If you want to add more members Contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project have <strong>{{members}}</strong> members, the max number. If you want to add more members contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>."
+        }
+    },
+    "LIGHTBOX": {
+        "CREATE_MEMBER": {
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project only have <strong>{{maxMembers}}</strong> members.<br> If you want to add more members  contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>."
         }
     }
 }
