@@ -29,4 +29,4 @@ decorator = ($delegate) ->
 
     return $delegate
 
-window.addDecorator("tgLightboxAddMembersWarningMessage", decorator)
+window.addDecorator("tgLightboxAddMembersWarningMessageDirective", decorator)
