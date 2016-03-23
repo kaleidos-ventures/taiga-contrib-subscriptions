@@ -27,11 +27,11 @@ class SubscriptionsAdmin
         "lightboxService",
         "$translatePartialLoader",
         "$translate",
-        "ContribStripeService",
+        "ContribPaymentsService",
         "$tgConfirm"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader, @translate, @stripeService, @confirm) ->
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader, @translate, @paymentsService, @confirm) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
@@ -96,14 +96,14 @@ class SubscriptionsAdmin
         @.selectedPlan = false
         @lightboxService.open('tg-lb-plans')
 
-    changeStripeData: () ->
-        @stripeService.changeData({
+    changePaymentsData: () ->
+        @paymentsService.changeData({
             name: 'Taiga',
             description: "Change Payment Data", #LOCALIZE
-            onSuccess: @._onSuccessChangeStripeData.bind(this)
+            onSuccess: @._onSuccessChangePaymentsData.bind(this)
         })
 
-    _onSuccessChangeStripeData: (data) ->
+    _onSuccessChangePaymentsData: (data) ->
         @tgLoader.start()
 
         @subscriptionsService.selectMyPlan(data).then(@._onSuccessChangedData())

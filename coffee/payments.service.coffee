@@ -14,48 +14,38 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: stripe.service.coffee
+# File: payments.service.coffee
 ###
 
 module = angular.module('subscriptions')
 
-class ContribStripeService
+class ContribPaymentsService
     @.$inject = ["$tgConfig"]
 
     constructor: (@config) ->
 
     start: (options) ->
-        @.stripeHandler = null
-
-
-        ljs.load "https://checkout.stripe.com/checkout.js", =>
+        ljs.load "https://checkout.quaderno.io/checkout.js", =>
             options.onLoad()
 
-            key = @config.get("stripeKey")
+            key = @config.get("quadernoKey")
 
-            image = "/#{window._version}/images/taiga-contrib-subscriptions/images/#{options.plan.toLowerCase()}.png"
-            @.stripeHandler = StripeCheckout.configure({
+            @.quadernoHandler = QuadernoCheckout.configure({
                 key: key,
-                image: image,
                 locale: 'auto',
-                billingAddress: true,
-                panelLabel: 'Start Subscription', # LOCALIZE
-                token: (data) =>
-                    planName = options.plan.toLowerCase()
-                    planInterval = options.interval
-                    params = {
-                        'stripe_token': data.id
-                        'plan_id': planName + '-' + planInterval
-                    }
-
-                    options.onSuccess(params)
+                callback: (params) ->
+                    options.onSuccess({quaderno_token: params.details})
             })
 
-            @.stripeHandler.open({
-                name: options.name,
+            @.quadernoHandler.open({
+                type: 'subscription',
+                amount: options.amount,
+                plan: options.planId,
+                currency: options.currency,
                 description: options.description,
-                amount: options.amount
-            })
+                first_name: options.full_name,
+                email: options.email
+            });
 
     changeData: (options) ->
         ljs.load "https://checkout.stripe.com/checkout.js", =>
@@ -72,7 +62,6 @@ class ContribStripeService
                     params = {
                         'stripe_token': data.id
                     }
-                    console.log data
 
                     options.onSuccess(params)
             })
@@ -83,4 +72,4 @@ class ContribStripeService
                 amount: options.amount
             })
 
-module.service("ContribStripeService", ContribStripeService)
+module.service("ContribPaymentsService", ContribPaymentsService)

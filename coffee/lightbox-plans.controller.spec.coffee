@@ -50,11 +50,19 @@ describe "ContribLbPlans", ->
         }
         provide.value "$tgConfirm", mocks.tgConfirm
 
-    _stripeService = () ->
-        mocks.stripeService = {
+
+    _mockCurrentUserService = () ->
+        mocks.currentUserService = {
+            getUser: sinon.stub()
+        }
+
+        provide.value "tgCurrentUserService", mocks.currentUserService
+
+    _paymentsService = () ->
+        mocks.paymentsService = {
             start: sinon.stub()
         }
-        provide.value "ContribStripeService", mocks.stripeService
+        provide.value "ContribPaymentsService", mocks.paymentsService
 
     _mocks = () ->
         module ($provide) ->
@@ -63,7 +71,8 @@ describe "ContribLbPlans", ->
             _mockTgLoader()
             _mockTgConfirm()
             _mockLightboxService()
-            _stripeService()
+            _mockCurrentUserService()
+            _paymentsService()
 
             return null
 
@@ -112,7 +121,7 @@ describe "ContribLbPlans", ->
         expect(mocks.tgLoader.start).has.been.called
         expect(lbPlansCtrl._onSuccessSelectPlan).has.been.called
 
-    it "buy a Plan with Stripe", () ->
+    it "buy a Plan", () ->
         lbPlansCtrl = controller "ContribLbPlansController"
         lbPlansCtrl.validPlan = {
             name: 'name',
@@ -124,15 +133,19 @@ describe "ContribLbPlans", ->
         lbPlansCtrl.myPlan = {
             customer_id: 'patata'
         }
-        console.log lbPlansCtrl
 
         lbPlansCtrl._onSuccessBuyPlan = sinon.stub()
 
+        mocks.currentUserService.getUser.returns(Immutable.fromJS({
+            email: 'test@test.es',
+            full_name: 'full name'
+        }))
+
         lbPlansCtrl.buyPlan()
-        expect(lbPlansCtrl.loadingStripe).to.be.equal(true)
-        mocks.stripeService.start.yieldTo('onLoad');
-        expect(lbPlansCtrl.loadingStripe).to.be.equal(false)
-        mocks.stripeService.start.yieldTo('onSuccess');
+        expect(lbPlansCtrl.loadingPayments).to.be.equal(true)
+        mocks.paymentsService.start.yieldTo('onLoad');
+        expect(lbPlansCtrl.loadingPayments).to.be.equal(false)
+        mocks.paymentsService.start.yieldTo('onSuccess');
         expect(lbPlansCtrl._onSuccessBuyPlan).to.be.called
 
 

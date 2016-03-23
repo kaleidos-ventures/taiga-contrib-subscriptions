@@ -43,7 +43,7 @@ section.plans-container(ng-if="!vm.selectedPlan")
             )
             .plan-name(translate="SUBSCRIPTIONS.PLANS_SELECTOR.CUSTOM")
             .plan-contact(ng-bind-html="'SUBSCRIPTIONS.PLANS_SELECTOR.CONTACT' | translate")
-            
+
         .plan.plan-custom.highlighted-plan(ng-if="!vm.myRecommendedPlan && !vm.myPlan.current_plan.id_month")
             span.pill-plan(translate="SUBSCRIPTIONS.PLANS_SELECTOR.CURRENT")
             img.plan-image(
@@ -150,11 +150,11 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
             ng-if="vm.myPlan.customer_id"
             translate="SUBSCRIPTIONS.SELECT_PLAN.BUY"
             ng-click="vm.buyPlan()"
-            tg-loading="vm.loadingStripe"
+            tg-loading="vm.loadingPayments"
         )
         button.button-green.accept-plan(
             ng-if="!vm.myPlan.customer_id"
             translate="SUBSCRIPTIONS.SELECT_PLAN.CONTINUE"
             ng-click="vm.buyPlan()"
-            tg-loading="vm.loadingStripe"
+            tg-loading="vm.loadingPayments"
         )

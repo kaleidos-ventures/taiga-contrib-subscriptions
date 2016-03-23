@@ -66,11 +66,11 @@ describe "SubscriptionsAdmin", ->
         }
         provide.value "lightboxService", mocks.lightboxService
 
-    _stripeService = () ->
-        mocks.stripeService = {
+    _paymentsService = () ->
+        mocks.paymentsService = {
             changeData: sinon.stub()
         }
-        provide.value "ContribStripeService", mocks.stripeService
+        provide.value "ContribPaymentsService", mocks.paymentsService
 
     _mockTgConfirm = () ->
         mocks.tgConfirm = {
@@ -87,7 +87,7 @@ describe "SubscriptionsAdmin", ->
             _mockLightboxService()
             _mockTranslatePartialLoader()
             _mockTranslate()
-            _stripeService()
+            _paymentsService()
             _mockTgConfirm()
 
             return null
@@ -190,17 +190,17 @@ describe "SubscriptionsAdmin", ->
         expect(subscriptionsCtrl.loading).to.be.equal(false)
         expect(mocks.lightboxService.open).has.been.calledWith('tg-lb-plans')
 
-    it "change Stripe Data", () ->
+    it "change Payments Data", () ->
         subscriptionsCtrl = controller "ContribSubscriptionsController"
 
-        subscriptionsCtrl._onSuccessChangeStripeData = sinon.stub()
+        subscriptionsCtrl._onSuccessChangePaymentsData = sinon.stub()
 
-        subscriptionsCtrl.changeStripeData()
-        expect(mocks.stripeService.changeData).has.been.called
-        mocks.stripeService.changeData.yieldTo('onSuccess');
-        expect(subscriptionsCtrl._onSuccessChangeStripeData).to.be.called
+        subscriptionsCtrl.changePaymentsData()
+        expect(mocks.paymentsService.changeData).has.been.called
+        mocks.paymentsService.changeData.yieldTo('onSuccess');
+        expect(subscriptionsCtrl._onSuccessChangePaymentsData).to.be.called
 
-    it "changed Stripe Data", () ->
+    it "changed Payments Data", () ->
         subscriptionsCtrl = controller "ContribSubscriptionsController"
         data = {test: true}
 
@@ -208,7 +208,7 @@ describe "SubscriptionsAdmin", ->
 
         subscriptionsCtrl._onSuccessChangedData = sinon.stub()
 
-        subscriptionsCtrl._onSuccessChangeStripeData(data)
+        subscriptionsCtrl._onSuccessChangePaymentsData(data)
         expect(mocks.tgLoader.start).has.been.called
         expect(subscriptionsCtrl._onSuccessChangedData).to.be.called
 
