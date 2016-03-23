@@ -20,6 +20,9 @@ Download in your `app/modules/compile-modules` directory of Taiga front the `tai
   cd app/modules/compile-modules
   git clone git@github.com:taigaio/taiga-contrib-subscriptions.git
 ```
+
+Add the `stripeKey` and `quadernoKey` to your taiga-front `conf.json`
+
 Now when executing "gulp" or "gulp deploy" this plugin will be compiled and included too.
 
 
