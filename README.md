@@ -21,7 +21,7 @@ Download in your `app/modules/compile-modules` directory of Taiga front the `tai
   git clone git@github.com:taigaio/taiga-contrib-subscriptions.git
 ```
 
-Add the `stripeKey` and `quadernoKey` to your taiga-front `conf.json`
+Configure thu plugin (see _Settings_).
 
 Now when executing "gulp" or "gulp deploy" this plugin will be compiled and included too.
 
@@ -29,4 +29,13 @@ Now when executing "gulp" or "gulp deploy" this plugin will be compiled and incl
 Settings
 --------
 
-By default this plugin will use `http://localhost:5000/api/v1/` as the url for the subscriptions API, you can customize it by setting the subscriptionsAPI attribute in your dist/conf.json file
+In `dist/conf.json` you can customize this:
+
+- **_subscriptionsAPI_**
+:    by default this plugin will use (`http://localhost:5000/api/v1/` by default).
+
+- **_stripeKey_**
+:    the Public Key of an Stripe account.
+
+- **_quadernoKey_**
+:    the Public Key of a Quaderno account.
