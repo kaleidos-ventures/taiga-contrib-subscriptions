@@ -59,7 +59,7 @@ class LightboxPlansController
         @lightboxService.closeAll()
         @tgLoader.start()
 
-        @subscriptionsService.selectMyPlan(plan).then(@._onSuccessSelectPlan())
+        @subscriptionsService.selectMyPlan(plan).then(@._onSuccessSelectPlan.bind(this))
 
     buyPlan: () ->
         @.loadingPayments = true
@@ -90,7 +90,6 @@ class LightboxPlansController
             })
 
     _onSuccessSelectPlan: () ->
-
         @confirm.notify('success', 'OK, te has suscrito al plan correctamente', '', 5000)
 
         promise = @subscriptionsService.fetchMyPlans()
