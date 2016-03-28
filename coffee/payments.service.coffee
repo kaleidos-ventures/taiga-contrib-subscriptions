@@ -39,12 +39,13 @@ class ContribPaymentsService
 
             @.quadernoHandler.open({
                 type: 'subscription',
-                amount: options.amount,
+                amount: options.amount || 0,
                 plan: options.planId,
                 currency: options.currency,
                 description: options.description,
                 first_name: options.full_name,
-                email: options.email
+                email: options.email,
+                color: "#5b8200"
             });
 
     changeData: (options) ->
