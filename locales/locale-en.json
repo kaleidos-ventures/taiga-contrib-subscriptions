@@ -99,16 +99,14 @@
         "PROJECT_TRANSFER": {
             "CANT_BE_OWNED": "Right now you can't be the owner of a project with this characteristics. To be the owner of this project you should contact the admin staff and change your account conditions.",
             "CANT_BE_OWNED_BY_MEMBERSHIPS": "Right now you can't be the owner of a project with this characteristics. To be the owner of this project you should contact the administrators at <a href='mailto:support@taiga.io'>support@taiga.io</a>."
+        },
+        "MEMBERSHIPS": {
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project have <strong>{{members}}</strong> members, the max number. If you want to add more members contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>."
         }
     },
     "WIZARD": {
         "CREATE_MORE_PROJECTS": "To create more, you should",
         "CHANGE_PLAN": "Change your plan"
-    },
-    "ADMIN": {
-        "MEMBERSHIPS": {
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project have <strong>{{members}}</strong> members, the max number. If you want to add more members contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>."
-        }
     },
     "LIGHTBOX": {
         "CREATE_MEMBER": {
