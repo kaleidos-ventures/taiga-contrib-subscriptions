@@ -20,9 +20,9 @@
 module = angular.module('subscriptions')
 
 class ContribPaymentsService
-    @.$inject = ["$tgConfig"]
+    @.$inject = ["$tgConfig", "$translate"]
 
-    constructor: (@config) ->
+    constructor: (@config, @translate) ->
 
     start: (options) ->
         ljs.load "https://checkout.quaderno.io/checkout.js", =>
@@ -32,7 +32,7 @@ class ContribPaymentsService
 
             @.quadernoHandler = QuadernoCheckout.configure({
                 key: key,
-                locale: 'auto',
+                locale: @translate.use(),
                 callback: (params) ->
                     options.onSuccess({quaderno_token: params.details})
             })
@@ -55,7 +55,7 @@ class ContribPaymentsService
             @.stripeHandler = StripeCheckout.configure({
                 key: key,
                 image: image,
-                locale: 'auto',
+                locale: @translate.use(),
                 billingAddress: true,
                 panelLabel: 'Change data', # LOCALIZE
                 token: (data) =>
