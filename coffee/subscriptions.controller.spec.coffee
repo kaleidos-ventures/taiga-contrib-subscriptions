@@ -209,7 +209,7 @@ describe "SubscriptionsAdmin", ->
         mocks.paymentsService.changeData.yieldTo('onSuccess');
         expect(subscriptionsCtrl._onSuccessChangePaymentsData).to.be.called
 
-    it "changed Payments Data", () ->
+    it "changed Payments Data", (done) ->
         subscriptionsCtrl = controller "ContribSubscriptionsController"
         data = {test: true}
 
@@ -217,9 +217,10 @@ describe "SubscriptionsAdmin", ->
 
         subscriptionsCtrl._onSuccessChangedData = sinon.stub()
 
-        subscriptionsCtrl._onSuccessChangePaymentsData(data)
-        expect(mocks.tgLoader.start).has.been.called
-        expect(subscriptionsCtrl._onSuccessChangedData).to.be.called
+        subscriptionsCtrl._onSuccessChangePaymentsData(data).then () ->
+            expect(mocks.tgLoader.start).has.been.called
+            expect(subscriptionsCtrl._onSuccessChangedData).to.be.called
+            done()
 
     it "changed Taiga Data", (done) ->
         promise = mocks.contribSubscriptionsService.fetchMyPlans.promise().resolve()

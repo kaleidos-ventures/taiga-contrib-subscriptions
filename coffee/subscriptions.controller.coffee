@@ -107,7 +107,7 @@ class SubscriptionsAdmin
     _onSuccessChangePaymentsData: (data) ->
         @tgLoader.start()
 
-        @subscriptionsService.selectMyPlan(data).then(@._onSuccessChangedData())
+        @subscriptionsService.selectMyPlan(data).then(@._onSuccessChangedData)
 
     _onSuccessChangedData: () ->
         message = @translate.instant("SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA_SUCCESS")
