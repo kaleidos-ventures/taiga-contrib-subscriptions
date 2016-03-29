@@ -6,12 +6,14 @@ header
         svg.icon.icon-question
             use(xlink:href="#icon-question")
         span(translate="SUBSCRIPTIONS.PLAN_STARTING")
-        
+
 section.subscription-your-plan
     header
         h2.title(translate="SUBSCRIPTIONS.YOUR_RECOMMENDED_PLAN")
         .plan-options
+            // if currency is null that means it's a custom plan
             button.button-green(
+                ng-if="vm.myRecommendedPlan.recommended_plan.currency"
                 translate="SUBSCRIPTIONS.WANT_PLAN"
                 ng-click="vm.buyRecommendedPlan()"
                 tg-loading="vm.loadingRecommendedPlan"
@@ -41,13 +43,13 @@ section.subscription-your-plan
                 span.number {{vm.myRecommendedPlan.recommended_plan.amount_month}}
                 span.separator /
                 span.frequency(translate="SUBSCRIPTIONS.FREQUENCY_MONTH")
-            
+
             .pricing-secondary
                 span.currency $
                 span.number {{vm.myRecommendedPlan.recommended_plan.amount_year}}
                 span.separator /
                 span.frequency(translate="SUBSCRIPTIONS.FREQUENCY_YEAR")
-            
+
 aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.HELP.WHY")
     ul
