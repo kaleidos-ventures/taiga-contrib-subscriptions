@@ -31,7 +31,8 @@
         "PAYMENT_HISTORY": {
             "TITLE": "Payment History",
             "FREE": "Free until April, 30th",
-            "CHANGE_DATA": "Change payment data"
+            "CHANGE_DATA": "Change payment data",
+            "CHANGE_DATA_SUCCESS": "Ok, you changed your payment data successfully"
         },
         "PLANS_SELECTOR": {
             "TITLE": "What plan do you need?",
@@ -66,7 +67,8 @@
             "CONTINUE": "Continue",
             "EVERY_YEAR": "Every year",
             "EVERY_MONTH": "Every month",
-            "TAXES": "Depending on your country there could be additional taxes"
+            "TAXES": "Depending on your country there could be additional taxes",
+            "SUCCESS": "You subscribed a plan successfully"
         }
     },
 

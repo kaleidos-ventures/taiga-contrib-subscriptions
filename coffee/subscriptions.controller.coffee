@@ -97,9 +97,10 @@ class SubscriptionsAdmin
         @lightboxService.open('tg-lb-plans')
 
     changePaymentsData: () ->
+        description = @translate.instant("SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA")
         @paymentsService.changeData({
             name: 'Taiga',
-            description: "Change Payment Data", #LOCALIZE
+            description: description
             onSuccess: @._onSuccessChangePaymentsData.bind(this)
         })
 
@@ -109,7 +110,9 @@ class SubscriptionsAdmin
         @subscriptionsService.selectMyPlan(data).then(@._onSuccessChangedData())
 
     _onSuccessChangedData: () ->
-        @confirm.notify('success', 'OK, has cambiado tus datos correctamente', '', 5000)
+        message = @translate.instant("SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA_SUCCESS")
+
+        @confirm.notify('success', message, '', 5000)
 
         promise = @subscriptionsService.fetchMyPlans()
         promise.then () =>
