@@ -68,7 +68,9 @@
             "EVERY_YEAR": "Every year",
             "EVERY_MONTH": "Every month",
             "TAXES": "Depending on your country there could be additional taxes",
-            "SUCCESS": "You subscribed a plan successfully"
+            "SUCCESS": "You subscribed a plan successfully",
+            "START_SUBSCRIPTION": "Start subscription",
+            "PAY": "pay ${{usd_amount}} on may 1st 2016"
         }
     },
 

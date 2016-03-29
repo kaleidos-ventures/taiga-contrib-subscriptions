@@ -65,11 +65,14 @@ class LightboxPlansController
     buyPlan: () ->
         @.loadingPayments = true
         @.planId = null
+        amount = null
 
         if @.selectPlanInterval == 'year'
             @.planId = @.validPlan.id_year
+            amount = @.validPlan.amount_year
         else
             @.planId = @.validPlan.id_month
+            amount = @.validPlan.amount_month
 
         if @.myPlan && @.myPlan.customer_id?
             plan = {
@@ -79,9 +82,10 @@ class LightboxPlansController
             @._onSuccessBuyPlan(plan)
         else
             user = @currentUserService.getUser()
+
             @paymentsService.start({
                 description: @.validPlan.name + ' Plan',
-                amount: @.validPlan.amount,
+                amount: amount,
                 onLoad: () => @.loadingPayments = false
                 onSuccess: @._onSuccessBuyPlan.bind(this),
                 planId: @.planId,

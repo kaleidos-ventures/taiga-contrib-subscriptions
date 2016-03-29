@@ -37,15 +37,22 @@ class ContribPaymentsService
                     options.onSuccess({quaderno_token: params.details})
             })
 
+            panelLabel = @translate.instant('SUBSCRIPTIONS.SELECT_PLAN.START_SUBSCRIPTION')
+            panelLabel += '<br />'
+            panelLabel += '<span style="font-size:75%">'
+            panelLabel += @translate.instant('SUBSCRIPTIONS.SELECT_PLAN.PAY', {usd_amount: options.amount})
+            panelLabel += '</span>'
+
             @.quadernoHandler.open({
                 type: 'subscription',
-                amount: options.amount || 0,
+                amount: options.amount,
                 plan: options.planId,
                 currency: options.currency,
                 description: options.description,
                 first_name: options.full_name,
                 email: options.email,
-                color: "#5b8200"
+                color: "#5b8200",
+                panel_label: panelLabel
             });
 
     changeData: (options) ->
