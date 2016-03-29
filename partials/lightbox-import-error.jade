@@ -16,7 +16,7 @@ a.close(
                 translate-values="{{values}}"
             )
             p.description(
-                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PRIVATE_PROJECTS_SPACE.DESC" 
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PRIVATE_PROJECTS_SPACE.DESC"
                 translate-values="{{values}}"
             )
             div.options
@@ -45,15 +45,73 @@ a.close(
                 src="/#{v}/svg/icons/multi-block-project.svg"
             )
             h2.title(
-                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PRIVATE_PROJECTS_SPACE_MEMBERS.TITLE" 
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PRIVATE_PROJECTS_SPACE_MEMBERS.TITLE"
                 translate-values="{{values}}"
             )
             p.description(
-                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PRIVATE_PROJECTS_SPACE_MEMBERS.DESC" 
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PRIVATE_PROJECTS_SPACE_MEMBERS.DESC"
                 translate-values="{{values}}"
             )
             div.options
                 a.button-green(
                     tg-nav="user-settings-contrib:plugin='subscriptions'",
                     translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.CHANGE_PLAN",
+                )
+
+        div(ng-switch-when="public-space")
+            img(
+                src="/#{v}/svg/icons/project-limit.svg"
+            )
+
+            h2.title(
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PUBLIC_PROJECTS_SPACE.TITLE"
+                translate-values="{{values}}"
+            )
+            p.description(
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PUBLIC_PROJECTS_SPACE.DESC"
+                translate-values="{{values}}"
+            )
+            div.options
+                a.button-green(
+                    translate="COMMON.ACCEPT"
+                    ng-click="close()"
+                )
+
+        div(ng-switch-when="public-members")
+            img(
+                src="/#{v}/svg/icons/block-user.svg"
+            )
+
+            h2.title(
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PUBLIC_PROJECTS_MEMBERS.TITLE"
+                translate-values="{{values}}"
+            )
+            p.description(
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PROJECT_MEMBERS_DESC"
+                translate-values="{{values}}"
+            )
+            div.options
+                a.button-green(
+                    translate="COMMON.ACCEPT"
+                    ng-click="close()"
+                )
+
+
+        div(ng-switch-when="public-space-members")
+            img(
+                src="/#{v}/svg/icons/multi-block-project.svg"
+            )
+
+            h2.title(
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PUBLIC_PROJECTS_SPACE_MEMBERS.TITLE"
+                translate-values="{{values}}"
+            )
+            p.description(
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PUBLIC_PROJECTS_SPACE_MEMBERS.DESC"
+                translate-values="{{values}}"
+            )
+            div.options
+                a.button-green(
+                    translate="COMMON.ACCEPT"
+                    ng-click="close()"
                 )
