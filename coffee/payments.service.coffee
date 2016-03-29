@@ -66,7 +66,7 @@ class ContribPaymentsService
                 key: key,
                 image: image,
                 locale: @translate.use(),
-                billingAddress: true,
+                billingAddress: false,
                 panelLabel: label
                 token: (data) =>
                     params = {
