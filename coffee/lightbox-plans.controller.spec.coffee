@@ -64,6 +64,12 @@ describe "ContribLbPlans", ->
         }
         provide.value "ContribPaymentsService", mocks.paymentsService
 
+    _mockTgTranslate = () ->
+        mocks.tgTranslate = {
+            instant: sinon.stub()
+        }
+        provide.value "$translate", mocks.tgTranslate
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -73,6 +79,7 @@ describe "ContribLbPlans", ->
             _mockLightboxService()
             _mockCurrentUserService()
             _paymentsService()
+            _mockTgTranslate()
 
             return null
 
@@ -108,7 +115,7 @@ describe "ContribLbPlans", ->
         lbPlansCtrl.backToPLans()
         expect(lbPlansCtrl.selectedPlan).to.be.equal(false)
 
-    it "bought a plan", () ->
+    it "bought a plan", (done) ->
         lbPlansCtrl = controller "ContribLbPlansController"
         plan = {test: true}
 
@@ -116,10 +123,11 @@ describe "ContribLbPlans", ->
 
         lbPlansCtrl._onSuccessSelectPlan = sinon.stub()
 
-        lbPlansCtrl._onSuccessBuyPlan(plan)
-        expect(mocks.lightboxService.closeAll).has.been.called
-        expect(mocks.tgLoader.start).has.been.called
-        expect(lbPlansCtrl._onSuccessSelectPlan).has.been.called
+        lbPlansCtrl._onSuccessBuyPlan(plan).then () ->
+            expect(mocks.lightboxService.closeAll).has.been.called
+            expect(mocks.tgLoader.start).has.been.called
+            expect(lbPlansCtrl._onSuccessSelectPlan).has.been.called
+            done()
 
     it "buy a Plan", () ->
         lbPlansCtrl = controller "ContribLbPlansController"
@@ -152,8 +160,9 @@ describe "ContribLbPlans", ->
     it "bought a Plan success", (done) ->
         promise = mocks.contribSubscriptionsService.fetchMyPlans.promise().resolve()
         lbPlansCtrl = controller "ContribLbPlansController"
+        message = mocks.tgTranslate.instant.returns('Test')
 
         lbPlansCtrl._onSuccessSelectPlan().then () ->
-            expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'OK, te has suscrito al plan correctamente', '', 5000)
+            expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'Test', '', 5000)
             expect(mocks.tgLoader.pageLoaded).has.been.called
             done()

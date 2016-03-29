@@ -26,10 +26,11 @@ class LightboxPlansController
         "$tgConfirm",
         "lightboxService",
         "ContribPaymentsService",
-        "tgCurrentUserService"
+        "tgCurrentUserService",
+        "$translate"
     ]
 
-    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService, @paymentsService, @currentUserService) ->
+    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService, @paymentsService, @currentUserService, @translate) ->
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
         }
@@ -90,7 +91,8 @@ class LightboxPlansController
             })
 
     _onSuccessSelectPlan: () ->
-        @confirm.notify('success', 'OK, te has suscrito al plan correctamente', '', 5000)
+        message = @translate.instant("SUBSCRIPTIONS.SELECT_PLAN.SUCCESS")
+        @confirm.notify('success', message, '', 5000)
 
         promise = @subscriptionsService.fetchMyPlans()
         promise.then () =>

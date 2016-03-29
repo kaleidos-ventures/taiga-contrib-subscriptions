@@ -53,12 +53,14 @@ class ContribPaymentsService
             key = @config.get("stripeKey")
 
             image = "/#{window._version}/images/taiga-contrib-subscriptions/images/custom.png"
+
+            label = @translate.instant("SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA")
             @.stripeHandler = StripeCheckout.configure({
                 key: key,
                 image: image,
                 locale: @translate.use(),
                 billingAddress: true,
-                panelLabel: 'Change data', # LOCALIZE
+                panelLabel: label
                 token: (data) =>
                     params = {
                         'stripe_token': data.id
