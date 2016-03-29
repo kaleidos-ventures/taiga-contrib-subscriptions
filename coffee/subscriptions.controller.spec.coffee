@@ -78,6 +78,12 @@ describe "SubscriptionsAdmin", ->
         }
         provide.value "$tgConfirm", mocks.tgConfirm
 
+    _mockTgTranslate = () ->
+        mocks.tgTranslate = {
+            instant: sinon.stub()
+        }
+        provide.value "$translate", mocks.tgTranslate
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -89,6 +95,7 @@ describe "SubscriptionsAdmin", ->
             _mockTranslate()
             _paymentsService()
             _mockTgConfirm()
+            _mockTgTranslate()
 
             return null
 
@@ -103,12 +110,14 @@ describe "SubscriptionsAdmin", ->
     it "load metas", () ->
         subscriptionsCtrl = controller "ContribSubscriptionsController"
 
-        mocks.translate.instant.withArgs('SUBSCRIPTIONS.TITLE').returns('title')
-        mocks.translate.instant.withArgs('SUBSCRIPTIONS.SECTION_NAME').returns('section')
+        title = 'title'
+        description = 'description'
+
+        mocks.tgTranslate.instant.withArgs('SUBSCRIPTIONS.TITLE').returns(title)
+        mocks.tgTranslate.instant.withArgs('SUBSCRIPTIONS.SECTION_NAME').returns(description)
 
         subscriptionsCtrl._loadMetas()
-
-        expect(mocks.appMetaService.setAll).have.been.calledWith('title', 'section')
+        expect(mocks.appMetaService.setAll).have.been.calledWith(title, description)
 
     it "load User Plans", (done) ->
         promise = mocks.contribSubscriptionsService.fetchMyPlans.promise()
@@ -214,10 +223,11 @@ describe "SubscriptionsAdmin", ->
 
     it "changed Taiga Data", (done) ->
         promise = mocks.contribSubscriptionsService.fetchMyPlans.promise().resolve()
+        message = mocks.tgTranslate.instant.returns('Test')
 
         subscriptionsCtrl = controller "ContribSubscriptionsController"
 
         subscriptionsCtrl._onSuccessChangedData().then () ->
-            expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'OK, has cambiado tus datos correctamente', '', 5000)
+            expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'Test', '', 5000)
             expect(mocks.tgLoader.pageLoaded).has.been.called
             done()
