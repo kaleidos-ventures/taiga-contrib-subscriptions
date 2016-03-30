@@ -49,13 +49,13 @@ a.close(
                 translate-values="{{values}}"
             )
             p.description(
-                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PRIVATE_PROJECTS_SPACE_MEMBERS.DESC"
+                translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PROJECT_MEMBERS_DESC"
                 translate-values="{{values}}"
             )
             div.options
                 a.button-green(
-                    tg-nav="user-settings-contrib:plugin='subscriptions'",
-                    translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.CHANGE_PLAN",
+                    translate="COMMON.ACCEPT"
+                    ng-click="close()"
                 )
 
         div(ng-switch-when="public-space")
@@ -95,7 +95,6 @@ a.close(
                     translate="COMMON.ACCEPT"
                     ng-click="close()"
                 )
-
 
         div(ng-switch-when="public-space-members")
             img(
