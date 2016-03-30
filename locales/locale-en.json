@@ -7,7 +7,7 @@
         "YOUR_PLAN": "Your plan",
         "YOUR_RECOMMENDED_PLAN": "You might want to consider",
         "WANT_PLAN": "I want it!",
-        "UPDATE_PLAN": "Change my current plan",
+        "UPDATE_PLAN": "Change plan",
         "PRIVATE_PROJECTS_LIMIT": "Up to <strong>{{number}}</strong> private projects + Unlimited public projects!",
         "MEMBERS_LIMIT": "Up to <strong>{{number}}</strong> members per private project!",
         "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",

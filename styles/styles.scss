@@ -20,13 +20,16 @@
 .subscription-your-plan {
     @include plan;
     margin-bottom: 2rem;
+    .title {
+        @extend %larger;
+    }
     header {
         display: flex;
         justify-content: space-between;
         padding: .25rem 0;
     }
     button {
-        min-width: 150px;
+        min-width: 130px;
         text-align: center;
     }
 }

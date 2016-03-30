@@ -7,7 +7,7 @@
         "YOUR_PLAN": "Tu plan",
         "YOUR_RECOMMENDED_PLAN": "You might want to consider",
         "WANT_PLAN": "I want it!",
-        "UPDATE_PLAN": "Change my current plan",
+        "UPDATE_PLAN": "Change plan",
         "PRIVATE_PROJECTS_LIMIT": "Up to <strong>{{number}}</strong> private projects + Unlimited public projects!",
         "MEMBERS_LIMIT": "Up to <strong>{{number}}</strong> members per private project!",
         "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",
@@ -70,7 +70,7 @@
             "TAXES": "Depending on your country, there could be additional taxes",
             "SUCCESS": "Congratulations, you subscribed a plan successfully!",
             "START_SUBSCRIPTION": "Start subscription",
-            "PAY": "pay ${{usd_amount}} on may 1st 2016"
+            "PAY": "pay {{ amount }} on may 1st 2016"
         }
     },
     "PROJECT": {
