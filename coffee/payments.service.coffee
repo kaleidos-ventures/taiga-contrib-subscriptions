@@ -40,12 +40,12 @@ class ContribPaymentsService
             panelLabel = @translate.instant('SUBSCRIPTIONS.SELECT_PLAN.START_SUBSCRIPTION')
             panelLabel += '<br />'
             panelLabel += '<span style="font-size:75%">'
-            panelLabel += @translate.instant('SUBSCRIPTIONS.SELECT_PLAN.PAY', {usd_amount: options.amount})
+            panelLabel += @translate.instant('SUBSCRIPTIONS.SELECT_PLAN.PAY', {amount: '{{amount}}'})
             panelLabel += '</span>'
 
             @.quadernoHandler.open({
                 type: 'subscription',
-                amount: options.amount,
+                amount: options.amount * 100,
                 plan: options.planId,
                 currency: options.currency,
                 description: options.description,

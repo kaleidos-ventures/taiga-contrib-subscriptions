@@ -70,7 +70,7 @@
             "TAXES": "Depending on your country, there could be additional taxes ",
             "SUCCESS": "Congratulations, you subscribed a plan successfully!",
             "START_SUBSCRIPTION": "Start subscription",
-            "PAY": "pay ${{usd_amount}} on may 1st 2016"
+            "PAY": "pay {{ amount }} on may 1st 2016"
         }
     },
     "PROJECT": {
