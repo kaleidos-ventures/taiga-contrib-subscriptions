@@ -2,10 +2,6 @@ header
     h1
         span Taiga
         span.green {{vm.sectionName}}
-    p.admin-subtitle
-        svg.icon.icon-question
-            use(xlink:href="#icon-question")
-        span(translate="SUBSCRIPTIONS.PLAN_STARTING")
 
 section.subscription-your-plan
     header
@@ -63,7 +59,6 @@ aside.subscription-info
             translate="SUBSCRIPTIONS.HELP.NUM_PROJECTS_CUSTOM"
             translate-values="{private_num: '{{vm.myRecommendedPlan.current_counts.num_private_projects}}', public_num: '{{vm.myRecommendedPlan.current_counts.num_public_projects}}'}"
         )
-        li(translate="SUBSCRIPTIONS.HELP.SUBSCRIBE")
         li(translate="SUBSCRIPTIONS.HELP.PAYMENT")
         li(translate="SUBSCRIPTIONS.HELP.PUBLIC")
         li

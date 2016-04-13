@@ -5,15 +5,7 @@
     max-width: 650px;
     width: 100%;
     h1 {
-        margin-bottom: 0;
-    }
-    .admin-subtitle {
-        color: $gray-light;
-        svg {
-            @include svg-size(.9rem);
-            fill: currentColor;
-            margin-right: .5rem;
-        }
+        margin-bottom: 2rem;
     }
 }
 
@@ -52,10 +44,8 @@
     }
     a {
         color: $primary;
-    }
-    .change-payment-data {
         display: block;
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
     }
 }
 

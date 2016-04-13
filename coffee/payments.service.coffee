@@ -82,4 +82,17 @@ class ContribPaymentsService
                 amount: options.amount
             })
 
+    seeBilling: (options) ->
+        ljs.load "https://billing.quaderno.io/billing.js", =>
+
+            key = @config.get("quadernoKey")
+
+            @.quadernoBillingHandler = QuadernoBilling.configure({
+                key: key,
+                customer_id: options.secure_id,
+                editable: true
+            })
+
+            @.quadernoBillingHandler.open()
+
 module.service("ContribPaymentsService", ContribPaymentsService)

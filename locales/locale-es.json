@@ -3,7 +3,6 @@
         "TITLE": "Subscriptions - User Profile - Taiga",
         "SECTION_NAME": "Planes de Pago",
         "PLAN": "Plan",
-        "PLAN_STARTING": "Free until April 30th, 2016 - Billing starts May 1st, 2016",
         "YOUR_PLAN": "Tu plan",
         "YOUR_RECOMMENDED_PLAN": "You might want to consider",
         "WANT_PLAN": "I want it!",
@@ -20,25 +19,20 @@
             "FEW_PROJECTS": "You currently have {{private_num}} private projects so we believe that the {{name}} plan might work just fine for you.",
             "NUM_PROJECTS": "Since you currently have {{private_num}} private projects and {{public_num}} public projects we believe that the {{plan}} plan might be your best option.",
             "NUM_PROJECTS_CUSTOM": "Since you currently have {{private_num}} private projects and {{public_num}} public projects we believe that the Custom plan might be your best option.",
-            "SUBSCRIBE": "No matter which plan you subscribe to, you will continue to have full access to all of your projects for free until April 30th 2016.",
             "UPGRADE": "Making changes to your current plan is easy and can be done at any time!",
-            "ACTIVATION": "No matter which plan you subscribe to, you will continue to have full access to all of your projects for free until April 30th 2016. If you plan to have more than 1 private project after April 30, 2016,  you must select a payment plan before that date. You will not be charged until after April 30.",
             "PAYMENT": "If you have more than 1 private project and you haven't yet subscribed to a payment plan, your private projects will be temporarily blocked. You don't need to worry, they will not be deleted. Once you confirm a subscription plan, they will become accesible again.",
             "PUBLIC": "Please remember that public projects don't count towards paid plans.",
             "MORE_INFO_TITLE": "Frequently Asked Questions",
             "MORE_INFO": "More info (FAQ)"
         },
         "PAYMENT_HISTORY": {
-            "TITLE": "Payment History",
-            "FREE": "Free until April 30th",
+            "SEE_BILLING_DETAILS": "See billing details",
             "CHANGE_DATA": "Change payment details",
             "CHANGE_DATA_SUCCESS": "Great! You've sucessfully changed your payment details"
         },
         "PLANS_SELECTOR": {
             "TITLE": "Which plan works best for you?",
-            "FREE": "All plans are free until <strong>April 30th</strong>",
             "CURRENT": "Current Plan",
-            "RECOMMENDED": "Recommended Plan",
             "CUSTOM": "Custom",
             "CONTACT": "If you think you might need more than 25 members on any given project, we have custom plans that will do the trick. Simply contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>"
         },
@@ -56,9 +50,8 @@
         },
         "SELECT_PLAN": {
             "TITLE": "Subscribe to a Plan",
-            "SUBTITLE": "You will not be charged for more than one private project until <strong>April, 30th</strong>.",
             "YOUR_NEW_PLAN": "Your new Plan",
-            "INTERVAL": "<strong>Starting from April 30th, 2016</strong> How would you like to be charged?",
+            "INTERVAL": "How would you like to be charged?",
             "PAY_MONTHLY": "Monthly",
             "PAY_YEARLY": "Yearly",
             "BACK": "Back",

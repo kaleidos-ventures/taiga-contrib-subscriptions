@@ -2,10 +2,6 @@ header
     h1
         span Taiga
         span.green {{vm.sectionName}}
-    p.admin-subtitle
-        svg.icon.icon-question
-            use(xlink:href="#icon-question")
-        span(translate="SUBSCRIPTIONS.PLAN_STARTING")
 
 section.subscription-your-plan
     header
@@ -45,21 +41,26 @@ section.subscription-your-plan
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
 
 aside.subscription-info
-    h3.title(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.TITLE")
-    p(translate="SUBSCRIPTIONS.PAYMENT_HISTORY.FREE")
-    a.change-payment-data(
-        href=""
-        title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA' | translate}}"
-        translate="SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA"
-        ng-click="vm.changePaymentsData()"
-    )
-
     a(
         href="https://taiga.io/support/payment-process/"
         title="{{'SUBSCRIPTIONS.HELP.MORE_INFO_TITLE' | translate}}"
         target="_blank"
         translate="SUBSCRIPTIONS.HELP.MORE_INFO"
     )
+    a.change-payment-data(
+        href=""
+        title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA' | translate}}"
+        translate="SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA"
+        ng-click="vm.changePaymentsData()"
+    )
+    a.see-billing-data(
+        href=""
+        title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.SEE_BILLING_DETAILS' | translate}}"
+        translate="SUBSCRIPTIONS.PAYMENT_HISTORY.SEE_BILLING_DETAILS"
+        ng-click="vm.seeBillingDetails()"
+    )
+
+
 
 tg-lb-plans.lightbox.lightbox-plans.lightbox-generic-form(
     selected-plan="vm.selectedPlan"

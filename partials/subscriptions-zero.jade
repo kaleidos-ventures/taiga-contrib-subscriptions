@@ -2,11 +2,7 @@ header
     h1
         span Taiga
         span.green {{vm.sectionName}}
-    p.admin-subtitle
-        svg.icon.icon-question
-            use(xlink:href="#icon-question")
-        span(translate="SUBSCRIPTIONS.PLAN_STARTING")
-        
+
 section.subscription-your-plan
     header
         h2.title(translate="SUBSCRIPTIONS.YOUR_PLAN")
@@ -31,12 +27,12 @@ section.subscription-your-plan
                 span.currency $
                 span.number {{vm.myRecommendedPlan.recommended_plan.amount_month}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
-            
+
             .pricing-secondary
                 span.currency $
                 span.number {{vm.myRecommendedPlan.recommended_plan.amount_year}}
                 span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
-            
+
 aside.subscription-info
     h3.title(translate="SUBSCRIPTIONS.HELP.WHY")
     ul
@@ -51,7 +47,6 @@ aside.subscription-info
             translate-values="{private_num: '{{vm.myRecommendedPlan.current_counts.num_private_projects}}', name: '{{vm.myRecommendedPlan.recommended_plan.name}}'}"
         )
         li(translate="SUBSCRIPTIONS.HELP.UPGRADE")
-        li(translate="SUBSCRIPTIONS.HELP.ACTIVATION")
         li(translate="SUBSCRIPTIONS.HELP.PUBLIC")
         li
             a(
