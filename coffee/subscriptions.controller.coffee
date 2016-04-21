@@ -104,6 +104,12 @@ class SubscriptionsAdmin
             onSuccess: @._onSuccessChangePaymentsData.bind(this)
         })
 
+    seeBillingDetails: () ->
+        secure_id = @.myPlan.secure_id
+        @paymentsService.seeBilling({
+            secure_id: secure_id
+        })
+
     _onSuccessChangePaymentsData: (data) ->
         @tgLoader.start()
 

@@ -44,14 +44,21 @@ class LightboxPlansController
         }
 
     selectPLan: (project) ->
-        @.selectPlanInterval = 'month'
-
+        @.invalidInterval = null
+        @.selectPlanInterval = "month"
         if !project.is_applicable
             @.selectedPlan = 'invalid'
             @.invalidPlan = project
         else
             @.selectedPlan = 'valid'
             @.validPlan = project
+            if @.myPlan && @.validPlan.name == @.myPlan.current_plan.name
+                if @.myPlan.interval == "month"
+                    @.invalidInterval = "month"
+                    @.selectPlanInterval = "year"
+                else if @.myPlan.interval == "year"
+                    @.invalidInterval = "year"
+                    @.selectPlanInterval = "month"
 
     backToPLans: () ->
         @.selectedPlan = false

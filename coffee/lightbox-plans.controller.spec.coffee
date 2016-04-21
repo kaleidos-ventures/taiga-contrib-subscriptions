@@ -100,14 +100,63 @@ describe "ContribLbPlans", ->
         expect(lbPlansCtrl.selectedPlan).to.be.equal('invalid')
         expect(lbPlansCtrl.invalidPlan).to.be.eql(project)
 
-    it "select a valid Plan", () ->
+    it "select a valid month Plan", () ->
         lbPlansCtrl = controller "ContribLbPlansController"
-        project = {is_applicable: true}
+        project = {
+            is_applicable: true
+        }
+
+        mocks.contribSubscriptionsService.myPlan = {
+            current_plan: {
+                name: 'plan month',
+                interval: 'month'
+            }
+        }
 
         lbPlansCtrl.selectPLan(project)
         expect(lbPlansCtrl.selectPlanInterval).to.be.equal('month')
         expect(lbPlansCtrl.selectedPlan).to.be.equal('valid')
         expect(lbPlansCtrl.validPlan).to.be.eql(project)
+
+    it "select same plan monthly", () ->
+        lbPlansCtrl = controller "ContribLbPlansController"
+        project = {
+            is_applicable: true
+            name: 'Sprout'
+        }
+
+        mocks.contribSubscriptionsService.myPlan = {
+            interval: 'month',
+            current_plan: {
+                name: 'Sprout'
+            }
+        }
+
+        lbPlansCtrl.selectPLan(project)
+        expect(lbPlansCtrl.selectedPlan).to.be.equal('valid')
+        expect(lbPlansCtrl.validPlan).to.be.eql(project)
+        expect(lbPlansCtrl.invalidInterval).to.be.equal('month')
+        expect(lbPlansCtrl.selectPlanInterval).to.be.equal('year')
+
+    it "select same plan yearly", () ->
+        lbPlansCtrl = controller "ContribLbPlansController"
+        project = {
+            is_applicable: true
+            name: 'Sprout'
+        }
+
+        mocks.contribSubscriptionsService.myPlan = {
+            interval: 'year',
+            current_plan: {
+                name: 'Sprout'
+            }
+        }
+
+        lbPlansCtrl.selectPLan(project)
+        expect(lbPlansCtrl.selectedPlan).to.be.equal('valid')
+        expect(lbPlansCtrl.validPlan).to.be.eql(project)
+        expect(lbPlansCtrl.invalidInterval).to.be.equal('year')
+        expect(lbPlansCtrl.selectPlanInterval).to.be.equal('month')
 
     it "back to plans", () ->
         lbPlansCtrl = controller "ContribLbPlansController"

@@ -69,6 +69,7 @@ describe "SubscriptionsAdmin", ->
     _paymentsService = () ->
         mocks.paymentsService = {
             changeData: sinon.stub()
+            seeBilling: sinon.stub()
         }
         provide.value "ContribPaymentsService", mocks.paymentsService
 
@@ -232,3 +233,13 @@ describe "SubscriptionsAdmin", ->
             expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'Test', '', 5000)
             expect(mocks.tgLoader.pageLoaded).has.been.called
             done()
+
+    it "see Billing details", () ->
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+
+        subscriptionsCtrl.myPlan = {
+            secure_id: 'secure_id'
+        }
+
+        subscriptionsCtrl.seeBillingDetails()
+        expect(mocks.paymentsService.seeBilling).has.been.calledWith(subscriptionsCtrl.myPlan)

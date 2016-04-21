@@ -10,18 +10,8 @@
         flex-basis: 560px;
         width: 560px;
     }
-    .close {
-        @include svg-size(2.5rem);
-    }
     .title {
-        margin-bottom: 0;
-    }
-    .subtitle {
-        @extend %large;
-        @extend %light;
-        display: block;
-        line-height: 2rem;
-        text-align: center;
+        margin-bottom: 2rem;
     }
 }
 
@@ -127,8 +117,8 @@
 }
 
 .valid-plan {
-    .title {
-        margin-bottom: 0;
+    .plan-title {
+        @extend %larger;
     }
     .plan {
         @include plan;
@@ -153,6 +143,13 @@
             +label {
                 background: $primary-light;
                 color: $white;
+            }
+        }
+        &:disabled {
+            +label {
+                background: $whitish;
+                color: $gray-light;
+                cursor: not-allowed;
             }
         }
     }
