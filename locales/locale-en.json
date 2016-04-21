@@ -108,5 +108,19 @@
         "CREATE_MEMBER": {
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project currently has <strong>{{members}}</strong> members, which is the maximum allowed. If you would like to add more members, please contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>."
         }
+    },
+    "PAYMENT_WARNING": {
+        "TITLE": "Important notice",
+        "CONFIRM": "OK, GOT IT!",
+        "OWNER": {
+            "TEXT1": "Unless action is taken, starting May 3rd you will not have access to this project! This Project's Owner has not yet subscribed to a Taiga paid plan.",
+            "TEXT2": "To ensure continued access, the Project Owner can either subscribe to a paid plan or continue working for free by marking the project as \"public\". <br/> To see who is your designated Project Owner, go to Team and locate the name of the person flagged with a small green Taiga.io icon.",
+            "TEXT3": "Please contact <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a> with any questions. For information regarding payment plans click here (<a href='https://taiga.io/support/payment-process/'>https://taiga.io/support/payment-process/</a>)"
+        },
+        "MEMBER": {
+            "TEXT1": "As part of the process of upgrading to Taiga 2.0, Project Owners of Private Projects are required to subscribe to a paid plan in accordance with the number of private projects they own. The project <strong>{{project}}</strong> of which you are a member is not currently covered by a subscription plan. Project Owners have sereval options to remedy this, including options to continue using Taiga as a free service or subscribe to a paid plan.",
+            "TEXT2": "We would like to enlist your help in a shared effort to avoid service interruption or inconveniences by helping us make sure that the project owners of your projects are aware of this important milestone. Your designated Project Owner is identifiable by going to the Team section and locating the name of the person flagged with a small green Taiga.io icon.",
+            "TEXT3": "If you have any questions, please contact <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>"
+        }
     }
 }

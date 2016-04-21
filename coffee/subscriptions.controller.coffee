@@ -25,14 +25,12 @@ class SubscriptionsAdmin
         "ContribSubscriptionsService",
         "tgLoader",
         "lightboxService",
-        "$translatePartialLoader",
         "$translate",
         "ContribPaymentsService",
         "$tgConfirm"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader, @translate, @paymentsService, @confirm) ->
-        @translatePartialLoader.addPart('taiga-contrib-subscriptions')
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translate, @paymentsService, @confirm) ->
 
     init: ->
         @._loadMetas()
