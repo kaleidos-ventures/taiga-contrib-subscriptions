@@ -1,0 +1,22 @@
+section
+    tg-svg.lb-icon(svg-icon="icon-exclamation")
+
+    h2.title(translate="PAYMENT_WARNING.TITLE")
+
+    div(ng-if="i_am_owner")
+        p.message(translate="PAYMENT_WARNING.OWNER.TEXT1")
+        p.message(translate="PAYMENT_WARNING.OWNER.TEXT2")
+        p.message(translate="PAYMENT_WARNING.OWNER.TEXT3")
+
+    div(ng-if="!i_am_owner")
+        p.message(translate="PAYMENT_WARNING.MEMBER.TEXT1", translate-values="{'project': projectName}")
+        p.message(translate="PAYMENT_WARNING.MEMBER.TEXT2")
+        p.message(translate="PAYMENT_WARNING.MEMBER.TEXT3")
+
+    .options
+        a.button-green(
+            ng-click="close()"
+            href=""
+            title="{{'PAYMENT_WARNING.CONFIRM' | translate}}"
+        )
+            span(translate="PAYMENT_WARNING.CONFIRM")

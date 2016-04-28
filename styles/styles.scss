@@ -55,3 +55,15 @@
         padding: .75rem;
     }
 }
+
+.lightbox-payments-warning {
+    section {
+        width: 650px;
+        a {
+            color: $primary-light;
+        }
+        p:last-child {
+            margin-bottom: 2.5rem;
+        }
+    }
+}
