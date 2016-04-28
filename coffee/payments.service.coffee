@@ -52,7 +52,8 @@ class ContribPaymentsService
                 first_name: options.full_name,
                 email: options.email,
                 color: "#5b8200",
-                panel_label: panelLabel
+                panel_label: panelLabel,
+                billing_address: true
             });
 
     changeData: (options) ->
