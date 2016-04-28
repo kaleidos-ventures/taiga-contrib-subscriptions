@@ -26,8 +26,18 @@ section.subscription-your-plan
         .plan-data
             .plan-name {{vm.myPlan.current_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}
             ul.plan-info
-                li(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myPlan.current_plan.private_projects}")
-                li(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
+                li(
+                    ng-if="vm.myPlan.current_plan.private_projects"
+                    ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myPlan.current_plan.private_projects}")
+                li(
+                    ng-if="!vm.myPlan.current_plan.private_projects"
+                    translate="SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT_UNLIMITED")
+                li(
+                    ng-if="vm.myPlan.current_plan.project_members"
+                    ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
+                li(
+                    ng-if="!vm.myPlan.current_plan.project_members"
+                    translate="SUBSCRIPTIONS.MEMBERS_LIMIT_UNLIMITED")
 
         .plan-pricing
             .pricing-primary(ng-if="vm.myPlan.interval == 'month'")
