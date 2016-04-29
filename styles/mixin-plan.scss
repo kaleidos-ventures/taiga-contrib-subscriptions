@@ -13,11 +13,11 @@
         width: 120px;
     }
     .plan-name {
-        @extend %larger;
+        @include font-size(larger);
         margin-bottom: 1rem;
     }
     .plan-info {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         li {
             line-height: 1.2;
@@ -38,23 +38,23 @@
         margin-left: auto;
     }
     .pricing-primary {
-        @extend %light;
+        @include font-type(light);
         .currency {
-            @extend %xlarge;
+            @include font-size(xlarge);
             vertical-align: top;
         }
         .number {
-            @extend %gigantic;
+            @include font-size(gigantic);
         }
         .asterisk {
-            @extend %large;
+            @include font-size(large);
             bottom: .5rem;
             color: $gray-light;
             position: relative;
         }
     }
     .pricing-secondary {
-        @extend %light;
+        @include font-type(light);
         color: $gray-light;
         .currency {
             margin-right: .2rem;
