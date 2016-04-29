@@ -46,7 +46,7 @@
         }
     }
     .pill-plan {
-        @extend %small;
+        @include font-size(small);
         background: $gray-light;
         color: $white;
         left: calc(50% - 4rem);
@@ -62,8 +62,8 @@
         width: 70px;
     }
     .plan-name {
-        @extend %xlarge;
-        @extend %light;
+        @include font-size(xlarge);
+        @include font-type(light);
         flex-basis: 120px;
         flex-grow: 0;
         flex-shrink: 0;
@@ -76,13 +76,13 @@
         text-align: left;
     }
     .pricing-primary {
-        @extend %light;
+        @include font-type(light);
         .currency {
-            @extend %large;
+            @include font-size(large);
             vertical-align: top;
         }
         .number {
-            @extend %xlarge;
+            @include font-size(xlarge);
         }
 
     }
@@ -109,7 +109,7 @@
         }
     }
     .accept-invalid-plan {
-        @extend %large;
+        @include font-size(large);
         display: block;
         margin: 2rem 5rem 0;
         width: calc(100% - 10rem);
@@ -118,13 +118,13 @@
 
 .valid-plan {
     .plan-title {
-        @extend %larger;
+        @include font-size(larger);
     }
     .plan {
         @include plan;
         .plan-title {
-            @extend %large;
-            @extend %bold;
+            @include font-size(large);
+            @include font-type(bold);
             text-align: left;
         }
     }
@@ -154,8 +154,7 @@
         }
     }
     .project-interval-button {
-        @extend %trans-button;
-        @extend %large;
+        @include font-size(large);
         border: 0;
         display: block;
         text-align: center;
@@ -166,16 +165,14 @@
         margin-top: 3rem;
     }
     .back {
-        @extend %trans-button;
-        @extend %large;
+        @include font-size(large);
         color: $gray-light;
         flex: 1;
         padding: 12px;
         text-align: center;
     }
     .accept-plan {
-        @extend %button-green;
-        @extend %large;
+        @include font-size(large);
         display: block;
         flex: 4;
         margin-right: 10rem;

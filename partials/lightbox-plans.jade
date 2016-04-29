@@ -147,7 +147,7 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
                     value = 'month'
                     ng-disabled="vm.invalidInterval == 'month'"
                 )
-                label.project-interval-button(for="project-interval-monthly") {{'SUBSCRIPTIONS.SELECT_PLAN.EVERY_MONTH' | translate}}
+                label.project-interval-button.trans-button(for="project-interval-monthly") {{'SUBSCRIPTIONS.SELECT_PLAN.EVERY_MONTH' | translate}}
             fieldset
                 input.project-interval(
                     type="radio"
@@ -157,10 +157,10 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
                     ng-disabled="vm.invalidInterval == 'year'"
                     value = 'year'
                 )
-                label.project-interval-button(for="project-interval-yearly") {{'SUBSCRIPTIONS.SELECT_PLAN.EVERY_YEAR' | translate}}
+                label.project-interval-button.trans-button(for="project-interval-yearly") {{'SUBSCRIPTIONS.SELECT_PLAN.EVERY_YEAR' | translate}}
 
     .payment-options
-        a.back(
+        a.back.trans-button(
             href=""
             ng-title="SUBSCRIPTIONS.SELECT_PLAN.BACK_TITLE | translate"
             translate="SUBSCRIPTIONS.SELECT_PLAN.BACK"

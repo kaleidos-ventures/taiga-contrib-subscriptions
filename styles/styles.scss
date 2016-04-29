@@ -13,7 +13,7 @@
     @include plan;
     margin-bottom: 2rem;
     .title {
-        @extend %larger;
+        @include font-size(larger);
     }
     header {
         display: flex;
@@ -28,8 +28,8 @@
 
 .subscription-info {
     .title {
-        @extend %large;
-        @extend %bold;
+        @include font-size(large);
+        @include font-type(bold);
         margin-bottom: 1rem;
     }
     ul {
