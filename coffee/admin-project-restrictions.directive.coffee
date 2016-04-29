@@ -22,13 +22,13 @@
 decorator = ($delegate) ->
     directive = $delegate[0]
 
-    directive.controller = (translatePartialLoader) ->
+    controller = (translatePartialLoader) ->
         translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
-    directive.controller.$inject = ["$translatePartialLoader"]
+    directive.controller = ["$translatePartialLoader", controller]
 
     directive.templateUrl = "compile-modules/taiga-contrib-subscriptions/partials/admin-project-restrictions.html"
 
     return $delegate
 
-window.addDecorator("tgAdminProjectRestrictionsDirective", decorator)
+window.addDecorator("tgAdminProjectRestrictionsDirective", ["$delegate", decorator])
