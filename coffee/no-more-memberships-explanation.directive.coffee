@@ -22,11 +22,11 @@
 decorator = ($delegate) ->
     directive = $delegate[0]
 
-    directive.controller = (translatePartialLoader) ->
+    controller = (translatePartialLoader) ->
         translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
-    directive.controller.$inject = ["$translatePartialLoader"]
+    directive.controller = ["$translatePartialLoader", controller]
 
     return $delegate
 
-window.addDecorator("tgNoMoreMembershipsExplanationDirective", decorator)
+window.addDecorator("tgNoMoreMembershipsExplanationDirective", ["$delegate", decorator])
