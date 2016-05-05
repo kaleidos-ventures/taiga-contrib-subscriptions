@@ -65,7 +65,7 @@
             "TAXES": "Depending on your country, we may be required to charge sales tax.",
             "SUCCESS": "Congratulations, you successfully subscribed to a payment plan!",
             "START_SUBSCRIPTION": "Start subscription",
-            "PAY": "pay {{ amount }} on may 1st 2016"
+            "PAY": "Pay {{ amount }}"
         }
     },
     "PROJECT": {
