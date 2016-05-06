@@ -1,4 +1,12 @@
-p(ng-if="!vm.project.get('i_am_owner')") {{'PROJECT.BLOCKED_PROJECT.THIS_PROJECT_IS_BLOCKED' | translate}}
+div(ng-if="!vm.project.get('i_am_owner')")
+    p {{'PROJECT.BLOCKED_PROJECT.THIS_PROJECT_IS_BLOCKED' | translate}}
+    p
+        a.check-plans.button-green(
+            translate="PROJECT.BLOCKED_PROJECT.TO_UNBLOCK_PROJECT_MEMBER",
+            target="_blank",
+            href="https://tree.taiga.io/support/subscription-and-plans/payment-process-faqs/#q.-why-is-my-project-blocked?"
+        )
+
 
 div(ng-if="vm.project.get('i_am_owner')")
     div(ng-if="vm.project.get('blocked_code') == 'blocked-by-nonpayment'")
