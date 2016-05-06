@@ -73,7 +73,8 @@
             "ITS_ONLY_TEMPORAL": "Don't worry, it should be temporary",
             "TO_UNBLOCK_CHECK_YOUR_PLAN": "To unblock projects, first subscribe to a payment plan that allows at least as many private projects as you have currently",
             "TO_UNBLOCK_CONTACT_SUPPORT": "To unblock your projects please contact with <a href=\"mailto:support@taiga.io\" title=\"support\">support@taiga.io</a>",
-            "CHECK_PLANS": "Check plans"
+            "CHECK_PLANS": "Check plans",
+            "TO_UNBLOCK_PROJECT_MEMBER": "Why is my project blocked?"
         },
         "IMPORT": {
             "PROJECT_RESTRICTIONS": {
