@@ -1,9 +1,9 @@
 {
     "SUBSCRIPTIONS": {
         "TITLE": "Subscriptions - User Profile - Taiga",
-        "SECTION_NAME": "Planes de Pago",
+        "SECTION_NAME": "Paid Plans",
         "PLAN": "Plan",
-        "YOUR_PLAN": "Tu plan",
+        "YOUR_PLAN": "Your plan",
         "YOUR_RECOMMENDED_PLAN": "You might want to consider",
         "WANT_PLAN": "I want it!",
         "UPDATE_PLAN": "Change plan",
@@ -78,7 +78,7 @@
         },
         "IMPORT": {
             "PROJECT_RESTRICTIONS": {
-                "CHANGE_PLAN": "Cambiar de plan",
+                "CHANGE_PLAN": "Change plan",
                 "PROJECT_MEMBERS_DESC": "The project you are trying to import has {{members}} members, unfortunately, your current plan allows for a maximum of  {{max_memberships}} members per project. If you would like to add more users please contact the administrator at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Unfortunately you current setup doesn't allow for more private projects",
