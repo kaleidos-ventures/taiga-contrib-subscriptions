@@ -54,7 +54,7 @@ class ContribPaymentsService
                 color: "#5b8200",
                 panel_label: panelLabel,
                 billing_address: true
-            });
+            })
 
     changeData: (options) ->
         ljs.load "https://checkout.stripe.com/checkout.js", =>

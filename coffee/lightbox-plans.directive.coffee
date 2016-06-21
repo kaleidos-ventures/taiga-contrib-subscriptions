@@ -20,8 +20,6 @@
 module = angular.module('subscriptions')
 
 LightboxPlanDirective = (lightboxService) ->
-    link = (scope, el, attrs) ->
-
     return {
         scope: {
             validPlan: "=",
@@ -32,7 +30,6 @@ LightboxPlanDirective = (lightboxService) ->
         controller: 'ContribLbPlansController',
         controllerAs: 'vm',
         templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/lightbox-plans.html',
-        link: link
     }
 
 LightboxPlanDirective.$inject = [

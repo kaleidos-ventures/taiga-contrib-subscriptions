@@ -20,7 +20,7 @@
 QuadernoBillingDirective = ($compile) ->
     link = (scope, element, attrs) ->
         attrs.$observe 'label', (value) ->
-            sc = document.createElement('script');
+            sc = document.createElement('script')
 
             sc.setAttribute('src','https://billing.quaderno.io/billing.js')
             sc.setAttribute('data-key', attrs.key)

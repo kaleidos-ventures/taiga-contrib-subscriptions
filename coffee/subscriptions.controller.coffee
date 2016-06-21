@@ -31,7 +31,8 @@ class SubscriptionsAdmin
         "$tgConfirm"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader, @translate, @paymentsService, @confirm) ->
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader,
+                  @translate, @paymentsService, @confirm) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->

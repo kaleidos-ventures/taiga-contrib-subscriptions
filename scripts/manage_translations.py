@@ -37,7 +37,7 @@ def fetch(resources=None, languages=None):
     """
     if not resources:
         if languages is None:
-            call("tx pull -f --minimum-perc=5", shell=True)
+            call("tx pull -f", shell=True)
         else:
             for lang in languages:
                 call("tx pull -f -l {lang}".format(lang=lang), shell=True)
@@ -45,7 +45,7 @@ def fetch(resources=None, languages=None):
     else:
         for resource in resources:
             if languages is None:
-                call("tx pull -r {res} -f --minimum-perc=5".format(res=_tx_resource_for_name(resource)),
+                call("tx pull -r {res} -f ".format(res=_tx_resource_for_name(resource)),
                      shell=True)
             else:
                 for lang in languages:
