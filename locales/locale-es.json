@@ -36,7 +36,7 @@
             "TITLE": "Which plan works best for you?",
             "CURRENT": "Current Plan",
             "CUSTOM": "Custom",
-            "CONTACT": "If you think you might need more than 25 members on any given project, we have custom plans that will do the trick. Simply contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>"
+            "CONTACT": "If you need a paid plan allowing for more projects or more members per project contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a> for further information."
         },
         "DOWNGRADE": {
             "TITLE": "Downgrade",
