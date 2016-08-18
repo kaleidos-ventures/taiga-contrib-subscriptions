@@ -48,7 +48,7 @@
             "MORE_PROJECTS_OPTION3": "Or a combination of the above options",
             "MORE_MEMBERS": "If you have more than {{members}} members per private project",
             "MORE_MEMBERS_OPTION1": "Have a maximum of {{members}} members for all your private projects",
-            "ACCEPT": "OK, understood"
+            "ACCEPT": "Ok, entendido"
         },
         "SELECT_PLAN": {
             "TITLE": "Subscribe to a Plan",
@@ -58,8 +58,8 @@
             "PAY_YEARLY": "Yearly",
             "BACK": "Back",
             "BACK_TITLE": "Back to Plan selection",
-            "BUY": "Buy Plan",
-            "CONTINUE": "Continue",
+            "BUY": "Comprar Plan",
+            "CONTINUE": "Continuar",
             "EVERY_YEAR": "Every year",
             "EVERY_MONTH": "Every month",
             "TAXES": "Depending on your country, we may be required to charge sales tax.",
@@ -109,7 +109,7 @@
     },
     "LIGHTBOX": {
         "CREATE_MEMBER": {
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project currently has <strong>{{maxMembers}}</strong> members, which is the maximum allowed. If you would like to add more members, please contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you need more, please consider a paid plan and if you already have one contact us at <a href='mailto:support@taiga.io' title='Contact Us at support@taiga.io'>support@taiga.io</a>."
         }
     }
 }
