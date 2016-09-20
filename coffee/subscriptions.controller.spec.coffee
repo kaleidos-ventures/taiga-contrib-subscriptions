@@ -207,7 +207,7 @@ describe "SubscriptionsAdmin", ->
 
         subscriptionsCtrl.changePaymentsData()
         expect(mocks.paymentsService.changeData).has.been.called
-        mocks.paymentsService.changeData.yieldTo('onSuccess');
+        mocks.paymentsService.changeData.yieldTo('onSuccess')
         expect(subscriptionsCtrl._onSuccessChangePaymentsData).to.be.called
 
     it "changed Payments Data", (done) ->
