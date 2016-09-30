@@ -200,9 +200,9 @@ describe "ContribLbPlans", ->
 
         lbPlansCtrl.buyPlan()
         expect(lbPlansCtrl.loadingPayments).to.be.equal(true)
-        mocks.paymentsService.start.yieldTo('onLoad');
+        mocks.paymentsService.start.yieldTo('onLoad')
         expect(lbPlansCtrl.loadingPayments).to.be.equal(false)
-        mocks.paymentsService.start.yieldTo('onSuccess');
+        mocks.paymentsService.start.yieldTo('onSuccess')
         expect(lbPlansCtrl._onSuccessBuyPlan).to.be.called
 
 
