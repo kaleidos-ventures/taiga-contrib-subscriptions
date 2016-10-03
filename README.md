@@ -39,3 +39,11 @@ In `dist/conf.json` you can customize this:
 
 - **_quadernoKey_**
 :    the Public Key of a Quaderno account.
+
+
+- **_google_adwords_conversion_id_**
+:   Google AdWords - conversion id
+
+- **_google_adwords_conversion_label_**
+:   Google AdWords - conversion label
+:
