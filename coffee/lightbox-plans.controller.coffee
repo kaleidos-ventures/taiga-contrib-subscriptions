@@ -71,8 +71,8 @@ class LightboxPlansController
         @subscriptionsService.selectMyPlan(plan).then(@._onSuccessSelectPlan.bind(this))
 
         if !@.myPlan || (!@.myPlan.current_plan.amount_month && !@.myPlan.current_plan.amount_year)
-            google_conversion_id = @config.get("google_adwords_conversion_id"),
-            google_conversion_label = @config.get("google_adwords_conversion_label"),
+            google_conversion_id = @config.get("google_adwords_conversion_id")
+            google_conversion_label = @config.get("google_adwords_conversion_label")
 
             if google_conversion_id && google_conversion_label
                 window.google_trackConversion({
