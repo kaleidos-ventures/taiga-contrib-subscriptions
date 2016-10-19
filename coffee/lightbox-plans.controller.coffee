@@ -64,7 +64,7 @@ class LightboxPlansController
     backToPLans: () ->
         @.selectedPlan = false
 
-    _onSuccessBuyPlan: (plan) ->
+    _onSuccessBuyPlan: (plan, amount, currency) ->
         @lightboxService.closeAll()
         @tgLoader.start()
 
@@ -82,6 +82,8 @@ class LightboxPlansController
                     google_conversion_color : "ffffff",
                     google_conversion_label : google_conversion_label
                     google_remarketing_only : false
+                    google_conversion_value: amount
+                    google_conversion_currency: currency.toUpperCase()
                 })
 
     buyPlan: () ->
@@ -96,12 +98,14 @@ class LightboxPlansController
             @.planId = @.validPlan.id_month
             amount = @.validPlan.amount_month
 
+        currency = @.validPlan.currency
+
         if @.myPlan && @.myPlan.customer_id?
             plan = {
                 'plan_id': @.planId
             }
 
-            @._onSuccessBuyPlan(plan)
+            @._onSuccessBuyPlan(plan, amount, currency)
         else
             user = @currentUserService.getUser()
 
@@ -109,7 +113,8 @@ class LightboxPlansController
                 description: @.validPlan.name + ' Plan',
                 amount: amount,
                 onLoad: () => @.loadingPayments = false
-                onSuccess: @._onSuccessBuyPlan.bind(this),
+                onSuccess: (plan) =>
+                    @._onSuccessBuyPlan(plan, amount, currency)
                 planId: @.planId,
                 currency: @.validPlan.currency,
                 email: user.get('email'),
