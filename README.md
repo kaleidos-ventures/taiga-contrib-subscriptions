@@ -31,8 +31,10 @@ Settings
 
 In `dist/conf.json` you can customize this:
 
+
 - **_subscriptionsAPI_**
 :    by default this plugin will use (`http://localhost:5000/api/v1/` by default).
+
 
 - **_stripeKey_**
 :    the Public Key of an Stripe account.
