@@ -27,6 +27,8 @@ decorator = ($delegate) ->
 
     directive.controller = ["$translatePartialLoader", controller]
 
+    directive.templateUrl = "compile-modules/taiga-contrib-subscriptions/partials/no-more-memberships-explanation.html"
+
     return $delegate
 
 window.addDecorator("tgNoMoreMembershipsExplanationDirective", ["$delegate", decorator])
