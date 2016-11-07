@@ -1,0 +1,17 @@
+p.admin-subtitle(
+    ng-if="project.i_am_owner == true && project.total_memberships == 4"
+    translate="ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_FREE_PLAN"
+    translate-values="{members: project.total_memberships}"
+)
+
+p.admin-subtitle(
+    ng-if="project.i_am_owner == true && project.total_memberships != 4"
+    translate="ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER"
+    translate-values="{members: project.total_memberships}"
+)
+
+p.admin-subtitle(
+    ng-if="project.i_am_owner == false"
+    translate="ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN"
+    translate-values="{members: project.total_memberships}"
+)
