@@ -1,6 +1,10 @@
 # Changelog #
 
 
+## 3.0.3 (2016-11-15)
+- Show links to paid plan section in alert message in add-member lightbox..
+
+
 ## 3.0.2 (2016-11-08)
 - Show a different explanation messagen if owners with a Seed plan can add more members.
 
