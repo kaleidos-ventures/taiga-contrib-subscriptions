@@ -70,6 +70,12 @@ describe "ContribLbPlans", ->
         }
         provide.value "$translate", mocks.tgTranslate
 
+    _mockTgConfig = () ->
+        mocks.tgConfig = {
+            get: sinon.stub()
+        }
+        provide.value "$tgConfig", mocks.tgConfig
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -80,7 +86,7 @@ describe "ContribLbPlans", ->
             _mockCurrentUserService()
             _paymentsService()
             _mockTgTranslate()
-
+            _mockTgConfig()
             return null
 
     beforeEach ->

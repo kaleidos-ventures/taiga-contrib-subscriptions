@@ -31,7 +31,8 @@ class LightboxPlansController
         "$tgConfig"
     ]
 
-    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService, @paymentsService, @currentUserService, @translate, @config) ->
+    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService, @paymentsService,
+                  @currentUserService, @translate, @config) ->
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
         }
@@ -68,8 +69,6 @@ class LightboxPlansController
         @lightboxService.closeAll()
         @tgLoader.start()
 
-        @subscriptionsService.selectMyPlan(plan).then(@._onSuccessSelectPlan.bind(this))
-
         if !@.myPlan || (!@.myPlan.current_plan.amount_month && !@.myPlan.current_plan.amount_year)
             google_conversion_id = @config.get("google_adwords_conversion_id")
             google_conversion_label = @config.get("google_adwords_conversion_label")
@@ -85,6 +84,9 @@ class LightboxPlansController
                     google_conversion_value: amount
                     google_conversion_currency: currency.toUpperCase()
                 })
+
+        @subscriptionsService.selectMyPlan(plan).then(@._onSuccessSelectPlan.bind(this))
+
 
     buyPlan: () ->
         @.loadingPayments = true
