@@ -1,0 +1,116 @@
+{
+    "SUBSCRIPTIONS": {
+        "TITLE": "구독 - 사용자 프로필 - 타이가",
+        "SECTION_NAME": "지불 계",
+        "PLAN": "계획",
+        "YOUR_PLAN": "당신의 계",
+        "YOUR_RECOMMENDED_PLAN": "아마 당신은 고려하고 싶을 거에요.",
+        "WANT_PLAN": "난 이걸 원해요!",
+        "UPDATE_PLAN": "계 변경",
+        "PRIVATE_PROJECTS_LIMIT": "최대 <strong>{{number}}</strong> 개의 비공개 프로젝트 + 무제한 공개 프로젝트!",
+        "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "무제한 비공개 프로젝트 + 무제한 공개 프로젝트!",
+        "MEMBERS_LIMIT": "비공개 프로젝트 당 최대 <strong>{{number}}</ strong> 명의 회원!",
+        "MEMBERS_LIMIT_UNLIMITED": "비공개 프로젝트 당 무제한 회원!",
+        "CONTACT_SUBSCRIBE": "<a href='mailto:support@taiga.io'>support@taiga.io</a>에 문의하여 이 계획을 구독하세요.",
+        "FREQUENCY_MONTH": "월",
+        "FREQUENCY_YEAR": "년",
+        "MAX_PRIVATE_PROJECTS": "더 많은 비공개 프로젝트를 추가 하시겠습니까? <a href='{{url}}'> 계획을 업그레이드 하세요!</a>",
+        "HELP": {
+            "WHY": "왜 이것이 가장 좋은 계획이라고 생각합니까?",
+            "NO_PROJECTS": "현재 비공개 프로젝트가 없으므로 {{name}} 플랜이 귀하에게 적합 할 것으로 보입니다.",
+            "FEW_PROJECTS": "현재 {{private_num}} 개의 비공개 프로젝트가 존재합니다. {{name}} 계획이  알맞습니다.",
+            "NUM_PROJECTS": "현재 {{private_num}} 개의 비공개 프로젝트와 {{public_num}} 개의 공개 프로젝트가 있으므로 {{plan}} 계획이 최고의 선택일 수도 있습니다.",
+            "NUM_PROJECTS_CUSTOM": "현재 {{private_num}} 개의 비공개 프로젝트와 {{public_num}} 공개 프로젝트가 있습니다. 사용자 정의 계획이 최선의 선택으로 보입니다.",
+            "UPGRADE": "현재 계획을 쉽게 변경할 수 있으며 언제든지 완료 할 수 있습니다!",
+            "PAYMENT": "개인 프로젝트가 1개를 초과하고 아직 지불 계획을 구독하지 않은 경우, 귀하의 비공개 프로젝트는 일시적으로 차단됩니다. 하지만 걱정마세요, 삭제되지 않습니다. 계획 구독을 승인하면 다시 접근하실 수 있습니다.",
+            "PUBLIC": "공공 프로젝트는 지불 계획에 포함되지 않는다는 것을 기억하십시오.",
+            "MORE_INFO_TITLE": "자주 묻는 질문",
+            "MORE_INFO": "더 많은 정보 (FAQ)"
+        },
+        "PAYMENT_HISTORY": {
+            "SEE_BILLING_DETAILS": "결제 세부 정보보기",
+            "CHANGE_DATA": "지불 수단 변경",
+            "CHANGE_DATA_SUCCESS": "훌륭해요! 지불 세부 사항을 성공적으로 변경하셨습니다."
+        },
+        "PLANS_SELECTOR": {
+            "TITLE": "어떤 계획이 당신에게 가장 잘 맞습니까?",
+            "CURRENT": "현재 계획",
+            "CUSTOM": "사용자 정의",
+            "CONTACT": "더 많은 프로젝트나 더 많은 프로젝트당 회원을 허용하는 지불 계획이 필요한 경우 <a href='mailto:support@taiga.io' title='연락처'>support@taiga.io</a>로 더 자세한 정보를 문의해주세요."
+        },
+        "DOWNGRADE": {
+            "TITLE": "다운그레이드",
+            "IMAGE_ALT": "계획 다운그레이드 하기",
+            "REASON": "안타깝게도, 이 계획에서 허용하는 최대 비공개 프로젝트 수를 초과했습니다. 현재 계획에서는 <strong>개인 프로젝트 당 최대 {{projects}} 개인 프로젝트와 {{members}} 회원을 허용합니다.</strong> {{plan}} 계획으로 변경하려면 다음 사항을 변경해야합니다.",
+            "MORE_PROJECTS": "{{projects}} 개 이상의 비공개 프로젝트가있는 경우",
+            "MORE_PROJECTS_OPTION1": "최대 {{projects}} 비공개 프로젝트를 만들고 나머지 프로젝트를 <strong>공개</strong>로 설정하십시오.",
+            "MORE_PROJECTS_OPTION2": "{{projects}} 프로젝트를 비공개로 유지하고 나머지 비공개 프로젝트를 <strong>삭제</ strong>하십시오.",
+            "MORE_PROJECTS_OPTION3": "또는 위 옵션의 조합",
+            "MORE_MEMBERS": "개인 프로젝트 당 {{members}} 명 이상의 회원이있는 경우",
+            "MORE_MEMBERS_OPTION1": "모든 비공개 프로젝트에 최대 {{members}} 명의 회원이 있습니다.",
+            "ACCEPT": "네, 이해했습니다."
+        },
+        "SELECT_PLAN": {
+            "TITLE": "계획을 구독",
+            "YOUR_NEW_PLAN": "새로운 계획",
+            "INTERVAL": "어떻게 청구 하시겠습니까?",
+            "PAY_MONTHLY": "매월",
+            "PAY_YEARLY": "매년",
+            "BACK": "뒤로",
+            "BACK_TITLE": "계획 선택으로 돌아가기",
+            "BUY": "구매 계",
+            "CONTINUE": "계속",
+            "EVERY_YEAR": "매년",
+            "EVERY_MONTH": "매달",
+            "TAXES": "귀하의 국가에 따라 판매 세금을 부과해야 할 수도 있습니다.",
+            "SUCCESS": "축하합니다, 지불 계획 구독을 성공했습니다!",
+            "START_SUBSCRIPTION": "구독 시작",
+            "PAY": "{{ amount }} 지불"
+        }
+    },
+    "PROJECT": {
+        "BLOCKED_PROJECT": {
+            "ITS_ONLY_TEMPORAL": "걱정마세요, 이건 임시용입니다.",
+            "TO_UNBLOCK_CHECK_YOUR_PLAN": "프로젝트의 차단을 해제하려면, 먼저 현재 보유하고 있는 비공개 프로젝트 수 보다 많은 지불 계획을 구독하십시오.",
+            "TO_UNBLOCK_CONTACT_SUPPORT": "프로젝트를 차단 해제하려면 <a href=\"mailto:support@taiga.io\" title=\"지원\">support@taiga.io</a>로 문의하십시오.",
+            "CHECK_PLANS": "계 확인",
+            "TO_UNBLOCK_PROJECT_MEMBER": "내 프로젝트가 왜 차단 되었습니까?"
+        },
+        "IMPORT": {
+            "PROJECT_RESTRICTIONS": {
+                "CHANGE_PLAN": "계 변경",
+                "PROJECT_MEMBERS_DESC": "가져 오기하려는 프로젝트에 {{members}} 회원이 있습니다. 안타깝지만, 현재 계획에서는 프로젝트 당 최대 {{max_memberships}} 명의 회원을 허용합니다. 더 많은 사용자를 추가하고 싶다면 <a href='mailto:support@taiga.io'>support@taiga.io</a>를 통해 관리자에게 문의하십시오.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "불행히도 현재 설정에서는 더 많은 비공개 프로젝트가 허용되지 않았습니다.",
+                    "DESC": "가져 오기하려는 프로젝트는 비공개입니다. 안타깝지만 당신의 현재 설정으로는 더 이상의 비공개 프로젝트가 허용되지 않았습니다. 이 한도를 높이려면 현재 계획을 변경하는 것이 좋습니다."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "현재 설정은 비공개 프로젝트 당 최대 {{max_memberships}} 명의 회원을 허용합니다."
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "아쉽게도 현재 설정으로는 더 많은 비공개 프로젝트를 추가하거나 개인 프로젝트 당 {{max_memberships}} 명 이상의 회원을 활성화 할 수 없습니다.",
+                    "DESC": "안타깝게도, 가져 오려는 프로젝트에는 {{max_memberships}} 명 이상이 포함되어 있습니다. 현재 설정에서 허용되는 최대 값입니다. 이와 같은 프로젝트를 가져 오려면 현재 계획을 변경하는 것이 좋습니다."
+                }
+            }
+        }
+    },
+    "ADMIN": {
+        "PROJECT_TRANSFER": {
+            "CANT_BE_OWNED": "현재 이 유형의 프로젝트 소유자가 될 수 없습니다. 이 프로젝트의 소유자가되고 싶다면 <a href='mailto:support@taiga.io'>support@taiga.io</a>를 통해 관리자에게 문의하십시오.",
+            "CANT_BE_OWNED_BY_MEMBERSHIPS": "현재이 유형의 프로젝트 소유자가 될 수 없습니다. 이 프로젝트의 소유자가되고 싶다면 <a href='mailto:support@taiga.io'>support@taiga.io</a>를 통해 관리자에게 문의하십시오."
+        },
+        "MEMBERSHIPS": {
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_FREE_PLAN": "이 프로젝트는 현재 <strong>{{members}}</ strong> 명의 회원을 보유하고 있습니다, 이는 Seed 계획에 허용 된 최대치입니다. 더 많은 회원을 추가하고 싶으시다면 <a href='/user-settings/contrib/subscriptions' title='유료 계획 구독하기'>유료 계획 구독하기</a>를 고려해보십시오.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "현재이 프로젝트에는 <strong>{{members}}</strong> 명의 회원이 있습니다, 허용되는 최대 회원수입니다. 더 많은 회원을 추가 하고 싶다면 <a href='mailto:support@taiga.io' title='연락처'>support@taiga.io</a>로 문의해주세요."
+        }
+    },
+    "WIZARD": {
+        "CREATE_MORE_PROJECTS": "더 많이 만들고 싶다면",
+        "CHANGE_PLAN": "당신의 현재 계 변경"
+    },
+    "LIGHTBOX": {
+        "CREATE_MEMBER": {
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "이 프로젝트에 허용된 최대 회원수 인 <strong>{{maxMembers}}</strong> 회원수에 도달하려고합니다. 더 많은 회원이 필요하다면 <a href='/user-settings/contrib/subscriptions' title='유료 계획 구독하기'>유료 계획 구독하기</a>를 고려해보세요. 이미 가지고 계시다면<a href='mailto:support@taiga.io' title='support@taiga.io로 문의하기'>support@taiga.io</a>로 문의해주세요."
+        }
+    }
+}
