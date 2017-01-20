@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: blocked-project-explanation.directive.coffee
+# File: cant-own-project-explanation.directive.coffee
 ###
 
 @.taigaContribPlugins = @.taigaContribPlugins or []
@@ -22,13 +22,8 @@
 decorator = ($delegate) ->
     directive = $delegate[0]
 
-    controller = (translatePartialLoader) ->
-        translatePartialLoader.addPart('taiga-contrib-subscriptions')
-
-    directive.controller = ["$translatePartialLoader", controller]
-
-    directive.templateUrl = "compile-modules/taiga-contrib-subscriptions/partials/wizard-restrictions.html"
+    directive.templateUrl = "compile-modules/taiga-contrib-subscriptions/partials/create-project-members-restrictions.html"
 
     return $delegate
 
-window.addDecorator("tgCreateProjectRestrictionsDirective", ["$delegate", decorator])
+window.addDecorator("tgCreateProjectMembersRestrictionsDirective", ["$delegate", decorator])
