@@ -78,8 +78,9 @@
         },
         "IMPORT": {
             "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC_PRIVATE_SEED": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members which is the maximum allowed for the Seed Plan. If you would like to add more members, please consider <a href='/user-settings/contrib/subscriptions' title='Subscribe to a paid plan'>subscribing to a paid plan</a>.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project.  If you would like to add more users please contact the administrator at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
                 "CHANGE_PLAN": "Changer le plan",
-                "PROJECT_MEMBERS_DESC": "Dans le projet vous avez essayez d'importer {{members}} membres, malheuresement, votre offre n'accepte un maximum de {{max_memberships}} membres par projet. Si vous voulez ajouter plus d'utilisateurs, merci de contacter l'administrateur à <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Malheureusement, la configuration actuelle ne permet pas d'avoir d'autres projets privés",
                     "DESC": "Le projet que vous essayez d'importer est privé, malheureusement votre configuration actuelle ne permet pas d'autres projets privés. Si vous souhaitez augmenter cette limite, vous devrez peut-être envisager de modifier votre plan actuel."
@@ -92,6 +93,12 @@
                     "DESC": "Malheureusement, le projet que vous essayez d'importer contient plus de {{ max_memberships }} membres, , ce qui est le maximum autorisé par votre configuration actuelle. Si vous souhaitez importer des projets comme celui-ci, vous pouvez envisager de modifier votre plan actuel."
                 }
             }
+        },
+        "CREATE": {
+            "MAX_PRIVATE_PROJECTS": "Unfortunately, you've reached the maximum number of private projects",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
+            "CREATE_MORE_PROJECTS": "To create more, you should",
+            "CHANGE_PLAN": "Change your current plan"
         }
     },
     "ADMIN": {
@@ -103,10 +110,6 @@
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_FREE_PLAN": "Ce projet a <strong>{{members}}</strong> membres, qui est le maximum autorisé pour le Seed Plan. Si vous souhaitez ajouter d'autres membres, veuillez envisager de  <a href='/user-settings/contrib/subscriptions' title='Subscribe to a paid plan'> souscrire à une offre payant</a>.",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Ce projet a <strong>{{members}}</strong> membres, qui est le maximum autorisé. Si vous voulez ajouté plus de membres, merci de nous contactez sur <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>"
         }
-    },
-    "WIZARD": {
-        "CREATE_MORE_PROJECTS": "Pour créer plus, vous devrez",
-        "CHANGE_PLAN": "Changez votre plan actuel"
     },
     "LIGHTBOX": {
         "CREATE_MEMBER": {

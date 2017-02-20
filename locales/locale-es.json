@@ -78,8 +78,9 @@
         },
         "IMPORT": {
             "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC_PRIVATE_SEED": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members which is the maximum allowed for the Seed Plan. If you would like to add more members, please consider <a href='/user-settings/contrib/subscriptions' title='Subscribe to a paid plan'>subscribing to a paid plan</a>.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project.  If you would like to add more users please contact the administrator at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
                 "CHANGE_PLAN": "Cambiar de plan",
-                "PROJECT_MEMBERS_DESC": "El proyecto que tratas de importar tiene {{members}} miembros y tu plan actual sólo permite un máximo de {{max_memberships}} miembros por proyecto. Si quieres poder añadir mas usuarios contacta con los administradores en <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "La configuración actual no permite más proyectos privados",
                     "DESC": "El proyecto que tratas de importar es privado, desafortunadamente tu configuración actual no permite mas proyectos privados. Si quieres poder importarlo deberás cambiar tu plan actual.\n"
@@ -92,6 +93,12 @@
                     "DESC": "Desafortunadamente, el proyecto que intenta importar contiene más de {{max_memberships}} miembros, que es el máximo permitido por su configuración actual. Para poder importar proyectos como este, deberás cambiar tu plan actual."
                 }
             }
+        },
+        "CREATE": {
+            "MAX_PRIVATE_PROJECTS": "Unfortunately, you've reached the maximum number of private projects",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
+            "CREATE_MORE_PROJECTS": "To create more, you should",
+            "CHANGE_PLAN": "Change your current plan"
         }
     },
     "ADMIN": {
@@ -103,10 +110,6 @@
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_FREE_PLAN": "Este proyecto actualmente tiene <strong>{{members}}</strong> miembros que es el máximo permitido para el Plan Seed. Si quieres añadir más miembros deberás <a href='/user-settings/contrib/subscriptions' title='Suscribirte a un plan de pago'>suscribirte a un plan de pago</a>.",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Este proyecto actualmente tiene <strong>{{members}}</strong> miembros que es el máximo permitido. Si quieres añadir más miembros deberás contactar con nosotros en <a href='mailto:support@taiga.io' title='Contacta con nosotros'>support@taiga.io</a>."
         }
-    },
-    "WIZARD": {
-        "CREATE_MORE_PROJECTS": "Para poder crear más deberás ",
-        "CHANGE_PLAN": "Cambia tu plan actual"
     },
     "LIGHTBOX": {
         "CREATE_MEMBER": {
