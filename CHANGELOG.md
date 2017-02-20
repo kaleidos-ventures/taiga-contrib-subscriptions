@@ -1,6 +1,11 @@
 # Changelog #
 
 
+## 3.1.0 (unreleased)
+- Improve 'create new project' functionality.
+- Add importers from external systems (trello, jira, asana and github).
+
+
 ## 3.0.3 (2016-11-15)
 - Show links to paid plan section in alert message in add-member lightbox..
 
