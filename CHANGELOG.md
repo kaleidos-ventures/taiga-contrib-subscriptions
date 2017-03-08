@@ -1,7 +1,7 @@
 # Changelog #
 
 
-## 3.1.0 (unreleased)
+## 3.1.0 (2017-03-10)
 - Improve 'create new project' functionality.
 - Add importers from external systems (trello, jira, asana and github).
 
