@@ -78,8 +78,8 @@
         },
         "IMPORT": {
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE_SEED": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members which is the maximum allowed for the Seed Plan. If you would like to add more members, please consider <a href='/user-settings/contrib/subscriptions' title='Subscribe to a paid plan'>subscribing to a paid plan</a>.",
-                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project.  If you would like to add more users please contact the administrator at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
+                "PROJECT_MEMBERS_DESC_PRIVATE_SEED": "El proyecto que intentas importar tiene {{members}} miembros, incluyéndote a ti, por desgracia tu plan actual permite un máximo de {{max_memberships}} miembros, que es el máximo permitido para el Plan Seed. Si quieres agregar más miembros deberás <a href='/user-settings/contrib/subscriptions' title='Suscribirse a un plan pagado'> suscribirte a un plan pagado </a>.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "El proyecto que intentas importar tiene {{members}} miembros, incluyéndote a ti, por desgracia tu plan actual permite un máximo de {{max_memberships}} miembros para proyectos privados. Si quieres agregar más miembros deberás contactar con los administradores en <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
                 "CHANGE_PLAN": "Cambiar de plan",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "La configuración actual no permite más proyectos privados",
@@ -95,10 +95,10 @@
             }
         },
         "CREATE": {
-            "MAX_PRIVATE_PROJECTS": "Unfortunately, you've reached the maximum number of private projects",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
-            "CREATE_MORE_PROJECTS": "To create more, you should",
-            "CHANGE_PLAN": "Change your current plan"
+            "MAX_PRIVATE_PROJECTS": "Desafortunadamente has alcanzado tu límite de proyectos privados ",
+            "MAX_PUBLIC_PROJECTS": "Desafortunadamente has alcanzado tu límite de proyectos públicos ",
+            "CREATE_MORE_PROJECTS": "Para poder crear más deberás ",
+            "CHANGE_PLAN": "Cambia tu plan actual"
         }
     },
     "ADMIN": {
