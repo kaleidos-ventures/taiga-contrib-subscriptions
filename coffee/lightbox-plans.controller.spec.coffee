@@ -101,7 +101,7 @@ describe "ContribLbPlans", ->
         lbPlansCtrl = controller "ContribLbPlansController"
         project = {}
 
-        lbPlansCtrl.selectPLan(project)
+        lbPlansCtrl.selectPlan(project)
         expect(lbPlansCtrl.selectPlanInterval).to.be.equal('month')
         expect(lbPlansCtrl.selectedPlan).to.be.equal('invalid')
         expect(lbPlansCtrl.invalidPlan).to.be.eql(project)
@@ -119,7 +119,7 @@ describe "ContribLbPlans", ->
             }
         }
 
-        lbPlansCtrl.selectPLan(project)
+        lbPlansCtrl.selectPlan(project)
         expect(lbPlansCtrl.selectPlanInterval).to.be.equal('month')
         expect(lbPlansCtrl.selectedPlan).to.be.equal('valid')
         expect(lbPlansCtrl.validPlan).to.be.eql(project)
@@ -138,7 +138,7 @@ describe "ContribLbPlans", ->
             }
         }
 
-        lbPlansCtrl.selectPLan(project)
+        lbPlansCtrl.selectPlan(project)
         expect(lbPlansCtrl.selectedPlan).to.be.equal('valid')
         expect(lbPlansCtrl.validPlan).to.be.eql(project)
         expect(lbPlansCtrl.invalidInterval).to.be.equal('month')
@@ -158,7 +158,7 @@ describe "ContribLbPlans", ->
             }
         }
 
-        lbPlansCtrl.selectPLan(project)
+        lbPlansCtrl.selectPlan(project)
         expect(lbPlansCtrl.selectedPlan).to.be.equal('valid')
         expect(lbPlansCtrl.validPlan).to.be.eql(project)
         expect(lbPlansCtrl.invalidInterval).to.be.equal('year')
@@ -167,7 +167,7 @@ describe "ContribLbPlans", ->
     it "back to plans", () ->
         lbPlansCtrl = controller "ContribLbPlansController"
 
-        lbPlansCtrl.backToPLans()
+        lbPlansCtrl.backToPlans()
         expect(lbPlansCtrl.selectedPlan).to.be.equal(false)
 
     it "bought a plan", (done) ->

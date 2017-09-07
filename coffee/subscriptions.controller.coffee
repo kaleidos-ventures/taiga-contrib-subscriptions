@@ -28,11 +28,12 @@ class SubscriptionsAdmin
         "$translatePartialLoader",
         "$translate",
         "ContribPaymentsService",
+        "$tgAnalytics",
         "$tgConfirm"
     ]
 
     constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader,
-                  @translate, @paymentsService, @confirm) ->
+                  @translate, @paymentsService, @analytics, @confirm) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
@@ -86,6 +87,7 @@ class SubscriptionsAdmin
 
         promise = @subscriptionsService.fetchPublicPlans()
         promise.then () =>
+            @analytics.addEcStep("change-plan", @.myPlan.current_plan.plan_id, null)
             @.loadingRecommendedPlan = false
             @lightboxService.open('tg-lb-plans')
             @.selectedPlan = 'valid'

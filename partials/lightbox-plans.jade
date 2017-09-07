@@ -8,7 +8,7 @@ section.plans-container(ng-if="!vm.selectedPlan")
         .plan.e2e-plan(
             ng-repeat="project in vm.publicPlans"
             ng-class="{'highlighted-plan': project.name == vm.myPlan.current_plan.name}"
-            ng-click="vm.selectPLan(project)"
+            ng-click="vm.selectPlan(project)"
         )
             span.pill-plan(
                 ng-if="project.name == vm.myPlan.current_plan.name"
@@ -79,7 +79,7 @@ section.plans-container.invalid-plan(ng-if="vm.selectedPlan === 'invalid'")
         alt="{{SUBSCRIPTIONS.DOWNGRADE.IMAGE_ALT | translate}}"
     )
     button.button-green.accept-invalid-plan(
-        ng-click="vm.backToPLans()"
+        ng-click="vm.backToPlans()"
         translate="SUBSCRIPTIONS.DOWNGRADE.ACCEPT"
     )
 
@@ -164,7 +164,7 @@ section.plans-container.valid-plan(ng-if="vm.selectedPlan === 'valid'")
             href=""
             ng-title="SUBSCRIPTIONS.SELECT_PLAN.BACK_TITLE | translate"
             translate="SUBSCRIPTIONS.SELECT_PLAN.BACK"
-            ng-click="vm.backToPLans()"
+            ng-click="vm.backToPlans()"
         )
         button.button-green.accept-plan.e2e-accept-plan(
             ng-if="vm.myPlan.customer_id"
