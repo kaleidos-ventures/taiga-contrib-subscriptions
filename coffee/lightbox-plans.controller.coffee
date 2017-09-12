@@ -27,12 +27,13 @@ class LightboxPlansController
         "lightboxService",
         "ContribPaymentsService",
         "tgCurrentUserService",
+        "$tgAnalytics",
         "$translate",
         "$tgConfig"
     ]
 
     constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService, @paymentsService,
-                  @currentUserService, @translate, @config) ->
+                  @currentUserService, @analytics, @translate, @config) ->
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
         }
@@ -45,7 +46,7 @@ class LightboxPlansController
             get: () => @.subscriptionsService.publicPlans
         }
 
-    selectPLan: (project) ->
+    selectPlan: (project) ->
         @.invalidInterval = null
         @.selectPlanInterval = "month"
         if !project.is_applicable
@@ -54,6 +55,7 @@ class LightboxPlansController
         else
             @.selectedPlan = 'valid'
             @.validPlan = project
+            @analytics.addEcStep("select-plan", @.myPlan.current_plan.plan_id, @.validPlan)
             if @.myPlan && @.validPlan.name == @.myPlan.current_plan.name
                 if @.myPlan.interval == "month"
                     @.invalidInterval = "month"
@@ -62,7 +64,7 @@ class LightboxPlansController
                     @.invalidInterval = "year"
                     @.selectPlanInterval = "month"
 
-    backToPLans: () ->
+    backToPlans: () ->
         @.selectedPlan = false
 
     _onSuccessBuyPlan: (plan, amount, currency) ->
@@ -102,11 +104,14 @@ class LightboxPlansController
 
         currency = @.validPlan.currency
 
+        @analytics.addEcStep("confirm-plan", @.myPlan.current_plan.plan_id, @.planId)
+
         if @.myPlan && @.myPlan.customer_id?
             plan = {
                 'plan_id': @.planId
             }
 
+            @analytics.addEcStep("plan-changed", @.myPlan.current_plan.plan_id, @.planId)
             @._onSuccessBuyPlan(plan, amount, currency)
         else
             user = @currentUserService.getUser()
@@ -116,7 +121,9 @@ class LightboxPlansController
                 amount: amount,
                 onLoad: () => @.loadingPayments = false
                 onSuccess: (plan) =>
+                    @analytics.addEcStep("plan-changed", @.myPlan.current_plan.plan_id, @.plan.plan_id)
                     @._onSuccessBuyPlan(plan, amount, currency)
+
                 planId: @.planId,
                 currency: @.validPlan.currency,
                 email: user.get('email'),
