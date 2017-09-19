@@ -97,6 +97,9 @@ class SubscriptionsAdmin
     _plansList: (response) ->
         @.loading = false
         @.selectedPlan = false
+        counter = 1
+        for plan in @subscriptionsService.publicPlans
+            @analytics.addEcImpression(plan, "Plans list", counter++)
         @lightboxService.open('tg-lb-plans')
 
     changePaymentsData: () ->
