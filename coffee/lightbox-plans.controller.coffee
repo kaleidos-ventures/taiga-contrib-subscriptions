@@ -56,6 +56,8 @@ class LightboxPlansController
             @.selectedPlan = 'valid'
             @.validPlan = project
             @analytics.addEcStep("select-plan", @.myPlan?.current_plan?.plan_id, @.validPlan)
+            @analytics.addEcAddImpresion(@.validPlan, "Plan detail", 1)
+            @analytics.addEcSetAction("add", "Plan detail")
             if @.myPlan && @.validPlan.name == @.myPlan.current_plan.name
                 if @.myPlan.interval == "month"
                     @.invalidInterval = "month"
@@ -105,6 +107,7 @@ class LightboxPlansController
         currency = @.validPlan.currency
 
         @analytics.addEcStep("confirm-plan", @.myPlan?.current_plan?.plan_id, @.planId)
+        @analytics.addEcSetAction("checkout", "Plan checkout")
 
         if @.myPlan && @.myPlan.customer_id?
             plan = {
@@ -112,6 +115,8 @@ class LightboxPlansController
             }
 
             @analytics.addEcStep("plan-changed", @.myPlan?.current_plan?.plan_id, @.planId)
+            @analytics.addEcSetAction("purchase", "Plans list")
+            @analytics.addEcAddProduct(@.validPlan)
             @._onSuccessBuyPlan(plan, amount, currency)
         else
             user = @currentUserService.getUser()
@@ -122,6 +127,7 @@ class LightboxPlansController
                 onLoad: () => @.loadingPayments = false
                 onSuccess: (plan) =>
                     @analytics.addEcStep("plan-changed", @.myPlan?.current_plan?.plan_id, @.plan?.plan_id)
+                    @analytics.addEcSetAction("purchase", "Plans list")
                     @._onSuccessBuyPlan(plan, amount, currency)
 
                 planId: @.planId,
