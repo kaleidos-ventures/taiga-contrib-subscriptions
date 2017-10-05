@@ -114,9 +114,6 @@ class LightboxPlansController
                 'plan_id': @.planId
             }
 
-            @analytics.addEcStep("plan-changed", @.myPlan?.current_plan?.plan_id, @.planId)
-            @analytics.setEcAction("purchase", "Plans list")
-            @analytics.addEcProduct(@.validPlan)
             @._onSuccessBuyPlan(plan, amount, currency)
         else
             user = @currentUserService.getUser()
@@ -127,7 +124,8 @@ class LightboxPlansController
                 onLoad: () => @.loadingPayments = false
                 onSuccess: (plan) =>
                     @analytics.addEcStep("plan-changed", @.myPlan?.current_plan?.plan_id, @.plan?.plan_id)
-                    @analytics.setEcAction("purchase", "Plans list")
+                    @analytics.addEcProduct(@.validPlan)
+                    @analytics.setEcAction("purchase", "Plan")
                     @._onSuccessBuyPlan(plan, amount, currency)
 
                 planId: @.planId,

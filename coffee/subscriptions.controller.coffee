@@ -39,6 +39,7 @@ class SubscriptionsAdmin
     init: ->
         @._loadMetas()
         @._loadPlans()
+        @analytics.setEcAction("add", "Show subscription")
 
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
@@ -98,8 +99,8 @@ class SubscriptionsAdmin
         @.loading = false
         @.selectedPlan = false
         counter = 1
-        for plan in @subscriptionsService.publicPlans
-            @analytics.addEcImpression(plan, "Plans list", counter++)
+        @analytics.addEcStep("change-plan", @.myPlan.current_plan.plan_id, null)
+        @analytics.setEcAction("add", "Plans list")
         @lightboxService.open('tg-lb-plans')
 
     changePaymentsData: () ->
