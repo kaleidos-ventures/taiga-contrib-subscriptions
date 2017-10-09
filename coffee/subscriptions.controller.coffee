@@ -88,7 +88,7 @@ class SubscriptionsAdmin
 
         promise = @subscriptionsService.fetchPublicPlans()
         promise.then () =>
-            @analytics.addEcStep("change-plan", @.myPlan.current_plan.plan_id, null)
+            @analytics.addEcStep("change-plan", @.myPlan?.current_plan?.plan_id, null)
             @.loadingRecommendedPlan = false
             @lightboxService.open('tg-lb-plans')
             @.selectedPlan = 'valid'
@@ -99,7 +99,7 @@ class SubscriptionsAdmin
         @.loading = false
         @.selectedPlan = false
         counter = 1
-        @analytics.addEcStep("change-plan", @.myPlan.current_plan.plan_id, null)
+        @analytics.addEcStep("change-plan", @.myPlan?.current_plan?.plan_id, null)
         @analytics.setEcAction("add", "Plans list")
         @lightboxService.open('tg-lb-plans')
 
