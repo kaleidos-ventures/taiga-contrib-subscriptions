@@ -106,7 +106,7 @@ class LightboxPlansController
         currency = @.validPlan.currency
 
         @analytics.addEcStep("confirm-plan", @.myPlan?.current_plan?.plan_id, @.planId)
-        @analytics.setEcProduct(@.planId, @.validPlan.name, amount)
+        @analytics.addEcProduct(@.planId, @.validPlan.name, amount)
 
         if @.myPlan && @.myPlan.customer_id?
             plan = {
