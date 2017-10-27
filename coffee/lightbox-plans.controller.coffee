@@ -55,8 +55,9 @@ class LightboxPlansController
         else
             @.selectedPlan = 'valid'
             @.validPlan = project
-            @analytics.addEcStep("select-plan", @.myPlan?.current_plan?.plan_id, @.validPlan)
+            @analytics.addEcClickProduct(@.validPlan)
             @analytics.addEcImpression(@.validPlan, "Plan detail", 1)
+            @analytics.addEcStep("select-plan", @.myPlan?.current_plan?.plan_id, @.validPlan)
             if @.myPlan && @.validPlan.name == @.myPlan.current_plan.name
                 if @.myPlan.interval == "month"
                     @.invalidInterval = "month"
