@@ -46,18 +46,16 @@ class LightboxPlansController
             get: () => @.subscriptionsService.publicPlans
         }
 
-    selectPlan: (project) ->
+    selectPlan: (plan) ->
         @.invalidInterval = null
         @.selectPlanInterval = "month"
-        if !project.is_applicable
+        if !plan.is_applicable
             @.selectedPlan = 'invalid'
-            @.invalidPlan = project
+            @.invalidPlan = plan
         else
             @.selectedPlan = 'valid'
-            @.validPlan = project
-            @analytics.addEcClickProduct(@.validPlan)
-            @analytics.addEcImpression(@.validPlan, "Plan detail", 1)
-            @analytics.addEcStep("select-plan", @.myPlan?.current_plan?.plan_id, @.validPlan)
+            @.validPlan = plan
+            @analytics.ecViewPlan(@.validPlan)
             if @.myPlan && @.validPlan.name == @.myPlan.current_plan.name
                 if @.myPlan.interval == "month"
                     @.invalidInterval = "month"
@@ -106,8 +104,8 @@ class LightboxPlansController
 
         currency = @.validPlan.currency
 
-        @analytics.addEcStep("confirm-plan", @.myPlan?.current_plan?.plan_id, @.planId)
-        @analytics.addEcProduct(@.planId, @.validPlan.name, amount)
+        @analytics.ecAddToCart(@.planId, @.validPlan.name, amount)
+        @analytics.ecConfirmPlan(@.planId, @.validPlan.name, amount)
 
         if @.myPlan && @.myPlan.customer_id?
             plan = {
@@ -123,10 +121,8 @@ class LightboxPlansController
                 amount: amount,
                 onLoad: () => @.loadingPayments = false
                 onSuccess: (plan) =>
-                    @analytics.addEcStep("plan-changed", @.myPlan?.current_plan?.plan_id, @.plan?.plan_id)
-                    @analytics.addEcPurchase(@.planId, @.validPlan.name, amount)
+                    @analytics.ecPurchase(@.planId, @.validPlan.name, amount)
                     @._onSuccessBuyPlan(plan, amount, currency)
-
                 planId: @.planId,
                 currency: @.validPlan.currency,
                 email: user.get('email'),
@@ -138,7 +134,7 @@ class LightboxPlansController
         @confirm.notify('success', message, '', 5000)
 
         promise = @subscriptionsService.fetchMyPlans()
-        promise.then () =>
+        promise.then (plans) =>
             @tgLoader.pageLoaded()
 
 module.controller("ContribLbPlansController", LightboxPlansController)

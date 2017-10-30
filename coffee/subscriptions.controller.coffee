@@ -39,7 +39,6 @@ class SubscriptionsAdmin
     init: ->
         @._loadMetas()
         @._loadPlans()
-        @analytics.setEcAction("add", "Show subscription")
 
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
@@ -81,26 +80,27 @@ class SubscriptionsAdmin
         @.loading = true
 
         promise = @subscriptionsService.fetchPublicPlans()
-        promise.then(@._plansList.bind(this))
+        promise.then((response) =>
+            @analytics.ecListPlans(response, "Plan detail", 1)
+            @._plansList.bind(this)(response)
+        )
 
     buyRecommendedPlan: () ->
         @.loadingRecommendedPlan = true
 
         promise = @subscriptionsService.fetchPublicPlans()
         promise.then () =>
-            @analytics.addEcStep("change-plan", @.myPlan?.current_plan?.plan_id, null)
             @.loadingRecommendedPlan = false
             @lightboxService.open('tg-lb-plans')
             @.selectedPlan = 'valid'
             @.selectPlanInterval = 'month'
             @.validPlan = @.myRecommendedPlan.recommended_plan
+            @analytics.ecAddToCart(@.validPlan)
 
     _plansList: (response) ->
         @.loading = false
         @.selectedPlan = false
         counter = 1
-        @analytics.addEcStep("change-plan", @.myPlan?.current_plan?.plan_id, null)
-        @analytics.setEcAction("add", "Plans list")
         @lightboxService.open('tg-lb-plans')
 
     changePaymentsData: () ->

@@ -6,31 +6,31 @@ section.plans-container(ng-if="!vm.selectedPlan")
     h2.title(ng-bind-html="'SUBSCRIPTIONS.PLANS_SELECTOR.TITLE' | translate")
     .plans-table
         .plan.e2e-plan(
-            ng-repeat="project in vm.publicPlans"
-            ng-class="{'highlighted-plan': project.name == vm.myPlan.current_plan.name}"
-            ng-click="vm.selectPlan(project)"
+            ng-repeat="plan in vm.publicPlans"
+            ng-class="{'highlighted-plan': plan.name == vm.myPlan.current_plan.name}"
+            ng-click="vm.selectPlan(plan)"
         )
             span.pill-plan(
-                ng-if="project.name == vm.myPlan.current_plan.name"
+                ng-if="plan.name == vm.myPlan.current_plan.name"
                 translate="SUBSCRIPTIONS.PLANS_SELECTOR.CURRENT"
             )
             img.plan-image(
-                ng-src="/#{v}/images/taiga-contrib-subscriptions/images/{{project.name | lowercase}}.png",
-                alt="{{project.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
+                ng-src="/#{v}/images/taiga-contrib-subscriptions/images/{{plan.name | lowercase}}.png",
+                alt="{{plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
             )
-            .plan-name {{project.name}}
+            .plan-name {{plan.name}}
             .plan-pricing
                 .pricing-primary
                     span.currency $
-                    span.number {{project.amount_month}}
-                    span.frequency(ng-if="project.amount_month") /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
+                    span.number {{plan.amount_month}}
+                    span.frequency(ng-if="plan.amount_month") /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
 
-                .pricing-secondary(ng-if="project.amount_year")
+                .pricing-secondary(ng-if="plan.amount_year")
                     span.currency $
-                    span.number {{project.amount_year}}
+                    span.number {{plan.amount_year}}
                     span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
-            .plan-data(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: project.private_projects}")
-            .plan-data(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: project.project_members}")
+            .plan-data(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: plan.private_projects}")
+            .plan-data(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: plan.project_members}")
         .plan.plan-custom(ng-if="vm.myRecommendedPlan || vm.myPlan.current_plan.id_month")
             img.plan-image(
                 src="/#{v}/images/taiga-contrib-subscriptions/images/custom.png",
