@@ -105,7 +105,7 @@ class LightboxPlansController
         currency = @.validPlan.currency
 
         @analytics.ecAddToCart(@.planId, @.validPlan.name, amount)
-        @analytics.ecConfirmPlan(@.planId, @.validPlan.name, amount)
+        @analytics.ecConfirmChange(@.planId, @.validPlan.name, amount)
 
         if @.myPlan && @.myPlan.customer_id?
             plan = {
