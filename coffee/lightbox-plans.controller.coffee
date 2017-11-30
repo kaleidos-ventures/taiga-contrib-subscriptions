@@ -55,6 +55,7 @@ class LightboxPlansController
         else
             @.selectedPlan = 'valid'
             @.validPlan = plan
+            @analytics.ecClickPlan(@.validPlan)
             @analytics.ecViewPlan(@.validPlan)
             if @.myPlan && @.validPlan.name == @.myPlan.current_plan.name
                 if @.myPlan.interval == "month"

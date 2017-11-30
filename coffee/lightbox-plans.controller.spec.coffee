@@ -76,6 +76,19 @@ describe "ContribLbPlans", ->
         }
         provide.value "$tgConfig", mocks.tgConfig
 
+    _mockTgAnalytics = ->
+        mocks.tgAnalytics = {
+            trackEvent: sinon.stub(),
+            ecClickPlan: sinon.stub(),
+            ecAddToCart: sinon.stub(),
+            ecViewPlan: sinon.stub(),
+            ecConfirmChange: sinon.stub(),
+            ecListPlans: sinon.stub(),
+            ecPurchase: sinon.stub()
+        }
+
+        provide.value("$tgAnalytics", mocks.tgAnalytics)
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -87,6 +100,7 @@ describe "ContribLbPlans", ->
             _paymentsService()
             _mockTgTranslate()
             _mockTgConfig()
+            _mockTgAnalytics()
             return null
 
     beforeEach ->

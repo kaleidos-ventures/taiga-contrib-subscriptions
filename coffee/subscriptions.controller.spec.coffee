@@ -85,6 +85,15 @@ describe "SubscriptionsAdmin", ->
         }
         provide.value "$translate", mocks.tgTranslate
 
+    _mockTgAnalytics = ->
+        mocks.tgAnalytics = {
+            trackEvent: sinon.stub()
+            ecAddToCart: sinon.stub()
+            ecListPlans: sinon.stub()
+        }
+
+        provide.value("$tgAnalytics", mocks.tgAnalytics)
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -97,6 +106,7 @@ describe "SubscriptionsAdmin", ->
             _paymentsService()
             _mockTgConfirm()
             _mockTgTranslate()
+            _mockTgAnalytics()
 
             return null
 
