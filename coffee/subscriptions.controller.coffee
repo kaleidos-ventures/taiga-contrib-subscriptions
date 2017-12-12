@@ -29,27 +29,56 @@ class SubscriptionsAdmin
         "$translate",
         "ContribPaymentsService",
         "$tgAnalytics",
-        "$tgConfirm"
+        "$tgConfirm",
+        "$tgConfig",
+        "tgCurrentUserService",
+        "tgUserService",
+        "$tgAuth"
     ]
 
     constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader,
-                  @translate, @paymentsService, @analytics, @confirm) ->
+                  @translate, @paymentsService, @analytics, @confirm, @config, @currentUserService, @userService,
+                  @authService) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
         @._loadMetas()
         @._loadPlans()
+        @.invalidPlan = null
+        @.user = @currentUserService.getUser()
+        @.userService.getContacts(@.user.get('id')).then (contacts) =>
+            @.userContactsById = Immutable.fromJS({})
+            contacts.forEach (contact) =>
+                @.userContactsById = @.userContactsById.set(contact.get('id').toString(), contact)
+
+        @.viewingMembers = false
 
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
         }
 
-        Object.defineProperty @, "myRecommendedPlan", {
-            get: () => @.subscriptionsService.myRecommendedPlan
-        }
-
         Object.defineProperty @, "publicPlans", {
             get: () => @.subscriptionsService.publicPlans
+        }
+
+        Object.defineProperty @, "perSeatPlan", {
+            get: () => @.subscriptionsService.perSeatPlan
+        }
+
+        Object.defineProperty @, "currentPlan", {
+            get: () =>
+                if !@.myPlan
+                    return 'free'
+                else if !@.myPlan.current_plan
+                    return 'free'
+                else if @.myPlan.current_plan.id == "per-seat-free"
+                    return 'free'
+                else if @.myPlan.current_plan.id_month == "per-seat-month"
+                    return 'premium'
+                else if @.myPlan.current_plan.id_year == "per-seat-year"
+                    return 'premium'
+                else
+                    return 'old'
         }
 
     _loadMetas: () ->
@@ -62,46 +91,42 @@ class SubscriptionsAdmin
     _loadPlans: ->
         @tgLoader.start()
 
-        promise = @subscriptionsService.fetchMyPlans()
-        promise.then () =>
+        promise1 = @subscriptionsService.getMyPerSeatPlan()
+        promise2 = @subscriptionsService.loadUserPlan()
+        promise3 = @subscriptionsService.fetchPublicPlans()
+        Promise.all([promise1, promise2, promise3]).then () =>
+            for plan in @.publicPlans
+                if plan.id == "per-seat-free"
+                    @.publicPlanFree = plan
+                else if plan.name == "Per Seat"
+                    @.publicPlanPerSeat = plan
+            if @.perSeatPlan.notify_limit == null
+                @.notify = {
+                    active: false,
+                    when: 'always',
+                    limit: '1'
+                }
+            else if @.perSeatPlan.notify_limit == 0
+                @.notify = {
+                    active: true,
+                    when: 'always',
+                    limit: '1'
+                }
+            else
+                @.notify = {
+                    active: true,
+                    when: 'on-limit',
+                    limit: @.perSeatPlan.notify_limit
+                }
             @tgLoader.pageLoaded()
 
-    getTemplateUrl: () ->
-        if !@.myRecommendedPlan
-            plan = "paid"
-        else if @.myRecommendedPlan.recommended_plan.amount_month == 0
-            plan = "zero"
-        else
-            plan = "recommended"
 
-        return "compile-modules/taiga-contrib-subscriptions/partials/subscriptions-"+plan+".html"
-
-    upgradePlan: () ->
-        @.loading = true
-
-        promise = @subscriptionsService.fetchPublicPlans()
-        promise.then((response) =>
-            @analytics.ecListPlans(response, "Plan detail", 1)
-            @._plansList.bind(this)(response)
-        )
-
-    buyRecommendedPlan: () ->
-        @.loadingRecommendedPlan = true
-
-        promise = @subscriptionsService.fetchPublicPlans()
-        promise.then () =>
-            @.loadingRecommendedPlan = false
-            @lightboxService.open('tg-lb-plans')
-            @.selectedPlan = 'valid'
-            @.selectPlanInterval = 'month'
-            @.validPlan = @.myRecommendedPlan.recommended_plan
-            @analytics.ecAddToCart(@.validPlan)
-
-    _plansList: (response) ->
-        @.loading = false
-        @.selectedPlan = false
-        counter = 1
-        @lightboxService.open('tg-lb-plans')
+    userProjectsList: (projects, user) ->
+        @.userProjectsLb = Immutable.fromJS({})
+                                    .set('user', user)
+                                    .set('projects', projects)
+                                    .set('richProjects', projects.map((projectId) => @currentUserService.projectsById.get(projectId.toString())))
+        @lightboxService.open('tg-lb-user-projects')
 
     changePaymentsData: () ->
         description = @translate.instant("SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA")
@@ -110,6 +135,22 @@ class SubscriptionsAdmin
             description: description
             onSuccess: @._onSuccessChangePaymentsData.bind(this)
         })
+
+    contactUs: () ->
+        @lightboxService.open('tg-lb-contact-us')
+
+    removeUserFromMyProjects: (user) ->
+        @.deletingUser = user
+        @lightboxService.open('tg-lb-confirm-member-remove')
+
+    confirmRemoveUserFromMyProjects: (userId) =>
+        @tgLoader.start()
+
+        promise = @subscriptionsService.removeUserFromMyProjects(userId)
+        promise.then () =>
+            @lightboxService.closeAll()
+            @subscriptionsService.getMyPerSeatPlan().then () =>
+                @tgLoader.pageLoaded()
 
     seeBillingDetails: () ->
         secure_id = @.myPlan.secure_id
@@ -130,5 +171,127 @@ class SubscriptionsAdmin
         promise = @subscriptionsService.fetchMyPlans()
         promise.then () =>
             @tgLoader.pageLoaded()
+
+    selectPlanInterval: (plan) ->
+        @.subscribePlan = plan
+        @lightboxService.open('tg-lb-confirm-subscribe')
+
+    changePlan: (plan, month=true) ->
+        @.loadingPayments = true
+        if !plan.is_applicable
+            @.invalidPlan = plan
+            @lightboxService.open('tg-lb-invalid-plan')
+            return
+
+        if plan.id
+            planId = plan.id
+            amount = plan.amount * (@.perSeatPlan.members.length || 1)
+        else if month
+            planId = plan.id_month
+            amount = plan.amount_month * (@.perSeatPlan.members.length || 1)
+        else
+            planId = plan.id_year
+            amount = plan.amount_year * (@.perSeatPlan.members.length || 1)
+        name = plan.name
+        currency = plan.currency
+
+        @analytics.ecAddToCart(planId, name, amount)
+        @analytics.ecConfirmChange(planId, name, amount)
+
+        if @.myPlan && @.myPlan.customer_id?
+            plan = {
+                'plan_id': planId,
+                'quantity': (@.perSeatPlan.members.length || 1)
+            }
+
+            @._onSuccessBuyPlan(plan, amount, currency)
+        else
+            @paymentsService.start({
+                description: name,
+                amount: amount,
+                onLoad: () => @.loadingPayments = false
+                onSuccess: (plan) =>
+                    @analytics.ecPurchase(planId, name, amount)
+                    @._onSuccessBuyPlan(plan, amount, currency)
+                planId: planId,
+                currency: currency,
+                email: @.user.get('email'),
+                full_name: @.user.get('full_name')
+            })
+
+    _onSuccessBuyPlan: (plan, amount, currency) ->
+        @lightboxService.closeAll()
+        @tgLoader.start()
+
+        if !@.myPlan || (!@.myPlan.current_plan.amount_month && !@.myPlan.current_plan.amount_year)
+            google_conversion_id = @config.get("google_adwords_conversion_id")
+            google_conversion_label = @config.get("google_adwords_conversion_label")
+
+            if google_conversion_id && google_conversion_label
+                window.google_trackConversion({
+                    google_conversion_id : google_conversion_id
+                    google_conversion_language : "en",
+                    google_conversion_format : "3",
+                    google_conversion_color : "ffffff",
+                    google_conversion_label : google_conversion_label
+                    google_remarketing_only : false
+                    google_conversion_value: amount
+                    google_conversion_currency: currency.toUpperCase()
+                })
+
+        @subscriptionsService.selectMyPlan(plan).then(@._onSuccessSelectPlan.bind(this))
+
+    _onSuccessSelectPlan: () ->
+        message = @translate.instant("SUBSCRIPTIONS.SELECT_PLAN.SUCCESS")
+        @confirm.notify('success', message, '', 5000)
+        @authService.refresh()
+
+        @._loadPlans()
+
+    setNotifyActive: () ->
+        @.notify.when = 'always'
+        @.notify.limit = 0
+
+    setNotifyWhen: (whenNotify) ->
+        @.notify.limit = 1
+
+    showSaveLimit: () ->
+        limit = null
+        if !@.notify.active
+            limit = null
+        else if @.notify.when == 'always'
+            limit = 0
+        else if @.notify.when == 'on-limit'
+            limit = @.notify.limit
+        else
+            return false
+
+        if @.perSeatPlan.notify_limit == limit
+            return false
+        return true
+
+    saveNotifyLimit: () =>
+        limit = null
+        if !@.notify.active
+            limit = null
+        else if @.notify.when == 'always'
+            limit = 0
+        else if @.notify.when == 'on-limit'
+            limit = @.notify.limit
+        else
+            return
+
+        if @.perSeatPlan.notify_limit == limit
+            return
+
+        promise = @subscriptionsService.setMyPerSeatPlanNotifyLimit(limit)
+        promise.then () =>
+            @subscriptionsService.getMyPerSeatPlan()
+            message = @translate.instant("SUBSCRIPTIONS.NOTIFY_LIMIT.SUCCESS")
+            @confirm.notify('success', message, '', 5000)
+
+        promise.catch () =>
+            @confirm.notify('error')
+
 
 module.controller("ContribSubscriptionsController", SubscriptionsAdmin)

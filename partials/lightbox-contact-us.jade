@@ -1,0 +1,12 @@
+tg-lightbox-close
+form(ng-submit="vm.sendContactUs($event)")
+    h2.title(translate="SUBSCRIPTIONS.CONTACT_LB.TITLE")
+    fieldset
+        textarea(ng-attr-placeholder="{{'SUBSCRIPTIONS.CONTACT_LB.PLACEHOLDER' | translate}}", ng-model="vm.message")
+    fieldset
+        button.button-green.submit-button(
+            type="submit",
+            title="{{'SUBSCRIONTIONS.CONTACT_LB.BUTTON_SEND' | translate}}",
+            translate="SUBSCRIPTIONS.CONTACT_LB.BUTTON_SEND",
+            tg-loading="vm.loading"
+        )

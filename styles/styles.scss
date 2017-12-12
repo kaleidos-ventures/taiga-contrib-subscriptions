@@ -1,8 +1,20 @@
 @import 'plan.mixin';
 
+.navbar .nav-right .plugin {
+    height: 100%;
+    padding: 0;
+}
+
+.upgrade-header-button {
+    background-color: $primary-light;
+    color: $white;
+    height: 100%;
+    padding: 8px 12px;
+}
+
 .admin-subscriptions {
     display: block;
-    max-width: 650px;
+    max-width: 750px;
     width: 100%;
     h1 {
         margin-bottom: 2rem;
@@ -53,5 +65,239 @@
     .check-plans {
         display: block;
         padding: .75rem;
+    }
+}
+
+.plan-selector {
+    .plan-selector-header {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+        h1 {
+            color: $primary;
+            margin-bottom: 0;
+            text-transform: uppercase;
+        }
+        .text {
+            margin: 0;
+            padding: 20px 0;
+        }
+        .plan-selector-header-title {
+            display: none;
+        }
+        &.old {
+            border: 0;
+            .plan-selector-header-title {
+                display: block;
+            }
+            .text {
+                padding: 0;
+            }
+        }
+    }
+    .plan-selector-body {
+        color: $gray;
+        display: flex;
+        justify-content: space-between;
+        .plan-option-header {
+            align-items: center;
+            display: flex;
+            flex-grow: 0;
+            img {
+                height: 40px;
+                width: 40px;
+            }
+        }
+    }
+}
+
+.plan-selector-option {
+    border: 1px solid $whitish;
+    display: flex;
+    flex: 1 0;
+    flex-direction: column;
+    font-size: .8rem;
+    justify-content: space-between;
+    margin-right: 10px;
+    padding: 15px;
+    position: relative;
+    width: 300px;
+    &:last-child {
+        margin-right: 0;
+    }
+    &.current {
+        border: 2px solid $gray-light;
+    }
+    &.premium {
+        border: 2px solid $primary-light;
+        .price {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px 0 10px;
+            .price-value {
+                font-size: 2em;
+            }
+            .per-year {
+                color: $gray-light;
+            }
+        }
+        button {
+            background: $primary;
+            flex: 1 0;
+            font-size: 1.5em;
+            padding: 15px;
+            &:hover {
+                background: $primary-light;
+            }
+        }
+        .your-current-plan {
+            background: $primary-light;
+        }
+    }
+    .your-current-plan {
+        align-self: center;
+        background: $gray-light;
+        color: $white;
+        font-size: .75rem;
+        height: 20px;
+        padding: 2px;
+        position: absolute;
+        text-align: center;
+        top: -10px;
+        width: 50%;
+    }
+    ul {
+        flex: 1 0;
+        li {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            padding-top: 8px;
+            span {
+                padding-left: 10px;
+            }
+        }
+    }
+    svg {
+        fill: $primary-light;
+        height: 24px;
+        margin: 8px;
+        width: 24px;
+    }
+}
+
+.plan-members {
+    li {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        &.row {
+            border-top: 1px solid $whitish;
+        }
+    }
+}
+
+.plan-member {
+    .user {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        width: 100%;
+        img {
+            height: 48px;
+            margin-right: 10px;
+            width: 48px;
+        }
+    }
+
+    .projects {
+        cursor: pointer;
+        display: inline-block;
+        flex-grow: 1;
+        position: relative;
+        width: 100%;
+        span {
+            color: $primary;
+        }
+    }
+
+    .actions {
+        cursor: pointer;
+        flex-grow: 1;
+        width: 30px;
+    }
+}
+
+.lightbox-user-projects {
+    .project-name {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+}
+
+.plan-members-section {
+    .header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        .text {
+            padding-right: 10px;
+        }
+        button {
+            white-space: nowrap;
+        }
+    }
+    .notifications-management {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding: 10px 0;
+        position: relative;
+        width: 100%;
+        select {
+            width: 150px;
+        }
+        .members-save-button {
+            opacity: .2;
+            width: 30px;
+            &.active {
+                cursor: pointer;
+                opacity: 1;
+            }
+        }
+        .members-limit-input {
+            position: relative;
+            input {
+                width: 150px;
+            }
+            span {
+                position: absolute;
+                right: 25px;
+                top: 10px;
+            }
+        }
+    }
+}
+
+.remove-user-lb {
+    .buttons {
+        display: flex;
+        width: 100%;
+        button {
+            flex-grow: 2;
+            width: 100%;
+        }
+        a {
+            flex-grow: 1;
+        }
     }
 }

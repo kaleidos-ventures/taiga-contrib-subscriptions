@@ -1,0 +1,40 @@
+tg-lightbox-close
+form
+    h2.title(ng-bind="'SUBSCRIPTIONS.USER_PROJECTS_LB.TITLE' | translate:{user:vm.user.getIn(['user', 'full_name'])}")
+    p(ng-bind="'SUBSCRIPTIONS.USER_PROJECTS_LB.EXPLANATION' | translate:{user:vm.user.getIn(['user', 'full_name'])}")
+    .project-list
+        ul
+            li.list-itemtype-project(
+                ng-repeat="project in vm.user.get('richProjects') | orderBy: project.get('name') track by project.get('id')"
+            )
+                .list-itemtype-project-left
+
+                    .list-itemtype-project-data-wrapper
+                        a.list-itemtype-project-image(
+                            href="#"
+                            tg-nav="project:project=project.get('slug')"
+                            title="{{ ::project.get('name') }}"
+                        )
+                            img(
+                                tg-project-logo-small-src="::project"
+                                alt="{{::project.get('name')}}"
+                            )
+                        .list-itemtype-project-data
+                            h2.project-name
+                                a.project-title(
+                                    href="#"
+                                    tg-nav="project:project=project.get('slug')"
+                                    title="{{ ::project.get('name') }}"
+                                ) {{project.get('name')}}
+                                tg-svg(
+                                    svg-icon="icon-lock",
+                                    svg-title-translate="PROJECT.PRIVATE"
+                                )
+
+                            a.project-title(
+                                href="#"
+                                tg-nav="project:project=project.get('slug')"
+                                title="{{ ::project.get('name') }}"
+                            )
+                                p.project-description {{ ::project.get('description') | limitTo:300 }}
+                                    span(ng-if="::project.get('description').length > 300") ...

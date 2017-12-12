@@ -47,7 +47,9 @@ describe "SubscriptionsAdmin", ->
         mocks.contribSubscriptionsService = {
             fetchMyPlans: sinon.stub(),
             fetchPublicPlans: sinon.stub(),
-            selectMyPlan: sinon.stub()
+            selectMyPlan: sinon.stub(),
+            getMyPerSeatPlan: sinon.stub()
+            loadUserPlan: sinon.stub()
         }
 
         provide.value "ContribSubscriptionsService", mocks.contribSubscriptionsService
@@ -79,6 +81,31 @@ describe "SubscriptionsAdmin", ->
         }
         provide.value "$tgConfirm", mocks.tgConfirm
 
+    _mockTgCurrentUserService = () ->
+        mocks.tgCurrentUserService = {
+            getUser: sinon.stub(),
+            projectsById: sinon.stub()
+        }
+        provide.value "tgCurrentUserService", mocks.tgCurrentUserService
+
+    _mockTgUserService = () ->
+        mocks.tgUserService = {
+            getContacts: sinon.stub(),
+        }
+        provide.value "tgUserService", mocks.tgUserService
+
+    _mockTgAuth = () ->
+        mocks.tgAuth = {
+            refresh: sinon.stub(),
+        }
+        provide.value "$tgAuth", mocks.tgAuth
+
+    _mockTgConfig = () ->
+        mocks.tgConfig = {
+            get: sinon.stub()
+        }
+        provide.value "$tgConfig", mocks.tgConfig
+
     _mockTgTranslate = () ->
         mocks.tgTranslate = {
             instant: sinon.stub()
@@ -107,6 +134,10 @@ describe "SubscriptionsAdmin", ->
             _mockTgConfirm()
             _mockTgTranslate()
             _mockTgAnalytics()
+            _mockTgConfig()
+            _mockTgCurrentUserService()
+            _mockTgUserService()
+            _mockTgAuth()
 
             return null
 
@@ -131,8 +162,13 @@ describe "SubscriptionsAdmin", ->
         expect(mocks.appMetaService.setAll).have.been.calledWith(title, description)
 
     it "load User Plans", (done) ->
-        promise = mocks.contribSubscriptionsService.fetchMyPlans.promise()
+        promise1 = mocks.contribSubscriptionsService.getMyPerSeatPlan.promise()
+        promise2 = mocks.contribSubscriptionsService.loadUserPlan.promise()
+        promise3 = mocks.contribSubscriptionsService.fetchPublicPlans.promise()
         subscriptionsCtrl = controller "ContribSubscriptionsController"
+        subscriptionsCtrl.publicPlans = []
+        subscriptionsCtrl.notify = {}
+        subscriptionsCtrl.perSeatPlan = {}
 
         subscriptionsCtrl._loadPlans().then () ->
             expect(mocks.tgLoader.pageLoaded).have.been.called
@@ -140,75 +176,9 @@ describe "SubscriptionsAdmin", ->
 
         expect(mocks.tgLoader.start).have.been.called
 
-        promise.resolve()
-
-    it "get paid template URL", () ->
-        subscriptionsCtrl = controller "ContribSubscriptionsController"
-        url = "compile-modules/taiga-contrib-subscriptions/partials/subscriptions-paid.html"
-
-        expect(subscriptionsCtrl.getTemplateUrl()).to.be.equal(url)
-
-    it "get zero template URL", () ->
-        subscriptionsCtrl = controller "ContribSubscriptionsController"
-        subscriptionsCtrl.myRecommendedPlan = {
-            recommended_plan: {
-                    amount_month: 0
-                }
-        }
-        url = "compile-modules/taiga-contrib-subscriptions/partials/subscriptions-zero.html"
-
-        expect(subscriptionsCtrl.getTemplateUrl()).to.be.equal(url)
-
-    it "get recommended template URL", () ->
-        subscriptionsCtrl = controller "ContribSubscriptionsController"
-        subscriptionsCtrl.myRecommendedPlan = {
-            recommended_plan: {
-                    amount_month: 300
-                }
-        }
-        url = "compile-modules/taiga-contrib-subscriptions/partials/subscriptions-recommended.html"
-
-        expect(subscriptionsCtrl.getTemplateUrl()).to.be.equal(url)
-
-    it "upgrade Plan", (done) ->
-        promise = mocks.contribSubscriptionsService.fetchPublicPlans.promise().resolve()
-        subscriptionsCtrl = controller "ContribSubscriptionsController"
-
-        subscriptionsCtrl._plansList = sinon.stub()
-
-        subscriptionsCtrl.upgradePlan().then () ->
-            expect(subscriptionsCtrl._plansList).have.been.called
-            done()
-
-        expect(subscriptionsCtrl.loading).to.be.equal(true)
-
-    it "buy recommended Plan", (done) ->
-        subscriptionsCtrl = controller "ContribSubscriptionsController"
-        promise = mocks.contribSubscriptionsService.fetchPublicPlans.promise()
-
-        subscriptionsCtrl.myRecommendedPlan = {
-            recommended_plan: {
-                    amount_month: 300
-                }
-        }
-
-        subscriptionsCtrl.buyRecommendedPlan().then () ->
-            expect(subscriptionsCtrl.loadingRecommendedPlan).to.be.equal(false)
-            expect(subscriptionsCtrl.selectedPlan).to.be.equal('valid')
-            expect(subscriptionsCtrl.selectPlanInterval).to.be.equal('month')
-            expect(subscriptionsCtrl.validPlan).to.be.eql(subscriptionsCtrl.myRecommendedPlan.recommended_plan)
-            expect(mocks.lightboxService.open).has.been.calledWith('tg-lb-plans')
-            done()
-
-        expect(subscriptionsCtrl.loadingRecommendedPlan).to.be.equal(true)
-        promise.resolve()
-
-    it "show Plans List", () ->
-        subscriptionsCtrl = controller "ContribSubscriptionsController"
-
-        subscriptionsCtrl._plansList()
-        expect(subscriptionsCtrl.loading).to.be.equal(false)
-        expect(mocks.lightboxService.open).has.been.calledWith('tg-lb-plans')
+        promise1.resolve()
+        promise2.resolve()
+        promise3.resolve()
 
     it "change Payments Data", () ->
         subscriptionsCtrl = controller "ContribSubscriptionsController"

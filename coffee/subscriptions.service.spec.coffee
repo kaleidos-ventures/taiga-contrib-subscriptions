@@ -62,29 +62,6 @@ describe "SubscriptionsService", ->
             expect(subscriptionsService.myPlan).to.be.eql(test)
             done()
 
-    it "if user has no recommended plan", (done) ->
-        subscriptionsService.loadUserPlan = sinon.stub()
-        subscriptionsService.loadUserPlan.promise().resolve()
-
-        subscriptionsService.setRecommendedPlan().then () ->
-            expect(subscriptionsService.loadUserPlan).have.been.called
-            done()
-
-    it "if recommended plan set as user plan", (done) ->
-        test = 'test'
-        subscriptionsService.setRecommendedPlan(test).then () ->
-            expect(subscriptionsService.myRecommendedPlan).to.be.equal(test)
-            done()
-
-    it "get user recommended plans", (done) ->
-        test = {data: true}
-        mocks.http.get.withArgs("http://localhost:5000/api/v1/my-recommended-plan", {}).promise().resolve(test)
-
-        subscriptionsService.setRecommendedPlan = sinon.stub()
-        subscriptionsService.fetchMyPlans().then () ->
-            expect(subscriptionsService.setRecommendedPlan).have.been.calledWith(true)
-            done()
-
     it "get user current plan", (done) ->
         test = {data: true}
 

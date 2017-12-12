@@ -19,21 +19,21 @@
 
 module = angular.module('subscriptions')
 
-LightboxPlanDirective = (lightboxService) ->
+LightboxConfirmSubscribeDirective = (lightboxService) ->
     return {
         scope: {
-            validPlan: "=",
-            selectedPlan: "=",
-            selectPlanInterval: '='
+            plan: '=',
+            members: '=',
+            onConfirm: '&'
         },
         bindToController: true,
-        controller: 'ContribLbPlansController',
+        controller: 'ContribLbConfirmSubscribeController',
         controllerAs: 'vm',
-        templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/lightbox-plans.html',
+        templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/lightbox-confirm-subscribe.html',
     }
 
-LightboxPlanDirective.$inject = [
+LightboxConfirmSubscribeDirective.$inject = [
     "lightboxService"
 ]
 
-module.directive("tgLbPlans", LightboxPlanDirective)
+module.directive("tgLbConfirmSubscribe", LightboxConfirmSubscribeDirective)

@@ -32,8 +32,10 @@ class ContribPaymentsService
 
             @.quadernoHandler = QuadernoCheckout.configure({
                 key: key,
+                gateway: 'stripe',
                 locale: @translate.use(),
                 callback: (params) ->
+                    console.log("QUADERNO CALLBACK: ", params)
                     options.onSuccess({quaderno_token: params.details})
             })
 
@@ -65,7 +67,7 @@ class ContribPaymentsService
             label = @translate.instant("SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA")
             @.stripeHandler = StripeCheckout.configure({
                 key: key,
-                image: image,
+                mage: image,
                 locale: @translate.use(),
                 billingAddress: false,
                 panelLabel: label

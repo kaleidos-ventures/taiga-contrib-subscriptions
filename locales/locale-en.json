@@ -9,12 +9,35 @@
         "UPDATE_PLAN": "Change plan",
         "PRIVATE_PROJECTS_LIMIT": "Up to <strong>{{number}}</strong> private projects + Unlimited public projects!",
         "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "Unlimited private projects + Unlimited public projects!",
-        "MEMBERS_LIMIT": "Up to <strong>{{number}}</strong> members per private project!",
+        "EXTRA_SEAT_PER_MONTH": "Extra seat: ${{amount}} more monthly",
+        "EXTRA_SEAT_PER_YEAR": "Extra seat: ${{amount}} more yearly",
+        "MEMBERS_LIMIT": "Up to <strong>{{number}}</strong> different member accounts using any of your private projects!",
         "MEMBERS_LIMIT_UNLIMITED": "Unlimited members per private project!",
         "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",
         "FREQUENCY_MONTH": "month",
         "FREQUENCY_YEAR": "year",
         "MAX_PRIVATE_PROJECTS": "Would you like to add more private projects? <a href='{{url}}'>Upgrade your plan!</a>",
+        "MEMBERS": {
+            "BACK_TO_PLANS": "Back to plans",
+            "SECTION_DESCRIPTION": "Currently this are the users that depends on your paid plan. You can remove then from all your private projects from the list bellow or you can manage their memberships in the configuration panel of each project",
+            "NOTIFICATIONS_SELECT": "Notify by mail increments of members"
+        },
+        "USER_PROJECTS_LB": {
+            "TITLE": "Private projects with {{user}}",
+            "EXPLANATION": "These are your private projects where {{user}} is counting for your paid plan. You can manage the presence of the members in the projects from the members panel."
+        },
+        "CONTACT_LB": {
+            "TITLE": "Contact Us",
+            "PLACEHOLDER": "Please contact us and explain your needs",
+            "BUTTON_SEND": "Contact Us",
+            "SUCCESS": "Your message has been sent, we will contact with you soon."
+        },
+        "REMOVE_USER_LB": {
+            "TITLE": "Are you sure?",
+            "TEXT": "This action will remove the user from all your private projects.",
+            "CONFIRM": "Confirm",
+            "BACK": "Back"
+        },
         "HELP": {
             "WHY": "Why do we think this might be the best plan for you?",
             "NO_PROJECTS": "You currently have no private projects so we believe that the  {{name}} plan might work great for you.",
@@ -43,11 +66,10 @@
             "IMAGE_ALT": "Downgrading a plan",
             "REASON": "Unfortunately, you have exceeded the maximum number of private projects allowed by this plan. Your current plan allows up to <strong>{{projects}} private projects and {{members}} members per private project</strong>. In order to change to the {{plan}} plan, simply have to make the following changes",
             "MORE_PROJECTS": "If you have more than {{projects}} private projects",
-            "MORE_PROJECTS_OPTION1": "Have a maximum of {{projects}} private projects and set the remaining projects as <strong>public</strong>",
-            "MORE_PROJECTS_OPTION2": "Keep {{projects}} private projects and <strong>delete</strong> the remaining private projects",
-            "MORE_PROJECTS_OPTION3": "Or a combination of the above options",
+            "MORE_PROJECTS_OPTION1": "Choose 1 project to remain private and make public or remove the rest projects",
+            "MORE_PROJECTS_OPTION2": "You can perform these changes on the upper menu cliking Manage Projects",
             "MORE_MEMBERS": "If you have more than {{members}} members per private project",
-            "MORE_MEMBERS_OPTION1": "Have a maximum of {{members}} members for all your private projects",
+            "MORE_MEMBERS_OPTION1": "Go to Manage Members and keep a maximum of {{members}} members for all your private projects",
             "ACCEPT": "OK, understood"
         },
         "SELECT_PLAN": {
@@ -60,12 +82,40 @@
             "BACK_TITLE": "Back to Plan selection",
             "BUY": "Buy Plan",
             "CONTINUE": "Continue",
+            "CONFIRM": "Confirm",
             "EVERY_YEAR": "Every year",
             "EVERY_MONTH": "Every month",
             "TAXES": "Depending on your country, we may be required to charge sales tax.",
             "SUCCESS": "Congratulations, you successfully subscribed to a payment plan!",
             "START_SUBSCRIPTION": "Start subscription",
             "PAY": "Pay {{ amount }}"
+        },
+        "PLAN_OPTIONS": {
+            "FREE_PLAN": "Free",
+            "PREMIUM_PLAN": "Premium",
+            "ENTERPRISE_PLAN": "Enterprise",
+            "MANAGE_MEMBERS": "Manage members",
+            "UPGRADE_PLAN": "Upgrade plan",
+            "DOWNGRADE": "Downgrade",
+            "UPDATE": "Update",
+            "UPGRADE": "Upgrade Now",
+            "CONTACT_US": "Contact us",
+            "MANAGE_MEMBERS": "Manage members",
+            "PREMIUM_GBS": "Up to <strong>10GB</strong> of storage",
+            "PREMIUM_NUM_USERS": "<strong>Unlimited</strong> number of members",
+            "PREMIUM_NUM_PRIVATE_PROJECTS": "<strong>Unlimited</strong> private projects",
+            "PREMIUM_NUM_PUBLIC_PROJECTS": "<strong>Unlimited</strong> public projects",
+            "FREE_NUM_USERS": "Up to <strong>3</strong> members on private project",
+            "FREE_NUM_PRIVATE_PROJECTS": "<strong>1</strong> private project",
+            "FREE_NUM_PUBLIC_PROJECTS": "<strong>Unlimited</strong> public projects",
+            "FREE_GBS": "Up to <strong>300MB</strong> of storage in private projects",
+            "ENTERPRISE_SUPPORT": "Extended support",
+            "ENTERPRISE_ON_PREMISE": "On-Premise option",
+            "YOUR_CURRENT_PLAN": "Your current plan",
+            "CURRENT_PLAN_DESCRIPTION": "Currently in your private projects there are {{members}} members."
+        },
+        "NOTIFY_LIMIT": {
+            "SUCCESS": "Notify limit changed correctly"
         }
     },
     "PROJECT": {

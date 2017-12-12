@@ -23,32 +23,24 @@ class SubscriptionsService
     @.$inject = ["$tgHttp", "$tgConfig"]
 
     constructor: (@http, @config) ->
-        @.myRecommendedPlan = null
         @.myPlan = null
         @.publicPlans = null
+        @.perSeatPlan = null
 
     getSubscriptionsAPIURL: ->
         return @config.get("subscriptionsAPI", "http://localhost:5000/api/v1/")
+
+    getAPIURL: ->
+        return @config.get("api", "http://localhost:8000/api/v1/")
 
     loadUserPlan: ->
         @.getMyPlan().then (response) =>
             @.myPlan = response
 
-    setRecommendedPlan: (recommendedPlan) ->
-        return new Promise (resolve) =>
-            if !recommendedPlan
-                @.loadUserPlan().then(resolve)
-            else
-                @.myRecommendedPlan = recommendedPlan
-                resolve()
+    contact: (message) ->
+        url = "#{@.getSubscriptionsAPIURL()}contact"
 
-    fetchMyPlans: ->
-        @.myRecommendedPlan = null
-        @.myPlan = null
-
-        url = "#{@.getSubscriptionsAPIURL()}my-recommended-plan"
-
-        return @http.get(url, {}).then (response) => @.setRecommendedPlan(response.data)
+        return @http.post(url, {message: message})
 
     getMyPlan: ->
         url = "#{@.getSubscriptionsAPIURL()}my-subscription"
@@ -66,5 +58,21 @@ class SubscriptionsService
 
         return @http.post(url, data).then (response) =>
             @.myPlan = response
+
+    getMyPerSeatPlan: () ->
+        url = "#{@.getSubscriptionsAPIURL()}my-plan-per-seat"
+
+        return @http.get(url).then (response) =>
+            @.perSeatPlan = response.data
+
+    setMyPerSeatPlanNotifyLimit: (notify_limit) ->
+        url = "#{@.getSubscriptionsAPIURL()}my-plan-per-seat-notify-limit"
+
+        return @http.post(url, {notify_limit: notify_limit})
+
+    removeUserFromMyProjects: (userId) ->
+        url = "#{@.getAPIURL()}memberships/remove_user_from_all_my_projects"
+
+        return @http.post(url, {user: userId, private_only: true})
 
 module.service("ContribSubscriptionsService", SubscriptionsService)

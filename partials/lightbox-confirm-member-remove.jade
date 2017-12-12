@@ -1,0 +1,22 @@
+section.remove-user-lb
+    tg-svg.close(
+        svg-icon="icon-close"
+        svg-title-translate="COMMON.CLOSE"
+    )
+    h2.title(translate="SUBSCRIPTIONS.REMOVE_USER_LB.TITLE")
+
+    p.text(translate="SUBSCRIPTIONS.REMOVE_USER_LB.TEXT")
+
+    .buttons
+        a.back.trans-button(
+            href=""
+            ng-title="'SUBSCRIPTIONS.REMOVE_USER_LB.BACK' | translate"
+            translate="SUBSCRIPTIONS.REMOVE_USER_LB.BACK"
+            ng-click="vm.close()"
+        )
+        button.button-green.accept-plan.e2e-accept-plan(
+            ng-title="'SUBSCRIPTIONS.REMOVE_USER_LB.CONFIRM' | translate"
+            translate="SUBSCRIPTIONS.REMOVE_USER_LB.CONFIRM"
+            ng-click="vm.confirmUserRemove()"
+            tg-loading="vm.removing"
+        )
