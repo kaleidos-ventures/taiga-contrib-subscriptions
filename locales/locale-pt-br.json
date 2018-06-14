@@ -16,7 +16,7 @@
         "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",
         "FREQUENCY_MONTH": "mês",
         "FREQUENCY_YEAR": "ano",
-        "MAX_PRIVATE_PROJECTS": "Would you like to add more private projects? <a href='{{url}}'>Upgrade your plan!</a>",
+        "MAX_PRIVATE_PROJECTS": "Gostaria de criar mais projetos privados?\n<a href='{{url}}'>Veja mais planos!</a>",
         "MEMBERS": {
             "BACK_TO_PLANS": "Back to plans",
             "SECTION_DESCRIPTION": "Currently this are the users that depends on your paid plan. You can remove then from all your private projects from the list bellow or you can manage their memberships in the configuration panel of each project",
@@ -27,15 +27,15 @@
             "EXPLANATION": "These are your private projects where {{user}} is counting for your paid plan. You can manage the presence of the members in the projects from the members panel."
         },
         "CONTACT_LB": {
-            "TITLE": "Contact Us",
+            "TITLE": "Contato",
             "PLACEHOLDER": "Please contact us and explain your needs",
             "BUTTON_SEND": "Contact Us",
-            "SUCCESS": "Your message has been sent, we will contact with you soon."
+            "SUCCESS": "Sua mensagem foi enviada, retornaremos o mais breve possível."
         },
         "REMOVE_USER_LB": {
-            "TITLE": "Are you sure?",
-            "TEXT": "This action will remove the user from all your private projects.",
-            "CONFIRM": "Confirm",
+            "TITLE": "Tem certeza?",
+            "TEXT": "Isso vai remover o usuário de TODOS os seus projetos privados.",
+            "CONFIRM": "Confirme",
             "BACK": "Back"
         },
         "HELP": {
@@ -53,7 +53,7 @@
         "PAYMENT_HISTORY": {
             "SEE_BILLING_DETAILS": "Ver detalhes de cobrança",
             "CHANGE_DATA": "Mude detalhes de pagamento",
-            "CHANGE_DATA_SUCCESS": "Great! You've sucessfully changed your payment details"
+            "CHANGE_DATA_SUCCESS": "Ótimo! Você alterou seus detalhes de pagamento!"
         },
         "PLANS_SELECTOR": {
             "TITLE": "Qual plano funciona melhor para você",
@@ -91,7 +91,7 @@
             "PAY": "Pague {{ amount }}"
         },
         "PLAN_OPTIONS": {
-            "FREE_PLAN": "Free",
+            "FREE_PLAN": "Grátis",
             "PREMIUM_PLAN": "Premium",
             "ENTERPRISE_PLAN": "Enterprise",
             "MANAGE_MEMBERS": "Manage members",
@@ -144,7 +144,7 @@
             }
         },
         "CREATE": {
-            "MAX_PRIVATE_PROJECTS": "Unfortunately, you've reached the maximum number of private projects",
+            "MAX_PRIVATE_PROJECTS": "Infelizmente você alcançou a quantidade máxima de projetos privados permitidos",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
             "CREATE_MORE_PROJECTS": "Para criar mais você deveria",
             "CHANGE_PLAN": "Mude seu plano atual"
