@@ -1,5 +1,7 @@
 # Changelog #
 
+## 3.4.6 (2018-10-30)
+- Update admin subscriptions messages.
 
 ## 3.1.0 (2017-03-10)
 - Improve 'create new project' functionality.
