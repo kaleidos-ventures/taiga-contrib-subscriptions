@@ -1,14 +1,14 @@
 {
     "SUBSCRIPTIONS": {
-        "TITLE": "Subscriptions - User Profile - Taiga",
-        "SECTION_NAME": "Paid Plans",
-        "PLAN": "Plan",
-        "YOUR_PLAN": "Your plan",
+        "TITLE": "Abonnements - Benutzerprofil - Taiga",
+        "SECTION_NAME": "Bezahlte Abonnements",
+        "PLAN": "Abonnements",
+        "YOUR_PLAN": "Deine Abonnement",
         "YOUR_RECOMMENDED_PLAN": "You might want to consider",
         "WANT_PLAN": "Ich möchte es!",
         "UPDATE_PLAN": "Change plan",
         "PRIVATE_PROJECTS_LIMIT": "Bis zu <strong>{{number}}</strong> private Projekt und nicht limitierte öffentliche Projekte!",
-        "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "Unlimited private projects + Unlimited public projects!",
+        "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "Unlimitierte Anzahl an private Projekte + Unlimitierte Anzahl an öffentliche Projekte!",
         "EXTRA_SEAT_PER_MONTH": "Extra seat: ${{amount}} more monthly",
         "EXTRA_SEAT_PER_YEAR": "Extra seat: ${{amount}} more yearly",
         "MEMBERS_LIMIT": "Up to <strong>{{number}}</strong> different member accounts using any of your private projects!",
@@ -29,14 +29,14 @@
         "CONTACT_LB": {
             "TITLE": "Contact Us",
             "PLACEHOLDER": "Please contact us and explain your needs",
-            "BUTTON_SEND": "Contact Us",
-            "SUCCESS": "Your message has been sent, we will contact with you soon."
+            "BUTTON_SEND": "Kontaktiere uns",
+            "SUCCESS": "Ihre Nachricht wurde gesendet, wir werden Sie bald kontaktieren."
         },
         "REMOVE_USER_LB": {
-            "TITLE": "Are you sure?",
+            "TITLE": "Sind Sie sich sicher?",
             "TEXT": "This action will remove the user from all your private projects.",
-            "CONFIRM": "Confirm",
-            "BACK": "Back"
+            "CONFIRM": "Bestätigen",
+            "BACK": "Zurück"
         },
         "HELP": {
             "WHY": "Warum wir denken, dass dies der beste Plan für dich ist.",
@@ -53,11 +53,11 @@
         "PAYMENT_HISTORY": {
             "SEE_BILLING_DETAILS": "Rechnungsdetails ansehen",
             "CHANGE_DATA": "Bezahlungsdetails ändern",
-            "CHANGE_DATA_SUCCESS": "Great! You've sucessfully changed your payment details"
+            "CHANGE_DATA_SUCCESS": "Prima! Sie haben erfolgreich Ihre Zahlungsdaten geändert"
         },
         "PLANS_SELECTOR": {
-            "TITLE": "Which plan works best for you?",
-            "CURRENT": "Current Plan",
+            "TITLE": "Welches Abonnement passt am Besten zu Ihnen?",
+            "CURRENT": "Aktuelles Abonnement",
             "CUSTOM": "Custom",
             "CONTACT": "If you need a paid plan allowing for more projects or more members per project contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a> for further information."
         },
@@ -119,10 +119,10 @@
     },
     "PROJECT": {
         "BLOCKED_PROJECT": {
-            "ITS_ONLY_TEMPORAL": "Don't worry, it should be temporary",
+            "ITS_ONLY_TEMPORAL": "Keine Sorgen, das sollte nur vorübergehend sein",
             "TO_UNBLOCK_CHECK_YOUR_PLAN": "To unblock projects, first subscribe to a payment plan that allows at least as many private projects as you have currently",
             "TO_UNBLOCK_CONTACT_SUPPORT": "To unblock your projects please contact with <a href=\"mailto:support@taiga.io\" title=\"support\">support@taiga.io</a>",
-            "CHECK_PLANS": "Check plans",
+            "CHECK_PLANS": "Abonnements überprüfen",
             "TO_UNBLOCK_PROJECT_MEMBER": "Why is my project blocked?"
         },
         "IMPORT": {
@@ -146,8 +146,8 @@
         "CREATE": {
             "MAX_PRIVATE_PROJECTS": "Unfortunately, you've reached the maximum number of private projects",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
-            "CREATE_MORE_PROJECTS": "To create more, you should",
-            "CHANGE_PLAN": "Change your current plan"
+            "CREATE_MORE_PROJECTS": "Um mehr Projekte zu erstellen, sollten Sie",
+            "CHANGE_PLAN": "Ändern Sie ihr aktuelles Abonnement"
         }
     },
     "ADMIN": {
@@ -156,8 +156,8 @@
             "CANT_BE_OWNED_BY_MEMBERSHIPS": "At the moment you won't be able to become an owner of a project of this type. If you would like to become the owner of this project please contact the administrators at <a href='mailto:support@taiga.io'>support@taiga.io</a>."
         },
         "MEMBERSHIPS": {
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_FREE_PLAN": "This project currently has <strong>{{members}}</strong> members, which is the maximum allowed for the Seed Plan. If you would like to add more members, please consider <a href='/user-settings/contrib/subscriptions' title='Subscribe to a paid plan'>subscribing to a paid plan</a>.",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project currently has <strong>{{members}}</strong> members, which is the maximum allowed. If you would like to add more members, please contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a>."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>, who is currently authorized to upgrade the current plan.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_LIMITED_PLAN": "This project currently has <strong>{{members}}</strong> members, which is the maximum allowed. If you would like to <strong>add more members</strong>, please upgrade your plan."
         }
     },
     "LIGHTBOX": {

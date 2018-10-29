@@ -156,8 +156,8 @@
             "CANT_BE_OWNED_BY_MEMBERSHIPS": "현재이 유형의 프로젝트 소유자가 될 수 없습니다. 이 프로젝트의 소유자가되고 싶다면 <a href='mailto:support@taiga.io'>support@taiga.io</a>를 통해 관리자에게 문의하십시오."
         },
         "MEMBERSHIPS": {
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_FREE_PLAN": "이 프로젝트는 현재 <strong>{{members}}</ strong> 명의 회원을 보유하고 있습니다, 이는 Seed 계획에 허용 된 최대치입니다. 더 많은 회원을 추가하고 싶으시다면 <a href='/user-settings/contrib/subscriptions' title='유료 계획 구독하기'>유료 계획 구독하기</a>를 고려해보십시오.",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "현재의 프로젝트에는 <strong>{{members}}</strong> 명의 회원이 있습니다, 허용되는 최대 회원수입니다. 더 많은 회원을 추가 하고 싶다면 <a href='mailto:support@taiga.io' title='연락처'>support@taiga.io</a>로 문의해주세요."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>, who is currently authorized to upgrade the current plan.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_LIMITED_PLAN": "This project currently has <strong>{{members}}</strong> members, which is the maximum allowed. If you would like to <strong>add more members</strong>, please upgrade your plan."
         }
     },
     "LIGHTBOX": {

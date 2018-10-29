@@ -156,8 +156,8 @@
             "CANT_BE_OWNED_BY_MEMBERSHIPS": "Actualmente no puedes ser el propietario de un proyecto de este tipo. Si quieres poder serlo deberás contactar con los administradores en <a href='mailto:support@taiga.io'>support@taiga.io</a>."
         },
         "MEMBERSHIPS": {
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_FREE_PLAN": "Este proyecto actualmente tiene <strong>{{members}}</strong> miembros que es el máximo permitido para el Plan Seed. Si quieres añadir más miembros deberás <a href='/user-settings/contrib/subscriptions' title='Suscribirte a un plan de pago'>suscribirte a un plan de pago</a>.",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Este proyecto actualmente tiene <strong>{{members}}</strong> miembros que es el máximo permitido. Si quieres añadir más miembros deberás contactar con nosotros en <a href='mailto:support@taiga.io' title='Contacta con nosotros'>support@taiga.io</a>."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>, who is currently authorized to upgrade the current plan.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_LIMITED_PLAN": "This project currently has <strong>{{members}}</strong> members, which is the maximum allowed. If you would like to <strong>add more members</strong>, please upgrade your plan."
         }
     },
     "LIGHTBOX": {
