@@ -303,12 +303,12 @@
 }
 
 .create-project-warning p {
-  span,
-  a {
-    display: initial;
-    margin: 0;
-    &:after {
-      content: " "
+    span,
+    a {
+        display: initial;
+        margin: 0;
+        &:after {
+            content: ' ';
+        }
     }
-  }
 }
