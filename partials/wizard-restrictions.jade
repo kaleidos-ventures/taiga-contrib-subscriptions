@@ -1,23 +1,23 @@
 div.create-project-warning(ng-if="isPrivate && !canCreatePrivateProjects.valid && canCreatePrivateProjects.reason == 'max_private_projects'")
     svg.icon.icon-exclamation
         use(xlink:href="#icon-exclamation")
-    span {{ 'PROJECT.CREATE.MAX_PRIVATE_PROJECTS' | translate }}
-    div
-        span {{ 'PROJECT.CREATE.CREATE_MORE_PROJECTS' | translate }}
-        a(
-            href=""
-            title="{{'PROJECT.CREATE.CHANGE_PLAN' | translate }}"
-            tg-nav="user-settings-contrib:plugin='subscriptions'",
-        ) {{'PROJECT.CREATE.CHANGE_PLAN' | translate }}
+    p
+      span {{ 'PROJECT.CREATE.MAX_PRIVATE_PROJECTS' | translate }}
+      span {{ 'PROJECT.CREATE.CREATE_MORE_PROJECTS' | translate }}
+      a(
+          href=""
+          title="{{'PROJECT.CREATE.CHANGE_PLAN' | translate }}"
+          tg-nav="user-settings-contrib:plugin='subscriptions'",
+      ) {{'PROJECT.CREATE.CHANGE_PLAN' | translate }}
 
 div.create-project-warning(ng-if="!isPrivate && !canCreatePublicProjects.valid && canCreatePublicProjects.reason == 'max_public_projects'")
     svg.icon.icon-exclamation
         use(xlink:href="#icon-exclamation")
-    span {{ 'PROJECT.CREATE.MAX_PUBLIC_PROJECTS' | translate }}
-    div
-        span {{ 'PROJECT.CREATE.CREATE_MORE_PROJECTS' | translate }}
-        a(
-            href=""
-            title="{{'PROJECT.CREATE.CHANGE_PLAN' | translate }}"
-            tg-nav="user-settings-contrib:plugin='subscriptions'",
-        ) {{'PROJECT.CREATE.CHANGE_PLAN' | translate }}
+    p
+      span {{ 'PROJECT.CREATE.MAX_PUBLIC_PROJECTS' | translate }}
+      span {{ 'PROJECT.CREATE.CREATE_MORE_PROJECTS' | translate }}
+      a(
+          href=""
+          title="{{'PROJECT.CREATE.CHANGE_PLAN' | translate }}"
+          tg-nav="user-settings-contrib:plugin='subscriptions'",
+      ) {{'PROJECT.CREATE.CHANGE_PLAN' | translate }}
