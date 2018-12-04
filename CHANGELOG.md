@@ -1,5 +1,8 @@
 # Changelog #
 
+## 4.0.2 (2018-12-04)
+- Fix messages.
+
 ## 3.4.6 (2018-10-30)
 - Update admin subscriptions messages.
 
