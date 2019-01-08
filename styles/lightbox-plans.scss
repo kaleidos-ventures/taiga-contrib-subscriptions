@@ -139,6 +139,9 @@
     }
     .project-interval {
         display: none;
+        +label {
+            background: $gray-light;
+        }
         &:checked {
             +label {
                 background: $primary-light;
