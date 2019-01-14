@@ -147,7 +147,7 @@
             "MAX_PRIVATE_PROJECTS": "Desafortunadamente has alcanzado tu límite de proyectos privados ",
             "MAX_PUBLIC_PROJECTS": "Desafortunadamente has alcanzado tu límite de proyectos públicos ",
             "CREATE_MORE_PROJECTS": "Para poder crear más deberás ",
-            "CHANGE_PLAN": "Cambia tu plan actual"
+            "CHANGE_PLAN": "cambia tu plan actual"
         }
     },
     "ADMIN": {

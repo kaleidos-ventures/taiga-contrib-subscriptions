@@ -3,11 +3,11 @@
         "TITLE": "Abonnements - Benutzerprofil - Taiga",
         "SECTION_NAME": "Bezahlte Abonnements",
         "PLAN": "Abonnements",
-        "YOUR_PLAN": "Deine Abonnement",
+        "YOUR_PLAN": "Dein Abonnement",
         "YOUR_RECOMMENDED_PLAN": "You might want to consider",
         "WANT_PLAN": "Ich möchte es!",
         "UPDATE_PLAN": "Change plan",
-        "PRIVATE_PROJECTS_LIMIT": "Bis zu <strong>{{number}}</strong> private Projekt und nicht limitierte öffentliche Projekte!",
+        "PRIVATE_PROJECTS_LIMIT": "Bis zu <strong>{{number}}</strong> private Projekte und nicht limitierte öffentliche Projekte!",
         "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "Unlimitierte Anzahl an private Projekte + Unlimitierte Anzahl an öffentliche Projekte!",
         "EXTRA_SEAT_PER_MONTH": "Extra seat: ${{amount}} more monthly",
         "EXTRA_SEAT_PER_YEAR": "Extra seat: ${{amount}} more yearly",
@@ -91,7 +91,7 @@
             "PAY": "Pay {{ amount }}"
         },
         "PLAN_OPTIONS": {
-            "FREE_PLAN": "Free",
+            "FREE_PLAN": "Gratis",
             "PREMIUM_PLAN": "Premium",
             "ENTERPRISE_PLAN": "Enterprise",
             "MANAGE_MEMBERS": "Manage members",
@@ -100,14 +100,14 @@
             "UPDATE": "Update",
             "UPGRADE": "Upgrade Now",
             "CONTACT_US": "Contact us",
-            "PREMIUM_GBS": "Up to <strong>10GB</strong> of storage",
+            "PREMIUM_GBS": "Bis zu <strong>10GB</strong> Speicherplatz",
             "PREMIUM_NUM_USERS": "<strong>Unlimited</strong> number of members",
             "PREMIUM_NUM_PRIVATE_PROJECTS": "<strong>Unlimited</strong> private projects",
             "PREMIUM_NUM_PUBLIC_PROJECTS": "<strong>Unlimited</strong> public projects",
             "FREE_NUM_USERS": "Up to <strong>3</strong> members on private project",
             "FREE_NUM_PRIVATE_PROJECTS": "<strong>1</strong> private project",
             "FREE_NUM_PUBLIC_PROJECTS": "<strong>Unlimited</strong> public projects",
-            "FREE_GBS": "Up to <strong>300MB</strong> of storage in private projects",
+            "FREE_GBS": "Bis zu <strong>300MB</strong> Speicher für deine privaten Projekte",
             "ENTERPRISE_SUPPORT": "Extended support",
             "ENTERPRISE_ON_PREMISE": "On-Premise option",
             "YOUR_CURRENT_PLAN": "Your current plan",
@@ -123,7 +123,7 @@
             "TO_UNBLOCK_CHECK_YOUR_PLAN": "To unblock projects, first subscribe to a payment plan that allows at least as many private projects as you have currently",
             "TO_UNBLOCK_CONTACT_SUPPORT": "To unblock your projects please contact with <a href=\"mailto:support@taiga.io\" title=\"support\">support@taiga.io</a>",
             "CHECK_PLANS": "Abonnements überprüfen",
-            "TO_UNBLOCK_PROJECT_MEMBER": "Why is my project blocked?"
+            "TO_UNBLOCK_PROJECT_MEMBER": "Warum kann ich nicht auf mein Projekt zugreifen?"
         },
         "IMPORT": {
             "PROJECT_RESTRICTIONS": {
