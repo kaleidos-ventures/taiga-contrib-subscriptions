@@ -1,5 +1,8 @@
 # Changelog #
 
+## 4.0.4 (2019-01-15)
+- Minor fixes
+
 ## 4.0.2 (2018-12-04)
 - Fix messages.
 
