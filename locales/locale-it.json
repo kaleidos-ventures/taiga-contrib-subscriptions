@@ -23,20 +23,20 @@
             "NOTIFICATIONS_SELECT": "Notify by mail increments of members"
         },
         "USER_PROJECTS_LB": {
-            "TITLE": "Private projects with {{user}}",
+            "TITLE": "Progetto privato con {{user}}",
             "EXPLANATION": "These are your private projects where {{user}} is counting for your paid plan. You can manage the presence of the members in the projects from the members panel."
         },
         "CONTACT_LB": {
-            "TITLE": "Contact Us",
+            "TITLE": "Contattaci",
             "PLACEHOLDER": "Please contact us and explain your needs",
-            "BUTTON_SEND": "Contact Us",
+            "BUTTON_SEND": "Contattaci",
             "SUCCESS": "Your message has been sent, we will contact with you soon."
         },
         "REMOVE_USER_LB": {
-            "TITLE": "Are you sure?",
+            "TITLE": "Sei sicuro?",
             "TEXT": "This action will remove the user from all your private projects.",
-            "CONFIRM": "Confirm",
-            "BACK": "Back"
+            "CONFIRM": "Conferma",
+            "BACK": "Indietro"
         },
         "HELP": {
             "WHY": "Perché pensiamo che questo potrebbe essere il miglior piano per te?",
@@ -82,7 +82,7 @@
             "BACK_TITLE": "Torna alla selezione Piano",
             "BUY": "Compra il Piano",
             "CONTINUE": "Continua",
-            "CONFIRM": "Confirm",
+            "CONFIRM": "Conferma",
             "EVERY_YEAR": "Ogni anno",
             "EVERY_MONTH": "Ogni mese",
             "TAXES": "Potremmo applicare delle imposte di vendita a seconda della nazione in cui risiedi.",
@@ -91,15 +91,15 @@
             "PAY": "Paga {{ amount }}"
         },
         "PLAN_OPTIONS": {
-            "FREE_PLAN": "Free",
+            "FREE_PLAN": "Gratuito",
             "PREMIUM_PLAN": "Premium",
             "ENTERPRISE_PLAN": "Enterprise",
-            "MANAGE_MEMBERS": "Manage members",
+            "MANAGE_MEMBERS": "Gestisci membri",
             "UPGRADE_PLAN": "Upgrade plan",
             "DOWNGRADE": "Downgrade",
-            "UPDATE": "Update",
+            "UPDATE": "Aggiorna",
             "UPGRADE": "Upgrade Now",
-            "CONTACT_US": "Contact us",
+            "CONTACT_US": "Contattaci",
             "PREMIUM_GBS": "Up to <strong>10GB</strong> of storage",
             "PREMIUM_NUM_USERS": "<strong>Unlimited</strong> number of members",
             "PREMIUM_NUM_PRIVATE_PROJECTS": "<strong>Unlimited</strong> private projects",
@@ -108,9 +108,9 @@
             "FREE_NUM_PRIVATE_PROJECTS": "<strong>1</strong> private project",
             "FREE_NUM_PUBLIC_PROJECTS": "<strong>Unlimited</strong> public projects",
             "FREE_GBS": "Up to <strong>300MB</strong> of storage in private projects",
-            "ENTERPRISE_SUPPORT": "Extended support",
+            "ENTERPRISE_SUPPORT": "Supporto esteso",
             "ENTERPRISE_ON_PREMISE": "On-Premise option",
-            "YOUR_CURRENT_PLAN": "Your current plan",
+            "YOUR_CURRENT_PLAN": "Il tuo piano attuale",
             "CURRENT_PLAN_DESCRIPTION": "Currently in your private projects there are {{members}} members."
         },
         "NOTIFY_LIMIT": {
