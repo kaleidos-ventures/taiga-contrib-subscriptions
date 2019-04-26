@@ -168,7 +168,7 @@ class SubscriptionsAdmin
 
         @confirm.notify('success', message, '', 5000)
 
-        promise = @subscriptionsService.fetchMyPlans()
+        promise = @subscriptionsService.fetchPublicPlans()
         promise.then () =>
             @tgLoader.pageLoaded()
 
