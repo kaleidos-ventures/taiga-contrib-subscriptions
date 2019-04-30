@@ -238,11 +238,21 @@ class SubscriptionsAdmin
                     google_conversion_currency: currency.toUpperCase()
                 })
 
-        @subscriptionsService.selectMyPlan(plan).then(@._onSuccessSelectPlan.bind(this))
+        promise = @subscriptionsService.selectMyPlan(plan)
+        promise.then () =>
+            @._onSuccessSelectPlan()
+        promise.catch (e) =>
+            @._onFailedSelectPlan(e.data.detail)
 
     _onSuccessSelectPlan: () ->
         message = @translate.instant("SUBSCRIPTIONS.SELECT_PLAN.SUCCESS")
         @confirm.notify('success', message, '', 5000)
+        @authService.refresh()
+
+        @._loadPlans()
+
+    _onFailedSelectPlan: (msg) ->
+        @confirm.notify("error", msg)
         @authService.refresh()
 
         @._loadPlans()
