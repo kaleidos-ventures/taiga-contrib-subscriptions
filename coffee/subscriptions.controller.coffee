@@ -198,12 +198,11 @@ class SubscriptionsAdmin
         @analytics.ecAddToCart(planId, name, amount)
         @analytics.ecConfirmChange(planId, name, amount)
 
-        if @.myPlan && @.myPlan.customer_id?
+        if @.myPlan?.current_plan && @.myPlan.customer_id?
             plan = {
                 'plan_id': planId,
                 'quantity': (@.perSeatPlan.members.length || 1)
             }
-
             @._onSuccessBuyPlan(plan, amount, currency)
         else
             @paymentsService.start({
@@ -223,7 +222,7 @@ class SubscriptionsAdmin
         @lightboxService.closeAll()
         @tgLoader.start()
 
-        if !@.myPlan || (!@.myPlan.current_plan.amount_month && !@.myPlan.current_plan.amount_year)
+        if !@.myPlan || (!@.myPlan.current_plan?.amount_month && !@.myPlan.current_plan?.amount_year)
             google_conversion_id = @config.get("google_adwords_conversion_id")
             google_conversion_label = @config.get("google_adwords_conversion_label")
 
