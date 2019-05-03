@@ -312,3 +312,40 @@
         }
     }
 }
+
+
+.taiga-app-info {
+    a.button-green {
+        background: $primary-light;
+        color: $white;
+    }
+
+    a {
+        color: $primary;
+
+    }
+
+    .app-code {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        align-content: center;
+        justify-content: space-around;
+        margin-bottom: 2em;
+
+        code {
+            width: auto;
+        }
+    }
+
+    .taiga-app-screens {
+        display: flex;
+
+        img {
+            margin-right: 2em;
+            margin-top: 1.4em;
+            margin-bottom: 2em;
+            height: 400px;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+header
+    h1
+        span Taiga
+        span.green {{vm.sectionName}}
+
+section.taiga-app-info
+    header
+        h2.title(translate="TAIGA_APP.SECTION_SUBTITLE")
+
+    p.text(translate="TAIGA_APP.TAIGA_APP_DESCRIPTION")
+    p.text(translate="TAIGA_APP.TAIGA_APP_DOWNLOAD")
+
+    .app-code
+        .code
+            label 123ABDE
+            a.button-green(
+                href="#"
+                title="Copy"
+                translate="TAIGA_APP.TAIGA_APP_COPY_BUTTON"
+            )
+
+    p.text {{'TAIGA_APP.TAIGA_APP_VALID' | translate}}
+        a {{ vm.user.get('email') }}
+
+    .taiga-app-screens
+        img(
+            src="/#{v}/images/taiga-contrib-subscriptions/images/taigaapp1.png",
+            alt="TaigaApp"
+        )
+        img(
+            src="/#{v}/images/taiga-contrib-subscriptions/images/taigaapp2.png",
+            alt="TaigaApp"
+        )
+        img(
+            src="/#{v}/images/taiga-contrib-subscriptions/images/taigaapp3.png",
+            alt="TaigaApp"
+        )
+
+    p.text
+        {{ 'TAIGA_APP.TAIGA_APP_DEVELOPED' | translate }}</br>
+        {{ 'TAIGA_APP.TAIGA_APP_SAT' | translate }}
