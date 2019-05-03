@@ -24,44 +24,44 @@ class TaigaAppControler
         "tgAppMetaService",
         "ContribSubscriptionsService",
         "tgLoader",
-        "lightboxService",
         "$translatePartialLoader",
         "$translate",
-        "ContribPaymentsService",
         "$tgAnalytics",
-        "$tgConfirm",
         "$tgConfig",
         "tgCurrentUserService",
         "tgUserService",
         "$tgAuth"
     ]
 
-    constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader,
-                  @translate, @paymentsService, @analytics, @confirm, @config, @currentUserService, @userService,
+    constructor: (@appMetaService,  @subscriptionsService, @tgLoader,
+                @translatePartialLoader, @translate, @analytics, @config, @currentUserService, @userService,
                   @authService) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
         @._loadMetas()
-
-        @.invalidPlan = null
+        @._loadMyPlan()
+        @.appCode = null
         @.user = @currentUserService.getUser()
-        console.log @.user
-        @.userService.getContacts(@.user.get('id')).then (contacts) =>
-            @.userContactsById = Immutable.fromJS({})
-            contacts.forEach (contact) =>
-                @.userContactsById = @.userContactsById.set(contact.get('id').toString(), contact)
+
+        Object.defineProperty @, "myPlan", {
+            get: () => @.subscriptionsService.myPlan
+        }
 
 
     _loadMetas: () ->
-        # sectionTitle = @translate.instant("SUBSCRIPTIONS.TITLE")
-        # description = @translate.instant("SUBSCRIPTIONS.SECTION_NAME")
-        # @.sectionName = @translate.instant("SUBSCRIPTIONS.SECTION_NAME")
-        sectionTitle = "TAIGA APP"
-        description = "desc"
-        @.sectionName = "TAIGA APP"
+        sectionTitle = @translate.instant("TAIGA_APP.TITLE")
+        description = @translate.instant("TAIGA_APP.SECTION_NAME")
+        @.sectionName = @translate.instant("TAIGA_APP.SECTION_NAME")
 
         @appMetaService.setAll(sectionTitle, description)
 
+    _loadMyPlan: ->
+        @tgLoader.start()
+
+        promise = @subscriptionsService.loadUserPlan()
+        promise.then () =>
+            @.appCode = @.myPlan.sync_code
+            @tgLoader.pageLoaded()
 
 module.controller("TaigaAppController", TaigaAppControler)

@@ -3,24 +3,27 @@ header
         span Taiga
         span.green {{vm.sectionName}}
 
-section.taiga-app-info
+section.taiga-app-info(tg-select-input-text)
     header
         h2.title(translate="TAIGA_APP.SECTION_SUBTITLE")
 
     p.text(translate="TAIGA_APP.TAIGA_APP_DESCRIPTION")
-    p.text(translate="TAIGA_APP.TAIGA_APP_DOWNLOAD")
 
-    .app-code
-        .code
-            label 123ABDE
-            a.button-green(
-                href="#"
-                title="Copy"
-                translate="TAIGA_APP.TAIGA_APP_COPY_BUTTON"
-            )
 
-    p.text {{'TAIGA_APP.TAIGA_APP_VALID' | translate}}
-        a {{ vm.user.get('email') }}
+    p.text(ng-if="!vm.appCode", translate="TAIGA_APP.TAIGA_APP_UPGRADE")
+
+    .taiga-app-code(ng-if="vm.appCode")
+        p.text(translate="TAIGA_APP.TAIGA_APP_DOWNLOAD")
+        .app-code
+                input(type="text", readonly, ng-value="vm.appCode")
+                a.button-green.select-input-content(
+                    href="#"
+                    title="Copy"
+                    translate="TAIGA_APP.TAIGA_APP_COPY_BUTTON"
+                )
+
+        p.text {{'TAIGA_APP.TAIGA_APP_VALID' | translate}}
+            a {{ vm.user.get('email') }}
 
     .taiga-app-screens
         img(

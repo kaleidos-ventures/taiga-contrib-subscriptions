@@ -19,11 +19,11 @@
 
 module = angular.module('subscriptions')
 
-TaigaAppDirective = ($rootScope) ->
+TaigaAppDirective = ($rootScope, $translate, $confirm) ->
     link = (scope, el, attrs, ctrl) ->
         ctrl.init()
 
-        $rootScope.$on '$translateChangeSuccess', () =>
+        $rootScope.$on '$translateChangeSuccess', () ->
             ctrl._loadMetas()
 
     return {
@@ -35,7 +35,9 @@ TaigaAppDirective = ($rootScope) ->
     }
 
 TaigaAppDirective.$inject = [
-    "$rootScope"
+    "$rootScope",
+    "$translate",
+    "$tgConfirm"
 ]
 
 module.directive("tgTaigaApp", TaigaAppDirective)

@@ -170,11 +170,12 @@
         "TITLE": "Subscriptions - User Profile - Taiga",
         "SECTION_NAME": "Taiga App",
         "SECTION_SUBTITLE": "Want to use Taiga on your mobile?",
-        "TAIGA_APP_DESCRIPTION": "TaigaApp is an application developed completely independent from Taiga.io but with which we have reached an agreement so you can use <strong>for free if you have a premium or enterprise plan</strong>",
+        "TAIGA_APP_DESCRIPTION": "<a href='http://www.taigaapp.com/' target='_blank'>TaigaApp</a> is an application developed completely independent from Taiga.io but with which we have reached an agreement so you can use <strong>for free if you have a premium or enterprise plan</strong>",
         "TAIGA_APP_DOWNLOAD": "Just download the application and synchronize your Taiga account entering next code: ",
         "TAIGA_APP_VALID": "This code is valid only for your Taiga account ",
         "TAIGA_APP_COPY_BUTTON": "Copy",
         "TAIGA_APP_DEVELOPED": "TaigaApp is developed by a totally independent team of Taiga.io.",
-        "TAIGA_APP_SAT": "To notify of any incident in the application, contact your customer service."
+        "TAIGA_APP_SAT": "To notify of any incident in the application, contact your customer service.",
+        "TAIGA_APP_UPGRADE": "If you want to enjoy free on your mobile, <a href='/user-settings/contrib/subscriptions'>upgrade your plan!</a>"
     }
 }

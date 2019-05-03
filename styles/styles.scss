@@ -335,6 +335,11 @@
 
         code {
             width: auto;
+            input {
+                flex-basis: 25px;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
         }
     }
 
