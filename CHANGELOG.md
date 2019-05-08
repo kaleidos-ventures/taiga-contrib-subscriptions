@@ -1,5 +1,9 @@
 # Changelog #
 
+## 4.2.4 (2019-05-09)
+- Handle subscription save errors
+- Prevent some errors and minor fixes
+
 ## 4.1.2 (2019-03-20)
 - Fix messages
 
