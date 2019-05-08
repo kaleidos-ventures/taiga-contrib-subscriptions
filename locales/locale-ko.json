@@ -144,7 +144,7 @@
             }
         },
         "CREATE": {
-            "MAX_PRIVATE_PROJECTS": "아쉽지만 더는 비공개 프로젝트에 회원을 가입시킬 수 없습니다.",
+            "MAX_PRIVATE_PROJECTS": "Unfortunately, you've reached the maximum number of private projects.",
             "MAX_PUBLIC_PROJECTS": "아쉽지만 더는 공개프로젝트를 생성할 수 없습니다.",
             "CREATE_MORE_PROJECTS": "더 생성하고 싶다면",
             "CHANGE_PLAN": "현재의 계획을 변경하세요."
