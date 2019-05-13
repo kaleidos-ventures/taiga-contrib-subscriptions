@@ -315,31 +315,30 @@
 
 
 .taiga-app-info {
-    a.button-green {
-        background: $primary-light;
-        color: $white;
-    }
-
     a {
         color: $primary;
 
+        &.button-green {
+            background: $primary-light;
+            color: $white;
+        }
     }
 
     .app-code {
+        align-content: center;
+        align-items: center;
         display: flex;
         flex-flow: row wrap;
-        align-items: center;
-        align-content: center;
-        justify-content: space-around;
+        justify-content: center;
         margin-bottom: 2em;
 
-        code {
+        input {
+            flex-basis: 25px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            margin-right: 2em;
+            text-align: center;
             width: auto;
-            input {
-                flex-basis: 25px;
-                flex-grow: 0;
-                flex-shrink: 0;
-            }
         }
     }
 
@@ -347,10 +346,10 @@
         display: flex;
 
         img {
+            height: 400px;
+            margin-bottom: 2em;
             margin-right: 2em;
             margin-top: 1.4em;
-            margin-bottom: 2em;
-            height: 400px;
         }
     }
 }
