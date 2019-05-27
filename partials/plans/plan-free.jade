@@ -1,0 +1,22 @@
+extends ./_plan
+
+block plan-image
+    img.plan-image(
+        src="/#{v}/images/taiga-contrib-subscriptions/images/seed.png",
+        alt="{{'SUBSCRIPTIONS.PLAN_OPTIONS.FREE_PLAN' | translate}}"
+    )
+block plan-name
+    span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_PLAN")
+
+block plan-info
+    li(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_NUM_USERS")
+    li(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_NUM_PRIVATE_PROJECTS")
+    li(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_NUM_PUBLIC_PROJECTS")
+    li(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_GBS")
+
+block plan-options
+    a(
+        href=""
+        translate="SUBSCRIPTIONS.PLAN_OPTIONS.UPGRADE"
+        ng-click="vm.selectPlanInterval(vm.publicPlanPerSeat)"
+    )

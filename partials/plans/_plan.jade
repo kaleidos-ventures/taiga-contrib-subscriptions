@@ -1,0 +1,28 @@
+.plan
+    .plan-label Your current plan:
+    .plan-content
+        block plan-image
+        .plan-info
+            .plan-name
+                block plan-name
+            ul.plan-info
+                block plan-info
+            .plan-options
+                block plan-options
+
+        .plan-pricing(ng-if="vm.myPlan.current_plan.id === 'per-seat'")
+            .pricing-primary
+                span.currency $
+                span.number {{(vm.perSeatPlan.members.length || 1) * vm.myPlan.current_plan.amount_month }}
+                span.frequency(ng-if="vm.myPlan.current_plan.amount_month") /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
+
+        .plan-pricing(ng-if="vm.myPlan.current_plan.id !== 'per-seat'")
+            .pricing-primary(ng-if="vm.myPlan.interval == 'month'")
+                span.currency $
+                span.number {{vm.myPlan.current_plan.amount_month}}
+                span.frequency(ng-if="vm.myPlan.current_plan.amount_month") /{{'SUBSCRIPTIONS.FREQUENCY_MONTH' | translate}}
+
+            .pricing-primary(ng-if="vm.myPlan.interval == 'year'")
+                span.currency $
+                span.number {{vm.myPlan.current_plan.amount_year}}
+                span.frequency(ng-if="vm.myPlan.current_plan.amount_year") /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}

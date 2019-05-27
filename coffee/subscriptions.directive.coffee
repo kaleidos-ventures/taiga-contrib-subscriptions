@@ -30,7 +30,7 @@ SubscriptionsDirective = ($rootScope) ->
         scope: {},
         controller: "ContribSubscriptionsController",
         controllerAs: "vm",
-        templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/subscriptions-info.html'
+        templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/your-plan.html'
         link: link
     }
 

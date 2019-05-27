@@ -1,0 +1,23 @@
+extends ./_plan
+
+block plan-image
+    img.plan-image(
+        src="/#{v}/images/taiga-contrib-subscriptions/images/custom.png",
+        alt="{{vm.myPlan.current_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
+    )
+block plan-name
+    span {{vm.myPlan.current_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}
+
+block plan-info
+    li(
+        ng-if="vm.myPlan.current_plan.private_projects"
+        ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: vm.myPlan.current_plan.private_projects}")
+    li(
+        ng-if="!vm.myPlan.current_plan.private_projects"
+        translate="SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT_UNLIMITED")
+    li(
+        ng-if="vm.myPlan.current_plan.project_members"
+        ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: vm.myPlan.current_plan.project_members}")
+    li(
+        ng-if="!vm.myPlan.current_plan.project_members"
+        translate="SUBSCRIPTIONS.MEMBERS_LIMIT_UNLIMITED")
