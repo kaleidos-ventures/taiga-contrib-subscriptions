@@ -14,12 +14,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: subscriptions.directive.coffee
+# File: lightbox-plans.directive.coffee
 ###
 
 module = angular.module('subscriptions')
 
-SubscriptionsDirective = ($rootScope) ->
+LightboxPlansDirective = ($rootScope) ->
     link = (scope, el, attrs, ctrl) ->
         ctrl.init()
 
@@ -30,12 +30,12 @@ SubscriptionsDirective = ($rootScope) ->
         scope: {},
         controller: "ContribSubscriptionsController",
         controllerAs: "vm",
-        templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/subscriptions.html'
+        templateUrl: 'compile-modules/taiga-contrib-subscriptions/components/lb-plans/lightbox-plans.html'
         link: link
     }
 
-SubscriptionsDirective.$inject = [
+LightboxPlansDirective.$inject = [
     "$rootScope"
 ]
 
-module.directive("tgSubscriptions", SubscriptionsDirective)
+module.directive("tgLbPlans", LightboxPlansDirective)

@@ -1,0 +1,15 @@
+ul.plan-features
+    li(ng-if="plan.private_projects")
+        span(ng-bind-html="'SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT' | translate: {number: plan.private_projects}")
+    li(ng-if="!plan.private_projects")
+        span(translate="SUBSCRIPTIONS.PRIVATE_PROJECTS_LIMIT_UNLIMITED")
+
+    li(ng-if="plan.project_members")
+        span(ng-bind-html="'SUBSCRIPTIONS.MEMBERS_LIMIT' | translate: {number: plan.project_members}")
+    li(ng-if="!plan.project_members")
+        span(translate="SUBSCRIPTIONS.MEMBERS_LIMIT_UNLIMITED")
+
+    li(ng-if="interval == 'month'")
+        span(ng-bind-html="'SUBSCRIPTIONS.EXTRA_SEAT_PER_MONTH' | translate: {amount: plan.amount_month}")
+    li(ng-if="interval == 'year'")
+        span(ng-bind-html="'SUBSCRIPTIONS.EXTRA_SEAT_PER_YEAR' | translate: {amount: plan.amount_year}")

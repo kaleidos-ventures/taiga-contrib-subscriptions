@@ -1,0 +1,21 @@
+.invalid-plan {
+    .title {
+        margin-bottom: 1rem;
+    }
+    .reason {
+        text-decoration: underline;
+    }
+    ul {
+        list-style-position: inside;
+        list-style-type: disc;
+        li {
+            line-height: 1.5;
+        }
+    }
+    .accept-invalid-plan {
+        @include font-size(large);
+        display: block;
+        margin: 2rem 5rem 0;
+        width: calc(100% - 10rem);
+    }
+}

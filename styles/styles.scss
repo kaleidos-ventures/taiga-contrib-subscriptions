@@ -1,7 +1,7 @@
-.plan {
+.user-plan {
     border-bottom: 1px solid $whitish;
     border-top: 1px solid $whitish;
-    padding: 1.5rem 0 2.1rem;
+    padding: 1.5rem 0;
     .plan-content {
         align-items: flex-start;
         display: flex;
@@ -175,128 +175,6 @@
     }
 }
 
-.plan-selector {
-    .plan-selector-header {
-        align-items: center;
-        border-bottom: 1px solid $whitish;
-        border-top: 1px solid $whitish;
-        display: flex;
-        justify-content: space-between;
-        margin: 20px 0;
-        h1 {
-            color: $primary;
-            margin-bottom: 0;
-            text-transform: uppercase;
-        }
-        .text {
-            margin: 0;
-            padding: 20px 0;
-        }
-        .plan-selector-header-title {
-            display: none;
-        }
-        &.old {
-            border: 0;
-            .plan-selector-header-title {
-                display: block;
-            }
-            .text {
-                padding: 0;
-            }
-        }
-    }
-    .plan-selector-body {
-        color: $gray;
-        display: flex;
-        justify-content: space-between;
-        .plan-option-header {
-            align-items: center;
-            display: flex;
-            flex-grow: 0;
-            img {
-                height: 40px;
-                width: 40px;
-            }
-        }
-    }
-}
-
-.plan-selector-option {
-    border: 1px solid $whitish;
-    display: flex;
-    flex: 1 0;
-    flex-direction: column;
-    font-size: .8rem;
-    justify-content: space-between;
-    margin-right: 10px;
-    padding: 15px;
-    position: relative;
-    width: 300px;
-    &:last-child {
-        margin-right: 0;
-    }
-    &.current {
-        border: 2px solid $gray-light;
-    }
-    &.premium {
-        border: 2px solid $primary-light;
-        .price {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 20px 0 10px;
-            .price-value {
-                font-size: 2em;
-            }
-            .per-year {
-                color: $gray-light;
-            }
-        }
-        button {
-            background: $primary;
-            flex: 1 0;
-            font-size: 1.5em;
-            padding: 15px;
-            &:hover {
-                background: $primary-light;
-            }
-        }
-        .your-current-plan {
-            background: $primary-light;
-        }
-    }
-    .your-current-plan {
-        align-self: center;
-        background: $gray-light;
-        color: $white;
-        font-size: .75rem;
-        height: 20px;
-        padding: 2px;
-        position: absolute;
-        text-align: center;
-        top: -10px;
-        width: 50%;
-    }
-    ul {
-        flex: 1 0;
-        li {
-            align-items: center;
-            display: flex;
-            flex-direction: row;
-            padding-top: 8px;
-            span {
-                padding-left: 10px;
-            }
-        }
-    }
-    svg {
-        fill: $primary-light;
-        height: 24px;
-        margin: 8px;
-        width: 24px;
-    }
-}
-
 .plan-members {
     .no-members {
         color: $gray-lighter;
@@ -340,28 +218,6 @@
         cursor: pointer;
         flex-grow: 1;
         width: 30px;
-    }
-}
-
-.lightbox-user-projects {
-    .project-name {
-        font-size: 1rem;
-        font-weight: bold;
-    }
-}
-
-
-.remove-user-lb {
-    .buttons {
-        display: flex;
-        width: 100%;
-        button {
-            flex-grow: 2;
-            width: 100%;
-        }
-        a {
-            flex-grow: 1;
-        }
     }
 }
 

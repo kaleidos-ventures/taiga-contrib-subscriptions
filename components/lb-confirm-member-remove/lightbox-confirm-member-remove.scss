@@ -1,0 +1,13 @@
+.remove-user-lb {
+    .buttons {
+        display: flex;
+        width: 100%;
+        button {
+            flex-grow: 2;
+            width: 100%;
+        }
+        a {
+            flex-grow: 1;
+        }
+    }
+}

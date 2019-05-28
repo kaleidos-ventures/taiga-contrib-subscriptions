@@ -14,28 +14,18 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: subscriptions.directive.coffee
+# File: plan-features.directive.coffee
 ###
 
 module = angular.module('subscriptions')
 
-SubscriptionsDirective = ($rootScope) ->
-    link = (scope, el, attrs, ctrl) ->
-        ctrl.init()
-
-        $rootScope.$on '$translateChangeSuccess', () =>
-            ctrl._loadMetas()
-
+PlanFeaturesDirective = () ->
     return {
-        scope: {},
-        controller: "ContribSubscriptionsController",
-        controllerAs: "vm",
-        templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/subscriptions.html'
-        link: link
+        scope: {
+            plan: '=',
+            interval: '=',
+        },
+        templateUrl: 'compile-modules/taiga-contrib-subscriptions/components/plan-features/plan-features.html',
     }
 
-SubscriptionsDirective.$inject = [
-    "$rootScope"
-]
-
-module.directive("tgSubscriptions", SubscriptionsDirective)
+module.directive("tgPlanFeatures", PlanFeaturesDirective)

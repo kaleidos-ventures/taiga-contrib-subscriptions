@@ -1,0 +1,65 @@
+section.subscribe-plan
+    tg-svg.close(
+        svg-icon="icon-close"
+        svg-title-translate="COMMON.CLOSE"
+    )
+    h2.title(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.TITLE' | translate")
+    .subscription-your-plan
+        h3.plan-title(translate="SUBSCRIPTIONS.SELECT_PLAN.YOUR_NEW_PLAN")
+
+        .user-plan
+            .plan-content
+                img.plan-image(
+                    src="/#{v}/images/taiga-contrib-subscriptions/images/leaf.png",
+                    alt="{{'SUBSCRIPTIONS.PLAN_OPTIONS.PREMIUM_PLAN' | translate}}"
+                )
+                .plan-info
+                    .plan-name {{ vm.plan.name }}
+                    tg-plan-features(plan="vm.plan", interval="vm.selectPlanInterval")
+
+                tg-pricing(
+                    plan="vm.plan",
+                    members-count="vm.members",
+                    interval="vm.selectPlanInterval"
+                    display-monthly-total-year="true"
+                    annotation="true"
+                )
+
+        small.plan-taxes * {{'SUBSCRIPTIONS.SELECT_PLAN.TAXES' | translate}}
+
+    .payment-interval
+        p(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.INTERVAL' | translate")
+        .interval-options
+            fieldset
+                input.project-interval(
+                    type="radio"
+                    name="project-interval"
+                    id="project-interval-monthly"
+                    ng-model="vm.selectPlanInterval"
+                    value = 'month'
+                    ng-disabled="vm.invalidInterval == 'month'"
+                )
+                label.project-interval-button.trans-button(for="project-interval-monthly") {{'SUBSCRIPTIONS.SELECT_PLAN.EVERY_MONTH' | translate}}
+            fieldset
+                input.project-interval(
+                    type="radio"
+                    name="project-interval"
+                    id="project-interval-yearly"
+                    ng-model="vm.selectPlanInterval"
+                    ng-disabled="vm.invalidInterval == 'year'"
+                    value = 'year'
+                )
+                label.project-interval-button.trans-button(for="project-interval-yearly") {{'SUBSCRIPTIONS.SELECT_PLAN.EVERY_YEAR' | translate}}
+
+    .payment-options
+        a.back.trans-button(
+            href=""
+            ng-title="SUBSCRIPTIONS.SELECT_PLAN.BACK_TITLE | translate"
+            translate="SUBSCRIPTIONS.SELECT_PLAN.BACK"
+            ng-click="vm.close()"
+        )
+        button.button-green.accept-plan.e2e-accept-plan(
+            translate="SUBSCRIPTIONS.SELECT_PLAN.CONFIRM"
+            ng-click="vm.confirmClicked()"
+            tg-loading="vm.loadingPayments"
+        )

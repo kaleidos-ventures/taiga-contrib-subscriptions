@@ -19,8 +19,7 @@
         "MAX_PRIVATE_PROJECTS": "Would you like to add more private projects? <a href='{{url}}'>Upgrade your plan!</a>",
         "MEMBERS": {
             "TITLE": "Members",
-            "BACK_TO_PLANS": "Back to plans",
-            "SECTION_DESCRIPTION": "This are the users that depends on your paid plan. You can remove them from all your private projects from the list bellow or you can manage their memberships in the configuration panel of each project",
+            "SECTION_DESCRIPTION": "Currently this are the users that depends on your paid plan. You can remove then from all your private projects from the list bellow or you can manage their memberships in the configuration panel of each project",
             "NOTIFICATIONS_SELECT": "Notify by mail increments of members"
         },
         "USER_PROJECTS_LB": {
@@ -74,7 +73,8 @@
             "ACCEPT": "OK, understood"
         },
         "SELECT_PLAN": {
-            "TITLE": "Subscribe to a Plan",
+            "TITLE": "Change your Plan",
+            "SUBTITLE": "Choose the plan that best meets your needs",
             "YOUR_NEW_PLAN": "Your new Plan",
             "INTERVAL": "How would you like to be charged?",
             "PAY_MONTHLY": "Monthly",
@@ -96,12 +96,11 @@
             "PREMIUM_PLAN": "Premium",
             "ENTERPRISE_PLAN": "Enterprise",
             "MANAGE_MEMBERS": "Manage members",
-            "UPGRADE_PLAN": "Upgrade plan",
             "DOWNGRADE": "Downgrade",
             "UPDATE": "Update",
-            "UPGRADE": "Upgrade plan",
-            "CHANGE_PLAN": "Change plan",
-            "CANCEL_PLAN": "Cancel plan",
+            "UPGRADE": "Upgrade",
+            "CHANGE_PLAN": "Change Plan",
+            "CANCEL_PLAN": "Cancel Plan",
             "CONTACT_US": "Contact us",
             "PREMIUM_GBS": "Up to 10GB of storage",
             "PREMIUM_NUM_USERS": "Unlimited number of members",
@@ -113,7 +112,6 @@
             "FREE_GBS": "Up to 300MB of storage in private projects",
             "ENTERPRISE_SUPPORT": "Extended support",
             "ENTERPRISE_ON_PREMISE": "On-Premise option",
-            "YOUR_CURRENT_PLAN": "Your current plan",
             "CURRENT_PLAN_DESCRIPTION": "Currently in your private projects there are {{members}} members."
         },
         "NOTIFY_LIMIT": {

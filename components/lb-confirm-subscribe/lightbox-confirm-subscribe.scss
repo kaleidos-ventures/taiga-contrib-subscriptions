@@ -1,0 +1,64 @@
+
+
+.subscribe-plan {
+    .plan-title {
+        @include font-size(larger);
+    }
+    .plan .plan-title {
+        @include font-size(large);
+        @include font-type(bold);
+        text-align: left;
+    }
+    .plan-taxes {
+        color: $gray-light;
+    }
+    .interval-options {
+        display: flex;
+        fieldset {
+            margin-right: 1rem;
+        }
+    }
+    .project-interval {
+        display: none;
+        +label {
+            background: $gray-light;
+        }
+        &:checked {
+            +label {
+                background: $primary-light;
+                color: $white;
+            }
+        }
+        &:disabled {
+            +label {
+                background: $whitish;
+                color: $gray-light;
+                cursor: not-allowed;
+            }
+        }
+    }
+    .project-interval-button {
+        @include font-size(large);
+        border: 0;
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .payment-options {
+        display: flex;
+        margin-top: 3rem;
+    }
+    .back {
+        @include font-size(large);
+        color: $gray-light;
+        flex: 1;
+        padding: 12px;
+        text-align: center;
+    }
+    .accept-plan {
+        @include font-size(large);
+        display: block;
+        flex: 4;
+        margin-right: 10rem;
+    }
+}

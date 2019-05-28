@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2019 Taiga Agile LLC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -19,7 +19,7 @@
 
 module = angular.module('subscriptions')
 
-class SubscriptionsAdmin
+class SubscriptionsController
     @.$inject = [
         "tgAppMetaService",
         "ContribSubscriptionsService",
@@ -78,7 +78,20 @@ class SubscriptionsAdmin
                 else if @.myPlan.current_plan.id_year == "per-seat-year"
                     return 'premium'
                 else
-                    return 'old'
+                    return 'custom'
+        }
+
+        Object.defineProperty @, "currentPlanImage", {
+            get: () =>
+                if @.currentPlan == 'free'
+                    return 'seed'
+                else if @.currentPlan == 'premium'
+                    return 'leaf'
+                else
+                    planName = @.myPlan.current_plan.name.toLowerCase()
+                    if _.includes(['leaf', 'root', 'seed', 'sprout', 'tree'], planName)
+                        return planName
+                return 'custom'
         }
 
     _loadMetas: () ->
@@ -171,6 +184,9 @@ class SubscriptionsAdmin
         promise = @subscriptionsService.fetchPublicPlans()
         promise.then () =>
             @tgLoader.pageLoaded()
+
+    showPlans: () ->
+        @lightboxService.open('tg-lb-plans')
 
     selectPlanInterval: (plan) ->
         @.subscribePlan = plan
@@ -303,4 +319,4 @@ class SubscriptionsAdmin
             @confirm.notify('error')
 
 
-module.controller("ContribSubscriptionsController", SubscriptionsAdmin)
+module.controller("ContribSubscriptionsController", SubscriptionsController)
