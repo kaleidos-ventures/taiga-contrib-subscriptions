@@ -150,7 +150,7 @@ class SubscriptionsController
         })
 
     contactUs: () ->
-        @lightboxService.open('tg-lb-contact-us')
+        @.openLightbox('tg-lb-contact-us')
 
     removeUserFromMyProjects: (user) ->
         @.deletingUser = user
@@ -162,6 +162,10 @@ class SubscriptionsController
         promise = @subscriptionsService.removeUserFromMyProjects(userId)
         promise.then () =>
             @lightboxService.closeAll()
+
+            message = @translate.instant("SUBSCRIPTIONS.REMOVE_USER_LB.SUCCESS")
+            @confirm.notify('success', message, '', 5000)
+
             @subscriptionsService.getMyPerSeatPlan().then () =>
                 @tgLoader.pageLoaded()
 
@@ -185,19 +189,44 @@ class SubscriptionsController
         promise.then () =>
             @tgLoader.pageLoaded()
 
+    openLightbox: (selector) ->
+        @lightboxService.open(selector)
+
     showPlans: () ->
-        @lightboxService.open('tg-lb-plans')
+        @lightboxService.open('.lightbox-plans')
 
     selectPlanInterval: (plan) ->
         @.subscribePlan = plan
-        @lightboxService.open('tg-lb-confirm-subscribe')
+        @.changeMode = 'update'
+        @.openLightbox('tg-lb-change-subscription')
 
-    changePlan: (plan, month=true) ->
-        @.loadingPayments = true
-        if !plan.is_applicable
-            @.invalidPlan = plan
-            @lightboxService.open('tg-lb-invalid-plan')
+    downgradePlan: () ->
+        @.changeMode = 'downgrade'
+        if !@.publicPlanFree.is_applicable
+            @.invalidPlan =  @.publicPlanFree
+            @.openLightbox('tg-lb-invalid-plan')
             return
+        @.subscribePlan = @.publicPlanFree
+        @.openLightbox('tg-lb-change-subscription')
+
+    cancelPlan: () ->
+        @.changeMode = 'cancel'
+        @.changeToPublicPlanFree()
+
+    downgradePlan: () ->
+        @.changeMode = 'downgrade'
+        @.changeToPublicPlanFree()
+
+    changeToPublicPlanFree: () ->
+        if !@.publicPlanFree.is_applicable
+            @.invalidPlan = @.publicPlanFree
+            @.openLightbox('tg-lb-invalid-plan')
+            return
+        @.subscribePlan = @.publicPlanFree
+        @.openLightbox('tg-lb-change-subscription')
+
+    changePlan: (plan, mode, month=true) ->
+        @.loadingPayments = true
 
         if plan.id
             planId = plan.id
@@ -219,7 +248,7 @@ class SubscriptionsController
                 'plan_id': planId,
                 'quantity': (@.perSeatPlan.members.length || 1)
             }
-            @._onSuccessBuyPlan(plan, amount, currency)
+            @._onSuccessBuyPlan(plan, amount, currency, mode)
         else
             @paymentsService.start({
                 description: name,
@@ -227,14 +256,14 @@ class SubscriptionsController
                 onLoad: () => @.loadingPayments = false
                 onSuccess: (plan) =>
                     @analytics.ecPurchase(planId, name, amount)
-                    @._onSuccessBuyPlan(plan, amount, currency)
+                    @._onSuccessBuyPlan(plan, amount, currency, mode)
                 planId: planId,
                 currency: currency,
                 email: @.user.get('email'),
                 full_name: @.user.get('full_name')
             })
 
-    _onSuccessBuyPlan: (plan, amount, currency) ->
+    _onSuccessBuyPlan: (plan, amount, currency, mode) ->
         @lightboxService.closeAll()
         @tgLoader.start()
 
@@ -254,10 +283,14 @@ class SubscriptionsController
                     google_conversion_currency: currency.toUpperCase()
                 })
 
-        promise = @subscriptionsService.selectMyPlan(plan)
-        promise.then () =>
+        if mode == 'cancel'
+            promise = @subscriptionsService.cancelMyPlan
+        else
+            promise = @subscriptionsService.selectMyPlan
+
+        promise(plan).then () =>
             @._onSuccessSelectPlan()
-        promise.catch (e) =>
+        .catch (e) =>
             @._onFailedSelectPlan(e.data.detail)
 
     _onSuccessSelectPlan: () ->

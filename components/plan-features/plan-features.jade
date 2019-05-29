@@ -9,7 +9,7 @@ ul.plan-features
     li(ng-if="!plan.project_members")
         span(translate="SUBSCRIPTIONS.MEMBERS_LIMIT_UNLIMITED")
 
-    li(ng-if="interval == 'month'")
+    li(ng-if="interval == 'month' && plan.amount_month")
         span(ng-bind-html="'SUBSCRIPTIONS.EXTRA_SEAT_PER_MONTH' | translate: {amount: plan.amount_month}")
-    li(ng-if="interval == 'year'")
+    li(ng-if="interval == 'year' && plan.amount_year")
         span(ng-bind-html="'SUBSCRIPTIONS.EXTRA_SEAT_PER_YEAR' | translate: {amount: plan.amount_year}")

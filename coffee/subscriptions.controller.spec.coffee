@@ -203,16 +203,16 @@ describe "SubscriptionsController", ->
             expect(subscriptionsCtrl._onSuccessChangedData).to.be.called
             done()
 
-    it "changed Taiga Data", (done) ->
-        promise = mocks.contribSubscriptionsService.fetchMyPlans.promise().resolve()
-        message = mocks.tgTranslate.instant.returns('Test')
+    # it "changed Taiga Data", (done) ->
+    #     promise = mocks.contribSubscriptionsService.fetchMyPlans.promise().resolve()
+    #     message = mocks.tgTranslate.instant.returns('Test')
 
-        subscriptionsCtrl = controller "ContribSubscriptionsController"
+    #     subscriptionsCtrl = controller "ContribSubscriptionsController"
 
-        subscriptionsCtrl._onSuccessChangedData().then () ->
-            expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'Test', '', 5000)
-            expect(mocks.tgLoader.pageLoaded).has.been.called
-            done()
+    #     subscriptionsCtrl._onSuccessChangedData().then () ->
+    #         expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'Test', '', 5000)
+    #         expect(mocks.tgLoader.pageLoaded).has.been.called
+    #         done()
 
     it "see Billing details", () ->
         subscriptionsCtrl = controller "ContribSubscriptionsController"

@@ -46,7 +46,7 @@
         flex-direction: column;
         justify-content: center;
         margin-left: auto;
-        padding: 0 20px 0 6%;
+        padding: 0 20px 0 3rem;
     }
     .pricing-primary {
         @include font-type(light);
@@ -141,6 +141,242 @@
         }
     }
 }
+
+.plans-container {
+    color: $gray;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0 1rem;
+    max-width: 1020px;
+    width: 100%;
+    .title {
+        @include font-type(semibold);
+        color: $grayer;
+        margin-bottom: 1rem;
+    }
+    .subtitle {
+        color: $grayer;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+}
+
+.plans-table {
+    .plan {
+        align-items: center;
+        background: $white;
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        position: relative;
+        &:first-child {
+            border-top: 1px solid $gray-light;
+        }
+        &:hover {
+            background: lighten($primary-light, 50%);
+            cursor: pointer;
+            transition: background .2s;
+            transition-delay: .1s;
+        }
+        &.highlighted-plan {
+            border: 1px solid $gray-light;
+        }
+        &.plan-custom {
+            &:hover {
+                background: $white;
+                cursor: default;
+            }
+        }
+    }
+    .pill-plan {
+        @include font-size(small);
+        background: $gray-light;
+        color: $white;
+        left: calc(50% - 4rem);
+        padding: .25rem;
+        position: absolute;
+        top: -.75rem;
+    }
+    .plan-image {
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: 70px;
+        margin-right: 1rem;
+        width: 70px;
+    }
+    .plan-name {
+        @include font-size(xlarge);
+        @include font-type(light);
+        flex-basis: 120px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: 1rem;
+    }
+    .plan-pricing {
+        flex-basis: 130px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: left;
+    }
+    .pricing-primary {
+        @include font-type(light);
+        .currency {
+            @include font-size(large);
+            vertical-align: top;
+        }
+        .number {
+            @include font-size(xlarge);
+        }
+
+    }
+    .pricing-secondary {
+        color: $gray-light;
+        .currency {
+            margin-right: .2rem;
+        }
+    }
+}
+
+.plan-selector {
+    .plan-selector-header {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+        h1 {
+            color: $primary;
+            margin-bottom: 0;
+            text-transform: uppercase;
+        }
+        .text {
+            margin: 0;
+            padding: 20px 0;
+        }
+        .plan-selector-header-title {
+            display: none;
+        }
+    }
+    .plan-selector-body {
+        color: $gray;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 5px;
+        .plan-option-header {
+            margin-bottom: 2em;
+            text-align: center;
+            .plan-title {
+                @include font-type(light);
+                color: $gray;
+                font-size: 1.5rem;
+                line-height: 1.5rem;
+                margin-bottom: .7rem;
+            }
+            .plan-subtitle {
+                color: $primary-light;
+            }
+            .label {
+                @include font-type(bold);
+                color: $gray;
+                font-size: .8rem;
+                line-height: .8rem;
+                margin-left: .2rem;
+            }
+            .price {
+                font-size: 2rem;
+                line-height: 2rem;
+            }
+        }
+        .plan-option-body {
+            flex-grow: 1;
+        }
+    }
+}
+
+.plan-selector-option {
+    background: $mass-white;
+    border: 1px solid transparent;
+    display: flex;
+    flex: 1 0;
+    flex-direction: column;
+    font-size: .8rem;
+    margin: 0 5px;
+    padding: 15px;
+    position: relative;
+    &.basic {
+        .plan-subtitle {
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+        }
+        &.current {
+            background: $white;
+            border: 1px solid $gray-lighter;
+        }
+    }
+    &.premium {
+        .annotation {
+            margin: .7em 0 0;
+            text-align: center;
+            .label {
+                @include font-type(bold);
+            }
+        }
+        .policy {
+            background: $white;
+            margin: 1rem 0 0;
+            padding: .5rem;
+        }
+        button {
+            background: $primary;
+            &:hover {
+                background: $primary-light;
+            }
+        }
+    }
+    &.enterprise {
+        .plan-subtitle {
+            font-size: .9rem;
+            line-height: .9rem;
+        }
+        .plan-option-body {
+            font-size: .9rem;
+        }
+    }
+    ul {
+        flex: 1 0;
+        margin: 0 0 2rem;
+        li {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            span {
+                padding-left: 10px;
+            }
+        }
+    }
+    svg {
+        fill: $primary-light;
+        height: 24px;
+        margin: .4rem .3rem .4rem .4rem;
+        width: 24px;
+    }
+    .button-gray,
+    .button-green {
+        font-size: 1.1em;
+        padding: .7rem;
+    }
+    .your-plan {
+        border-top: 1px solid $whitish;
+        padding: 1.25rem 1rem .5rem;
+        text-align: center;
+    }
+}
+
 
 .plan-subscription-info {
     padding: 2rem 0;

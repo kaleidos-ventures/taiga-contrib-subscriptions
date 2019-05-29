@@ -1,12 +1,11 @@
-section.subscribe-plan
+section.plans-container.subscribe-plan
     tg-svg.close(
         svg-icon="icon-close"
         svg-title-translate="COMMON.CLOSE"
     )
     h2.title(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.TITLE' | translate")
+    h3.subtitle(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.ABOUT_TO_CHANGE' | translate: {plan: vm.plan.name}")
     .subscription-your-plan
-        h3.plan-title(translate="SUBSCRIPTIONS.SELECT_PLAN.YOUR_NEW_PLAN")
-
         .user-plan
             .plan-content
                 img.plan-image(
@@ -22,12 +21,12 @@ section.subscribe-plan
                     members-count="vm.members",
                     interval="vm.selectPlanInterval"
                     display-monthly-total-year="true"
-                    annotation="true"
+                    annotation="vm.mode == 'update'"
                 )
 
-        small.plan-taxes * {{'SUBSCRIPTIONS.SELECT_PLAN.TAXES' | translate}}
+        small.plan-taxes(ng-if="vm.mode == 'update'") * {{'SUBSCRIPTIONS.SELECT_PLAN.TAXES' | translate}}
 
-    .payment-interval
+    .payment-interval(ng-if="vm.mode == 'update'")
         p(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.INTERVAL' | translate")
         .interval-options
             fieldset
@@ -51,15 +50,13 @@ section.subscribe-plan
                 )
                 label.project-interval-button.trans-button(for="project-interval-yearly") {{'SUBSCRIPTIONS.SELECT_PLAN.EVERY_YEAR' | translate}}
 
-    .payment-options
-        a.back.trans-button(
-            href=""
-            ng-title="SUBSCRIPTIONS.SELECT_PLAN.BACK_TITLE | translate"
-            translate="SUBSCRIPTIONS.SELECT_PLAN.BACK"
+    .change-options
+        button.back.trans-button(
+            ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.CONTINUE_WITH' | translate: {plan: vm.currentPlan.name}"
             ng-click="vm.close()"
         )
         button.button-green.accept-plan.e2e-accept-plan(
-            translate="SUBSCRIPTIONS.SELECT_PLAN.CONFIRM"
+            ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.CHANGE_TO' | translate: {plan: vm.plan.name}"
             ng-click="vm.confirmClicked()"
             tg-loading="vm.loadingPayments"
         )

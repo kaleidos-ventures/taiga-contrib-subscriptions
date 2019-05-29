@@ -35,6 +35,7 @@
         "REMOVE_USER_LB": {
             "TITLE": "Are you sure?",
             "TEXT": "This action will remove the user from all your private projects.",
+            "SUCCESS": "The user has been removed",
             "CONFIRM": "Confirm",
             "BACK": "Back"
         },
@@ -61,21 +62,27 @@
             "CUSTOM": "Custom",
             "CONTACT": "If you need a paid plan allowing for more projects or more members per project contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a> for further information."
         },
+        "CANCEL": {
+            "TITLE": "Cancel {{plan}} plan",
+            "CANCEL_NOW": "Cancel plan now"
+        },
         "DOWNGRADE": {
-            "TITLE": "Downgrade",
+            "TITLE": "Downgrade to {{plan}} plan",
             "IMAGE_ALT": "Downgrading a plan",
-            "REASON": "Unfortunately, you have exceeded the maximum number of private projects allowed by this plan. Your current plan allows up to <strong>{{projects}} private projects and {{members}} members per private project</strong>. In order to change to the {{plan}} plan, simply have to make the following changes",
+            "MUST_CHANGE": "To change to {{plan}}, you must first make the following changes",
             "MORE_PROJECTS": "If you have more than {{projects}} private projects",
-            "MORE_PROJECTS_OPTION1": "Choose 1 project to remain private and make public or remove the rest projects",
-            "MORE_PROJECTS_OPTION2": "You can perform these changes on the upper menu cliking Manage Projects",
+            "MORE_PROJECTS_OPTION": "Choose 1 project to remain private and make public or remove the rest projects. You can perform these changes on the upper menu cliking Manage Projects",
             "MORE_MEMBERS": "If you have more than {{members}} members per private project",
-            "MORE_MEMBERS_OPTION1": "Go to Manage Members and keep a maximum of {{members}} members for all your private projects",
-            "ACCEPT": "OK, understood"
+            "MORE_MEMBERS_OPTION1": "Go to Manage Members (Your plan) and keep a maximum of {{members}} members for all your private projects",
+            "WHY_MAKE_CHANGES": "Why do I have to make these changes?",
+            "REASON_WHY": "Unfortunately, you exceeded the maximum number of private projects or number of members allowed by {{ plan }} plan. This plan allows up to <strong>{{projects}} private projects and {{members}} members per private project</strong>",
+            "ACCEPT": "OK, understood",
+            "ARE_YOU_SURE": "Are you sure you want to change this plan?"
         },
         "SELECT_PLAN": {
             "TITLE": "Change your Plan",
             "SUBTITLE": "Choose the plan that best meets your needs",
-            "YOUR_NEW_PLAN": "Your new Plan",
+            "ABOUT_TO_CHANGE": "You are about change to {{ plan }} plan",
             "INTERVAL": "How would you like to be charged?",
             "PAY_MONTHLY": "Monthly",
             "PAY_YEARLY": "Yearly",
@@ -89,9 +96,12 @@
             "TAXES": "Depending on your country, we may be required to charge sales tax.",
             "SUCCESS": "Congratulations, you successfully subscribed to a payment plan!",
             "START_SUBSCRIPTION": "Start subscription",
-            "PAY": "Pay {{ amount }}"
+            "PAY": "Pay {{ amount }}",
+            "CHANGE_TO": "Change to {{ plan }} plan",
+            "CONTINUE_WITH": "Continue with {{ plan }} plan"
         },
         "PLAN_OPTIONS": {
+            "BASIC_PLAN": "Basic",
             "FREE_PLAN": "Free",
             "PREMIUM_PLAN": "Premium",
             "ENTERPRISE_PLAN": "Enterprise",
@@ -110,9 +120,15 @@
             "FREE_NUM_PRIVATE_PROJECTS": "1 private project",
             "FREE_NUM_PUBLIC_PROJECTS": "Unlimited public projects",
             "FREE_GBS": "Up to 300MB of storage in private projects",
-            "ENTERPRISE_SUPPORT": "Extended support",
-            "ENTERPRISE_ON_PREMISE": "On-Premise option",
-            "CURRENT_PLAN_DESCRIPTION": "Currently in your private projects there are {{members}} members."
+            "ENTERPRISE_SPECIALIZED_SUPPORT": "Ideal for large teams requiring specialized support wanting to use Taiga on the taiga.io cloud",
+            "ENTERPRISE_SUITABLE": "Typically suitable for teams grater than 50 people",
+            "YOUR_CURRENT_PLAN": "Your current plan",
+            "CURRENT_PLAN_DESCRIPTION": "Currently in your private projects there are {{members}} members.",
+            "PER_MEMBER_YEARLY": "Per team member when on a yearly plan",
+            "PER_MEMBER_MONTHLY": "${{ amount }}/mo per team member when on a monthly plan",
+            "FAIR_POLICY": "Our fair pricing policy: we will adjust your invoice to ensure yor are charged every month only for the exact number of users you have active. Upgrade and downgrade as needed.",
+            "PER_MONTH": "/ mo",
+            "ON_TAIGA_CLOUD": "On the <strong>taiga.io</strong> cloud"
         },
         "NOTIFY_LIMIT": {
             "SUCCESS": "Notify limit changed correctly"

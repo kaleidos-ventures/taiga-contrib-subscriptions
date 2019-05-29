@@ -14,28 +14,28 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: lightbox-plans.directive.coffee
+# File: lightbox-change-subscription.directive.coffee
 ###
 
 module = angular.module('subscriptions')
 
-LightboxPlansDirective = ($rootScope) ->
-    link = (scope, el, attrs, ctrl) ->
-        ctrl.init()
-
-        $rootScope.$on '$translateChangeSuccess', () =>
-            ctrl._loadMetas()
-
+LightboxChangeSubscriptionDirective = (lightboxService) ->
     return {
-        scope: {},
-        controller: "ContribSubscriptionsController",
-        controllerAs: "vm",
-        templateUrl: 'compile-modules/taiga-contrib-subscriptions/components/lb-plans/lightbox-plans.html'
-        link: link
+        scope: {
+            plan: '=',
+            currentPlan: '=',
+            members: '=',
+            mode: '=',
+            onConfirm: '&'
+        },
+        bindToController: true,
+        controller: 'ContribLbChangeSubscriptionController',
+        controllerAs: 'vm',
+        templateUrl: 'compile-modules/taiga-contrib-subscriptions/components/lb-change-subscription/lightbox-change-subscription.html',
     }
 
-LightboxPlansDirective.$inject = [
-    "$rootScope"
+LightboxChangeSubscriptionDirective.$inject = [
+    "lightboxService"
 ]
 
-module.directive("tgLbPlans", LightboxPlansDirective)
+module.directive("tgLbChangeSubscription", LightboxChangeSubscriptionDirective)

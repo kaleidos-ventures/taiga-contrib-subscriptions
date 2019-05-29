@@ -29,8 +29,9 @@ aside.plan-subscription-info
         ng-click="vm.seeBillingDetails()"
     )
 
-tg-lb-plans.lightbox.lightbox-plans.lightbox-generic-form
-tg-lb-contact-us.lightbox.lightbox-contact-us.lightbox-generic-form
+.lightbox.lightbox-plans.lightbox-generic-form
+    include ./_lightbox-plans
+
 tg-lb-confirm-member-remove.lightbox.lightbox-generic-form(
     confirm-remove="vm.confirmRemoveUserFromMyProjects",
     user="vm.deletingUser"
@@ -38,6 +39,15 @@ tg-lb-confirm-member-remove.lightbox.lightbox-generic-form(
 tg-lb-user-projects.lightbox.lightbox-user-projects.lightbox-generic-form(
     user="vm.userProjectsLb"
 )
+tg-lb-change-subscription.lightbox.lightbox-generic-form(
+    plan="vm.subscribePlan"
+    current-plan="vm.myPlan.current_plan"
+    mode="vm.changeMode"
+    on-confirm="vm.changePlan(plan, mode, interval == 'month')"
+)
+
 tg-lb-invalid-plan.lightbox.lightbox-generic-form(
     plan="vm.invalidPlan"
+    mode="vm.changeMode"
+    on-confirm="vm.changePlan(plan, mode)"
 )

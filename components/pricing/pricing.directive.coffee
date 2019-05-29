@@ -24,6 +24,8 @@ PricingDirective = ($translate) ->
         getAmount = () ->
             if (scope.plan.id == 'per-seat')
                 return (scope.membersCount || 1 ) * scope.plan.amount_month
+            else if (scope.plan.id == 'per-seat-free')
+                return 0
             else if (scope.interval == 'month')
                 return scope.plan.amount_month
             else if (scope.interval == 'year')
@@ -37,8 +39,8 @@ PricingDirective = ($translate) ->
                 return "/#{$translate.instant('SUBSCRIPTIONS.FREQUENCY_YEAR')}"
             return null
 
-        scope.$watchGroup(['plan', 'interval', 'membersCount'], (values) ->
-            if (values[0] and values[1])
+        scope.$watch('plan', (value) ->
+            if (value)
                 scope.amount = getAmount()
                 scope.frequency = getFrequency()
         )

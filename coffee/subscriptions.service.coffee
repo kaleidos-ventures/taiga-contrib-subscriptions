@@ -53,7 +53,16 @@ class SubscriptionsService
 
         return @http.get(url, {}).then (response) => @.publicPlans = response.data
 
-    selectMyPlan: (data) ->
+    cancelMyPlan: (data) =>
+        url = "#{@.getAPIURL()}delete-owned-projects"
+
+        return @http.post(url, data).then (response) =>
+            url = "#{@.getSubscriptionsAPIURL()}my-subscription/cancel"
+
+            return @http.post(url, data).then (response) =>
+                @.myPlan = response
+
+    selectMyPlan: (data) =>
         url = "#{@.getSubscriptionsAPIURL()}my-subscription/change"
 
         return @http.post(url, data).then (response) =>

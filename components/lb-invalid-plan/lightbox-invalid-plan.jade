@@ -1,22 +1,43 @@
-section.plans-container.invalid-plan()
+section.plans-container.invalid-plan
     tg-svg.close(
         svg-icon="icon-close"
         svg-title-translate="COMMON.CLOSE"
     )
-    h2.title(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.TITLE' | translate")
-    p(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.REASON' | translate: {plan: vm.plan.name, projects: vm.plan.private_projects, members: vm.plan.project_members}")
-    p.reason(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS' | translate: {projects: vm.plan.private_projects}")
-    ul
-        li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION1' | translate")
-        li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION2' | translate")
-    p.reason(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_MEMBERS' | translate: {members: vm.plan.project_members}")
-    ul
-        li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_MEMBERS_OPTION1' | translate: {members: vm.plan.project_members}")
-    img(
-        src="/#{v}/images/taiga-contrib-subscriptions/images/downgrade.png"
-        alt="{{SUBSCRIPTIONS.DOWNGRADE.IMAGE_ALT | translate}}"
-    )
-    button.button-green.accept-invalid-plan(
-        ng-click="vm.close()"
-        translate="SUBSCRIPTIONS.DOWNGRADE.ACCEPT"
-    )
+    h2.title
+        span(ng-if="vm.mode == 'cancel'", ng-bind-html="'SUBSCRIPTIONS.CANCEL.TITLE' | translate: {plan: vm.plan.name}")
+        span(ng-if="vm.mode == 'downgrade'", ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.TITLE' | translate: {plan: vm.plan.name}")
+    p(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MUST_CHANGE' | translate: {plan: vm.plan.name}")
+    .actions-required
+        p.reason(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS' | translate: {projects: vm.plan.private_projects}")
+        ul
+            li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_PROJECTS_OPTION' | translate")
+        p.reason(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_MEMBERS' | translate: {members: vm.plan.project_members}")
+        ul
+            li(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.MORE_MEMBERS_OPTION1' | translate: {members: vm.plan.project_members}")
+
+    .annotation
+        a.annotation-toggle(
+            href=''
+            ng-click="annotationVisible = true"
+        )
+            span(translate="SUBSCRIPTIONS.DOWNGRADE.WHY_MAKE_CHANGES")
+            span.toggle(ng-if="!annotationVisible") ⌵
+        .annotation-content(ng-if="annotationVisible")
+            p(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.REASON_WHY' | translate: {plan: vm.plan.name, projects: vm.plan.private_projects, members: vm.plan.project_members}")
+            .annotation-image-wrapper
+                img(
+                    src="/#{v}/images/taiga-contrib-subscriptions/images/downgrade.png"
+                    alt="{{SUBSCRIPTIONS.DOWNGRADE.IMAGE_ALT | translate}}"
+                )
+    .actions
+        button.button-green.accept-invalid-plan(
+            ng-click="vm.close()"
+            translate="SUBSCRIPTIONS.DOWNGRADE.ACCEPT"
+        )
+
+        a(
+            href=""
+            ng-if="vm.mode == 'cancel'"
+            ng-click="vm.confirmCancel()"
+            translate="SUBSCRIPTIONS.CANCEL.CANCEL_NOW"
+        )

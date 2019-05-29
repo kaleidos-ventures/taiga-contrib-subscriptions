@@ -10,31 +10,19 @@ form
                 .list-itemtype-project-left
 
                     .list-itemtype-project-data-wrapper
-                        a.list-itemtype-project-image(
-                            href="#"
-                            tg-nav="project:project=project.get('slug')"
-                            title="{{ ::project.get('name') }}"
-                        )
+                        .list-itemtype-project-image
                             img(
                                 tg-project-logo-small-src="::project"
                                 alt="{{::project.get('name')}}"
                             )
                         .list-itemtype-project-data
                             h2.project-name
-                                a.project-title(
-                                    href="#"
-                                    tg-nav="project:project=project.get('slug')"
-                                    title="{{ ::project.get('name') }}"
-                                ) {{project.get('name')}}
+                                span.project-title {{project.get('name')}}
                                 tg-svg(
-                                    svg-icon="icon-lock",
+                                    svg-icon="icon-private",
                                     svg-title-translate="PROJECT.PRIVATE"
                                 )
 
-                            a.project-title(
-                                href="#"
-                                tg-nav="project:project=project.get('slug')"
-                                title="{{ ::project.get('name') }}"
-                            )
+                            .project-title
                                 p.project-description {{ ::project.get('description') | limitTo:300 }}
                                     span(ng-if="::project.get('description').length > 300") ...

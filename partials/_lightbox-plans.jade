@@ -1,0 +1,87 @@
+div
+    section.plans-container
+        tg-svg.close(
+            svg-icon="icon-close"
+            svg-title-translate="COMMON.CLOSE"
+        )
+        h2.title(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.TITLE' | translate")
+        p.subtitle(translate="SUBSCRIPTIONS.SELECT_PLAN.SUBTITLE")
+        .plan-selector
+            .plan-selector-body
+                .plan-selector-option.basic(ng-class="{current: vm.currentPlan === 'free'}")
+                    .plan-option-header
+                        h3.plan-title(translate="SUBSCRIPTIONS.PLAN_OPTIONS.BASIC_PLAN")
+                        .plan-subtitle(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_PLAN")
+                    ul
+                        li
+                            tg-svg(svg-icon="icon-check-empty")
+                            span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_NUM_USERS")
+                        li
+                            tg-svg(svg-icon="icon-check-empty")
+                            span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_NUM_PRIVATE_PROJECTS")
+                        li
+                            tg-svg(svg-icon="icon-check-empty")
+                            span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_NUM_PUBLIC_PROJECTS")
+                        li
+                            tg-svg(svg-icon="icon-check-empty")
+                            span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_GBS")
+
+                    .your-plan(ng-if="vm.currentPlan === 'free'")
+                        span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.YOUR_CURRENT_PLAN")
+
+                    button.button-gray(
+                        translate="SUBSCRIPTIONS.PLAN_OPTIONS.DOWNGRADE"
+                        ng-click="vm.downgradePlan()"
+                        ng-if="vm.currentPlan !== 'free'"
+                    )
+
+                .plan-selector-option.premium
+                    .plan-option-header
+                        h3.plan-title(translate="SUBSCRIPTIONS.PLAN_OPTIONS.PREMIUM_PLAN")
+                        .plan-subtitle
+                            span.price ${{vm.publicPlanPerSeat.amount_year/12}}
+                            span.label(translate="SUBSCRIPTIONS.PLAN_OPTIONS.PER_MONTH")
+
+                        .annotation
+                            .label(translate="SUBSCRIPTIONS.PLAN_OPTIONS.PER_MEMBER_YEARLY")
+                            span(ng-bind-html="'SUBSCRIPTIONS.PLAN_OPTIONS.PER_MEMBER_MONTHLY' | translate: {amount: vm.publicPlanPerSeat.amount_month}")
+
+                        .policy(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FAIR_POLICY")
+
+                    ul
+                        li
+                            tg-svg(svg-icon="icon-check-empty")
+                            span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.PREMIUM_NUM_USERS")
+                        li
+                            tg-svg(svg-icon="icon-check-empty")
+                            span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.PREMIUM_NUM_PRIVATE_PROJECTS")
+                        li
+                            tg-svg(svg-icon="icon-check-empty")
+                            span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.PREMIUM_NUM_PUBLIC_PROJECTS")
+                        li
+                            tg-svg(svg-icon="icon-check-empty")
+                            span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.PREMIUM_GBS")
+
+                    .your-plan(ng-if="vm.currentPlan === 'premium'")
+                        span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.YOUR_CURRENT_PLAN")
+
+                    button.button-gray(
+                        translate="SUBSCRIPTIONS.PLAN_OPTIONS.UPGRADE"
+                        ng-click="vm.selectPlanInterval(vm.publicPlanPerSeat)"
+                        ng-if="vm.currentPlan !== 'premium'"
+                    )
+
+                .plan-selector-option.enterprise
+                    .plan-option-header
+                        h3.plan-title(translate="SUBSCRIPTIONS.PLAN_OPTIONS.ENTERPRISE_PLAN")
+                        .plan-subtitle(translate="SUBSCRIPTIONS.PLAN_OPTIONS.ON_TAIGA_CLOUD")
+
+                    .plan-option-body
+                        p(translate="SUBSCRIPTIONS.PLAN_OPTIONS.ENTERPRISE_SPECIALIZED_SUPPORT")
+                        p(translate="SUBSCRIPTIONS.PLAN_OPTIONS.ENTERPRISE_SUITABLE")
+
+                    button.button-gray(
+                        translate="SUBSCRIPTIONS.PLAN_OPTIONS.CONTACT_US"
+                        ng-click="vm.contactUs()"
+                    )
+    tg-lb-contact-us.lightbox.lightbox-contact-us.lightbox-generic-form

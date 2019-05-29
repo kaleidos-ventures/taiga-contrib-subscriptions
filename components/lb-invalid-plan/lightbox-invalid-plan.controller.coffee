@@ -21,21 +21,16 @@ module = angular.module('subscriptions')
 
 class LightboxInvalidPlanController
     @.$inject = [
-        "ContribSubscriptionsService",
-        "tgLoader",
-        "$tgConfirm",
-        "lightboxService",
-        "ContribPaymentsService",
-        "tgCurrentUserService",
-        "$tgAnalytics",
-        "$translate",
-        "$tgConfig"
+        "lightboxService"
     ]
 
-    constructor: (@subscriptionsService, @tgLoader, @confirm, @lightboxService, @paymentsService,
-                  @currentUserService, @analytics, @translate, @config) ->
+    constructor: (@lightboxService) ->
 
     close: () ->
+        @.mode = null
         @lightboxService.closeAll()
+
+    confirmCancel: () ->
+        @.onConfirm({plan: @.plan, mode: @.mode})
 
 module.controller("ContribLbInvalidPlanController", LightboxInvalidPlanController)

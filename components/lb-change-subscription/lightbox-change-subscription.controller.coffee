@@ -14,26 +14,24 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: lightbox-confirm-subscribe.directive.coffee
+# File: lightbox-change-subscription.controller.coffee
 ###
 
 module = angular.module('subscriptions')
 
-LightboxConfirmSubscribeDirective = (lightboxService) ->
-    return {
-        scope: {
-            plan: '=',
-            members: '=',
-            onConfirm: '&'
-        },
-        bindToController: true,
-        controller: 'ContribLbConfirmSubscribeController',
-        controllerAs: 'vm',
-        templateUrl: 'compile-modules/taiga-contrib-subscriptions/components/lb-confirm-subscribe/lightbox-confirm-subscribe.html',
-    }
+class LightboxChangeSubscriptionController
+    @.$inject = [
+        "lightboxService",
+    ]
 
-LightboxConfirmSubscribeDirective.$inject = [
-    "lightboxService"
-]
+    constructor: (@lightboxService) ->
+        @.selectPlanInterval = 'year'
 
-module.directive("tgLbConfirmSubscribe", LightboxConfirmSubscribeDirective)
+    close: () ->
+        @.mode = null
+        @lightboxService.closeAll()
+
+    confirmClicked: () ->
+        @.onConfirm({plan: @.plan, mode: @.mode, interval: @.selectPlanInterval})
+
+module.controller("ContribLbChangeSubscriptionController", LightboxChangeSubscriptionController)
