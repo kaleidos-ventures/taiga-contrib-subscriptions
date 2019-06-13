@@ -33,12 +33,13 @@ class SubscriptionsController
         "$tgConfig",
         "tgCurrentUserService",
         "tgUserService",
-        "$tgAuth"
+        "$tgAuth",
+        "$rootScope"
     ]
 
     constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader,
                   @translate, @paymentsService, @analytics, @confirm, @config, @currentUserService, @userService,
-                  @authService) ->
+                  @authService, @rootscope) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
@@ -52,6 +53,8 @@ class SubscriptionsController
                 @.userContactsById = @.userContactsById.set(contact.get('id').toString(), contact)
 
         @.viewingMembers = false
+
+        @rootscope.$on("subscription:changed", @._loadPlans)
 
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
@@ -101,7 +104,7 @@ class SubscriptionsController
 
         @appMetaService.setAll(sectionTitle, description)
 
-    _loadPlans: ->
+    _loadPlans: =>
         @tgLoader.start()
 
         promise1 = @subscriptionsService.getMyPerSeatPlan()
@@ -200,15 +203,6 @@ class SubscriptionsController
         @.changeMode = 'update'
         @.openLightbox('tg-lb-change-subscription')
 
-    downgradePlan: () ->
-        @.changeMode = 'downgrade'
-        if !@.publicPlanFree.is_applicable
-            @.invalidPlan =  @.publicPlanFree
-            @.openLightbox('tg-lb-invalid-plan')
-            return
-        @.subscribePlan = @.publicPlanFree
-        @.openLightbox('tg-lb-change-subscription')
-
     cancelPlan: () ->
         @.changeMode = 'cancel'
         @.changeToPublicPlanFree()
@@ -219,10 +213,9 @@ class SubscriptionsController
 
     changeToPublicPlanFree: () ->
         if !@.publicPlanFree.is_applicable
-            @.invalidPlan = @.publicPlanFree
+            @.subscribePlan = @.publicPlanFree
             @.openLightbox('tg-lb-invalid-plan')
             return
-        @.subscribePlan = @.publicPlanFree
         @.openLightbox('tg-lb-change-subscription')
 
     changePlan: (plan, mode, month=true) ->
@@ -283,12 +276,8 @@ class SubscriptionsController
                     google_conversion_currency: currency.toUpperCase()
                 })
 
-        if mode == 'cancel'
-            promise = @subscriptionsService.cancelMyPlan
-        else
-            promise = @subscriptionsService.selectMyPlan
 
-        promise(plan).then () =>
+        @subscriptionsService.selectMyPlan(plan).then () =>
             @._onSuccessSelectPlan()
         .catch (e) =>
             @._onFailedSelectPlan(e.data.detail)

@@ -27,6 +27,7 @@ LightboxInvalidPlanDirective = (lightboxService) ->
     return {
         scope: {
             plan: '=',
+            currentPlan: '=',
             mode: '=',
             onConfirm: '&'
         },

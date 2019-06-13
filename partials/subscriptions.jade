@@ -45,9 +45,9 @@ tg-lb-change-subscription.lightbox.lightbox-generic-form(
     mode="vm.changeMode"
     on-confirm="vm.changePlan(plan, mode, interval == 'month')"
 )
-
 tg-lb-invalid-plan.lightbox.lightbox-generic-form(
-    plan="vm.invalidPlan"
+    plan="vm.subscribePlan"
+    current-plan="vm.myPlan.current_plan"
     mode="vm.changeMode"
     on-confirm="vm.changePlan(plan, mode)"
 )

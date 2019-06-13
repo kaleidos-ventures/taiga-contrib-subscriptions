@@ -64,7 +64,12 @@
         },
         "CANCEL": {
             "TITLE": "Cancel {{plan}} plan",
-            "CANCEL_NOW": "Cancel plan now"
+            "CANCEL_NOW": "Cancel plan now",
+            "IF_CANCEL": "If you cancel your plan now:",
+            "IMPLICATION_1": "You will go to the {{ plan }} plan but <strong>your projects will be deleted</strong>",
+            "IMPLICATION_2": "Members of those projects will no longer be able to access them",
+            "ADVISE": "If you do not want to lose the information, before canceling the plan, <strong>export your data</strong> from the Admin of each project.",
+            "SUCCESS": "Congratulations, you successfully cancelled your plan!"
         },
         "DOWNGRADE": {
             "TITLE": "Downgrade to {{plan}} plan",

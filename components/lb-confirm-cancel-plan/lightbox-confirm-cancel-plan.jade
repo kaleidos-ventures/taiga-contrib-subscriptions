@@ -1,0 +1,22 @@
+section.plans-container.confirm-cancel
+    tg-svg.close(
+        svg-icon="icon-close"
+        svg-title-translate="COMMON.CLOSE"
+    )
+    h2.title(translate="SUBSCRIPTIONS.CANCEL.CANCEL_NOW")
+        span(ng-bind-html="'SUBSCRIPTIONS.CANCEL.TITLE' | translate: {plan: vm.plan.name}")
+    .cancel-warning
+        p(translate="SUBSCRIPTIONS.CANCEL.IF_CANCEL")
+        ul
+            li(ng-bind-html="'SUBSCRIPTIONS.CANCEL.IMPLICATION_1' | translate: {plan: vm.plan.name}")
+            li(translate="SUBSCRIPTIONS.CANCEL.IMPLICATION_2")
+    p(translate="SUBSCRIPTIONS.CANCEL.ADVISE")
+    .cancel-options
+        button.button-gray.back(
+            ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.CONTINUE_WITH' | translate: {plan: vm.currentPlan.name}"
+            ng-click="vm.close()"
+        )
+        button.button-red.cancel-plan(
+            ng-click="vm.confirmCancel()"
+            translate="SUBSCRIPTIONS.CANCEL.CANCEL_NOW"
+        )

@@ -41,3 +41,8 @@ section.plans-container.invalid-plan
             ng-click="vm.confirmCancel()"
             translate="SUBSCRIPTIONS.CANCEL.CANCEL_NOW"
         )
+
+    tg-lb-confirm-cancel-plan.lightbox.lightbox-generic-form(
+        plan="vm.plan"
+        current-plan="vm.currentPlan"
+    )
