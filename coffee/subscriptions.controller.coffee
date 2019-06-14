@@ -212,8 +212,8 @@ class SubscriptionsController
         @.changeToPublicPlanFree()
 
     changeToPublicPlanFree: () ->
+        @.subscribePlan = @.publicPlanFree
         if !@.publicPlanFree.is_applicable
-            @.subscribePlan = @.publicPlanFree
             @.openLightbox('tg-lb-invalid-plan')
             return
         @.openLightbox('tg-lb-change-subscription')

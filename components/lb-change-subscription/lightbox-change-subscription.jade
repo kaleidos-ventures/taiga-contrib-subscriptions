@@ -3,8 +3,22 @@ section.plans-container.subscribe-plan
         svg-icon="icon-close"
         svg-title-translate="COMMON.CLOSE"
     )
-    h2.title(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.TITLE' | translate")
-    h3.subtitle(ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.ABOUT_TO_CHANGE' | translate: {plan: vm.plan.name}")
+    h2.title(
+        ng-if="vm.mode == 'cancel'",
+        ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.CANCEL_CURRENT_PLAN' | translate: {plan: vm.currentPlan.name}"
+    )
+    h2.title(
+        ng-if="vm.mode != 'cancel'",
+        ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.TITLE' | translate"
+    )
+    h3.subtitle(
+        ng-if="vm.mode == 'cancel'",
+        ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.CANCEL_PLAN_ADVISE' | translate: {plan: vm.plan.name}"
+    )
+    h3.subtitle(
+        ng-if="vm.mode != 'cancel'",
+        ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.ABOUT_TO_CHANGE' | translate: {plan: vm.plan.name}"
+    )
     .subscription-your-plan
         .user-plan
             .plan-content
