@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2019 Taiga Agile LLC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -19,7 +19,7 @@
 
 module = angular.module('subscriptions')
 
-class SubscriptionsAdmin
+class SubscriptionsController
     @.$inject = [
         "tgAppMetaService",
         "ContribSubscriptionsService",
@@ -33,12 +33,13 @@ class SubscriptionsAdmin
         "$tgConfig",
         "tgCurrentUserService",
         "tgUserService",
-        "$tgAuth"
+        "$tgAuth",
+        "$rootScope"
     ]
 
     constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader,
                   @translate, @paymentsService, @analytics, @confirm, @config, @currentUserService, @userService,
-                  @authService) ->
+                  @authService, @rootscope) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
@@ -52,6 +53,8 @@ class SubscriptionsAdmin
                 @.userContactsById = @.userContactsById.set(contact.get('id').toString(), contact)
 
         @.viewingMembers = false
+
+        @rootscope.$on("subscription:changed", @._loadPlans)
 
         Object.defineProperty @, "myPlan", {
             get: () => @.subscriptionsService.myPlan
@@ -78,7 +81,20 @@ class SubscriptionsAdmin
                 else if @.myPlan.current_plan.id_year == "per-seat-year"
                     return 'premium'
                 else
-                    return 'old'
+                    return 'custom'
+        }
+
+        Object.defineProperty @, "currentPlanImage", {
+            get: () =>
+                if @.currentPlan == 'free'
+                    return 'seed'
+                else if @.currentPlan == 'premium'
+                    return 'leaf'
+                else
+                    planName = @.myPlan.current_plan.name.toLowerCase()
+                    if _.includes(['leaf', 'root', 'seed', 'sprout', 'tree'], planName)
+                        return planName
+                return 'custom'
         }
 
     _loadMetas: () ->
@@ -88,7 +104,7 @@ class SubscriptionsAdmin
 
         @appMetaService.setAll(sectionTitle, description)
 
-    _loadPlans: ->
+    _loadPlans: =>
         @tgLoader.start()
 
         promise1 = @subscriptionsService.getMyPerSeatPlan()
@@ -137,7 +153,7 @@ class SubscriptionsAdmin
         })
 
     contactUs: () ->
-        @lightboxService.open('tg-lb-contact-us')
+        @.openLightbox('tg-lb-contact-us')
 
     removeUserFromMyProjects: (user) ->
         @.deletingUser = user
@@ -149,6 +165,10 @@ class SubscriptionsAdmin
         promise = @subscriptionsService.removeUserFromMyProjects(userId)
         promise.then () =>
             @lightboxService.closeAll()
+
+            message = @translate.instant("SUBSCRIPTIONS.REMOVE_USER_LB.SUCCESS")
+            @confirm.notify('success', message, '', 5000)
+
             @subscriptionsService.getMyPerSeatPlan().then () =>
                 @tgLoader.pageLoaded()
 
@@ -172,16 +192,34 @@ class SubscriptionsAdmin
         promise.then () =>
             @tgLoader.pageLoaded()
 
+    openLightbox: (selector) ->
+        @lightboxService.open(selector)
+
+    showPlans: () ->
+        @lightboxService.open('.lightbox-plans')
+
     selectPlanInterval: (plan) ->
         @.subscribePlan = plan
-        @lightboxService.open('tg-lb-confirm-subscribe')
+        @.changeMode = 'update'
+        @.openLightbox('tg-lb-change-subscription')
 
-    changePlan: (plan, month=true) ->
-        @.loadingPayments = true
-        if !plan.is_applicable
-            @.invalidPlan = plan
-            @lightboxService.open('tg-lb-invalid-plan')
+    cancelPlan: () ->
+        @.changeMode = 'cancel'
+        @.changeToPublicPlanFree()
+
+    downgradePlan: () ->
+        @.changeMode = 'downgrade'
+        @.changeToPublicPlanFree()
+
+    changeToPublicPlanFree: () ->
+        @.subscribePlan = @.publicPlanFree
+        if !@.publicPlanFree.is_applicable
+            @.openLightbox('tg-lb-invalid-plan')
             return
+        @.openLightbox('tg-lb-change-subscription')
+
+    changePlan: (plan, mode, month=true) ->
+        @.loadingPayments = true
 
         if plan.id
             planId = plan.id
@@ -203,7 +241,7 @@ class SubscriptionsAdmin
                 'plan_id': planId,
                 'quantity': (@.perSeatPlan.members.length || 1)
             }
-            @._onSuccessBuyPlan(plan, amount, currency)
+            @._onSuccessBuyPlan(plan, amount, currency, mode)
         else
             @paymentsService.start({
                 description: name,
@@ -211,14 +249,14 @@ class SubscriptionsAdmin
                 onLoad: () => @.loadingPayments = false
                 onSuccess: (plan) =>
                     @analytics.ecPurchase(planId, name, amount)
-                    @._onSuccessBuyPlan(plan, amount, currency)
+                    @._onSuccessBuyPlan(plan, amount, currency, mode)
                 planId: planId,
                 currency: currency,
                 email: @.user.get('email'),
                 full_name: @.user.get('full_name')
             })
 
-    _onSuccessBuyPlan: (plan, amount, currency) ->
+    _onSuccessBuyPlan: (plan, amount, currency, mode) ->
         @lightboxService.closeAll()
         @tgLoader.start()
 
@@ -238,10 +276,10 @@ class SubscriptionsAdmin
                     google_conversion_currency: currency.toUpperCase()
                 })
 
-        promise = @subscriptionsService.selectMyPlan(plan)
-        promise.then () =>
+
+        @subscriptionsService.selectMyPlan(plan).then () =>
             @._onSuccessSelectPlan()
-        promise.catch (e) =>
+        .catch (e) =>
             @._onFailedSelectPlan(e.data.detail)
 
     _onSuccessSelectPlan: () ->
@@ -303,4 +341,4 @@ class SubscriptionsAdmin
             @confirm.notify('error')
 
 
-module.controller("ContribSubscriptionsController", SubscriptionsAdmin)
+module.controller("ContribSubscriptionsController", SubscriptionsController)

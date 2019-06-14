@@ -1,0 +1,38 @@
+.plans-container.confirm-cancel {
+    max-width: 700px;
+    .cancel-warning {
+        padding:1rem;
+        background: #FFEBC0;
+        margin: 2rem 0 1rem;
+        ul {
+            padding-left: 1.5rem;
+        }
+        li {
+            list-style: initial;
+            margin: 0 0 .5rem;
+        }
+    }
+    .cancel-options {
+        display: flex;
+        margin-top: 3rem;
+        justify-content: center;
+    }
+    .back {
+        border-radius: 0;
+        display: block;
+        line-height: 1rem;
+        margin: 0 .5rem;
+        padding: .75em 2rem;
+        white-space: nowrap;
+        flex-shrink: 1;
+    }
+    .cancel-plan {
+        border-radius: 0;
+        display: block;
+        line-height: 1rem;
+        margin: 0 .5rem;
+        padding: .75em 2rem;
+        white-space: nowrap;
+        flex-shrink: 1;
+    }
+}

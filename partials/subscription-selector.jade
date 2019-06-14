@@ -1,7 +1,0 @@
-p ----{{vm.getTemplateType()}}
-
-div(ng-if="vm.getTemplateType() == 'paid'", ng-include="'compile-modules/taiga-contrib-subscriptions/partials/subscriptions-paid.html'")
-
-div(ng-if="vm.getTemplateType() == 'zero'", ng-include="'compile-modules/taiga-contrib-subscriptions/partials/subscriptions-zero.html'")
-
-div(ng-if="vm.getTemplateType() == 'recommended'", ng-include="'compile-modules/taiga-contrib-subscriptions/partials/subscriptions-recommended.html'")

@@ -14,28 +14,16 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: subscriptions.directive.coffee
+# File: create-project-members-restrictions.directive.coffee
 ###
 
-module = angular.module('subscriptions')
+@.taigaContribPlugins = @.taigaContribPlugins or []
 
-SubscriptionsDirective = ($rootScope) ->
-    link = (scope, el, attrs, ctrl) ->
-        ctrl.init()
+decorator = ($delegate) ->
+    directive = $delegate[0]
 
-        $rootScope.$on '$translateChangeSuccess', () =>
-            ctrl._loadMetas()
+    directive.templateUrl = "compile-modules/taiga-contrib-subscriptions/decorators/create-project-members-restrictions/create-project-members-restrictions.html"
 
-    return {
-        scope: {},
-        controller: "ContribSubscriptionsController",
-        controllerAs: "vm",
-        templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/subscriptions.html'
-        link: link
-    }
+    return $delegate
 
-SubscriptionsDirective.$inject = [
-    "$rootScope"
-]
-
-module.directive("tgSubscriptions", SubscriptionsDirective)
+window.addDecorator("tgCreateProjectMembersRestrictionsDirective", ["$delegate", decorator])

@@ -14,28 +14,21 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: subscriptions.directive.coffee
+# File: no-more-memberships-explanation.directive.coffee
 ###
 
-module = angular.module('subscriptions')
+@.taigaContribPlugins = @.taigaContribPlugins or []
 
-SubscriptionsDirective = ($rootScope) ->
-    link = (scope, el, attrs, ctrl) ->
-        ctrl.init()
+decorator = ($delegate) ->
+    directive = $delegate[0]
 
-        $rootScope.$on '$translateChangeSuccess', () =>
-            ctrl._loadMetas()
+    controller = (translatePartialLoader) ->
+        translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
-    return {
-        scope: {},
-        controller: "ContribSubscriptionsController",
-        controllerAs: "vm",
-        templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/subscriptions.html'
-        link: link
-    }
+    directive.controller = ["$translatePartialLoader", controller]
 
-SubscriptionsDirective.$inject = [
-    "$rootScope"
-]
+    directive.templateUrl = "compile-modules/taiga-contrib-subscriptions/decorators/no-more-memberships-explanation/no-more-memberships-explanation.html"
 
-module.directive("tgSubscriptions", SubscriptionsDirective)
+    return $delegate
+
+window.addDecorator("tgNoMoreMembershipsExplanationDirective", ["$delegate", decorator])

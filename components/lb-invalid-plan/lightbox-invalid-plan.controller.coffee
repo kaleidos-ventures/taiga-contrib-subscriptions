@@ -14,28 +14,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: subscriptions.directive.coffee
+# File: lightbox-invalid-plan.controller.coffee
 ###
 
 module = angular.module('subscriptions')
 
-SubscriptionsDirective = ($rootScope) ->
-    link = (scope, el, attrs, ctrl) ->
-        ctrl.init()
+class LightboxInvalidPlanController
+    @.$inject = [
+        "lightboxService"
+    ]
 
-        $rootScope.$on '$translateChangeSuccess', () =>
-            ctrl._loadMetas()
+    constructor: (@lightboxService) ->
 
-    return {
-        scope: {},
-        controller: "ContribSubscriptionsController",
-        controllerAs: "vm",
-        templateUrl: 'compile-modules/taiga-contrib-subscriptions/partials/subscriptions.html'
-        link: link
-    }
+    close: () ->
+        @.mode = null
+        @lightboxService.closeAll()
 
-SubscriptionsDirective.$inject = [
-    "$rootScope"
-]
+    confirmCancel: () ->
+        @lightboxService.open('tg-lb-confirm-cancel-plan')
 
-module.directive("tgSubscriptions", SubscriptionsDirective)
+module.controller("ContribLbInvalidPlanController", LightboxInvalidPlanController)

@@ -1,0 +1,12 @@
+.plan-pricing
+
+    .pricing-primary
+        span.currency $
+        span.number {{ amount }}
+        span.frequency(ng-if="frequency && amount") {{ frequency }}
+        span.asterisk(ng-if="annotation") *
+
+    .pricing-secondary(ng-if="displayMonthlyTotalYear && interval == 'month' && amount")
+        span.currency $
+        span.number {{ amount * 12 }}
+        span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}

@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2019 Taiga Agile LLC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -53,7 +53,16 @@ class SubscriptionsService
 
         return @http.get(url, {}).then (response) => @.publicPlans = response.data
 
-    selectMyPlan: (data) ->
+    cancelMyPlan: () =>
+        url = "#{@.getAPIURL()}delete-owned-projects"
+
+        return @http.post(url).then (response) =>
+            url = "#{@.getSubscriptionsAPIURL()}my-subscription/cancel"
+
+            return @http.post(url).then (response) =>
+                @.myPlan = response
+
+    selectMyPlan: (data) =>
         url = "#{@.getSubscriptionsAPIURL()}my-subscription/change"
 
         return @http.post(url, data).then (response) =>

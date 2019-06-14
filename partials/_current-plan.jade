@@ -1,0 +1,45 @@
+.user-plan
+    .plan-label Your current plan:
+    .plan-content
+        img.plan-image(
+            src="/#{v}/images/taiga-contrib-subscriptions/images/#{'{{vm.currentPlanImage}}'}.png",
+            alt="{{vm.myPlan.current_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
+        )
+        .plan-info
+            .plan-name {{vm.myPlan.current_plan.name}}
+            tg-plan-features(plan="vm.myPlan.current_plan")
+            .plan-options(ng-switch="vm.currentPlan")
+                div(ng-switch-when="free")
+                    a(
+                        href=""
+                        translate="SUBSCRIPTIONS.PLAN_OPTIONS.UPGRADE"
+                        ng-click="vm.showPlans()"
+                    )
+                div(ng-switch-when="premium")
+                    a(
+                        href=""
+                        translate="SUBSCRIPTIONS.PLAN_OPTIONS.CHANGE_PLAN"
+                        ng-click="vm.showPlans()"
+                    )
+                    a(
+                        href=""
+                        translate="SUBSCRIPTIONS.PLAN_OPTIONS.CANCEL_PLAN"
+                        ng-click="vm.cancelPlan()"
+                    )
+                div(ng-switch-when="custom")
+                    a(
+                        href=""
+                        translate="SUBSCRIPTIONS.PLAN_OPTIONS.UPDATE"
+                        ng-click="vm.showPlans()"
+                    )
+                    a(
+                        href=""
+                        translate="SUBSCRIPTIONS.PLAN_OPTIONS.CANCEL_PLAN"
+                        ng-click="vm.cancelPlan()"
+                    )
+
+        tg-pricing(
+            plan="vm.myPlan.current_plan",
+            members-count="vm.perSeatPlan.members.length",
+            interval="vm.myPlan.interval"
+        )

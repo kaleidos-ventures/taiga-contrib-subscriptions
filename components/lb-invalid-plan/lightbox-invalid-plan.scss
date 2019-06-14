@@ -1,0 +1,51 @@
+.plans-container.invalid-plan {
+    max-width: 700px;
+    .reason {
+        margin-bottom: .7rem;
+        text-decoration: underline;
+    }
+    ul {
+        list-style-type: disc;
+        margin-bottom: 1.5rem;
+        li {
+            line-height: 1.5;
+            margin-left: 1.25rem;
+        }
+    }
+    .actions-required {
+        margin: 0 3rem 0 2rem;
+    }
+
+    .annotation-toggle {
+        color: $primary;
+        display: flex;
+        margin: 3rem 0 0;
+    }
+    .annotation-content {
+        font-size: .9rem;
+        padding: 1rem 0;
+    }
+    .annotation-image-wrapper {
+        text-align: center;
+    }
+    .toggle {
+        @include font-type(light);
+        font-size: 1.4rem;
+        line-height: .5em;
+        margin-left: .5rem;
+    }
+    .actions {
+        text-align: center;
+        a {
+            color: $primary;
+            display: block;
+            margin-top: 1rem;
+        }
+    }
+    .accept-invalid-plan {
+        @include font-size(large);
+        display: block;
+        margin: 2.5rem auto .5rem;
+        width: calc(100% - 15rem);
+    }
+}

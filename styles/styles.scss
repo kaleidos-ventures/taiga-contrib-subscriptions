@@ -1,246 +1,100 @@
-@import 'plan.mixin';
-
-.navbar .nav-right .plugin {
-    height: 100%;
-    padding: 0;
-}
-
-.upgrade-header-button {
-    background-color: $primary-light;
-    color: $white;
-    height: 100%;
-    padding: 8px 12px;
-}
-
-.admin-subscriptions {
-    display: block;
-    max-width: 750px;
-    width: 100%;
-    h1 {
-        margin-bottom: 2rem;
-    }
-}
-
-.subscription-your-plan {
-    @include plan;
-    margin-bottom: 2rem;
-    .title {
-        @include font-size(larger);
-    }
-    header {
+.user-plan {
+    border-bottom: 1px solid $whitish;
+    border-top: 1px solid $whitish;
+    padding: 1.5rem 0;
+    .plan-content {
+        align-items: flex-start;
         display: flex;
-        justify-content: space-between;
-        padding: .25rem 0;
     }
-    button {
-        min-width: 130px;
-        text-align: center;
-    }
-}
-
-.subscription-info {
-    .title {
-        @include font-size(large);
-        @include font-type(bold);
-        margin-bottom: 1rem;
-    }
-    ul {
-        list-style: disc;
-        margin-left: 1rem;
-    }
-    li {
-        margin-bottom: 1rem;
-        &:last-child {
-            list-style: none;
-        }
-    }
-    a {
-        color: $primary;
-        display: block;
-        margin-bottom: 1rem;
-    }
-}
-
-.blocked-project-message {
-    .check-plans {
-        display: block;
-        padding: .75rem;
-    }
-}
-
-.plan-selector {
-    .plan-selector-header {
-        align-items: center;
-        border-bottom: 1px solid $whitish;
-        border-top: 1px solid $whitish;
-        display: flex;
-        justify-content: space-between;
-        margin: 20px 0;
-        h1 {
-            color: $primary;
-            margin-bottom: 0;
-            text-transform: uppercase;
-        }
-        .text {
-            margin: 0;
-            padding: 20px 0;
-        }
-        .plan-selector-header-title {
-            display: none;
-        }
-        &.old {
-            border: 0;
-            .plan-selector-header-title {
-                display: block;
-            }
-            .text {
-                padding: 0;
-            }
-        }
-    }
-    .plan-selector-body {
-        color: $gray;
-        display: flex;
-        justify-content: space-between;
-        .plan-option-header {
-            align-items: center;
-            display: flex;
-            flex-grow: 0;
-            img {
-                height: 40px;
-                width: 40px;
-            }
-        }
-    }
-}
-
-.plan-selector-option {
-    border: 1px solid $whitish;
-    display: flex;
-    flex: 1 0;
-    flex-direction: column;
-    font-size: .8rem;
-    justify-content: space-between;
-    margin-right: 10px;
-    padding: 15px;
-    position: relative;
-    width: 300px;
-    &:last-child {
-        margin-right: 0;
-    }
-    &.current {
-        border: 2px solid $gray-light;
-    }
-    &.premium {
-        border: 2px solid $primary-light;
-        .price {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 20px 0 10px;
-            .price-value {
-                font-size: 2em;
-            }
-            .per-year {
-                color: $gray-light;
-            }
-        }
-        button {
-            background: $primary;
-            flex: 1 0;
-            font-size: 1.5em;
-            padding: 15px;
-            &:hover {
-                background: $primary-light;
-            }
-        }
-        .your-current-plan {
-            background: $primary-light;
-        }
-    }
-    .your-current-plan {
-        align-self: center;
-        background: $gray-light;
-        color: $white;
-        font-size: .75rem;
-        height: 20px;
-        padding: 2px;
-        position: absolute;
-        text-align: center;
-        top: -10px;
-        width: 50%;
-    }
-    ul {
-        flex: 1 0;
-        li {
-            align-items: center;
-            display: flex;
-            flex-direction: row;
-            padding-top: 8px;
-            span {
-                padding-left: 10px;
-            }
-        }
-    }
-    svg {
-        fill: $primary-light;
-        height: 24px;
-        margin: 8px;
-        width: 24px;
-    }
-}
-
-.plan-members {
-    li {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        padding: 5px 0;
-        &.row {
-            border-top: 1px solid $whitish;
-        }
-    }
-}
-
-.plan-member {
-    .user {
-        align-items: center;
-        display: flex;
-        flex-grow: 1;
-        width: 100%;
-        img {
-            height: 48px;
-            margin-right: 10px;
-            width: 48px;
-        }
-    }
-
-    .projects {
-        cursor: pointer;
-        display: inline-block;
-        flex-grow: 1;
-        position: relative;
-        width: 100%;
-        span {
-            color: $primary;
-        }
-    }
-
-    .actions {
-        cursor: pointer;
-        flex-grow: 1;
-        width: 30px;
-    }
-}
-
-.lightbox-user-projects {
-    .project-name {
-        font-size: 1rem;
+    .plan-label {
+        font-size: 1.1rem;
         font-weight: bold;
+        margin-bottom: 1.5rem;
+        width: 100%;
+    }
+    .plan-image {
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: 120px;
+        margin-right: 1.5rem;
+        width: 120px;
+    }
+    .plan-name {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        margin-bottom: .5rem;
+    }
+    .plan-info {
+        flex-grow: 1;
+        font-size: 1rem;
+        ul {
+            list-style: disc;
+            margin-left: 1rem;
+            li {
+                line-height: 1.3;
+                margin-bottom: .5rem;
+            }
+        }
+        a {
+            color: $primary;
+            display: block;
+            margin-bottom: .5rem;
+        }
+    }
+    .plan-pricing {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: auto;
+        padding: 0 20px 0 3rem;
+    }
+    .pricing-primary {
+        @include font-type(light);
+        .currency {
+            @include font-size(xlarge);
+            vertical-align: top;
+        }
+        .number {
+            @include font-size(gigantic);
+        }
+        .asterisk {
+            @include font-size(large);
+            bottom: .5rem;
+            color: $gray-light;
+            position: relative;
+        }
+    }
+    .pricing-secondary {
+        @include font-type(light);
+        color: $gray-light;
+        .currency {
+            margin-right: .2rem;
+        }
+        .separator {
+            padding: 0 .25rem;
+        }
     }
 }
 
 .plan-members-section {
+    border-bottom: 1px solid $whitish;
+    padding: 1.5rem 0 2rem;
+    .members-label {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: .5rem;
+        width: 100%;
+    }
+    p {
+        margin: 0;
+    }
+    .members-link {
+        color: $primary;
+        margin-left: 1rem;
+    }
+    .members-container {
+        margin: 2rem 0 .5rem 2rem;
+    }
     .header {
         align-items: center;
         display: flex;
@@ -288,17 +142,318 @@
     }
 }
 
-.remove-user-lb {
-    .buttons {
+.plans-container {
+    color: $gray;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0 1rem;
+    max-width: 1020px;
+    width: 100%;
+    .title {
+        @include font-type(semibold);
+        color: $grayer;
+        margin-bottom: 1rem;
+    }
+    .subtitle {
+        color: $grayer;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+}
+
+.plans-table {
+    .plan {
+        align-items: center;
+        background: $white;
+        border-bottom: 1px solid $whitish;
         display: flex;
-        width: 100%;
-        button {
-            flex-grow: 2;
-            width: 100%;
+        justify-content: space-between;
+        padding: 1rem;
+        position: relative;
+        &:first-child {
+            border-top: 1px solid $gray-light;
         }
-        a {
+        &:hover {
+            background: lighten($primary-light, 50%);
+            cursor: pointer;
+            transition: background .2s;
+            transition-delay: .1s;
+        }
+        &.highlighted-plan {
+            border: 1px solid $gray-light;
+        }
+        &.plan-custom {
+            &:hover {
+                background: $white;
+                cursor: default;
+            }
+        }
+    }
+    .pill-plan {
+        @include font-size(small);
+        background: $gray-light;
+        color: $white;
+        left: calc(50% - 4rem);
+        padding: .25rem;
+        position: absolute;
+        top: -.75rem;
+    }
+    .plan-image {
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: 70px;
+        margin-right: 1rem;
+        width: 70px;
+    }
+    .plan-name {
+        @include font-size(xlarge);
+        @include font-type(light);
+        flex-basis: 120px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: 1rem;
+    }
+    .plan-pricing {
+        flex-basis: 130px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: left;
+    }
+    .pricing-primary {
+        @include font-type(light);
+        .currency {
+            @include font-size(large);
+            vertical-align: top;
+        }
+        .number {
+            @include font-size(xlarge);
+        }
+
+    }
+    .pricing-secondary {
+        color: $gray-light;
+        .currency {
+            margin-right: .2rem;
+        }
+    }
+}
+
+.plan-selector {
+    .plan-selector-header {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+        h1 {
+            color: $primary;
+            margin-bottom: 0;
+            text-transform: uppercase;
+        }
+        .text {
+            margin: 0;
+            padding: 20px 0;
+        }
+        .plan-selector-header-title {
+            display: none;
+        }
+    }
+    .plan-selector-body {
+        color: $gray;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 5px;
+        .plan-option-header {
+            margin-bottom: 2em;
+            text-align: center;
+            .plan-title {
+                @include font-type(light);
+                color: $gray;
+                font-size: 1.5rem;
+                line-height: 1.5rem;
+                margin-bottom: .7rem;
+            }
+            .plan-subtitle {
+                color: $primary-light;
+            }
+            .label {
+                @include font-type(bold);
+                color: $gray;
+                font-size: .8rem;
+                line-height: .8rem;
+                margin-left: .2rem;
+            }
+            .price {
+                font-size: 2rem;
+                line-height: 2rem;
+            }
+        }
+        .plan-option-body {
             flex-grow: 1;
         }
+    }
+}
+
+.plan-selector-option {
+    background: $mass-white;
+    border: 1px solid transparent;
+    display: flex;
+    flex: 1 0;
+    flex-direction: column;
+    font-size: .8rem;
+    margin: 0 5px;
+    padding: 15px;
+    position: relative;
+    &.basic {
+        .plan-subtitle {
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+        }
+        &.current {
+            background: $white;
+            border: 1px solid $gray-lighter;
+        }
+    }
+    &.premium {
+        .annotation {
+            margin: .7em 0 0;
+            text-align: center;
+            .label {
+                @include font-type(bold);
+            }
+        }
+        .policy {
+            background: $white;
+            margin: 1rem 0 0;
+            padding: .5rem;
+        }
+        button {
+            background: $primary;
+            &:hover {
+                background: $primary-light;
+            }
+        }
+    }
+    &.enterprise {
+        .plan-subtitle {
+            font-size: .9rem;
+            line-height: .9rem;
+        }
+        .plan-option-body {
+            font-size: .9rem;
+        }
+    }
+    ul {
+        flex: 1 0;
+        margin: 0 0 2rem;
+        li {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            span {
+                padding-left: 10px;
+            }
+        }
+    }
+    svg {
+        fill: $primary-light;
+        height: 24px;
+        margin: .4rem .3rem .4rem .4rem;
+        width: 24px;
+    }
+    .button-gray,
+    .button-green {
+        font-size: 1.1em;
+        padding: .7rem;
+    }
+    .your-plan {
+        border-top: 1px solid $whitish;
+        padding: 1.25rem 1rem .5rem;
+        text-align: center;
+    }
+}
+
+
+.plan-subscription-info {
+    padding: 2rem 0;
+    a {
+        color: $primary;
+        display: block;
+        margin-bottom: 1rem;
+    }
+}
+
+.navbar .nav-right .plugin {
+    height: 100%;
+    padding: 0;
+}
+
+.admin-subscriptions {
+    display: block;
+    max-width: 750px;
+    width: 100%;
+    h1 {
+        @include font-type(semibold);
+        color: $primary;
+        font-size: 1.7rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.blocked-project-message {
+    .check-plans {
+        display: block;
+        padding: .75rem;
+    }
+}
+
+.plan-members {
+    .no-members {
+        color: $gray-lighter;
+    }
+    li {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        &.row {
+            border-top: 1px solid $whitish;
+        }
+    }
+}
+
+.plan-member {
+    .user {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        width: 100%;
+        img {
+            height: 48px;
+            margin-right: 10px;
+            width: 48px;
+        }
+    }
+
+    .projects {
+        cursor: pointer;
+        display: inline-block;
+        flex-grow: 1;
+        position: relative;
+        width: 100%;
+        span {
+            color: $primary;
+        }
+    }
+
+    .actions {
+        cursor: pointer;
+        flex-grow: 1;
+        width: 30px;
     }
 }
 

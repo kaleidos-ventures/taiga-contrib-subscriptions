@@ -1,3 +1,53 @@
-tg-subscriptions.admin-subscriptions
+header.paid-plans
+    h1(translate="SUBSCRIPTIONS.YOUR_PLAN")
 
-script(type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js" charset="utf-8")
+section.subscription-your-plan
+    include ./_current-plan
+
+section.plan-members-section
+    include ./_members
+
+aside.plan-subscription-info
+    a(
+        href="https://tree.taiga.io/support/subscription-and-plans/payment-process-faqs/"
+        title="{{'SUBSCRIPTIONS.HELP.MORE_INFO_TITLE' | translate}}"
+        target="_blank"
+        translate="SUBSCRIPTIONS.HELP.MORE_INFO"
+    )
+    a.change-payment-data.e2e-change-payment-data(
+        ng-if="vm.currentPlan == 'premium'"
+        href=""
+        title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA' | translate}}"
+        translate="SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA"
+        ng-click="vm.changePaymentsData()"
+    )
+    a.see-billing-data.e2e-see-billing-data(
+        ng-if="vm.currentPlan == 'premium'"
+        href=""
+        title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.SEE_BILLING_DETAILS' | translate}}"
+        translate="SUBSCRIPTIONS.PAYMENT_HISTORY.SEE_BILLING_DETAILS"
+        ng-click="vm.seeBillingDetails()"
+    )
+
+.lightbox.lightbox-plans.lightbox-generic-form
+    include ./_lightbox-plans
+
+tg-lb-confirm-member-remove.lightbox.lightbox-generic-form(
+    confirm-remove="vm.confirmRemoveUserFromMyProjects",
+    user="vm.deletingUser"
+)
+tg-lb-user-projects.lightbox.lightbox-user-projects.lightbox-generic-form(
+    user="vm.userProjectsLb"
+)
+tg-lb-change-subscription.lightbox.lightbox-generic-form(
+    plan="vm.subscribePlan"
+    current-plan="vm.myPlan.current_plan"
+    mode="vm.changeMode"
+    on-confirm="vm.changePlan(plan, mode, interval == 'month')"
+)
+tg-lb-invalid-plan.lightbox.lightbox-generic-form(
+    plan="vm.subscribePlan"
+    current-plan="vm.myPlan.current_plan"
+    mode="vm.changeMode"
+    on-confirm="vm.changePlan(plan, mode)"
+)

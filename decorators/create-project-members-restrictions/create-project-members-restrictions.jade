@@ -1,0 +1,12 @@
+div.create-project-warning(ng-if="!limitMembersPrivateProject.valid && isPrivate")
+    tg-svg(svg-icon="icon-exclamation")
+    span(
+        ng-if="limitMembersPrivateProject.max == 4"
+        translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PROJECT_MEMBERS_DESC_PRIVATE_SEED",
+        translate-values="{'members': limitMembersPrivateProject.current, 'max_memberships': limitMembersPrivateProject.max}"
+    )
+    span(
+        ng-if="limitMembersPrivateProject.max != 4"
+        translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PROJECT_MEMBERS_DESC_PRIVATE",
+        translate-values="{'members': limitMembersPrivateProject.current, 'max_memberships': limitMembersPrivateProject.max}"
+    )
