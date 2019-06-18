@@ -13,7 +13,7 @@ section.plans-container.subscribe-plan
     )
     h3.subtitle(
         ng-if="vm.mode == 'cancel'",
-        ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.CANCEL_PLAN_ADVISE' | translate: {plan: vm.plan.name}"
+        ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.CANCEL_PLAN_ADVISE' | translate: {currentPlan: vm.currentPlan.name, newPlan: vm.plan.name}"
     )
     h3.subtitle(
         ng-if="vm.mode != 'cancel'",
@@ -27,7 +27,7 @@ section.plans-container.subscribe-plan
                     alt="{{'SUBSCRIPTIONS.PLAN_OPTIONS.PREMIUM_PLAN' | translate}}"
                 )
                 .plan-info
-                    .plan-name {{ vm.plan.name }}
+                    tg-plan-name(plan="vm.plan")
                     tg-plan-features(plan="vm.plan", interval="vm.selectPlanInterval")
 
                 tg-pricing(
@@ -65,7 +65,7 @@ section.plans-container.subscribe-plan
                 label.project-interval-button.trans-button(for="project-interval-yearly") {{'SUBSCRIPTIONS.SELECT_PLAN.EVERY_YEAR' | translate}}
 
     .change-options
-        button.back.trans-button(
+        button.back.button-gray(
             ng-bind-html="'SUBSCRIPTIONS.SELECT_PLAN.CONTINUE_WITH' | translate: {plan: vm.currentPlan.name}"
             ng-click="vm.close()"
         )

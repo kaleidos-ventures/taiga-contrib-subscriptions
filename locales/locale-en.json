@@ -74,7 +74,7 @@
         "DOWNGRADE": {
             "TITLE": "Downgrade to {{plan}} plan",
             "IMAGE_ALT": "Downgrading a plan",
-            "MUST_CHANGE": "To change to {{plan}}, you must first make the following changes",
+            "MUST_CHANGE": "To change to {{plan}} plan, you must first make the following changes",
             "MORE_PROJECTS": "If you have more than {{projects}} private projects",
             "MORE_PROJECTS_OPTION": "Choose 1 project to remain private and make public or remove the rest projects. You can perform these changes on the upper menu cliking Manage Projects",
             "MORE_MEMBERS": "If you have more than {{members}} members per private project",
@@ -99,12 +99,12 @@
             "EVERY_YEAR": "Every year",
             "EVERY_MONTH": "Every month",
             "TAXES": "Depending on your country, we may be required to charge sales tax.",
-            "SUCCESS": "Congratulations, you successfully subscribed to a payment plan!",
+            "SUCCESS": "Congratulations, you successfully changed your plan!",
             "START_SUBSCRIPTION": "Start subscription",
             "PAY": "Pay {{ amount }}",
             "CHANGE_TO": "Change to {{ plan }} plan",
             "CANCEL_CURRENT_PLAN": "Cancel {{ plan }} plan",
-            "CANCEL_PLAN_ADVISE": "When you cancel your Premium plan you will subscribe to the {{ plan }} plan with basic features",
+            "CANCEL_PLAN_ADVISE": "When you cancel your {{ currentPlan }} plan you will subscribe to the {{ newPlan }} plan with basic features",
             "CONTINUE_WITH": "Continue with {{ plan }} plan"
         },
         "PLAN_OPTIONS": {

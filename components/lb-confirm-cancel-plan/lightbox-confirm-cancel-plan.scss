@@ -1,9 +1,11 @@
+$quote-color: #ffebc0;
+
 .plans-container.confirm-cancel {
     max-width: 700px;
     .cancel-warning {
-        padding:1rem;
-        background: #FFEBC0;
+        background: $quote-color;
         margin: 2rem 0 1rem;
+        padding: 1rem;
         ul {
             padding-left: 1.5rem;
         }
@@ -14,25 +16,25 @@
     }
     .cancel-options {
         display: flex;
-        margin-top: 3rem;
         justify-content: center;
+        margin-top: 3rem;
     }
     .back {
         border-radius: 0;
         display: block;
+        flex-shrink: 1;
         line-height: 1rem;
         margin: 0 .5rem;
         padding: .75em 2rem;
         white-space: nowrap;
-        flex-shrink: 1;
     }
     .cancel-plan {
         border-radius: 0;
         display: block;
+        flex-shrink: 1;
         line-height: 1rem;
         margin: 0 .5rem;
         padding: .75em 2rem;
         white-space: nowrap;
-        flex-shrink: 1;
     }
 }

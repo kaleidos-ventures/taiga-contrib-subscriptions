@@ -68,27 +68,15 @@ class SubscriptionsController
             get: () => @.subscriptionsService.perSeatPlan
         }
 
-        Object.defineProperty @, "currentPlan", {
-            get: () =>
-                if !@.myPlan
-                    return 'free'
-                else if !@.myPlan.current_plan
-                    return 'free'
-                else if @.myPlan.current_plan.id == "per-seat-free"
-                    return 'free'
-                else if @.myPlan.current_plan.id_month == "per-seat-month"
-                    return 'premium'
-                else if @.myPlan.current_plan.id_year == "per-seat-year"
-                    return 'premium'
-                else
-                    return 'custom'
+        Object.defineProperty @, "currentPlanCategory", {
+            get: () => @.getPlanCategory(@.myPlan)
         }
 
         Object.defineProperty @, "currentPlanImage", {
             get: () =>
-                if @.currentPlan == 'free'
+                if @.currentPlanCategory == 'free'
                     return 'seed'
-                else if @.currentPlan == 'premium'
+                else if @.currentPlanCategory == 'premium'
                     return 'leaf'
                 else
                     planName = @.myPlan.current_plan.name.toLowerCase()
@@ -96,6 +84,20 @@ class SubscriptionsController
                         return planName
                 return 'custom'
         }
+
+    getPlanCategory: (plan) ->
+        if !plan
+            return 'free'
+        else if !plan.current_plan
+            return 'free'
+        else if plan.current_plan.id == "per-seat-free"
+            return 'free'
+        else if plan.current_plan.id_month == "per-seat-month"
+            return 'premium'
+        else if plan.current_plan.id_year == "per-seat-year"
+            return 'premium'
+        else
+            return 'custom'
 
     _loadMetas: () ->
         sectionTitle = @translate.instant("SUBSCRIPTIONS.TITLE")

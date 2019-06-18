@@ -20,10 +20,6 @@
 module = angular.module('subscriptions')
 
 LightboxInvalidPlanDirective = (lightboxService) ->
-    link = (scope, el, attrs, ctrl) ->
-        scope.$watch('mode', (value) ->
-            ctrl.annotationVisible = false
-        )
     return {
         scope: {
             plan: '=',
@@ -32,7 +28,6 @@ LightboxInvalidPlanDirective = (lightboxService) ->
             onConfirm: '&'
         },
         bindToController: true,
-        link: link,
         controller: 'ContribLbInvalidPlanController',
         controllerAs: 'vm',
         templateUrl: 'compile-modules/taiga-contrib-subscriptions/components/lb-invalid-plan/lightbox-invalid-plan.html',

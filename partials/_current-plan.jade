@@ -6,9 +6,9 @@
             alt="{{vm.myPlan.current_plan.name}} {{'SUBSCRIPTIONS.PLAN' | translate}}"
         )
         .plan-info
-            .plan-name {{vm.myPlan.current_plan.name}}
+            tg-plan-name(plan="vm.myPlan.current_plan")
             tg-plan-features(plan="vm.myPlan.current_plan")
-            .plan-options(ng-switch="vm.currentPlan")
+            .plan-options(ng-switch="vm.currentPlanCategory")
                 div(ng-switch-when="free")
                     a(
                         href=""

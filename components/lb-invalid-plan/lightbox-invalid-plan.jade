@@ -18,11 +18,11 @@ section.plans-container.invalid-plan
     .annotation
         a.annotation-toggle(
             href=''
-            ng-click="annotationVisible = true"
+            ng-click="vm.toggleAnnotation()"
         )
             span(translate="SUBSCRIPTIONS.DOWNGRADE.WHY_MAKE_CHANGES")
-            span.toggle(ng-if="!annotationVisible") ⌵
-        .annotation-content(ng-if="annotationVisible")
+            span.toggle(ng-class="{active: vm.annotationVisible}") ⌵
+        .annotation-content(ng-if="vm.annotationVisible")
             p(ng-bind-html="'SUBSCRIPTIONS.DOWNGRADE.REASON_WHY' | translate: {plan: vm.plan.name, projects: vm.plan.private_projects, members: vm.plan.project_members}")
             .annotation-image-wrapper
                 img(
