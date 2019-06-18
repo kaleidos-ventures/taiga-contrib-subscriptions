@@ -54,21 +54,16 @@
     .change-options {
         display: flex;
         margin-top: 3rem;
+        justify-content: center;
     }
     .back {
-        @include font-size(large);
-        color: $gray-light;
-        flex: 4;
-        padding: 1rem;
+        margin: 0 1rem;
         text-align: center;
         white-space: nowrap;
     }
     .accept-plan {
-        @include font-size(large);
         display: block;
-        flex: 5;
-        margin-right: 10rem;
-        padding: 1rem 3rem;
+        margin: 0 1rem;
         white-space: nowrap;
     }
 }

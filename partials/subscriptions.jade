@@ -15,14 +15,14 @@ aside.plan-subscription-info
         translate="SUBSCRIPTIONS.HELP.MORE_INFO"
     )
     a.change-payment-data.e2e-change-payment-data(
-        ng-if="vm.currentPlan == 'premium'"
+        ng-if="vm.currentPlanCategory == 'premium'"
         href=""
         title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA' | translate}}"
         translate="SUBSCRIPTIONS.PAYMENT_HISTORY.CHANGE_DATA"
         ng-click="vm.changePaymentsData()"
     )
     a.see-billing-data.e2e-see-billing-data(
-        ng-if="vm.currentPlan == 'premium'"
+        ng-if="vm.currentPlanCategory == 'premium'"
         href=""
         title="{{'SUBSCRIPTIONS.PAYMENT_HISTORY.SEE_BILLING_DETAILS' | translate}}"
         translate="SUBSCRIPTIONS.PAYMENT_HISTORY.SEE_BILLING_DETAILS"

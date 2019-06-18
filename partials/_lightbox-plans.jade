@@ -8,7 +8,7 @@ div
         p.subtitle(translate="SUBSCRIPTIONS.SELECT_PLAN.SUBTITLE")
         .plan-selector
             .plan-selector-body
-                .plan-selector-option.basic(ng-class="{current: vm.currentPlan === 'free'}")
+                .plan-selector-option.basic(ng-class="{current: vm.currentPlanCategory === 'free'}")
                     .plan-option-header
                         h3.plan-title(translate="SUBSCRIPTIONS.PLAN_OPTIONS.BASIC_PLAN")
                         .plan-subtitle(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_PLAN")
@@ -26,13 +26,13 @@ div
                             tg-svg(svg-icon="icon-check-empty")
                             span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.FREE_GBS")
 
-                    .your-plan(ng-if="vm.currentPlan === 'free'")
+                    .your-plan(ng-if="vm.currentPlanCategory === 'free'")
                         span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.YOUR_CURRENT_PLAN")
 
                     button.button-gray(
                         translate="SUBSCRIPTIONS.PLAN_OPTIONS.DOWNGRADE"
                         ng-click="vm.downgradePlan()"
-                        ng-if="vm.currentPlan !== 'free'"
+                        ng-if="vm.currentPlanCategory !== 'free'"
                     )
 
                 .plan-selector-option.premium
@@ -62,13 +62,13 @@ div
                             tg-svg(svg-icon="icon-check-empty")
                             span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.PREMIUM_GBS")
 
-                    .your-plan(ng-if="vm.currentPlan === 'premium'")
+                    .your-plan(ng-if="vm.currentPlanCategory === 'premium'")
                         span(translate="SUBSCRIPTIONS.PLAN_OPTIONS.YOUR_CURRENT_PLAN")
 
                     button.button-gray(
                         translate="SUBSCRIPTIONS.PLAN_OPTIONS.UPGRADE"
                         ng-click="vm.selectPlanInterval(vm.publicPlanPerSeat)"
-                        ng-if="vm.currentPlan !== 'premium'"
+                        ng-if="vm.currentPlanCategory !== 'premium'"
                     )
 
                 .plan-selector-option.enterprise

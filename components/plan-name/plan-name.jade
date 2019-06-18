@@ -1,0 +1,3 @@
+.plan-name
+    span {{ plan.name }}
+    span(ng-if="isFree(plan)") &nbsp;({{'SUBSCRIPTIONS.PLAN_OPTIONS.FREE_PLAN' | translate}})

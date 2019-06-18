@@ -39,8 +39,8 @@ PricingDirective = ($translate) ->
                 return "/#{$translate.instant('SUBSCRIPTIONS.FREQUENCY_YEAR')}"
             return null
 
-        scope.$watch('plan', (value) ->
-            if (value)
+        scope.$watchGroup(['plan', 'interval'], (values) ->
+            if (values[0])
                 scope.amount = getAmount()
                 scope.frequency = getFrequency()
         )

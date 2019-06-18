@@ -31,8 +31,11 @@
     .toggle {
         @include font-type(light);
         font-size: 1.4rem;
-        line-height: .5em;
+        line-height: .45em;
         margin-left: .5rem;
+        &.active{
+            transform: rotate(180deg);
+        }
     }
     .actions {
         text-align: center;
