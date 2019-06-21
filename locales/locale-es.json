@@ -7,18 +7,18 @@
         "YOUR_RECOMMENDED_PLAN": "Es posible que debas considerar",
         "WANT_PLAN": "¡Lo quiero!",
         "UPDATE_PLAN": "Cambiar plan",
-        "PRIVATE_PROJECTS_LIMIT": "¡Hasta <strong>{{number}}</strong> proyectos privados + Proyectos públicos ilimitados!",
+        "PRIVATE_PROJECTS_LIMIT": "Up to {{number}} private projects + Unlimited public projects!",
         "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "¡Proyectos privados ilimitados + Proyectos públicos ilimitados!",
         "EXTRA_SEAT_PER_MONTH": "Extra seat: ${{amount}} more monthly",
         "EXTRA_SEAT_PER_YEAR": "Extra seat: ${{amount}} more yearly",
-        "MEMBERS_LIMIT": "Up to <strong>{{number}}</strong> different member accounts using any of your private projects!",
+        "MEMBERS_LIMIT": "Up to {{number}} different member accounts using any of your private projects!",
         "MEMBERS_LIMIT_UNLIMITED": "¡Miembros ilimitados para proyectos privados!",
         "CONTACT_SUBSCRIBE": "Suscríbete a este plan contactando con nosotros en <a href='mailto:support@taiga.io'>support@taiga.io</a>\n",
         "FREQUENCY_MONTH": "mes",
         "FREQUENCY_YEAR": "año",
         "MAX_PRIVATE_PROJECTS": "¿Quieres añadir más proyectos privados? <a href='{{url}}'>¡Actualiza tu plan!",
         "MEMBERS": {
-            "BACK_TO_PLANS": "Back to plans",
+            "TITLE": "Members",
             "SECTION_DESCRIPTION": "Currently this are the users that depends on your paid plan. You can remove then from all your private projects from the list bellow or you can manage their memberships in the configuration panel of each project",
             "NOTIFICATIONS_SELECT": "Notify by mail increments of members"
         },
@@ -35,6 +35,7 @@
         "REMOVE_USER_LB": {
             "TITLE": "Are you sure?",
             "TEXT": "This action will remove the user from all your private projects.",
+            "SUCCESS": "The user has been removed",
             "CONFIRM": "Confirm",
             "BACK": "Back"
         },
@@ -61,20 +62,32 @@
             "CUSTOM": "Personalizado",
             "CONTACT": "Si necesita un plan de pago que permita más proyectos o más miembros por proyecto, contáctenos a <a href='mailto:support@taiga.io' title='Contáctenos'> support@taiga.io </a> para más información."
         },
+        "CANCEL": {
+            "TITLE": "Cancel {{plan}} plan",
+            "CANCEL_NOW": "Cancel plan now",
+            "IF_CANCEL": "If you cancel your plan now:",
+            "IMPLICATION_1": "You will go to the {{ plan }} plan but <strong>your projects will be deleted</strong>",
+            "IMPLICATION_2": "Members of those projects will no longer be able to access them",
+            "ADVISE": "If you do not want to lose the information, before canceling the plan, <strong>export your data</strong> from the Admin of each project.",
+            "SUCCESS": "Congratulations, you successfully cancelled your plan!"
+        },
         "DOWNGRADE": {
-            "TITLE": "Bajar de plan",
+            "TITLE": "Downgrade to {{plan}} plan",
             "IMAGE_ALT": "Bajando de plan",
-            "REASON": "Parece que has superado el número máximo de proyectos privados permitidos para tu plan. Tu plan actual permite hasta <strong>{{projects}} proyectos privados y {{miembros}} miembros por proyecto privado</ strong>. Para cambiar al Plan {{plan}}, simplemente tienes que hacer los siguientes cambios",
+            "MUST_CHANGE": "To change to {{plan}} plan, you must first make the following changes",
             "MORE_PROJECTS": "Si tienes más de {{projects}} proyectos privados",
-            "MORE_PROJECTS_OPTION1": "Choose 1 project to remain private and make public or remove the rest projects",
-            "MORE_PROJECTS_OPTION2": "You can perform these changes on the upper menu cliking Manage Projects",
+            "MORE_PROJECTS_OPTION": "Choose 1 project to remain private and make public or remove the rest projects. You can perform these changes on the upper menu cliking Manage Projects",
             "MORE_MEMBERS": "Si tienes más de {{members}} miembros por proyecto privado",
-            "MORE_MEMBERS_OPTION1": "Go to Manage Members and keep a maximum of {{members}} members for all your private projects",
-            "ACCEPT": "Ok, entendido"
+            "MORE_MEMBERS_OPTION1": "Go to Manage Members (Your plan) and keep a maximum of {{members}} members for all your private projects",
+            "WHY_MAKE_CHANGES": "Why do I have to make these changes?",
+            "REASON_WHY": "Unfortunately, you exceeded the maximum number of private projects or number of members allowed by {{ plan }} plan. This plan allows up to <strong>{{projects}} private projects and {{members}} members per private project</strong>",
+            "ACCEPT": "Ok, entendido",
+            "ARE_YOU_SURE": "Are you sure you want to change this plan?"
         },
         "SELECT_PLAN": {
-            "TITLE": "Suscríbete a un Plan",
-            "YOUR_NEW_PLAN": "Tu nuevo Plan",
+            "TITLE": "Change your Plan",
+            "SUBTITLE": "Choose the plan that best meets your needs",
+            "ABOUT_TO_CHANGE": "You are about change to {{ plan }} plan",
             "INTERVAL": "¿Cada cuánto tiempo te gustaría realizar el pago?",
             "PAY_MONTHLY": "Mensualmente",
             "PAY_YEARLY": "Anualmente",
@@ -86,32 +99,43 @@
             "EVERY_YEAR": "Cada año",
             "EVERY_MONTH": "Cada mes",
             "TAXES": "Dependiendo de tu país, es posible que debamos cobrar impuestos sobre las ventas.",
-            "SUCCESS": "¡Enhorabuena, has completado el proceso de suscripción a un plan de pago!",
+            "SUCCESS": "Congratulations, you successfully changed your plan!",
             "START_SUBSCRIPTION": "Comenzar la suscripción",
-            "PAY": "Paga {{ amount }}"
+            "PAY": "Paga {{ amount }}",
+            "CHANGE_TO": "Change to {{ plan }} plan",
+            "CANCEL_CURRENT_PLAN": "Cancel {{ plan }} plan",
+            "CANCEL_PLAN_ADVISE": "When you cancel your {{ currentPlan }} plan you will subscribe to the {{ newPlan }} plan with basic features",
+            "CONTINUE_WITH": "Continue with {{ plan }} plan"
         },
         "PLAN_OPTIONS": {
+            "BASIC_PLAN": "Basic",
             "FREE_PLAN": "Free",
             "PREMIUM_PLAN": "Premium",
             "ENTERPRISE_PLAN": "Enterprise",
             "MANAGE_MEMBERS": "Manage members",
-            "UPGRADE_PLAN": "Upgrade plan",
             "DOWNGRADE": "Downgrade",
             "UPDATE": "Update",
-            "UPGRADE": "Upgrade Now",
+            "UPGRADE": "Upgrade",
+            "CHANGE_PLAN": "Change Plan",
+            "CANCEL_PLAN": "Cancel Plan",
             "CONTACT_US": "Contact us",
-            "PREMIUM_GBS": "Up to <strong>10GB</strong> of storage",
-            "PREMIUM_NUM_USERS": "<strong>Unlimited</strong> number of members",
-            "PREMIUM_NUM_PRIVATE_PROJECTS": "<strong>Unlimited</strong> private projects",
-            "PREMIUM_NUM_PUBLIC_PROJECTS": "<strong>Unlimited</strong> public projects",
-            "FREE_NUM_USERS": "Up to <strong>3</strong> members on private project",
-            "FREE_NUM_PRIVATE_PROJECTS": "<strong>1</strong> private project",
-            "FREE_NUM_PUBLIC_PROJECTS": "<strong>Unlimited</strong> public projects",
-            "FREE_GBS": "Up to <strong>300MB</strong> of storage in private projects",
-            "ENTERPRISE_SUPPORT": "Extended support",
-            "ENTERPRISE_ON_PREMISE": "On-Premise option",
+            "PREMIUM_GBS": "Up to 10GB of storage",
+            "PREMIUM_NUM_USERS": "Unlimited number of members",
+            "PREMIUM_NUM_PRIVATE_PROJECTS": "Unlimited private projects",
+            "PREMIUM_NUM_PUBLIC_PROJECTS": "Unlimited public projects",
+            "FREE_NUM_USERS": "Up to 3 members on private project",
+            "FREE_NUM_PRIVATE_PROJECTS": "1 private project",
+            "FREE_NUM_PUBLIC_PROJECTS": "Unlimited public projects",
+            "FREE_GBS": "Up to 300MB of storage in private projects",
+            "ENTERPRISE_DISCCOUNT": "<strong>Discounts after 30 and 100 users</strong></br>up to 70% discount",
+            "ENTERPRISE_IDEAL_FOR": "Ideal for large teams or organisations requiring special support to use Taiga on our taiga.io Cloud offering. Discounts apply automatically beyond the 30 and 100 user mark.",
             "YOUR_CURRENT_PLAN": "Your current plan",
-            "CURRENT_PLAN_DESCRIPTION": "Currently in your private projects there are {{members}} members."
+            "CURRENT_PLAN_DESCRIPTION": "Currently in your private projects there are {{members}} members.",
+            "PER_MEMBER_YEARLY": "Per team member when on a yearly plan",
+            "PER_MEMBER_MONTHLY": "${{ amount }}/mo per team member when on a monthly plan",
+            "FAIR_POLICY": "Our fair pricing policy: we will adjust your invoice to ensure yor are charged every month only for the exact number of users you have active. Upgrade and downgrade as needed.",
+            "PER_MONTH": "/ mo",
+            "ON_TAIGA_CLOUD": "On the <strong>taiga.io</strong> cloud"
         },
         "NOTIFY_LIMIT": {
             "SUCCESS": "Notify limit changed correctly"
@@ -164,5 +188,17 @@
         "CREATE_MEMBER": {
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Estás a punto de alcanzar el número máximo de miembros permitidos para este proyecto, <strong>{{maxMembers}}</ strong> miembros. Si necesita más, considera <a href='/user-settings/contrib/subscriptions' title='Suscribirte a un plan de pago'>suscribirte a un plan de pago</a> y si ya tienes uno contacta con nosotros en <a href='mailto:support@taiga.io' title='Contáctenos en support@taiga.io'> support@taiga.io</a>."
         }
+    },
+    "TAIGA_APP": {
+        "TITLE": "Subscriptions - User Profile - Taiga",
+        "SECTION_NAME": "Taiga App",
+        "SECTION_SUBTITLE": "Want to use Taiga on your mobile?",
+        "TAIGA_APP_DESCRIPTION": "<a href='http://www.taigaapp.com/' target='_blank'>TaigaApp</a> is an application developed completely independent from Taiga.io but with which we have reached an agreement so you can use <strong>for free if you have a premium or enterprise plan</strong>",
+        "TAIGA_APP_DOWNLOAD": "Just download the application and synchronize your Taiga account entering next code:",
+        "TAIGA_APP_VALID": "This code is valid only for your Taiga account",
+        "TAIGA_APP_COPY_BUTTON": "Copy",
+        "TAIGA_APP_DEVELOPED": "TaigaApp is developed by a totally independent team of Taiga.io.",
+        "TAIGA_APP_SAT": "To notify of any incident in the application, contact your customer service.",
+        "TAIGA_APP_UPGRADE": "If you want to enjoy free on your mobile, <a href='/user-settings/contrib/subscriptions'>upgrade your plan!</a>"
     }
 }
