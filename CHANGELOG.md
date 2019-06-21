@@ -1,5 +1,9 @@
 # Changelog #
 
+## 4.2.7 (2019-06-24)
+- Plan selection redesign
+- Add app sync code
+
 ## 4.2.4 (2019-05-09)
 - Handle subscription save errors
 - Prevent some errors and minor fixes
