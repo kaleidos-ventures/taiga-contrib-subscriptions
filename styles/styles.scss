@@ -321,7 +321,6 @@
     &.premium {
         .annotation {
             margin: .7em 0 0;
-            text-align: center;
             .label {
                 @include font-type(bold);
             }
@@ -339,13 +338,16 @@
         }
     }
     &.enterprise {
+        font-size: 13px;
         .plan-subtitle {
-            font-size: .9rem;
-            line-height: .9rem;
+            line-height: 13px;
         }
         .plan-option-body {
-            font-size: .9rem;
+            margin-top: .5rem;
         }
+    }
+    .annotation {
+        text-align: center;
     }
     ul {
         flex: 1 0;
