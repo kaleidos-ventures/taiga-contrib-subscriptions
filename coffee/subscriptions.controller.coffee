@@ -116,7 +116,7 @@ class SubscriptionsController
             for plan in @.publicPlans
                 if plan.id == "per-seat-free"
                     @.publicPlanFree = plan
-                else if plan.id_month = "per-seat-month"
+                else if plan.id_month == "per-seat-month"
                     @.publicPlanPerSeat = plan
             if @.perSeatPlan.notify_limit == null
                 @.notify = {
