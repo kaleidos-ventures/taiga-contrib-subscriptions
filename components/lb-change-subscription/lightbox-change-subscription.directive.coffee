@@ -24,7 +24,7 @@ LightboxChangeSubscriptionDirective = (lightboxService) ->
         scope: {
             plan: '=',
             currentPlan: '=',
-            members: '=',
+            membersCount: '=',
             mode: '=',
             onConfirm: '&'
         },

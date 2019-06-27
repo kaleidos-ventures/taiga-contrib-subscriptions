@@ -39,10 +39,12 @@ tg-lb-confirm-member-remove.lightbox.lightbox-generic-form(
 tg-lb-user-projects.lightbox.lightbox-user-projects.lightbox-generic-form(
     user="vm.userProjectsLb"
 )
+
 tg-lb-change-subscription.lightbox.lightbox-generic-form(
     plan="vm.subscribePlan"
     current-plan="vm.myPlan.current_plan"
     mode="vm.changeMode"
+    members-count="vm.perSeatPlan.members.length"
     on-confirm="vm.changePlan(plan, mode, interval == 'month')"
 )
 tg-lb-invalid-plan.lightbox.lightbox-generic-form(
