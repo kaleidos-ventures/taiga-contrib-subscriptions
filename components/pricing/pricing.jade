@@ -1,6 +1,6 @@
 .plan-pricing
 
-    .pricing-primary
+    .pricing-primary(ng-class="{annotation: annotation}")
         span.currency $
         span.number {{ amount }}
         span.frequency(ng-if="frequency && amount") {{ frequency }}
@@ -10,3 +10,6 @@
         span.currency $
         span.number {{ amount * 12 }}
         span.frequency /{{'SUBSCRIPTIONS.FREQUENCY_YEAR' | translate}}
+
+    .pricing-members(ng-if="membersCount && amount")
+        span {{ 'SUBSCRIPTIONS.MEMBERS_COUNT'|translate:{total:membersCount||0}:'messageformat' }}

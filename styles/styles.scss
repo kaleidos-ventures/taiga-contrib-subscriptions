@@ -56,6 +56,7 @@
         }
         .number {
             @include font-size(gigantic);
+            line-height: 4rem;
         }
         .asterisk {
             @include font-size(large);
@@ -63,16 +64,28 @@
             color: $gray-light;
             position: relative;
         }
+        &.annotation {
+            margin-right: -.7rem;
+        }
     }
     .pricing-secondary {
         @include font-type(light);
         color: $gray-light;
+        font-size: 1.1rem;
+        text-align: right;
         .currency {
             margin-right: .2rem;
         }
         .separator {
             padding: 0 .25rem;
         }
+    }
+    .pricing-members {
+        color: $gray-lighter;
+        display: block;
+        font-size: .9rem;
+        text-align: right;
+        white-space: nowrap;
     }
 }
 
