@@ -11,6 +11,7 @@
         "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "Unlimitierte Anzahl an private Projekte + Unlimitierte Anzahl an öffentliche Projekte!",
         "EXTRA_SEAT_PER_MONTH": "Extra seat: ${{amount}} more monthly",
         "EXTRA_SEAT_PER_YEAR": "Extra seat: ${{amount}} more yearly",
+        "MEMBERS_COUNT": "{total, plural, one{one member} other{# members}}",
         "MEMBERS_LIMIT": "Up to {{number}} different member accounts using any of your private projects!",
         "MEMBERS_LIMIT_UNLIMITED": "Unbegrenzte Mitgliederanzahl in jedem privaten Projekt.",
         "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",

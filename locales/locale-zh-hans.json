@@ -1,16 +1,17 @@
 {
     "SUBSCRIPTIONS": {
-        "TITLE": "Subscriptions - User Profile - Taiga",
-        "SECTION_NAME": "Paid Plans",
-        "PLAN": "Plan",
-        "YOUR_PLAN": "Your plan",
+        "TITLE": "订阅",
+        "SECTION_NAME": "付费计划",
+        "PLAN": "计划",
+        "YOUR_PLAN": "你的计划",
         "YOUR_RECOMMENDED_PLAN": "You might want to consider",
-        "WANT_PLAN": "I want it!",
-        "UPDATE_PLAN": "Change plan",
+        "WANT_PLAN": "我要它！",
+        "UPDATE_PLAN": "变更计划",
         "PRIVATE_PROJECTS_LIMIT": "Up to {{number}} private projects + Unlimited public projects!",
         "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "Unlimited private projects + Unlimited public projects!",
         "EXTRA_SEAT_PER_MONTH": "Extra seat: ${{amount}} more monthly",
         "EXTRA_SEAT_PER_YEAR": "Extra seat: ${{amount}} more yearly",
+        "MEMBERS_COUNT": "{total, plural, one{one member} other{# members}}",
         "MEMBERS_LIMIT": "Up to {{number}} different member accounts using any of your private projects!",
         "MEMBERS_LIMIT_UNLIMITED": "Unlimited members per private project!",
         "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",
@@ -129,7 +130,7 @@
             "FREE_GBS": "Up to 300MB of storage in private projects",
             "ENTERPRISE_DISCCOUNT": "<strong>Discounts after 30 and 100 users</strong></br>up to 70% discount",
             "ENTERPRISE_IDEAL_FOR": "Ideal for large teams or organisations requiring special support to use Taiga on our taiga.io Cloud offering. Discounts apply automatically beyond the 30 and 100 user mark.",
-            "YOUR_CURRENT_PLAN": "Your current plan",
+            "YOUR_CURRENT_PLAN": "你现在的计划",
             "CURRENT_PLAN_DESCRIPTION": "Currently in your private projects there are {{members}} members.",
             "PER_MEMBER_YEARLY": "Per team member when on a yearly plan",
             "PER_MEMBER_MONTHLY": "${{ amount }}/mo per team member when on a monthly plan",
@@ -143,11 +144,11 @@
     },
     "PROJECT": {
         "BLOCKED_PROJECT": {
-            "ITS_ONLY_TEMPORAL": "Don't worry, it should be temporary",
-            "TO_UNBLOCK_CHECK_YOUR_PLAN": "To unblock projects, first subscribe to a payment plan that allows at least as many private projects as you have currently",
-            "TO_UNBLOCK_CONTACT_SUPPORT": "To unblock your projects please contact with <a href=\"mailto:support@taiga.io\" title=\"support\">support@taiga.io</a>",
+            "ITS_ONLY_TEMPORAL": "别担心，这应该是临时的",
+            "TO_UNBLOCK_CHECK_YOUR_PLAN": "为了解禁项目，首先要订阅一个不少于现有私有项目数的支付计划",
+            "TO_UNBLOCK_CONTACT_SUPPORT": "请联系 <a href=\"mailto:support@taiga.io\" title=\"support\">support@taiga.io</a> 来解禁你的项目",
             "CHECK_PLANS": "Check plans",
-            "TO_UNBLOCK_PROJECT_MEMBER": "Why is my project blocked?"
+            "TO_UNBLOCK_PROJECT_MEMBER": "为什么的项目被禁止了？"
         },
         "IMPORT": {
             "PROJECT_RESTRICTIONS": {
@@ -155,7 +156,7 @@
                 "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project.  If you would like to add more users please contact the administrator at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
                 "CHANGE_PLAN": "Change plan",
                 "PRIVATE_PROJECTS_SPACE": {
-                    "TITLE": "Unfortunately you current setup doesn't allow for more private projects",
+                    "TITLE": "很不幸你现在的配置无法允许更多的私有项目",
                     "DESC": "The project you are trying to import is private, unfortunately your current setup doesn't allow for more private projects. If you would like to raise that limit, you might want to consider changing your current plan."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
@@ -176,12 +177,12 @@
     },
     "ADMIN": {
         "PROJECT_TRANSFER": {
-            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project please contact the administrator at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
+            "CANT_BE_OWNED": "目前你不能成为这种类型的项目的所有者。如果你想成为这个项目的所有者，请联系管理员 <a href='mailto:support@taiga.io'>support@taiga.io</a>",
             "CANT_BE_OWNED_BY_MEMBERSHIPS": "At the moment you won't be able to become an owner of a project of this type. If you would like to become the owner of this project please contact the administrators at <a href='mailto:support@taiga.io'>support@taiga.io</a>."
         },
         "MEMBERSHIPS": {
             "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>, who is currently authorized to upgrade the current plan.",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_LIMITED_PLAN": "This project currently has <strong>{{members}}</strong> members, which is the maximum allowed. If you would like to <strong>add more members</strong>, please upgrade your plan."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_LIMITED_PLAN": "这个项目目前拥有<strong>{{members}}</strong>成员，已经达到所允许的最大值。如果你想<strong>添加更多成员</strong>，请升级你的计划。"
         }
     },
     "LIGHTBOX": {
@@ -190,8 +191,8 @@
         }
     },
     "TAIGA_APP": {
-        "TITLE": "Subscriptions - User Profile - Taiga",
-        "SECTION_NAME": "Taiga App",
+        "TITLE": "订阅 - 用户档案 - Taiga",
+        "SECTION_NAME": "Taiga 应用",
         "SECTION_SUBTITLE": "Want to use Taiga on your mobile?",
         "TAIGA_APP_DESCRIPTION": "<a href='http://www.taigaapp.com/' target='_blank'>TaigaApp</a> is an application developed completely independent from Taiga.io but with which we have reached an agreement so you can use <strong>for free if you have a premium or enterprise plan</strong>",
         "TAIGA_APP_DOWNLOAD": "Just download the application and synchronize your Taiga account entering next code:",
