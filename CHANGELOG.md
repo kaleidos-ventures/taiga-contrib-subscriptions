@@ -1,5 +1,8 @@
 # Changelog #
 
+## 4.2.8 (2019-07-03)
+- Add tier pricing
+
 ## 4.2.7 (2019-06-24)
 - Plan selection redesign
 - Add app sync code
