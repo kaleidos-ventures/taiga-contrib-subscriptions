@@ -69,8 +69,6 @@ PricingDirective = ($translate) ->
                 amount = getAmountTiers(scope.membersCount)
             else
                 amount = getAmountPerMember()
-                if amount && scope.membersCount
-                    amount = amount * scope.membersCount
 
             return amount
 
