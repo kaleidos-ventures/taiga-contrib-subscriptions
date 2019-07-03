@@ -66,7 +66,7 @@ PricingDirective = ($translate) ->
 
         getAmount = () ->
             if (scope.tiers)
-                amount = getAmountTiers(scope.membersCount)
+                amount = getAmountTiers(scope.membersCount || 1)
             else
                 amount = getAmountPerMember()
 
