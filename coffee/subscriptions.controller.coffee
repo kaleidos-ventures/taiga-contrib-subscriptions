@@ -278,7 +278,6 @@ class SubscriptionsController
                     google_conversion_currency: currency.toUpperCase()
                 })
 
-
         @subscriptionsService.selectMyPlan(plan).then () =>
             @._onSuccessSelectPlan()
         .catch (e) =>

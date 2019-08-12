@@ -35,14 +35,19 @@ class ContribPaymentsService
                 gateway: 'stripe',
                 locale: @translate.use(),
                 callback: (params) ->
-                    console.log("QUADERNO CALLBACK: ", params)
-                    options.onSuccess({quaderno_token: params.details})
+                    Raven.captureMessage(
+                        'QuadernoCheckout callback',
+                        extra: { params },
+                        level: 'warning'
+                    )
+                    options.onSuccess({ quaderno_token: params.details })
             })
 
             panelLabel = @translate.instant('SUBSCRIPTIONS.SELECT_PLAN.START_SUBSCRIPTION')
             panelLabel += '<br />'
             panelLabel += '<span style="font-size:75%">'
-            panelLabel += @translate.instant('SUBSCRIPTIONS.SELECT_PLAN.PAY', {amount: '{{amount}}'})
+            panelLabel += @translate.instant('SUBSCRIPTIONS.SELECT_PLAN.PAY',
+                                                { amount: '{{amount}}' })
             panelLabel += '</span>'
 
             @.quadernoHandler.open({
