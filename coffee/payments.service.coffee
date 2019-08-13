@@ -20,9 +20,9 @@
 module = angular.module('subscriptions')
 
 class ContribPaymentsService
-    @.$inject = ["$tgConfig", "$translate"]
+    @.$inject = ["$tgConfig", "$translate", "$tgHttp"]
 
-    constructor: (@config, @translate) ->
+    constructor: (@config, @translate, @http) ->
 
     start: (options) ->
         ljs.load "https://checkout.quaderno.io/checkout.js", =>
@@ -102,5 +102,11 @@ class ContribPaymentsService
             })
 
             @.quadernoBillingHandler.open()
+
+    createSubscription: (data) =>
+        url = "#{@.getSubscriptionsAPIURL()}my-subscription/create"
+
+        return @http.post(url, data).then (response) ->
+            response.data
 
 module.service("ContribPaymentsService", ContribPaymentsService)

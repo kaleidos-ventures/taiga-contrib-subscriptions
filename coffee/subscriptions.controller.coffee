@@ -239,24 +239,23 @@ class SubscriptionsController
         @analytics.ecConfirmChange(planId, name, amount)
 
         if @.myPlan?.current_plan && @.myPlan.customer_id?
+
             plan = {
                 'plan_id': planId,
                 'quantity': (@.perSeatPlan.members.length || 1)
             }
             @._onSuccessBuyPlan(plan, amount, currency, mode)
         else
-            @paymentsService.start({
-                description: name,
-                amount: amount,
-                onLoad: () => @.loadingPayments = false
-                onSuccess: (plan) =>
-                    @analytics.ecPurchase(planId, name, amount)
-                    @._onSuccessBuyPlan(plan, amount, currency, mode)
-                planId: planId,
-                currency: currency,
-                email: @.user.get('email'),
-                full_name: @.user.get('full_name')
-            })
+            if not @.paymentSession
+                permalink = @subscriptionsService.createSubscription({
+                    description: name,
+                    amount: amount,
+                    planId: planId,
+                    quantity: @.perSeatPlan.members.length || 1,
+                    currency: currency,
+                    email: @.user.get('email'),
+                    full_name: @.user.get('full_name')
+                })
 
     _onSuccessBuyPlan: (plan, amount, currency, mode) ->
         @lightboxService.closeAll()

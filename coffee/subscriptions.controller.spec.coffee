@@ -116,6 +116,7 @@ describe "SubscriptionsController", ->
         mocks.tgAnalytics = {
             trackEvent: sinon.stub()
             ecAddToCart: sinon.stub()
+            ecConfirmChange: sinon.stub()
             ecListPlans: sinon.stub()
         }
 
@@ -223,3 +224,43 @@ describe "SubscriptionsController", ->
 
         subscriptionsCtrl.seeBillingDetails()
         expect(mocks.paymentsService.seeBilling).has.been.calledWith(subscriptionsCtrl.myPlan)
+
+    it.only "create payment session", () ->
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+        # subscriptionsCtrl.user = test
+
+        subscriptionsCtrl.publicPlans = []
+        subscriptionsCtrl.notify = {}
+        subscriptionsCtrl.perSeatPlan = { members: [] }
+        subscriptionsCtrl.myPlan = {
+            customer_id: null,
+            email: "test@test.test",
+            interval: "month",
+            current_plan: {
+                id: "per-seat-free",
+                id_month: null,
+                id_year: null,
+                name: "Basic",
+                amount_month: 0,
+                amount_year: null,
+                currency: "usd",
+            }
+        }
+
+        data = {
+            amount_month: 7,
+            amount_year: 60,
+            currency: "usd",
+            id: null,
+            id_month: "per-seat-month",
+            id_year: "per-seat-year",
+            is_applicable: true,
+            name: "Premium",
+            private_projects: null,
+            project_members: null
+        }
+
+        subscriptionsCtrl.changePlan(data)
+
+        .expect(302)
+        .end(done)

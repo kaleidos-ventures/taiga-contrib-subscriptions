@@ -80,10 +80,19 @@ describe "SubscriptionsService", ->
             done()
 
     it "select a plan", (done) ->
-        data = {data: true}
+        data = {}
 
         mocks.http.post.withArgs("http://localhost:5000/api/v1/my-subscription/change").promise().resolve(data)
 
         subscriptionsService.selectMyPlan(data).then () ->
             expect(subscriptionsService.myPlan).to.be.eql(data)
+            done()
+
+    it "create subscription", (done) ->
+        data = {"https://demo-account.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b"}
+
+        mocks.http.post.withArgs("http://localhost:5000/api/v1/my-subscription/create").promise().resolve(data)
+
+        subscriptionsService.createSubscription({}).then () ->
+            expect(subscriptionsService.currentSession).to.be.eql(data)
             done()
