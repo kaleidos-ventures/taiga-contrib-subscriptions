@@ -35,11 +35,12 @@ class SubscriptionsController
         "tgUserService",
         "$tgAuth",
         "$rootScope"
+        "$routeParams"
     ]
 
     constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader,
                   @translate, @paymentsService, @analytics, @confirm, @config, @currentUserService, @userService,
-                  @authService, @rootscope) ->
+                  @authService, @rootscope, @routeparams) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
@@ -53,6 +54,7 @@ class SubscriptionsController
                 @.userContactsById = @.userContactsById.set(contact.get('id').toString(), contact)
 
         @.viewingMembers = false
+        @.checkPaymentResult()
 
         @rootscope.$on("subscription:changed", @._loadPlans)
 
@@ -84,6 +86,13 @@ class SubscriptionsController
                         return planName
                 return 'custom'
         }
+        Object.defineProperty @, "permalink", {
+            get: () => @.subscriptionsService.permalink
+        }
+
+    checkPaymentResult: () ->
+        @.paymentSuccess = @routeparams.payment_result == 'success'
+        @.paymentError = @routeparams.payment_result == 'error'
 
     getPlanCategory: (plan) ->
         if !plan
@@ -247,15 +256,17 @@ class SubscriptionsController
             @._onSuccessBuyPlan(plan, amount, currency, mode)
         else
             if not @.paymentSession
-                permalink = @subscriptionsService.createSubscription({
-                    description: name,
-                    amount: amount,
-                    planId: planId,
-                    quantity: @.perSeatPlan.members.length || 1,
-                    currency: currency,
-                    email: @.user.get('email'),
-                    full_name: @.user.get('full_name')
-                })
+                @subscriptionsService.createSubscription({
+                        description: name,
+                        amount: amount,
+                        planId: planId,
+                        quantity: @.perSeatPlan.members.length || 1,
+                        currency: currency,
+                        email: @.user.get('email'),
+                        full_name: @.user.get('full_name')
+                    }).then (response) ->
+                        if @.permalink
+                            window.location.href = @.permalink
 
     _onSuccessBuyPlan: (plan, amount, currency, mode) ->
         @lightboxService.closeAll()

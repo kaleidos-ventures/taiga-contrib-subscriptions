@@ -89,10 +89,10 @@ describe "SubscriptionsService", ->
             done()
 
     it "create subscription", (done) ->
-        data = {"https://demo-account.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b"}
+        response = {data: {"permalink": "https://demo-account.quadernoapp.com/checkout/session/8ccf3fdc42b85800188b113b81d3e4212ef094b"}}
 
-        mocks.http.post.withArgs("http://localhost:5000/api/v1/my-subscription/create").promise().resolve(data)
+        mocks.http.post.withArgs("http://localhost:5000/api/v1/my-subscription/start_subscription_payment").promise().resolve(response)
 
         subscriptionsService.createSubscription({}).then () ->
-            expect(subscriptionsService.currentSession).to.be.eql(data)
+            expect(subscriptionsService.permalink).to.be.eql(response.data.permalink)
             done()

@@ -26,7 +26,7 @@ class SubscriptionsService
         @.myPlan = null
         @.publicPlans = null
         @.perSeatPlan = null
-        @.currentSession = null
+        @.permalink = null
 
     getSubscriptionsAPIURL: ->
         return @config.get("subscriptionsAPI", "http://localhost:5000/api/v1/")
@@ -65,10 +65,8 @@ class SubscriptionsService
 
     createSubscription: (data) =>
         url = "#{@.getSubscriptionsAPIURL()}my-subscription/start_subscription_payment"
-        return @http.post(url, data).then (response) ->
-            if response.data?.permalink
-                window.location.href = response.data?.permalink
-
+        return @http.post(url, data).then (response) =>
+            @.permalink = response.data?.permalink
 
     selectMyPlan: (data) =>
         url = "#{@.getSubscriptionsAPIURL()}my-subscription/change"

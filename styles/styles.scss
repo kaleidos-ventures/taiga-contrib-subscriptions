@@ -1,3 +1,29 @@
+.payment-result {
+    align-content: center;
+    color: $white;
+    display: flex;
+    padding: 2rem 1rem;
+    &.payment-result-success {
+        background: $yellow-green;
+    }
+    &.payment-result-error {
+        background: $red-light;
+    }
+}
+
+.payment-result {
+    align-content: center;
+    color: $white;
+    display: flex;
+    padding: 2rem 1rem;
+    &.payment-result-success {
+        background: $yellow-green;
+    }
+    &.payment-result-error {
+        background: $red-light;
+    }
+}
+
 .user-plan {
     border-bottom: 1px solid $whitish;
     border-top: 1px solid $whitish;
