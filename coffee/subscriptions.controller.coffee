@@ -256,6 +256,7 @@ class SubscriptionsController
             @._onSuccessBuyPlan(plan, amount, currency, mode)
         else
             if not @.paymentSession
+                errorMessage = @translate.instant("SUBSCRIPTIONS.PAYMENT.ERROR")
                 @subscriptionsService.createSubscription({
                         description: name,
                         amount: amount,
@@ -265,8 +266,12 @@ class SubscriptionsController
                         email: @.user.get('email'),
                         full_name: @.user.get('full_name')
                     }).then (response) ->
-                        if @.permalink
-                            window.location.href = @.permalink
+                        if response?.permalink
+                            window.location.href = response.permalink
+                        else
+                            @._onFailedSelectPlan(errorMessage)
+                    .catch (e) =>
+                        @._onFailedSelectPlan(errorMessage)
 
     _onSuccessBuyPlan: (plan, amount, currency, mode) ->
         @lightboxService.closeAll()

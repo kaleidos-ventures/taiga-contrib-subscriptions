@@ -144,10 +144,6 @@
         "PAYMENT": {
             "SUCCESS": "Congratulations, you successfully changed your plan!",
             "ERROR": "Unfortunately, it wasn't possible to change your plan"
-        },
-        "PAYMENT": {
-            "SUCCESS": "Congratulations, you successfully changed your plan!",
-            "ERROR": "Unfortunately, it wasn't possible to change your plan"
         }
     },
     "PROJECT": {

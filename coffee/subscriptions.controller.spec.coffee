@@ -265,7 +265,51 @@ describe "SubscriptionsController", ->
 
         subscriptionsCtrl.changePlan(data)
 
-        expect(mocks.contribSubscriptionsService.createSubscription.withArgs(data))
+        expect(mocks.contribSubscriptionsService.createSubscription).has.been.called
+
+    it "create payment session error", () ->
+        user = Immutable.fromJS({
+            email: "user@taigaio.test"
+            full_name: "User 1"
+        })
+
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+        subscriptionsCtrl.user = user
+        subscriptionsCtrl.publicPlans = []
+        subscriptionsCtrl.notify = {}
+        subscriptionsCtrl.perSeatPlan = { members: [] }
+        subscriptionsCtrl.myPlan = {
+            customer_id: null,
+            email: "test@test.test",
+            interval: "month",
+            current_plan: {
+                id: "per-seat-free",
+                id_month: null,
+                id_year: null,
+                name: "Basic",
+                amount_month: 0,
+                amount_year: null,
+                currency: "usd",
+            }
+        }
+
+        data = {
+            amount_month: 7,
+            amount_year: 60,
+            currency: "usd",
+            id: null,
+            id_month: "per-seat-month",
+            id_year: "per-seat-year",
+            is_applicable: true,
+            name: "Premium",
+            private_projects: null,
+            project_members: null
+        }
+
+        mocks.contribSubscriptionsService.createSubscription.promise().reject(new Error('error'))
+
+        subscriptionsCtrl.changePlan({}).then () ->
+            expect(mocks.tgConfirm.notify).has.been.calledWith("error")
 
     it "payment success", () ->
         mocks.routeParams.payment_result = "success"

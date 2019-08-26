@@ -67,6 +67,7 @@ class SubscriptionsService
         url = "#{@.getSubscriptionsAPIURL()}my-subscription/start_subscription_payment"
         return @http.post(url, data).then (response) =>
             @.permalink = response.data?.permalink
+            return response.data
 
     selectMyPlan: (data) =>
         url = "#{@.getSubscriptionsAPIURL()}my-subscription/change"
