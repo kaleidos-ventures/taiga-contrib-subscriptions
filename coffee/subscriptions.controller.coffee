@@ -34,13 +34,14 @@ class SubscriptionsController
         "tgCurrentUserService",
         "tgUserService",
         "$tgAuth",
-        "$rootScope"
-        "$routeParams"
+        "$rootScope",
+        "$routeParams",
+        "$interval"
     ]
 
     constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader,
                   @translate, @paymentsService, @analytics, @confirm, @config, @currentUserService, @userService,
-                  @authService, @rootscope, @routeparams) ->
+                  @authService, @rootscope, @routeparams, @interval) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
@@ -94,6 +95,15 @@ class SubscriptionsController
         @.paymentSuccess = @routeparams.payment_result == 'success'
         @.paymentError = @routeparams.payment_result == 'error'
 
+    autoReloadSubscriptions: () =>
+        if @.paymentSuccess and @.myPlan?.customer_id == null
+            intervalId = @interval () =>
+                @subscriptionsService.loadUserPlan()
+            , 1000, 10
+
+        else
+            @interval.cancel(intervalId)
+
     getPlanCategory: (plan) ->
         if !plan
             return 'free'
@@ -146,7 +156,7 @@ class SubscriptionsController
                     limit: @.perSeatPlan.notify_limit
                 }
             @tgLoader.pageLoaded()
-
+            @.autoReloadSubscriptions()
 
     userProjectsList: (projects, user) ->
         @.userProjectsLb = Immutable.fromJS({})
