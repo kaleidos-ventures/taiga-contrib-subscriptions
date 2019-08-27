@@ -142,8 +142,8 @@
             "SUCCESS": "Notify limit changed correctly"
         },
         "PAYMENT": {
-            "SUCCESS": "Congratulations, you successfully changed your plan!",
-            "ERROR": "Unfortunately, it wasn't possible to change your plan"
+            "SUCCESS": "Congratulations, your payment has been completed successfully! Your will see your plan active in a few seconds",
+            "ERROR": "Unfortunately, it wasn't possible to change your plan. Please contact with our support team at support@taiga.io"
         }
     },
     "PROJECT": {
