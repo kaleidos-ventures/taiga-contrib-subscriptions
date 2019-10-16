@@ -266,7 +266,7 @@ class SubscriptionsController
             google_conversion_id = @config.get("google_adwords_conversion_id")
             google_conversion_label = @config.get("google_adwords_conversion_label")
 
-            if google_conversion_id && google_conversion_label
+            if window.google_trackConversion && google_conversion_id && google_conversion_label
                 window.google_trackConversion({
                     google_conversion_id : google_conversion_id
                     google_conversion_language : "en",
