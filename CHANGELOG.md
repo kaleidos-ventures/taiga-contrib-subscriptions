@@ -1,5 +1,8 @@
 # Changelog #
 
+## 5.0.0 (2019-11-13)
+- Use quadernoapp checkout session
+
 ## 4.2.11 (2019-07-24)
 - Restore change customer card
 
