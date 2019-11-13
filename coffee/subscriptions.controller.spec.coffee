@@ -48,8 +48,9 @@ describe "SubscriptionsController", ->
             fetchMyPlans: sinon.stub(),
             fetchPublicPlans: sinon.stub(),
             selectMyPlan: sinon.stub(),
-            getMyPerSeatPlan: sinon.stub()
-            loadUserPlan: sinon.stub()
+            getMyPerSeatPlan: sinon.stub(),
+            loadUserPlan: sinon.stub(),
+            createSubscription: sinon.stub()
         }
 
         provide.value "ContribSubscriptionsService", mocks.contribSubscriptionsService
@@ -116,10 +117,17 @@ describe "SubscriptionsController", ->
         mocks.tgAnalytics = {
             trackEvent: sinon.stub()
             ecAddToCart: sinon.stub()
+            ecConfirmChange: sinon.stub()
             ecListPlans: sinon.stub()
         }
 
         provide.value("$tgAnalytics", mocks.tgAnalytics)
+
+    _mockRouteParams = ->
+        mocks.routeParams = {
+            payment_result: sinon.stub()
+        }
+        provide.value "$routeParams", mocks.routeParams
 
     _mocks = () ->
         module ($provide) ->
@@ -138,6 +146,7 @@ describe "SubscriptionsController", ->
             _mockTgCurrentUserService()
             _mockTgUserService()
             _mockTgAuth()
+            _mockRouteParams()
 
             return null
 
@@ -203,17 +212,6 @@ describe "SubscriptionsController", ->
             expect(subscriptionsCtrl._onSuccessChangedData).to.be.called
             done()
 
-    # it "changed Taiga Data", (done) ->
-    #     promise = mocks.contribSubscriptionsService.fetchMyPlans.promise().resolve()
-    #     message = mocks.tgTranslate.instant.returns('Test')
-
-    #     subscriptionsCtrl = controller "ContribSubscriptionsController"
-
-    #     subscriptionsCtrl._onSuccessChangedData().then () ->
-    #         expect(mocks.tgConfirm.notify).has.been.calledWith('success', 'Test', '', 5000)
-    #         expect(mocks.tgLoader.pageLoaded).has.been.called
-    #         done()
-
     it "see Billing details", () ->
         subscriptionsCtrl = controller "ContribSubscriptionsController"
 
@@ -223,3 +221,110 @@ describe "SubscriptionsController", ->
 
         subscriptionsCtrl.seeBillingDetails()
         expect(mocks.paymentsService.seeBilling).has.been.calledWith(subscriptionsCtrl.myPlan)
+
+    it "create payment session", () ->
+        user = Immutable.fromJS({
+            email: "user@taigaio.test"
+            full_name: "User 1"
+        })
+
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+        subscriptionsCtrl.user = user
+        subscriptionsCtrl.publicPlans = []
+        subscriptionsCtrl.notify = {}
+        subscriptionsCtrl.perSeatPlan = { members: [] }
+        subscriptionsCtrl.myPlan = {
+            customer_id: null,
+            email: "test@test.test",
+            interval: "month",
+            current_plan: {
+                id: "per-seat-free",
+                id_month: null,
+                id_year: null,
+                name: "Basic",
+                amount_month: 0,
+                amount_year: null,
+                currency: "usd",
+            }
+        }
+
+        data = {
+            amount_month: 7,
+            amount_year: 60,
+            currency: "usd",
+            id: null,
+            id_month: "per-seat-month",
+            id_year: "per-seat-year",
+            is_applicable: true,
+            name: "Premium",
+            private_projects: null,
+            project_members: null
+        }
+
+        promise = mocks.contribSubscriptionsService.createSubscription.promise().resolve()
+
+        subscriptionsCtrl.changePlan(data)
+
+        expect(mocks.contribSubscriptionsService.createSubscription).has.been.called
+
+    it "create payment session error", () ->
+        user = Immutable.fromJS({
+            email: "user@taigaio.test"
+            full_name: "User 1"
+        })
+
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+        subscriptionsCtrl.user = user
+        subscriptionsCtrl.publicPlans = []
+        subscriptionsCtrl.notify = {}
+        subscriptionsCtrl.perSeatPlan = { members: [] }
+        subscriptionsCtrl.myPlan = {
+            customer_id: null,
+            email: "test@test.test",
+            interval: "month",
+            current_plan: {
+                id: "per-seat-free",
+                id_month: null,
+                id_year: null,
+                name: "Basic",
+                amount_month: 0,
+                amount_year: null,
+                currency: "usd",
+            }
+        }
+
+        data = {
+            amount_month: 7,
+            amount_year: 60,
+            currency: "usd",
+            id: null,
+            id_month: "per-seat-month",
+            id_year: "per-seat-year",
+            is_applicable: true,
+            name: "Premium",
+            private_projects: null,
+            project_members: null
+        }
+
+        mocks.contribSubscriptionsService.createSubscription.promise().reject(new Error('error'))
+
+        subscriptionsCtrl.changePlan({}).then () ->
+            expect(mocks.tgConfirm.notify).has.been.calledWith("error")
+
+    it "payment success", () ->
+        mocks.routeParams.payment_result = "success"
+
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+        subscriptionsCtrl.checkPaymentResult()
+        expect(subscriptionsCtrl.paymentSuccess).to.be.eql(true)
+        expect(subscriptionsCtrl.paymentError).to.be.eql(false)
+
+
+    it "payment error", () ->
+        mocks.routeParams.payment_result = "error"
+
+        subscriptionsCtrl = controller "ContribSubscriptionsController"
+        subscriptionsCtrl.checkPaymentResult()
+
+        expect(subscriptionsCtrl.paymentSuccess).to.be.eql(false)
+        expect(subscriptionsCtrl.paymentError).to.be.eql(true)

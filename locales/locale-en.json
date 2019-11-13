@@ -140,6 +140,10 @@
         },
         "NOTIFY_LIMIT": {
             "SUCCESS": "Notify limit changed correctly"
+        },
+        "PAYMENT": {
+            "SUCCESS": "Congratulations, your payment has been completed successfully! Your will see your plan active in a few seconds",
+            "ERROR": "Unfortunately, it wasn't possible to change your plan. Please contact with our support team at support@taiga.io"
         }
     },
     "PROJECT": {

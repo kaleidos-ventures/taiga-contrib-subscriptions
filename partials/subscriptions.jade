@@ -1,6 +1,12 @@
 header.paid-plans
     h1(translate="SUBSCRIPTIONS.YOUR_PLAN")
 
+section.payment-result.payment-result-success(ng-if="vm.paymentSuccess")
+    span {{'SUBSCRIPTIONS.PAYMENT.SUCCESS' | translate}}
+
+section.payment-result.payment-result-error(ng-if="vm.paymentError")
+    span {{'SUBSCRIPTIONS.PAYMENT.ERROR' | translate}}
+
 section.subscription-your-plan
     include ./_current-plan
 

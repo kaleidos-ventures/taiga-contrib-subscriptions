@@ -34,12 +34,14 @@ class SubscriptionsController
         "tgCurrentUserService",
         "tgUserService",
         "$tgAuth",
-        "$rootScope"
+        "$rootScope",
+        "$routeParams",
+        "$interval"
     ]
 
     constructor: (@appMetaService,  @subscriptionsService, @tgLoader, @lightboxService, @translatePartialLoader,
                   @translate, @paymentsService, @analytics, @confirm, @config, @currentUserService, @userService,
-                  @authService, @rootscope) ->
+                  @authService, @rootscope, @routeparams, @interval) ->
         @translatePartialLoader.addPart('taiga-contrib-subscriptions')
 
     init: ->
@@ -53,6 +55,7 @@ class SubscriptionsController
                 @.userContactsById = @.userContactsById.set(contact.get('id').toString(), contact)
 
         @.viewingMembers = false
+        @.checkPaymentResult()
 
         @rootscope.$on("subscription:changed", @._loadPlans)
 
@@ -84,6 +87,22 @@ class SubscriptionsController
                         return planName
                 return 'custom'
         }
+        Object.defineProperty @, "permalink", {
+            get: () => @.subscriptionsService.permalink
+        }
+
+    checkPaymentResult: () ->
+        @.paymentSuccess = @routeparams.payment_result == 'success'
+        @.paymentError = @routeparams.payment_result == 'error'
+
+    autoReloadSubscriptions: () =>
+        if @.paymentSuccess and @.myPlan?.customer_id == null
+            intervalId = @interval () =>
+                @subscriptionsService.loadUserPlan()
+            , 1000, 10
+
+        else
+            @interval.cancel(intervalId)
 
     getPlanCategory: (plan) ->
         if !plan
@@ -137,7 +156,7 @@ class SubscriptionsController
                     limit: @.perSeatPlan.notify_limit
                 }
             @tgLoader.pageLoaded()
-
+            @.autoReloadSubscriptions()
 
     userProjectsList: (projects, user) ->
         @.userProjectsLb = Immutable.fromJS({})
@@ -239,24 +258,30 @@ class SubscriptionsController
         @analytics.ecConfirmChange(planId, name, amount)
 
         if @.myPlan?.current_plan && @.myPlan.customer_id?
+
             plan = {
                 'plan_id': planId,
                 'quantity': (@.perSeatPlan.members.length || 1)
             }
             @._onSuccessBuyPlan(plan, amount, currency, mode)
         else
-            @paymentsService.start({
-                description: name,
-                amount: amount,
-                onLoad: () => @.loadingPayments = false
-                onSuccess: (plan) =>
-                    @analytics.ecPurchase(planId, name, amount)
-                    @._onSuccessBuyPlan(plan, amount, currency, mode)
-                planId: planId,
-                currency: currency,
-                email: @.user.get('email'),
-                full_name: @.user.get('full_name')
-            })
+            if not @.paymentSession
+                errorMessage = @translate.instant("SUBSCRIPTIONS.PAYMENT.ERROR")
+                @subscriptionsService.createSubscription({
+                        description: name,
+                        amount: amount,
+                        planId: planId,
+                        quantity: @.perSeatPlan.members.length || 1,
+                        currency: currency,
+                        email: @.user.get('email'),
+                        full_name: @.user.get('full_name')
+                    }).then (response) ->
+                        if response?.permalink
+                            window.location.href = response.permalink
+                        else
+                            @._onFailedSelectPlan(errorMessage)
+                    .catch (e) =>
+                        @._onFailedSelectPlan(errorMessage)
 
     _onSuccessBuyPlan: (plan, amount, currency, mode) ->
         @lightboxService.closeAll()

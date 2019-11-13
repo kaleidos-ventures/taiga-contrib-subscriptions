@@ -73,4 +73,36 @@ describe('subscriptions', () => {
 
         await utils.notifications.success.close();
     });
+
+    it('subscription payment error', async () => {
+        let lb = subscriptionsHelper.changePaymentDetails();
+
+        await lb.open();
+
+        await utils.common.takeScreenshot('subscription', 'change-payment');
+
+        await lb.fill('xxx@xx.es', '4242 4242 4242 4242', '12/29', '123');
+
+        let openNotification = await utils.notifications.success.open();
+
+        expect(openNotification).to.be.true;
+
+        await utils.notifications.success.close();
+    });
+
+    it('subscription payment error', async () => {
+        let lb = subscriptionsHelper.changePaymentDetails();
+
+        await lb.open();
+
+        await utils.common.takeScreenshot('subscription', 'change-payment');
+
+        await lb.fill('xxx@xx.es', '4242 4242 4242 4242', '12/29', '123');
+
+        let openNotification = await utils.notifications.success.open();
+
+        expect(openNotification).to.be.true;
+
+        await utils.notifications.success.close();
+    });
 });

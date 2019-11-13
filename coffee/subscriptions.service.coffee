@@ -26,6 +26,7 @@ class SubscriptionsService
         @.myPlan = null
         @.publicPlans = null
         @.perSeatPlan = null
+        @.permalink = null
 
     getSubscriptionsAPIURL: ->
         return @config.get("subscriptionsAPI", "http://localhost:5000/api/v1/")
@@ -61,6 +62,12 @@ class SubscriptionsService
 
             return @http.post(url).then (response) =>
                 @.myPlan = response
+
+    createSubscription: (data) =>
+        url = "#{@.getSubscriptionsAPIURL()}my-subscription/start_subscription_payment"
+        return @http.post(url, data).then (response) =>
+            @.permalink = response.data?.permalink
+            return response.data
 
     selectMyPlan: (data) =>
         url = "#{@.getSubscriptionsAPIURL()}my-subscription/change"
