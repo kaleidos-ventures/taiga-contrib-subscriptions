@@ -1,4 +1,4 @@
-div(ng-switch="vm.validNumberOfMemberships")
+div.cant-own-project-explanation(ng-switch="vm.validNumberOfMemberships")
     p(
         ng-switch-when="true"
         translate="{{vm.ownerMessage}}"
@@ -11,8 +11,8 @@ div(ng-switch="vm.validNumberOfMemberships")
             ng-switch-when="true"
             href="#"
             tg-nav="user-settings-contrib:plugin='subscriptions'"
-            title="{{'ADMIN.PROJECT_TRANSFER.CHANGE_MY_PLAN' | translate}}"
-            translate="ADMIN.PROJECT_TRANSFER.CHANGE_MY_PLAN"
+            title="{{'SUBSCRIPTIONS.PLAN_OPTIONS.CHANGE_PLAN' | translate}}"
+            translate="SUBSCRIPTIONS.PLAN_OPTIONS.CHANGE_PLAN"
         )
 
     p(

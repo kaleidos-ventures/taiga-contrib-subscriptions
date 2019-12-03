@@ -27,7 +27,7 @@ decorator = ($delegate) ->
 
     directive.controller = ["$translatePartialLoader", controller]
 
-    directive.templateUrl = "compile-modules/taiga-contrib-subscriptions/decorators/cant-own-project-explanation.html"
+    directive.templateUrl = "compile-modules/taiga-contrib-subscriptions/decorators/cant-own-project-explanation/cant-own-project-explanation.html"
 
     return $delegate
 
