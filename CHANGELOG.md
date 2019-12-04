@@ -1,5 +1,8 @@
 # Changelog #
 
+## 5.0.4 (2019-12-04)
+- Fix broken page
+
 ## 5.0.0 (2019-11-13)
 - Use quadernoapp checkout session
 
