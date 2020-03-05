@@ -15,11 +15,11 @@
         "MEMBERS_LIMIT": "Up to {{number}} different member accounts using any of your private projects!",
         "MEMBERS_LIMIT_UNLIMITED": "Unlimited members per private project!",
         "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",
-        "FREQUENCY_MONTH": "month",
-        "FREQUENCY_YEAR": "year",
+        "FREQUENCY_MONTH": "месяц",
+        "FREQUENCY_YEAR": "год",
         "MAX_PRIVATE_PROJECTS": "Would you like to add more private projects? <a href='{{url}}'>Upgrade your plan!</a>",
         "MEMBERS": {
-            "TITLE": "Members",
+            "TITLE": "Участники",
             "SECTION_DESCRIPTION": "Currently this are the users that depends on your paid plan. You can remove then from all your private projects from the list bellow or you can manage their memberships in the configuration panel of each project",
             "NOTIFICATIONS_SELECT": "Notify by mail increments of members"
         },
@@ -34,7 +34,7 @@
             "SUCCESS": "Your message has been sent, we will contact with you soon."
         },
         "REMOVE_USER_LB": {
-            "TITLE": "Are you sure?",
+            "TITLE": "Вы уверены?",
             "TEXT": "This action will remove the user from all your private projects.",
             "SUCCESS": "The user has been removed",
             "CONFIRM": "Confirm",
