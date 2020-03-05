@@ -1,0 +1,205 @@
+{
+    "SUBSCRIPTIONS": {
+        "TITLE": "Subscriptions - User Profile - Taiga",
+        "SECTION_NAME": "Paid Plans",
+        "PLAN": "Plan",
+        "YOUR_PLAN": "Your plan",
+        "YOUR_RECOMMENDED_PLAN": "You might want to consider",
+        "WANT_PLAN": "I want it!",
+        "UPDATE_PLAN": "Change plan",
+        "PRIVATE_PROJECTS_LIMIT": "Up to {{number}} private projects + Unlimited public projects!",
+        "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "Unlimited private projects + Unlimited public projects!",
+        "EXTRA_SEAT_PER_MONTH": "Extra seat: ${{amount}} more monthly",
+        "EXTRA_SEAT_PER_YEAR": "Extra seat: ${{amount}} more yearly",
+        "MEMBERS_COUNT": "{total, plural, one{one member} other{# members}}",
+        "MEMBERS_LIMIT": "Up to {{number}} different member accounts using any of your private projects!",
+        "MEMBERS_LIMIT_UNLIMITED": "Unlimited members per private project!",
+        "CONTACT_SUBSCRIBE": "Subscribe to this plan by contacting us at <a href='mailto:support@taiga.io'>support@taiga.io</a>",
+        "FREQUENCY_MONTH": "month",
+        "FREQUENCY_YEAR": "year",
+        "MAX_PRIVATE_PROJECTS": "Would you like to add more private projects? <a href='{{url}}'>Upgrade your plan!</a>",
+        "MEMBERS": {
+            "TITLE": "Members",
+            "SECTION_DESCRIPTION": "Currently this are the users that depends on your paid plan. You can remove then from all your private projects from the list bellow or you can manage their memberships in the configuration panel of each project",
+            "NOTIFICATIONS_SELECT": "Notify by mail increments of members"
+        },
+        "USER_PROJECTS_LB": {
+            "TITLE": "Private projects with {{user}}",
+            "EXPLANATION": "These are your private projects where {{user}} is counting for your paid plan. You can manage the presence of the members in the projects from the members panel."
+        },
+        "CONTACT_LB": {
+            "TITLE": "Contact Us",
+            "PLACEHOLDER": "Please contact us and explain your needs",
+            "BUTTON_SEND": "Contact Us",
+            "SUCCESS": "Your message has been sent, we will contact with you soon."
+        },
+        "REMOVE_USER_LB": {
+            "TITLE": "Are you sure?",
+            "TEXT": "This action will remove the user from all your private projects.",
+            "SUCCESS": "The user has been removed",
+            "CONFIRM": "Confirm",
+            "BACK": "Back"
+        },
+        "HELP": {
+            "WHY": "Why do we think this might be the best plan for you?",
+            "NO_PROJECTS": "You currently have no private projects so we believe that the  {{name}} plan might work great for you.",
+            "FEW_PROJECTS": "You currently have {{private_num}} private projects so we believe that the {{name}} plan might work just fine for you.",
+            "NUM_PROJECTS": "Since you currently have {{private_num}} private projects and {{public_num}} public projects we believe that the {{plan}} plan might be your best option.",
+            "NUM_PROJECTS_CUSTOM": "Since you currently have {{private_num}} private projects and {{public_num}} public projects we believe that the Custom plan might be your best option.",
+            "UPGRADE": "Making changes to your current plan is easy and can be done at any time!",
+            "PAYMENT": "If you have more than 1 private project and you haven't yet subscribed to a payment plan, your private projects will be temporarily blocked. You don't need to worry, they will not be deleted. Once you confirm a subscription plan, they will become accesible again.",
+            "PUBLIC": "Please remember that public projects don't count towards paid plans.",
+            "MORE_INFO_TITLE": "Frequently Asked Questions",
+            "MORE_INFO": "More info (FAQ)"
+        },
+        "PAYMENT_HISTORY": {
+            "SEE_BILLING_DETAILS": "See billing details",
+            "CHANGE_DATA": "Change payment details",
+            "CHANGE_DATA_SUCCESS": "Great! You've sucessfully changed your payment details"
+        },
+        "PLANS_SELECTOR": {
+            "TITLE": "Which plan works best for you?",
+            "CURRENT": "Current Plan",
+            "CUSTOM": "Custom",
+            "CONTACT": "If you need a paid plan allowing for more projects or more members per project contact us at <a href='mailto:support@taiga.io' title='Contact Us'>support@taiga.io</a> for further information."
+        },
+        "CANCEL": {
+            "TITLE": "Cancel {{plan}} plan",
+            "CANCEL_NOW": "Cancel plan now",
+            "IF_CANCEL": "If you cancel your plan now:",
+            "IMPLICATION_1": "You will go to the {{ plan }} plan but <strong>your projects will be deleted</strong>",
+            "IMPLICATION_2": "Members of those projects will no longer be able to access them",
+            "ADVISE": "If you do not want to lose the information, before canceling the plan, <strong>export your data</strong> from the Admin of each project.",
+            "SUCCESS": "Congratulations, you successfully cancelled your plan!"
+        },
+        "DOWNGRADE": {
+            "TITLE": "Downgrade to {{plan}} plan",
+            "IMAGE_ALT": "Downgrading a plan",
+            "MUST_CHANGE": "To change to {{plan}} plan, you must first make the following changes",
+            "MORE_PROJECTS": "If you have more than {{projects}} private projects",
+            "MORE_PROJECTS_OPTION": "Choose 1 project to remain private and make public or remove the rest projects. You can perform these changes on the upper menu cliking Manage Projects",
+            "MORE_MEMBERS": "If you have more than {{members}} members per private project",
+            "MORE_MEMBERS_OPTION1": "Go to Manage Members (Your plan) and keep a maximum of {{members}} members for all your private projects",
+            "WHY_MAKE_CHANGES": "Why do I have to make these changes?",
+            "REASON_WHY": "Unfortunately, you exceeded the maximum number of private projects or number of members allowed by {{ plan }} plan. This plan allows up to <strong>{{projects}} private projects and {{members}} members per private project</strong>",
+            "ACCEPT": "OK, understood",
+            "ARE_YOU_SURE": "Are you sure you want to change this plan?"
+        },
+        "SELECT_PLAN": {
+            "TITLE": "Change your Plan",
+            "SUBTITLE": "Choose the plan that best meets your needs",
+            "ABOUT_TO_CHANGE": "You are about change to {{ plan }} plan",
+            "INTERVAL": "How would you like to be charged?",
+            "PAY_MONTHLY": "Monthly",
+            "PAY_YEARLY": "Yearly",
+            "BACK": "Back",
+            "BACK_TITLE": "Back to Plan selection",
+            "BUY": "Buy Plan",
+            "CONTINUE": "Continue",
+            "CONFIRM": "Confirm",
+            "EVERY_YEAR": "Every year",
+            "EVERY_MONTH": "Every month",
+            "TAXES": "Depending on your country, we may be required to charge sales tax.",
+            "SUCCESS": "Congratulations, you successfully changed your plan!",
+            "START_SUBSCRIPTION": "Start subscription",
+            "PAY": "Pay {{ amount }}",
+            "CHANGE_TO": "Change to {{ plan }} plan",
+            "CANCEL_CURRENT_PLAN": "Cancel {{ plan }} plan",
+            "CANCEL_PLAN_ADVISE": "When you cancel your {{ currentPlan }} plan you will subscribe to the {{ newPlan }} plan with basic features",
+            "CONTINUE_WITH": "Continue with {{ plan }} plan"
+        },
+        "PLAN_OPTIONS": {
+            "BASIC_PLAN": "Basic",
+            "FREE_PLAN": "Free",
+            "PREMIUM_PLAN": "Premium",
+            "ENTERPRISE_PLAN": "Enterprise",
+            "MANAGE_MEMBERS": "Manage members",
+            "DOWNGRADE": "Downgrade",
+            "UPDATE": "Update",
+            "UPGRADE": "Upgrade",
+            "CHANGE_PLAN": "Change Plan",
+            "CANCEL_PLAN": "Cancel Plan",
+            "CONTACT_US": "Contact us",
+            "PREMIUM_GBS": "Up to 10GB of storage",
+            "PREMIUM_NUM_USERS": "Unlimited number of members",
+            "PREMIUM_NUM_PRIVATE_PROJECTS": "Unlimited private projects",
+            "PREMIUM_NUM_PUBLIC_PROJECTS": "Unlimited public projects",
+            "FREE_NUM_USERS": "Up to 3 members on private project",
+            "FREE_NUM_PRIVATE_PROJECTS": "1 private project",
+            "FREE_NUM_PUBLIC_PROJECTS": "Unlimited public projects",
+            "FREE_GBS": "Up to 300MB of storage in private projects",
+            "ENTERPRISE_DISCCOUNT": "<strong>Discounts after 30 and 100 users</strong></br>up to 70% discount",
+            "ENTERPRISE_IDEAL_FOR": "Ideal for large teams or organisations requiring special support to use Taiga on our taiga.io Cloud offering. Discounts apply automatically beyond the 30 and 100 user mark.",
+            "YOUR_CURRENT_PLAN": "Your current plan",
+            "CURRENT_PLAN_DESCRIPTION": "Currently in your private projects there are {{members}} members.",
+            "PER_MEMBER_YEARLY": "Per team member when on a yearly plan",
+            "PER_MEMBER_MONTHLY": "${{ amount }}/mo per team member when on a monthly plan",
+            "FAIR_POLICY": "Our fair pricing policy: we will adjust your invoice to ensure yor are charged every month only for the exact number of users you have active. Upgrade and downgrade as needed.",
+            "PER_MONTH": "/ mo",
+            "ON_TAIGA_CLOUD": "On the <strong>taiga.io</strong> cloud"
+        },
+        "NOTIFY_LIMIT": {
+            "SUCCESS": "Notify limit changed correctly"
+        }
+    },
+    "PROJECT": {
+        "BLOCKED_PROJECT": {
+            "ITS_ONLY_TEMPORAL": "Don't worry, it should be temporary",
+            "TO_UNBLOCK_CHECK_YOUR_PLAN": "To unblock projects, first subscribe to a payment plan that allows at least as many private projects as you have currently",
+            "TO_UNBLOCK_CONTACT_SUPPORT": "To unblock your projects please contact with <a href=\"mailto:support@taiga.io\" title=\"support\">support@taiga.io</a>",
+            "CHECK_PLANS": "Check plans",
+            "TO_UNBLOCK_PROJECT_MEMBER": "Why is my project blocked?"
+        },
+        "IMPORT": {
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC_PRIVATE_SEED": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members which is the maximum allowed for the Seed Plan. If you would like to add more members, please consider <a href='/user-settings/contrib/subscriptions' title='Subscribe to a paid plan'>subscribing to a paid plan</a>.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project.  If you would like to add more users please contact the administrator at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
+                "CHANGE_PLAN": "Change plan",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately you current setup doesn't allow for more private projects",
+                    "DESC": "The project you are trying to import is private, unfortunately your current setup doesn't allow for more private projects. If you would like to raise that limit, you might want to consider changing your current plan."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current setup allows for a maximum of {{max_memberships}} members per private project"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current setup doesn't allow you to add more private projects or activate more than  {{max_memberships}} members per private project",
+                    "DESC": "Unfortunately, the project you are trying to import contains more than {{max_memberships}} members, which is the maximum allowed by your current setup. If you would like to import projects such as this one, you might want to consider changing your current plan."
+                }
+            }
+        },
+        "CREATE": {
+            "MAX_PRIVATE_PROJECTS": "Unfortunately, you've reached the maximum number of private projects.",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects.",
+            "CREATE_MORE_PROJECTS": "To create more, you should",
+            "CHANGE_PLAN": "change your current plan"
+        }
+    },
+    "ADMIN": {
+        "PROJECT_TRANSFER": {
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project please contact the administrator at <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
+            "CANT_BE_OWNED_BY_MEMBERSHIPS": "At the moment you won't be able to become an owner of a project of this type. If you would like to become the owner of this project please contact the administrators at <a href='mailto:support@taiga.io'>support@taiga.io</a>."
+        },
+        "MEMBERSHIPS": {
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>, who is currently authorized to upgrade the current plan.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_LIMITED_PLAN": "This project currently has <strong>{{members}}</strong> members, which is the maximum allowed. If you would like to <strong>add more members</strong>, please upgrade your plan."
+        }
+    },
+    "LIGHTBOX": {
+        "CREATE_MEMBER": {
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you need more, please consider <a href='/user-settings/contrib/subscriptions' title='Subscribe to a paid plan'>subscribing to a paid plan</a> and if you already have one contact us at <a href='mailto:support@taiga.io' title='Contact Us at support@taiga.io'>support@taiga.io</a>."
+        }
+    },
+    "TAIGA_APP": {
+        "TITLE": "Subscriptions - User Profile - Taiga",
+        "SECTION_NAME": "Taiga App",
+        "SECTION_SUBTITLE": "Want to use Taiga on your mobile?",
+        "TAIGA_APP_DESCRIPTION": "<a href='http://www.taigaapp.com/' target='_blank'>TaigaApp</a> is an application developed completely independent from Taiga.io but with which we have reached an agreement so you can use <strong>for free if you have a premium or enterprise plan</strong>",
+        "TAIGA_APP_DOWNLOAD": "Just download the application and synchronize your Taiga account entering next code:",
+        "TAIGA_APP_VALID": "This code is valid only for your Taiga account",
+        "TAIGA_APP_COPY_BUTTON": "Copy",
+        "TAIGA_APP_DEVELOPED": "TaigaApp is developed by a totally independent team of Taiga.io.",
+        "TAIGA_APP_SAT": "To notify of any incident in the application, contact your customer service.",
+        "TAIGA_APP_UPGRADE": "If you want to enjoy free on your mobile, <a href='/user-settings/contrib/subscriptions'>upgrade your plan!</a>"
+    }
+}

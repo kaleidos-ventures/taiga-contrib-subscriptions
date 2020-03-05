@@ -1,0 +1,205 @@
+{
+    "SUBSCRIPTIONS": {
+        "TITLE": "Harpidetzak - Erabiltzaile soslaia - Taiga",
+        "SECTION_NAME": "Ordainpeko planak",
+        "PLAN": "Plana",
+        "YOUR_PLAN": "Zure plana",
+        "YOUR_RECOMMENDED_PLAN": "Agian aztertu behar zenuke",
+        "WANT_PLAN": "Bai, nahi dut!",
+        "UPDATE_PLAN": "Aldatu plana",
+        "PRIVATE_PROJECTS_LIMIT": "Up to {{number}} private projects + Unlimited public projects!",
+        "PRIVATE_PROJECTS_LIMIT_UNLIMITED": "Mugarik gabeko proiektu pribatuak + mugarik gabeko proiektu publikoak!",
+        "EXTRA_SEAT_PER_MONTH": "Eserleku gehigarri bat: ${{amount}} gehiago hilero",
+        "EXTRA_SEAT_PER_YEAR": "Eserleku gehigarri bat: ${{amount}} gehiago urtero",
+        "MEMBERS_COUNT": "{total, plural, one{one member} other{# members}}",
+        "MEMBERS_LIMIT": "Up to {{number}} different member accounts using any of your private projects!",
+        "MEMBERS_LIMIT_UNLIMITED": "Mugarik gabeko lankideak proiektu pribatu bakoitzean!",
+        "CONTACT_SUBSCRIBE": "Egin plan honen harpidetza gurekin harremanetan jarrita hemen: <a href='mailto:support@taiga.io'>support@taiga.io</a>",
+        "FREQUENCY_MONTH": "hilean",
+        "FREQUENCY_YEAR": "urtean",
+        "MAX_PRIVATE_PROJECTS": "Proiektu pribatu gehiago nahi dituzu izan? <a href='{{url}}'>Hobetu zure plana!</a>",
+        "MEMBERS": {
+            "TITLE": "Members",
+            "SECTION_DESCRIPTION": "Erabiltzaile hauek daude loturik zure ordainpeko planetara. Zure proiektu pribatuetatik ezabatu ditzakezu beheko zerrendan, edo haien partaidetza kudeatu proiektu bakoitzaren konfigurazio panelean.",
+            "NOTIFICATIONS_SELECT": "Jakinarazi e-postaz lankideak gehitzen badira"
+        },
+        "USER_PROJECTS_LB": {
+            "TITLE": "Proiektu pribatuak erabiltzaile honekin: {{user}}",
+            "EXPLANATION": "Hauek dira zure proiektu pribatuak, non {{user}} erabiltzailea aintzat hartzen den zure ordainpeko planerako. Lankideen partaidetza kudeatu dezakezu proiektu bakoitzean, lankideen panela erabilita."
+        },
+        "CONTACT_LB": {
+            "TITLE": "Jarri gurekin harremanetan",
+            "PLACEHOLDER": "Mesedez, jarri gurekin harremanetan eta azaldu zure beharrak",
+            "BUTTON_SEND": "Jarri gurekin harremanetan",
+            "SUCCESS": "Mezua bidalita dago, berehala jarriko gara zurekin harremanetan."
+        },
+        "REMOVE_USER_LB": {
+            "TITLE": "Ziur zaude?",
+            "TEXT": "Erabiltzailea ezabatu egingo da zure proiektu pribatu guztietatik.",
+            "SUCCESS": "The user has been removed",
+            "CONFIRM": "Baieztatu",
+            "BACK": "Atzera"
+        },
+        "HELP": {
+            "WHY": "Zergatik uste duzu plan hau izan daitekeela onena zuretzat?",
+            "NO_PROJECTS": "Une honetan ez daukazu proiektu pribaturik, beraz gure ustez {{name}} plana guztiz egokia izan daiteke zuretzat.",
+            "FEW_PROJECTS": "Une honetan {{private_num}} proiektu pribatu dituzu, beraz gure ustez {{name}} plana aski egokia izan daiteke zuretzat.",
+            "NUM_PROJECTS": "Une honetan {{private_num}} proiektu pribatu eta {{public_num}} proiektu publiko dituzunez, gure ustez {{name}} plana izan daiteke aukera onena zuretzat.",
+            "NUM_PROJECTS_CUSTOM": "Une honetan {{private_num}} proiektu pribatu eta {{public_num}} proiektu publiko dituzunez, gure ustez plan pertsonalizatua izan daiteke aukera onena zuretzat.",
+            "UPGRADE": "Une honetan daukazun plana erraz eta noiznahi aldatu dezakezu!",
+            "PAYMENT": "Plan pribatu bat baino gehiago badaukazu eta ez bazara oraindik ordainpeko plan batera harpidetu, zure proiektu pribatuak aldi baterako blokeatuta geldituko dira. Lasai egon, ez dira ezabatuko. Harpidetza plan bat baieztatzen duzun orduko, berriro izango dituzu eskura.",
+            "PUBLIC": "Mesedez, gogoan izan proiektu publikoak ez direla aintzat hartzen ordainpeko planetarako.",
+            "MORE_INFO_TITLE": "Maiz egindako galderak",
+            "MORE_INFO": "Informazio gehiago (FAQ)"
+        },
+        "PAYMENT_HISTORY": {
+            "SEE_BILLING_DETAILS": "Ikusi fakturazioaren xehetasunak",
+            "CHANGE_DATA": "Aldatu ordainketaren xehetasunak",
+            "CHANGE_DATA_SUCCESS": "Ederki! Ongi aldatu dituzu ordainketa xehetasunak"
+        },
+        "PLANS_SELECTOR": {
+            "TITLE": "Zein plan da zuretzat egokiena?",
+            "CURRENT": "Oraingo plana",
+            "CUSTOM": "Pertsonalizatua",
+            "CONTACT": "Ordainpeko planean behar badituzu proiektu gehiago edo lankide gehiago proiektu bakoitzean, mesedez jarri gurekin harremanetan hemen <a href='mailto:support@taiga.io' title='gurekin harremanetan'>support@taiga.io</a> informazio gehiago jasotzeko."
+        },
+        "CANCEL": {
+            "TITLE": "Cancel {{plan}} plan",
+            "CANCEL_NOW": "Cancel plan now",
+            "IF_CANCEL": "If you cancel your plan now:",
+            "IMPLICATION_1": "You will go to the {{ plan }} plan but <strong>your projects will be deleted</strong>",
+            "IMPLICATION_2": "Members of those projects will no longer be able to access them",
+            "ADVISE": "If you do not want to lose the information, before canceling the plan, <strong>export your data</strong> from the Admin of each project.",
+            "SUCCESS": "Congratulations, you successfully cancelled your plan!"
+        },
+        "DOWNGRADE": {
+            "TITLE": "Downgrade to {{plan}} plan",
+            "IMAGE_ALT": "Beheragoko plan bat aukeratu",
+            "MUST_CHANGE": "To change to {{plan}} plan, you must first make the following changes",
+            "MORE_PROJECTS": "Baldin badaukazu {{projects}} proiektu pribatu baino gehiago",
+            "MORE_PROJECTS_OPTION": "Choose 1 project to remain private and make public or remove the rest projects. You can perform these changes on the upper menu cliking Manage Projects",
+            "MORE_MEMBERS": "Baldin badaukazu {{members}} lankide baino gehiago proiektu pribatu bakoitzeko",
+            "MORE_MEMBERS_OPTION1": "Go to Manage Members (Your plan) and keep a maximum of {{members}} members for all your private projects",
+            "WHY_MAKE_CHANGES": "Why do I have to make these changes?",
+            "REASON_WHY": "Unfortunately, you exceeded the maximum number of private projects or number of members allowed by {{ plan }} plan. This plan allows up to <strong>{{projects}} private projects and {{members}} members per private project</strong>",
+            "ACCEPT": "Ongi, ulertu dut",
+            "ARE_YOU_SURE": "Are you sure you want to change this plan?"
+        },
+        "SELECT_PLAN": {
+            "TITLE": "Change your Plan",
+            "SUBTITLE": "Choose the plan that best meets your needs",
+            "ABOUT_TO_CHANGE": "You are about change to {{ plan }} plan",
+            "INTERVAL": "Nola nahi duzu ordainketa egin?",
+            "PAY_MONTHLY": "Hilean behin",
+            "PAY_YEARLY": "Urtean behin",
+            "BACK": "Atzera",
+            "BACK_TITLE": "Aztera plana hautatzera",
+            "BUY": "Erosi plan bat",
+            "CONTINUE": "Jarraitu",
+            "CONFIRM": "Baieztatu",
+            "EVERY_YEAR": "Urtean behin",
+            "EVERY_MONTH": "Hilean behin",
+            "TAXES": "Zure herrialdearen arabera, balio erantsiaren gaineko zerga ezartzera behartuta egon gaitezke.",
+            "SUCCESS": "Congratulations, you successfully changed your plan!",
+            "START_SUBSCRIPTION": "Hasi harpidetza",
+            "PAY": "Ordaindu {{ amount }}",
+            "CHANGE_TO": "Change to {{ plan }} plan",
+            "CANCEL_CURRENT_PLAN": "Cancel {{ plan }} plan",
+            "CANCEL_PLAN_ADVISE": "When you cancel your {{ currentPlan }} plan you will subscribe to the {{ newPlan }} plan with basic features",
+            "CONTINUE_WITH": "Continue with {{ plan }} plan"
+        },
+        "PLAN_OPTIONS": {
+            "BASIC_PLAN": "Basic",
+            "FREE_PLAN": "Doan",
+            "PREMIUM_PLAN": "Premium",
+            "ENTERPRISE_PLAN": "Enterprise",
+            "MANAGE_MEMBERS": "Kudeatu lankideak",
+            "DOWNGRADE": "Beheratu plana",
+            "UPDATE": "Eguneratu",
+            "UPGRADE": "Upgrade",
+            "CHANGE_PLAN": "Change Plan",
+            "CANCEL_PLAN": "Cancel Plan",
+            "CONTACT_US": "Jarri gurekin harremanetan",
+            "PREMIUM_GBS": "Up to 10GB of storage",
+            "PREMIUM_NUM_USERS": "Unlimited number of members",
+            "PREMIUM_NUM_PRIVATE_PROJECTS": "Unlimited private projects",
+            "PREMIUM_NUM_PUBLIC_PROJECTS": "Unlimited public projects",
+            "FREE_NUM_USERS": "Up to 3 members on private project",
+            "FREE_NUM_PRIVATE_PROJECTS": "1 private project",
+            "FREE_NUM_PUBLIC_PROJECTS": "Unlimited public projects",
+            "FREE_GBS": "Up to 300MB of storage in private projects",
+            "ENTERPRISE_DISCCOUNT": "<strong>Discounts after 30 and 100 users</strong></br>up to 70% discount",
+            "ENTERPRISE_IDEAL_FOR": "Ideal for large teams or organisations requiring special support to use Taiga on our taiga.io Cloud offering. Discounts apply automatically beyond the 30 and 100 user mark.",
+            "YOUR_CURRENT_PLAN": "Une honetan plan hau daukazu",
+            "CURRENT_PLAN_DESCRIPTION": "Proiektu pribatuetan {{members}} lankide dituzu une honetan.",
+            "PER_MEMBER_YEARLY": "Per team member when on a yearly plan",
+            "PER_MEMBER_MONTHLY": "${{ amount }}/mo per team member when on a monthly plan",
+            "FAIR_POLICY": "Our fair pricing policy: we will adjust your invoice to ensure yor are charged every month only for the exact number of users you have active. Upgrade and downgrade as needed.",
+            "PER_MONTH": "/ mo",
+            "ON_TAIGA_CLOUD": "On the <strong>taiga.io</strong> cloud"
+        },
+        "NOTIFY_LIMIT": {
+            "SUCCESS": "Jakinarazpen muga ongi aldatua izan da"
+        }
+    },
+    "PROJECT": {
+        "BLOCKED_PROJECT": {
+            "ITS_ONLY_TEMPORAL": "Ez kezkatu, aldi baterako izango da",
+            "TO_UNBLOCK_CHECK_YOUR_PLAN": "Proiektuak desblokeatzeko, lehenik harpidetu ordainpeko plan batean, gaur egun daukazun proiektu pribatuen kopurua baimentzeko adinakoa",
+            "TO_UNBLOCK_CONTACT_SUPPORT": "Proiektuak desblokeatzeko, mesedez jarri harremanetan gure <a href=\"mailto:support@taiga.io\" title=\"laguntza\">support@taiga.io</a> zerbitzuarekin",
+            "CHECK_PLANS": "Aztertu planak",
+            "TO_UNBLOCK_PROJECT_MEMBER": "Zergatik dago blokeatuta nire proiektua?"
+        },
+        "IMPORT": {
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC_PRIVATE_SEED": "Inportatu nahian ari zaren proiektuak {{members}} erabiltzaile ditu, zu barne. Zoritxarrez, une honetan daukazun planak {{max_memberships}} lankide onartzen ditu. Lankideak gehitu nahi badituzu, aztertu behar zenuke <a href='/user-settings/contrib/subscriptions' title='Ordainpeko plan baten harpidetza egin nahi dut'>ordainpeko plan baten harpidetza</a> egitea.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "Inportatu nahian ari zaren proiektuak {{members}} erabiltzaile ditu, zu barne. Zoritxarrez, zure planak {{max_memberships}} erabiltzaile onartzen ditu proiektu pribatu batean.  Lankideak gehitu nahi badituzu, mesedez jar zaitez harremanetan administratzailearekin hemen: <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
+                "CHANGE_PLAN": "Aldatu plana",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "Zoritxarrez, une honetan daukazun planak ez du baimentzen proiektu pribatu gehiago.",
+                    "DESC": "Inportatu nahian ari zaren proiektua pribatua da; zoritxarrez, une honetan daukazun planak ez du baimentzen proiektu pribatu gehiago. Muga hori gainditu nahi baduzu, aztertu behar zenuke une honetan daukazun plana aldatzea."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Zure planak {{max_memberships}} erabiltzaile onartzen ditu proiektu pribatu bakoitzean."
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Zoritxarrez, zure planak ez du onartzen proiektu pribatu gehiago edo aktibatzea {{max_memberships}} erabiltzaile baino gehiago proiektu pribatu bakoitzean.",
+                    "DESC": "Zoritxarrez, inportatu nahian ari zaren proiektuak  {{max_memberships}} lankide baino gehiago ditu; une honetan daukazun planak gehienezko muga hori du. Era horretako proiektuak inportatu nahi badituzu, aztertu behar zenuke une honetan daukazun plana aldatzea."
+                }
+            }
+        },
+        "CREATE": {
+            "MAX_PRIVATE_PROJECTS": "Zoritxarrez, baimendutako proiektu pribatuen gehienezko kopurura iritsi zara.",
+            "MAX_PUBLIC_PROJECTS": "Zoritxarrez, baimendutako proiektu publikoen gehienezko kopurura iritsi zara.",
+            "CREATE_MORE_PROJECTS": "Gehiago sortzeko, aldatu behar zenuke",
+            "CHANGE_PLAN": "une honetan daukazun plana"
+        }
+    },
+    "ADMIN": {
+        "PROJECT_TRANSFER": {
+            "CANT_BE_OWNED": "Orain ezin duzu halako proiektu baten jabe izan. Proiektu horren jabe izan nahi baduzu, mesedez jar zaitez harremanetan administratzailearekin hemen: <a href='mailto:support@taiga.io'>support@taiga.io</a>.",
+            "CANT_BE_OWNED_BY_MEMBERSHIPS": "Orain ez daukazu baimenduta halako proiektu baten jabe izatea. Proiektu horren jabe izan nahi baduzu, mesedez jar zaitez harremanetan administratzailearekin hemen: <a href='mailto:support@taiga.io'>support@taiga.io</a>."
+        },
+        "MEMBERSHIPS": {
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Nahi badituzu <strong>lankideak gehitu</strong>, mesedez, jar zaitez harremanetan proiektuaren jabearekin <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>, bera baitago baimenduta une honetan daukazun plana hobetzeko.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER_WITH_LIMITED_PLAN": "Proiektu honek <strong>{{members}}</strong> lankide ditu une honetan, gehienez izan ditzakeenak, alegia. Nahi badituzu <strong>lankideak gehitu</strong>, mesedez, hobetu zure plana."
+        }
+    },
+    "LIGHTBOX": {
+        "CREATE_MEMBER": {
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Proiektu honen lankide kopurua gehienezko <strong>{{maxMembers}}</strong> kopurura iristeko zorian dago. Lankide gehiago behar baduzu, aztertu behar zenuke <a href='/user-settings/contrib/subscriptions' title=Ordainpeko plan baten harpidetza egin nahi dut'>ordainpeko plan baten harpidetza</a> egitea. Halakorik badaukazu, dagoeneko, jar zaitez gurekin harremanetan hemen: <a href='mailto:support@taiga.io' title='Contact Us at support@taiga.io'>support@taiga.io</a>"
+        }
+    },
+    "TAIGA_APP": {
+        "TITLE": "Subscriptions - User Profile - Taiga",
+        "SECTION_NAME": "Taiga App",
+        "SECTION_SUBTITLE": "Want to use Taiga on your mobile?",
+        "TAIGA_APP_DESCRIPTION": "<a href='http://www.taigaapp.com/' target='_blank'>TaigaApp</a> is an application developed completely independent from Taiga.io but with which we have reached an agreement so you can use <strong>for free if you have a premium or enterprise plan</strong>",
+        "TAIGA_APP_DOWNLOAD": "Just download the application and synchronize your Taiga account entering next code:",
+        "TAIGA_APP_VALID": "This code is valid only for your Taiga account",
+        "TAIGA_APP_COPY_BUTTON": "Copy",
+        "TAIGA_APP_DEVELOPED": "TaigaApp is developed by a totally independent team of Taiga.io.",
+        "TAIGA_APP_SAT": "To notify of any incident in the application, contact your customer service.",
+        "TAIGA_APP_UPGRADE": "If you want to enjoy free on your mobile, <a href='/user-settings/contrib/subscriptions'>upgrade your plan!</a>"
+    }
+}
